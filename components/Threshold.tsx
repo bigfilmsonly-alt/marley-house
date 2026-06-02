@@ -7,6 +7,10 @@ import { enterApp } from '@/lib/tracking';
 
 type Stage = 'welcome' | 'monogram' | 'done';
 
+/* Jony Ive ease — slow start, gentle deceleration, feels like gravity */
+const iveEase = [0.25, 0.1, 0.25, 1.0];
+const iveSlow = [0.16, 0.6, 0.3, 1.0];
+
 export default function Threshold() {
   const [stage, setStage] = useState<Stage>('done');
 
@@ -27,14 +31,12 @@ export default function Threshold() {
     enterApp();
   }, []);
 
-  // Auto-advance welcome → monogram after 7s
   useEffect(() => {
     if (stage !== 'welcome') return;
     const timer = setTimeout(goToMonogram, 7000);
     return () => clearTimeout(timer);
   }, [stage, goToMonogram]);
 
-  // Auto-advance monogram → done after 3s
   useEffect(() => {
     if (stage !== 'monogram') return;
     const timer = setTimeout(finish, 3000);
@@ -44,11 +46,13 @@ export default function Threshold() {
   if (stage === 'done') return null;
 
   return (
-    <div
+    <motion.div
       className="fixed inset-0 z-[100]"
       style={{ background: '#0b0805' }}
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1.2, ease: iveEase }}
     >
-      {/* STAGE 1: Welcome — lion + signature */}
       <AnimatePresence mode="wait">
         {stage === 'welcome' && (
           <motion.div
@@ -56,14 +60,14 @@ export default function Threshold() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1.2, ease: iveEase }}
             onClick={goToMonogram}
             className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer"
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 2, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ delay: 0.3, duration: 2.5, ease: iveSlow }}
               className="flex flex-col items-center"
             >
               <Image
@@ -86,7 +90,7 @@ export default function Threshold() {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.4 }}
-              transition={{ delay: 2.5, duration: 1.5 }}
+              transition={{ delay: 2.5, duration: 2 }}
               className="absolute bottom-16 text-[var(--dim)] text-[10px] font-light tracking-[0.5em] uppercase"
             >
               Enter
@@ -94,20 +98,19 @@ export default function Threshold() {
           </motion.div>
         )}
 
-        {/* STAGE 2: R-M monogram — sits for 3 seconds */}
         {stage === 'monogram' && (
           <motion.div
             key="monogram"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1.2, ease: iveEase }}
             className="absolute inset-0 flex items-center justify-center"
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.92 }}
+              initial={{ opacity: 0, scale: 0.94 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ delay: 0.3, duration: 2, ease: iveSlow }}
             >
               <Image
                 src="/brand/rhr-monogram-transparent.png"
@@ -121,6 +124,6 @@ export default function Threshold() {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }

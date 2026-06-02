@@ -48,25 +48,25 @@ export default function TabBar() {
       } else {
         router.push(tab.href);
       }
-    }, 2000);
+    }, 3000);
   }
 
   return (
     <>
-      {/* Brand splash overlay */}
+      {/* Brand splash overlay — buttery smooth */}
       <AnimatePresence>
         {splashTab && splashImages[splashTab] && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1.0] }}
             className="fixed inset-0 z-[95] flex items-center justify-center bg-[#0b0805]"
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.94 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ delay: 0.3, duration: 2, ease: [0.16, 0.6, 0.3, 1.0] }}
             >
               <Image
                 src={splashImages[splashTab].src}
