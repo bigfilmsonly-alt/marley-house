@@ -47,7 +47,7 @@ export default function Threshold() {
               alt="Lion Order"
               width={320}
               height={320}
-              className="w-[70vw] max-w-[320px] h-auto"
+              className="w-[90vw] max-w-[420px] h-auto"
               priority
             />
           </motion.div>
