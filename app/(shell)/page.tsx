@@ -13,27 +13,6 @@ const drop = {
   body: 'The lion does not turn around when the small dog barks. Stay focused on the mission. The legacy is not in what you build — it is what endures.',
 };
 
-const narrativePillars = [
-  {
-    key: 'landscape',
-    image: '/lion-order/field-sunset.jpg',
-    title: 'The Landscape',
-    subtitle: 'Where the root meets the soil.',
-  },
-  {
-    key: 'culture',
-    image: '/lion-order/culture.jpg',
-    title: 'The Culture',
-    subtitle: 'What the people carry forward.',
-  },
-  {
-    key: 'values',
-    image: '/lion-order/rohan-bw.jpg',
-    title: 'The Values',
-    subtitle: 'What we will not compromise.',
-  },
-];
-
 const brandTruths = [
   { name: 'Competitor Truth', statement: 'The market is seeking truth.' },
   { name: 'Cultural Truth', statement: 'There is expressive power in herb.' },
@@ -119,10 +98,24 @@ const communityPages = [
   '/brandbook/p40.jpg',
 ];
 
+/* ── dropdown section definitions ────────────────────────────── */
+
+const sections = [
+  { id: 'daily-drop', number: '01', title: 'Daily Drop' },
+  { id: 'movement', number: '02', title: 'The Movement' },
+  { id: 'truth', number: '03', title: 'Our Truth' },
+  { id: 'code', number: '04', title: 'The Code' },
+  { id: 'founder', number: '05', title: 'The Founder' },
+  { id: 'empire', number: '06', title: 'The Empire' },
+  { id: 'wisdom', number: '07', title: 'Wisdom & Vision' },
+] as const;
+
+type SectionId = (typeof sections)[number]['id'];
+
 /* ── page ─────────────────────────────────────────────────────── */
 
 export default function HomePage() {
-  const [openPillar, setOpenPillar] = useState<string | null>(null);
+  const [openSection, setOpenSection] = useState<SectionId | null>(null);
   const [expandedWisdom, setExpandedWisdom] = useState<string | null>(null);
 
   const handleBackToSplash = () => {
@@ -132,15 +125,15 @@ export default function HomePage() {
     }
   };
 
-  const togglePillar = (key: string) => {
-    setOpenPillar(openPillar === key ? null : key);
+  const toggle = (id: SectionId) => {
+    setOpenSection(openSection === id ? null : id);
   };
 
   return (
     <div className="relative min-h-full bg-[var(--bg)]">
 
       {/* ═══════════════════════════════════════════════════════════
-          0. LION BACK BUTTON — top-left, always visible
+          0. LION BACK BUTTON
       ═══════════════════════════════════════════════════════════ */}
       <button
         onClick={handleBackToSplash}
@@ -157,480 +150,462 @@ export default function HomePage() {
       </button>
 
       {/* ═══════════════════════════════════════════════════════════
-          1. R-M MONOGRAM HERO — Large monogram on pure black
+          1. HERO — R-M Monogram + Taglines (above the fold)
       ═══════════════════════════════════════════════════════════ */}
-      <section className="w-full bg-black pt-16 pb-12">
+      <section className="w-full bg-black pt-16 pb-10">
         <div className="flex flex-col items-center justify-center px-8">
-          <div className="relative w-[220px] h-[220px] mb-8">
+          <div className="relative w-[200px] h-[200px] mb-8">
             <Image
               src="/brand/rhr-monogram-transparent.png"
               alt="R-M Monogram"
               fill
               className="object-contain"
               priority
-              sizes="220px"
+              sizes="200px"
             />
           </div>
 
-          <p className="font-display text-2xl text-[var(--cream)] italic leading-[1.4] tracking-[0.01em] text-center mb-8">
-            Awaken the lion<br />in everyone.
+          <h1 className="text-3xl font-semibold text-white tracking-wide text-center leading-[1.3] mb-4">
+            Awaken the Lion<br />in Everyone
+          </h1>
+
+          <p className="text-[11px] tracking-[0.45em] uppercase text-[#E8C23A] font-medium mb-6">
+            The Legacy of Rohan Marley
           </p>
 
           <div className="gold-rule w-full max-w-[200px]" />
-
-          <p className="text-[8px] tracking-[0.5em] uppercase text-[var(--dim)] mt-6">
-            Marley House
-          </p>
         </div>
       </section>
 
-      <div className="gold-rule mx-8" />
-
       {/* ═══════════════════════════════════════════════════════════
-          2. WELCOME TEXT — Lion Order introduction
+          2. DROPDOWN MENU SYSTEM — 7 sections, one open at a time
       ═══════════════════════════════════════════════════════════ */}
-      <section className="px-8 py-16 text-center">
-        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-6">
-          Welcome to Lion Order
-        </p>
+      <nav className="w-full">
+        {sections.map((section) => {
+          const isOpen = openSection === section.id;
 
-        <h1 className="font-display text-3xl text-[var(--cream)] italic leading-[1.35] mb-8 max-w-[360px] mx-auto">
-          A movement led by Rohan Marley
-        </h1>
+          return (
+            <div key={section.id}>
+              {/* ── Dropdown bar ── */}
+              <button
+                onClick={() => toggle(section.id)}
+                aria-expanded={isOpen}
+                className="w-full border-b border-[var(--line)] px-6 py-5 flex items-center justify-between cursor-pointer transition-colors hover:bg-[var(--panel)]"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="text-[#E8C23A] font-semibold text-[15px] tracking-wide font-body">
+                    {section.number}
+                  </span>
+                  <span className="text-white font-semibold text-[16px] tracking-wide">
+                    {section.title}
+                  </span>
+                </div>
+                {isOpen ? (
+                  <ChevronUp className="w-5 h-5 text-[#E8C23A]" />
+                ) : (
+                  <ChevronDown className="w-5 h-5 text-[#E8C23A]" />
+                )}
+              </button>
 
-        <p className="font-body text-[14px] text-[var(--dim)] leading-[1.9] font-light max-w-[380px] mx-auto mb-8">
-          A collection of professional athletes, activists and visionaries around the
-          world who seek everlasting change. A commitment to the elevation and
-          edification of consciousness via plant medicine.
-        </p>
+              {/* ── Expanded panel ── */}
+              <div
+                className="overflow-hidden transition-all duration-500 ease-in-out"
+                style={{
+                  maxHeight: isOpen ? '5000px' : '0px',
+                  opacity: isOpen ? 1 : 0,
+                }}
+              >
+                <div className="bg-[var(--panel)] px-6 py-8 border-b border-[var(--line)]">
 
-        <div className="gold-rule max-w-[120px] mx-auto mb-8" />
-
-        <p className="font-display text-lg text-[var(--cream)] italic leading-[1.5] max-w-[300px] mx-auto">
-          This Is Our Life
-        </p>
-
-        <p className="font-body text-[12px] text-[var(--dim)] leading-[1.8] font-light mt-3 max-w-[300px] mx-auto">
-          Tropical warmth. Ancient wisdom. Modern purpose.
-        </p>
-      </section>
-
-      <div className="gold-rule mx-8" />
-
-      {/* ═══════════════════════════════════════════════════════════
-          3. DAILY DROP — editorial numbered card
-      ═══════════════════════════════════════════════════════════ */}
-      <section className="px-6 py-14">
-        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-6 text-center">
-          Daily Drop
-        </p>
-
-        <div className="border border-[var(--line)] bg-[var(--panel)] p-8">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="font-display text-4xl text-[var(--gold)] leading-none tracking-tight">
-              {String(drop.number).padStart(2, '0')}
-            </span>
-            <div className="flex gap-2">
-              {drop.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-[9px] tracking-[0.2em] uppercase text-[var(--dim)] border border-[var(--line)] px-2 py-0.5"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <p className="font-body text-[15px] text-[var(--cream)] leading-[1.9] font-light">
-            {drop.body}
-          </p>
-
-          <div className="gold-rule mt-8" />
-
-          <p className="text-[9px] tracking-[0.3em] uppercase text-[var(--dim)] mt-4 text-center">
-            From the House
-          </p>
-        </div>
-      </section>
-
-      <div className="gold-rule mx-8" />
-
-      {/* ═══════════════════════════════════════════════════════════
-          4. NARRATIVE PILLARS — 3 tappable accordion cards
-      ═══════════════════════════════════════════════════════════ */}
-      <section className="px-6 py-14">
-        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-3 text-center">
-          Our Narrative
-        </p>
-        <p className="font-display text-lg text-[var(--cream)] italic leading-[1.5] text-center mb-8">
-          Our narrative stems from:
-        </p>
-
-        <div className="space-y-4">
-          {narrativePillars.map((pillar) => {
-            const isOpen = openPillar === pillar.key;
-            return (
-              <div key={pillar.key}>
-                {/* Tappable image card */}
-                <button
-                  onClick={() => togglePillar(pillar.key)}
-                  className="relative w-full aspect-[4/3] overflow-hidden cursor-pointer block"
-                  aria-expanded={isOpen}
-                >
-                  <Image
-                    src={pillar.image}
-                    alt={pillar.title}
-                    fill
-                    className="object-cover object-center"
-                    sizes="100vw"
-                  />
-                  {/* Dark gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
-                  {/* Text overlay — centered */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center px-6">
-                    <p className="font-display text-2xl text-[var(--gold)] italic leading-tight mb-2">
-                      {pillar.title}
-                    </p>
-                    <p className="font-body text-[12px] text-[var(--cream)] leading-[1.6] font-light opacity-80 mb-4">
-                      {pillar.subtitle}
-                    </p>
-                    {/* Chevron indicator */}
-                    {isOpen ? (
-                      <ChevronUp className="w-5 h-5 text-[var(--gold)] opacity-70" />
-                    ) : (
-                      <ChevronDown className="w-5 h-5 text-[var(--gold)] opacity-70" />
-                    )}
-                  </div>
-                </button>
-
-                {/* Expandable content panel */}
-                <div
-                  className="overflow-hidden transition-all duration-500 ease-in-out"
-                  style={{
-                    maxHeight: isOpen ? '2000px' : '0px',
-                    opacity: isOpen ? 1 : 0,
-                  }}
-                >
-                  <div className="bg-[var(--panel)] border border-[var(--line)] border-t-0 px-6 py-10">
-
-                    {/* ── LANDSCAPE: Brand Truths + Quality Factors ── */}
-                    {pillar.key === 'landscape' && (
-                      <>
-                        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-3 text-center">
-                          Summary Truths
-                        </p>
-                        <p className="font-display text-lg text-[var(--cream)] italic leading-[1.5] text-center mb-8">
-                          What we know to be true.
-                        </p>
-
-                        <div className="space-y-5 mb-10">
-                          {brandTruths.map((truth, i) => (
-                            <div key={truth.name} className="border-l-2 border-[var(--gold)] pl-5 py-1">
-                              <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-2">
-                                {String(i + 1).padStart(2, '0')} &mdash; {truth.name}
-                              </p>
-                              <p className="font-display text-base text-[var(--cream)] italic leading-[1.6]">
-                                &ldquo;{truth.statement}&rdquo;
-                              </p>
-                            </div>
-                          ))}
+                  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                      01 — DAILY DROP
+                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+                  {section.id === 'daily-drop' && (
+                    <div>
+                      <div className="border border-[var(--line)] bg-[var(--bg)] p-8">
+                        <div className="flex items-center gap-3 mb-6">
+                          <span className="font-display text-4xl text-[#E8C23A] leading-none tracking-tight font-semibold">
+                            {String(drop.number).padStart(2, '0')}
+                          </span>
+                          <div className="flex gap-2">
+                            {drop.tags.map((tag) => (
+                              <span
+                                key={tag}
+                                className="text-[10px] tracking-[0.2em] uppercase text-[var(--dim)] border border-[var(--line)] px-2.5 py-1 font-medium"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
                         </div>
 
-                        <div className="gold-rule mb-8" />
-
-                        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-3 text-center">
-                          Quality
-                        </p>
-                        <p className="font-display text-lg text-[var(--cream)] italic leading-[1.5] text-center mb-6">
-                          Five Quality Factors
+                        <p className="font-body text-[15px] text-[var(--cream)] leading-[1.9] font-normal">
+                          {drop.body}
                         </p>
 
-                        <div className="flex flex-wrap justify-center gap-3">
-                          {qualityFactors.map((factor) => (
-                            <span
-                              key={factor}
-                              className="border border-[var(--gold)] text-[var(--gold)] text-[11px] tracking-[0.2em] uppercase px-5 py-2.5 font-body"
-                            >
-                              {factor}
-                            </span>
-                          ))}
-                        </div>
+                        <div className="gold-rule mt-8" />
 
-                        <p className="font-body text-[12px] text-[var(--dim)] leading-[1.8] font-light text-center mt-6 max-w-[320px] mx-auto">
-                          Every product, every experience, every moment is measured against these five pillars.
-                          Nothing leaves the house without passing through all five.
+                        <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--dim)] mt-4 text-center font-medium">
+                          From the House
                         </p>
-                      </>
-                    )}
+                      </div>
+                    </div>
+                  )}
 
-                    {/* ── CULTURE: Codes of Lion Order ── */}
-                    {pillar.key === 'culture' && (
-                      <>
-                        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-3 text-center">
-                          Our Codes
-                        </p>
-                        <p className="font-display text-xl text-[var(--cream)] italic leading-[1.35] text-center mb-8">
-                          Codes of Lion Order
-                        </p>
+                  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                      02 — THE MOVEMENT
+                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+                  {section.id === 'movement' && (
+                    <div className="text-center">
+                      <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-5 font-medium">
+                        Welcome to Lion Order
+                      </p>
 
-                        <div className="space-y-5">
-                          {codesOfLionOrder.map((code) => (
-                            <div key={code.name} className="border border-[var(--line)] bg-[var(--bg)] p-5">
-                              <div className="flex items-start gap-4">
-                                <span className="mt-2 w-2 h-2 bg-[var(--gold)] shrink-0" />
-                                <div>
-                                  <p className="font-display text-base text-[var(--cream)] italic leading-tight mb-2">
-                                    {code.name}
-                                  </p>
-                                  <p className="font-body text-[13px] text-[var(--dim)] leading-[1.8] font-light">
-                                    {code.description}
-                                  </p>
-                                </div>
+                      <h2 className="text-2xl text-white font-semibold leading-[1.35] mb-6 max-w-[360px] mx-auto">
+                        A movement led by Rohan Marley
+                      </h2>
+
+                      <p className="font-body text-[15px] text-[var(--cream)] leading-[1.9] font-normal max-w-[400px] mx-auto mb-8">
+                        A collection of professional athletes, activists and visionaries around the
+                        world who seek everlasting change. A commitment to the elevation and
+                        edification of consciousness via plant medicine.
+                      </p>
+
+                      <div className="gold-rule max-w-[120px] mx-auto mb-8" />
+
+                      <p className="text-xl text-white font-semibold leading-[1.5] max-w-[300px] mx-auto">
+                        This Is Our Life
+                      </p>
+
+                      <p className="font-body text-[14px] text-[var(--dim)] leading-[1.8] font-normal mt-3 max-w-[300px] mx-auto">
+                        Tropical warmth. Ancient wisdom. Modern purpose.
+                      </p>
+                    </div>
+                  )}
+
+                  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                      03 — OUR TRUTH
+                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+                  {section.id === 'truth' && (
+                    <div>
+                      <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-3 text-center font-medium">
+                        Brand Truths
+                      </p>
+                      <p className="text-lg text-white font-semibold leading-[1.5] text-center mb-8">
+                        What we know to be true.
+                      </p>
+
+                      <div className="space-y-5 mb-10">
+                        {brandTruths.map((truth, i) => (
+                          <div key={truth.name} className="border-l-2 border-[#E8C23A] pl-5 py-1">
+                            <p className="text-[11px] tracking-[0.3em] uppercase text-[#E8C23A] mb-2 font-medium">
+                              {String(i + 1).padStart(2, '0')} &mdash; {truth.name}
+                            </p>
+                            <p className="font-display text-base text-white font-medium italic leading-[1.6]">
+                              &ldquo;{truth.statement}&rdquo;
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="gold-rule mb-8" />
+
+                      <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-3 text-center font-medium">
+                        Quality
+                      </p>
+                      <p className="text-lg text-white font-semibold leading-[1.5] text-center mb-6">
+                        Five Quality Factors
+                      </p>
+
+                      <div className="flex flex-wrap justify-center gap-3">
+                        {qualityFactors.map((factor) => (
+                          <span
+                            key={factor}
+                            className="border border-[#E8C23A] text-[#E8C23A] text-[11px] tracking-[0.2em] uppercase px-5 py-2.5 font-medium"
+                          >
+                            {factor}
+                          </span>
+                        ))}
+                      </div>
+
+                      <p className="font-body text-[14px] text-[var(--dim)] leading-[1.8] font-normal text-center mt-6 max-w-[360px] mx-auto">
+                        Every product, every experience, every moment is measured against these five pillars.
+                        Nothing leaves the house without passing through all five.
+                      </p>
+                    </div>
+                  )}
+
+                  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                      04 — THE CODE
+                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+                  {section.id === 'code' && (
+                    <div>
+                      <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-3 text-center font-medium">
+                        Our Codes
+                      </p>
+                      <p className="text-xl text-white font-semibold leading-[1.35] text-center mb-8">
+                        Codes of Lion Order
+                      </p>
+
+                      <div className="space-y-4">
+                        {codesOfLionOrder.map((code, i) => (
+                          <div key={code.name} className="border border-[var(--line)] bg-[var(--bg)] p-5">
+                            <div className="flex items-start gap-4">
+                              <span className="text-[#E8C23A] font-semibold text-[14px] tracking-wide font-body mt-0.5 shrink-0">
+                                {String(i + 1).padStart(2, '0')}
+                              </span>
+                              <div>
+                                <p className="text-base text-white font-semibold leading-tight mb-2">
+                                  {code.name}
+                                </p>
+                                <p className="font-body text-[14px] text-[var(--dim)] leading-[1.8] font-normal">
+                                  {code.description}
+                                </p>
                               </div>
                             </div>
-                          ))}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                      05 — THE FOUNDER
+                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+                  {section.id === 'founder' && (
+                    <div>
+                      <div className="relative w-full aspect-video overflow-hidden mb-8">
+                        <Image
+                          src="/lion-order/rohan-portrait.jpg"
+                          alt="Rohan Marley"
+                          fill
+                          className="object-cover object-top"
+                          sizes="100vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--panel)] via-transparent to-transparent" />
+                      </div>
+
+                      <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-3 font-medium">
+                        The Founder
+                      </p>
+                      <h2 className="text-2xl text-white font-semibold leading-tight mb-5">
+                        Rohan Marley
+                      </h2>
+                      <p className="font-body text-[15px] text-[var(--cream)] leading-[1.9] font-normal mb-6">
+                        Son of Bob. Father of legacy. From the gridiron to the coffee fields of Jamaica, Rohan
+                        carries the frequency forward — building a house where culture, craft, and consciousness
+                        meet under one roof.
+                      </p>
+                      <p className="font-body text-[14px] text-[var(--dim)] leading-[1.8] font-normal mb-8 italic">
+                        A life lived not for the spotlight, but for the soil. For the seed that becomes the tree
+                        that shelters the next generation.
+                      </p>
+
+                      <Image
+                        src="/brand/rohan-signature.png"
+                        alt="Rohan Marley signature"
+                        width={160}
+                        height={54}
+                        className="opacity-70"
+                      />
+                    </div>
+                  )}
+
+                  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                      06 — THE EMPIRE
+                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+                  {section.id === 'empire' && (
+                    <div>
+                      <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-3 text-center font-medium">
+                        The Portfolio
+                      </p>
+                      <p className="text-xl text-white font-semibold leading-[1.35] text-center mb-8">
+                        The Maison
+                      </p>
+
+                      <div className="space-y-4 mb-10">
+                        {maison.map((brand) => (
+                          <div
+                            key={brand.name}
+                            className="border border-[var(--line)] bg-[var(--bg)] p-6 flex items-start gap-5"
+                          >
+                            <Image
+                              src={brand.crest}
+                              alt={brand.name}
+                              width={40}
+                              height={40}
+                              className="opacity-80 mt-0.5 shrink-0"
+                            />
+                            <div>
+                              <p className="text-base text-white font-semibold leading-snug mb-2">
+                                {brand.name}
+                              </p>
+                              <p className="font-body text-[14px] text-[var(--dim)] leading-[1.8] font-normal">
+                                {brand.description}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="gold-rule mb-8" />
+
+                      <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-3 text-center font-medium">
+                        Our People
+                      </p>
+                      <p className="text-lg text-white font-semibold leading-[1.5] text-center mb-6">
+                        The Community
+                      </p>
+
+                      <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide">
+                        {communityPages.map((src, i) => (
+                          <div
+                            key={src}
+                            className="relative w-56 aspect-[4/3] shrink-0 overflow-hidden"
+                          >
+                            <Image
+                              src={src}
+                              alt={`Community ${i + 1}`}
+                              fill
+                              className="object-cover object-center"
+                              sizes="224px"
+                            />
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="relative w-full aspect-[16/9] mt-6 overflow-hidden">
+                        <Image
+                          src="/brandbook/p40.jpg"
+                          alt="Lion Order Community"
+                          fill
+                          className="object-cover object-center"
+                          sizes="100vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--panel)] via-transparent to-transparent" />
+                        <div className="absolute bottom-6 left-0 right-0 text-center">
+                          <p className="text-[11px] tracking-[0.4em] uppercase text-white font-medium">
+                            The Movement Is the People
+                          </p>
                         </div>
-                      </>
-                    )}
+                      </div>
+                    </div>
+                  )}
 
-                    {/* ── VALUES: Wisdom + Mission/Vision ── */}
-                    {pillar.key === 'values' && (
-                      <>
-                        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-8 text-center">
-                          Wisdom
-                        </p>
+                  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                      07 — WISDOM & VISION
+                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+                  {section.id === 'wisdom' && (
+                    <div>
+                      <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-6 text-center font-medium">
+                        Wisdom
+                      </p>
 
-                        <div className="space-y-5 mb-10">
-                          {wisdomCards.slice(0, 3).map((card) => {
-                            const isWisdomOpen = expandedWisdom === card.id;
-                            return (
-                              <button
-                                key={card.id}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setExpandedWisdom(isWisdomOpen ? null : card.id);
+                      <div className="space-y-4 mb-10">
+                        {wisdomCards.slice(0, 3).map((card) => {
+                          const isWisdomOpen = expandedWisdom === card.id;
+                          return (
+                            <button
+                              key={card.id}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setExpandedWisdom(isWisdomOpen ? null : card.id);
+                              }}
+                              className="w-full text-left border border-[var(--line)] bg-[var(--bg)] p-5 cursor-pointer transition-colors hover:border-[#E8C23A]/30"
+                            >
+                              <span className="font-display text-3xl text-[#E8C23A] leading-none block mb-3">
+                                &ldquo;
+                              </span>
+
+                              <p className="font-display text-base text-white font-medium italic leading-[1.6]">
+                                {card.lesson}
+                              </p>
+
+                              <div
+                                className="overflow-hidden transition-all duration-400 ease-in-out"
+                                style={{
+                                  maxHeight: isWisdomOpen ? '500px' : '0px',
+                                  opacity: isWisdomOpen ? 1 : 0,
                                 }}
-                                className="w-full text-left border border-[var(--line)] bg-[var(--bg)] p-5 cursor-pointer transition-colors hover:border-[var(--gold)]/30"
                               >
-                                <span className="font-display text-3xl text-[var(--gold)] leading-none block mb-3">
-                                  &ldquo;
-                                </span>
-
-                                <p className="font-display text-base text-[var(--cream)] italic leading-[1.6]">
-                                  {card.lesson}
+                                <p className="font-body text-[14px] text-[var(--dim)] leading-[1.8] mt-4 font-normal">
+                                  {card.expanded}
                                 </p>
+                              </div>
 
-                                {isWisdomOpen && (
-                                  <p className="font-body text-[13px] text-[var(--dim)] leading-[1.8] mt-4 font-light">
-                                    {card.expanded}
-                                  </p>
+                              <div className="flex items-center justify-between mt-4">
+                                <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--dim)] font-medium">
+                                  Room: {card.room}
+                                </p>
+                                {isWisdomOpen ? (
+                                  <ChevronUp className="w-4 h-4 text-[#E8C23A]" />
+                                ) : (
+                                  <ChevronDown className="w-4 h-4 text-[#E8C23A]" />
                                 )}
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
 
-                                <div className="flex items-center justify-between mt-4">
-                                  <p className="text-[9px] tracking-[0.3em] uppercase text-[var(--dim)]">
-                                    Room: {card.room}
-                                  </p>
-                                  {isWisdomOpen ? (
-                                    <ChevronUp className="w-4 h-4 text-[var(--dim)]" />
-                                  ) : (
-                                    <ChevronDown className="w-4 h-4 text-[var(--dim)]" />
-                                  )}
-                                </div>
-                              </button>
-                            );
-                          })}
-                        </div>
+                      <div className="gold-rule mb-10" />
 
-                        <div className="gold-rule mb-10" />
+                      {/* Mission */}
+                      <div className="text-center mb-12">
+                        <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-5 font-medium">
+                          Our Mission
+                        </p>
+                        <p className="text-xl text-white font-semibold leading-[1.5] max-w-[360px] mx-auto mb-5">
+                          Create the highest quality goods that elevate consciousness and culture.
+                        </p>
+                        <p className="font-body text-[14px] text-[var(--dim)] leading-[1.8] font-normal max-w-[360px] mx-auto">
+                          From the soil to the soul. Everything we touch carries intention, heritage, and the
+                          unwavering belief that quality is a form of respect.
+                        </p>
+                      </div>
 
-                        {/* Mission */}
-                        <div className="text-center mb-12">
-                          <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-6">
-                            Our Mission
-                          </p>
-                          <p className="font-display text-xl text-[var(--cream)] italic leading-[1.5] max-w-[340px] mx-auto mb-6">
-                            Create the highest quality goods that elevate consciousness and culture.
-                          </p>
-                          <p className="font-body text-[13px] text-[var(--dim)] leading-[1.8] font-light max-w-[340px] mx-auto">
-                            From the soil to the soul. Everything we touch carries intention, heritage, and the
-                            unwavering belief that quality is a form of respect.
-                          </p>
-                        </div>
+                      <div className="gold-rule max-w-[80px] mx-auto mb-12" />
 
-                        <div className="gold-rule max-w-[80px] mx-auto mb-12" />
+                      {/* Vision */}
+                      <div className="text-center">
+                        <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-5 font-medium">
+                          Our Vision
+                        </p>
+                        <p className="text-xl text-white font-semibold leading-[1.5] max-w-[360px] mx-auto mb-5">
+                          To awaken the lion in everyone.
+                        </p>
+                        <p className="font-body text-[14px] text-[var(--dim)] leading-[1.8] font-normal max-w-[360px] mx-auto">
+                          The lion is not an animal. It is a frequency. A way of standing in the world — with
+                          dignity, with purpose, with the courage to build something that outlasts you.
+                        </p>
+                      </div>
+                    </div>
+                  )}
 
-                        {/* Vision */}
-                        <div className="text-center">
-                          <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-6">
-                            Our Vision
-                          </p>
-                          <p className="font-display text-xl text-[var(--cream)] italic leading-[1.5] max-w-[340px] mx-auto mb-6">
-                            To awaken the lion in everyone.
-                          </p>
-                          <p className="font-body text-[13px] text-[var(--dim)] leading-[1.8] font-light max-w-[340px] mx-auto">
-                            The lion is not an animal. It is a frequency. A way of standing in the world — with
-                            dignity, with purpose, with the courage to build something that outlasts you.
-                          </p>
-                        </div>
-                      </>
-                    )}
-
-                  </div>
                 </div>
               </div>
-            );
-          })}
-        </div>
-      </section>
-
-      <div className="gold-rule mx-8" />
-
-      {/* ═══════════════════════════════════════════════════════════
-          5. ROHAN PORTRAIT — full-width founder section
-      ═══════════════════════════════════════════════════════════ */}
-      <section className="py-14">
-        <div className="relative w-full aspect-[3/4] max-h-[85vh] overflow-hidden">
-          <Image
-            src="/lion-order/rohan-portrait.jpg"
-            alt="Rohan Marley"
-            fill
-            className="object-cover object-center"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/40 to-transparent" />
-        </div>
-
-        <div className="px-8 -mt-24 relative z-10">
-          <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-3">
-            The Founder
-          </p>
-          <h2 className="font-display text-3xl text-[var(--cream)] italic leading-tight mb-5">
-            Rohan Marley
-          </h2>
-          <p className="font-body text-[14px] text-[var(--dim)] leading-[1.9] font-light mb-6">
-            Son of Bob. Father of legacy. From the gridiron to the coffee fields of Jamaica, Rohan
-            carries the frequency forward — building a house where culture, craft, and consciousness
-            meet under one roof.
-          </p>
-          <p className="font-body text-[13px] text-[var(--dim)] leading-[1.8] font-light mb-8 italic">
-            A life lived not for the spotlight, but for the soil. For the seed that becomes the tree
-            that shelters the next generation.
-          </p>
-
-          <Image
-            src="/brand/rohan-signature.png"
-            alt="Rohan Marley signature"
-            width={160}
-            height={54}
-            className="opacity-60"
-          />
-        </div>
-      </section>
-
-      <div className="gold-rule mx-8" />
-
-      {/* ═══════════════════════════════════════════════════════════
-          6. COMMUNITY — horizontal scroll + collage
-      ═══════════════════════════════════════════════════════════ */}
-      <section className="py-14">
-        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-3 text-center">
-          Our People
-        </p>
-        <p className="font-display text-lg text-[var(--cream)] italic leading-[1.5] text-center mb-8 px-8">
-          Our Community
-        </p>
-
-        <div className="flex gap-3 overflow-x-auto px-6 pb-4 scrollbar-hide">
-          {communityPages.map((src, i) => (
-            <div
-              key={src}
-              className="relative w-56 aspect-[4/3] shrink-0 overflow-hidden"
-            >
-              <Image
-                src={src}
-                alt={`Community ${i + 1}`}
-                fill
-                className="object-cover object-center"
-                sizes="224px"
-              />
             </div>
-          ))}
-        </div>
-
-        <div className="relative w-full aspect-[16/9] mt-6 overflow-hidden">
-          <Image
-            src="/brandbook/p40.jpg"
-            alt="Lion Order Community"
-            fill
-            className="object-cover object-center"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent" />
-          <div className="absolute bottom-6 left-0 right-0 text-center">
-            <p className="text-[9px] tracking-[0.4em] uppercase text-[var(--cream)]">
-              The Movement Is the People
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <div className="gold-rule mx-8" />
+          );
+        })}
+      </nav>
 
       {/* ═══════════════════════════════════════════════════════════
-          7. THE MAISON — 3 brand cards
+          3. FOOTER — Lion Order crest, proud and centered
       ═══════════════════════════════════════════════════════════ */}
-      <section className="px-6 py-14">
-        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-3 text-center">
-          The Portfolio
-        </p>
-        <h2 className="font-display text-2xl text-[var(--cream)] italic leading-[1.35] text-center mb-10">
-          The Maison
-        </h2>
+      <div className="gold-rule mx-8 mt-2" />
 
-        <div className="space-y-4">
-          {maison.map((brand) => (
-            <div
-              key={brand.name}
-              className="border border-[var(--line)] bg-[var(--panel)] p-6 flex items-start gap-5"
-            >
-              <Image
-                src={brand.crest}
-                alt={brand.name}
-                width={36}
-                height={36}
-                className="opacity-70 mt-0.5 shrink-0"
-              />
-              <div>
-                <p className="font-display text-base text-[var(--cream)] leading-snug mb-2">
-                  {brand.name}
-                </p>
-                <p className="font-body text-[12px] text-[var(--dim)] leading-[1.8] font-light">
-                  {brand.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <div className="gold-rule mx-8" />
-
-      {/* ═══════════════════════════════════════════════════════════
-          8. FOOTER — Large Lion Order logo, proud and centered
-      ═══════════════════════════════════════════════════════════ */}
-      <footer className="px-8 py-20 text-center">
+      <footer className="px-8 py-16 text-center">
         <Image
           src="/brand/lion-order-crest.png"
           alt="Lion Order"
           width={200}
           height={200}
-          className="mx-auto mb-8 opacity-90 brightness-110"
+          className="mx-auto mb-8 brightness-110"
         />
-        <p className="text-[var(--dim)] text-[9px] tracking-[0.4em] uppercase mb-3">
+        <p className="text-[var(--cream)] text-[10px] tracking-[0.4em] uppercase mb-3 font-medium">
           Lion Order &middot; Est. 2022
         </p>
-        <p className="text-[var(--dim)] text-[8px] tracking-[0.2em] uppercase opacity-60">
+        <p className="text-[var(--dim)] text-[9px] tracking-[0.25em] uppercase font-medium">
           One Love. One House. One Order.
         </p>
       </footer>
