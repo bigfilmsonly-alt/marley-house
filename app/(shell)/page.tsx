@@ -109,6 +109,16 @@ export default function HomePage() {
         </p>
       </div>
 
+      {/* Hero Video — Drink Champs */}
+      <div className="px-4 pb-6">
+        <VideoPlayer
+          videoId="X0SZf3r63ls"
+          title="Rohan Marley — Bob Marley, Rastafari, Family & Legacy | Drink Champs"
+          thumbnail="https://img.youtube.com/vi/X0SZf3r63ls/maxresdefault.jpg"
+          hero
+        />
+      </div>
+
       <div className="gold-rule mx-6" />
 
       {/* ═══════ THE HOUSES ═══════ */}
