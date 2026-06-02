@@ -612,8 +612,8 @@ export default function HomePage() {
         {/* Three logos side by side — fitted to screen */}
         <div className="flex items-center justify-center gap-4 mb-10 px-2">
           <Image
-            src="/brand/lion-of-judah.png"
-            alt="Lion of Judah"
+            src="/brand/marley-enterprise.png"
+            alt="Marley Enterprise"
             width={110}
             height={110}
             className="brightness-125 flex-shrink-0"
