@@ -23,12 +23,12 @@ const codes = [
 ];
 
 const qualityFactors = [
-  { name: 'Strain Hunting', accent: '#d8b15a' },
-  { name: 'Aroma', accent: '#7ba36e' },
-  { name: 'Aesthetic', accent: '#e2622f' },
-  { name: 'Flavor', accent: '#86b4cc' },
-  { name: 'Resin-Release', accent: '#c98a3c' },
-  { name: 'Efficacy', accent: '#a9812f' },
+  { name: 'Strain Hunting', accent: '#B98524' },
+  { name: 'Aroma', accent: '#825B0D' },
+  { name: 'Aesthetic', accent: '#E8C23A' },
+  { name: 'Flavor', accent: '#B98524' },
+  { name: 'Resin-Release', accent: '#EFC11F' },
+  { name: 'Efficacy', accent: '#825B0D' },
 ];
 
 const personality = ['Regal', 'Passionate', 'Wise', 'Aspirational', 'Courageous', 'Nurturing'];
@@ -44,7 +44,7 @@ export default function LionOrderPage() {
   return (
     <div className="relative min-h-full bg-[var(--bg)]">
       {/* Ambient glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-[#d8b15a] blur-[120px] opacity-[0.06] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-[var(--antique-gold-1)] blur-[120px] opacity-[0.06] pointer-events-none" />
 
       {/* ═══ HERO ═══ */}
       <div className="relative px-6 pt-14 pb-6 text-center">
@@ -56,7 +56,7 @@ export default function LionOrderPage() {
             height={120}
             className="mx-auto mb-5 drop-shadow-2xl"
           />
-          <p className="text-[10px] tracking-[0.3em] uppercase text-[#d8b15a] font-medium mb-2">
+          <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--antique-gold-1)] font-medium mb-2">
             The Movement
           </p>
           <h1 className="font-display text-3xl text-[var(--cream)] font-light leading-tight">
@@ -77,17 +77,17 @@ export default function LionOrderPage() {
 
       {/* ═══ VISION & MISSION ═══ */}
       <motion.div {...fade} className="px-6 pb-8">
-        <div className="rounded-2xl border border-[#d8b15a]/20 bg-[#d8b15a]/[0.04] p-5">
+        <div className="rounded-2xl border border-[var(--antique-gold-1)]/20 bg-[var(--antique-gold-1)]/[0.04] p-5">
           <div className="text-center mb-4">
-            <Crown size={20} className="text-[#d8b15a] mx-auto mb-2" />
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium">Our Vision</p>
+            <Crown size={20} className="text-[var(--antique-gold-1)] mx-auto mb-2" />
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--antique-gold-1)] font-medium">Our Vision</p>
           </div>
           <p className="font-display text-xl text-[var(--cream)] font-light text-center italic leading-relaxed">
             &ldquo;To awaken the lion in everyone.&rdquo;
           </p>
-          <div className="h-px bg-[#d8b15a]/15 my-4" />
+          <div className="h-px bg-[var(--antique-gold-1)]/15 my-4" />
           <div className="text-center">
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a]/70 font-medium mb-1">Our Mission</p>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--antique-gold-1)]/70 font-medium mb-1">Our Mission</p>
             <p className="text-[var(--dim)] text-sm font-light leading-relaxed">
               Create the highest quality goods that elevate consciousness and culture.
             </p>
@@ -100,7 +100,7 @@ export default function LionOrderPage() {
         <div className="rounded-2xl overflow-hidden bg-[var(--bg2)] border border-[var(--line)]">
           <Image src="/lion-order/rohan-portrait.jpg" alt="Rohan Marley" width={380} height={480} className="w-full h-72 object-cover object-top" />
           <div className="p-5">
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-1">The Founder</p>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--antique-gold-1)] font-medium mb-1">The Founder</p>
             <h2 className="font-display text-xl text-[var(--cream)] font-light mb-2">Rohan Marley</h2>
             <p className="text-[var(--dim)] text-sm font-light leading-relaxed">
               More than a brand. Rohan&apos;s taste acts like a stamp of approval. His association signals both authenticity and quality. The story is the order.
@@ -121,12 +121,12 @@ export default function LionOrderPage() {
 
       {/* ═══ VALUES ═══ */}
       <motion.div {...fade} className="px-6 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-4">Our Values</p>
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--antique-gold-1)] font-medium mb-4">Our Values</p>
         <div className="space-y-3">
           {values.map((v) => (
             <div key={v.label} className="flex items-start gap-3 rounded-xl bg-[var(--bg2)] border border-[var(--line)] p-3">
-              <div className="w-9 h-9 rounded-lg bg-[#d8b15a]/10 flex items-center justify-center shrink-0">
-                <v.icon size={16} className="text-[#d8b15a]" />
+              <div className="w-9 h-9 rounded-lg bg-[var(--antique-gold-1)]/10 flex items-center justify-center shrink-0">
+                <v.icon size={16} className="text-[var(--antique-gold-1)]" />
               </div>
               <div>
                 <p className="text-sm text-[var(--cream)] font-medium">{v.label}</p>
@@ -139,10 +139,10 @@ export default function LionOrderPage() {
 
       {/* ═══ CODES ═══ */}
       <motion.div {...fade} className="px-6 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">Codes of Lion Order</p>
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--antique-gold-1)] font-medium mb-3">Codes of Lion Order</p>
         <div className="flex flex-wrap gap-2">
           {codes.map((code) => (
-            <span key={code} className="text-[11px] text-[#d8b15a] bg-[#d8b15a]/[0.08] border border-[#d8b15a]/15 px-3 py-1.5 rounded-full font-medium">
+            <span key={code} className="text-[11px] text-[var(--antique-gold-1)] bg-[var(--antique-gold-1)]/[0.08] border border-[var(--antique-gold-1)]/15 px-3 py-1.5 rounded-full font-medium">
               {code}
             </span>
           ))}
@@ -155,7 +155,7 @@ export default function LionOrderPage() {
           <Image src="/lion-order/culture.jpg" alt="Rastafari culture" width={380} height={240} className="w-full h-48 object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-5">
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-1">Our Perspective</p>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--antique-gold-1)] font-medium mb-1">Our Perspective</p>
             <h3 className="font-display text-2xl text-[var(--cream)] font-light">&ldquo;Roots Luxury&rdquo;</h3>
           </div>
         </div>
@@ -178,7 +178,7 @@ export default function LionOrderPage() {
 
       {/* ═══ FIVE QUALITY FACTORS ═══ */}
       <motion.div {...fade} className="px-6 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">Five Quality Factors</p>
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--antique-gold-1)] font-medium mb-3">Five Quality Factors</p>
         <div className="grid grid-cols-3 gap-2">
           {qualityFactors.map((f) => (
             <div key={f.name} className="rounded-xl bg-[var(--bg2)] border border-[var(--line)] p-2.5 text-center">
@@ -206,10 +206,10 @@ export default function LionOrderPage() {
 
       {/* ═══ HOW WE HEAL ═══ */}
       <motion.div {...fade} className="px-6 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">How We Heal</p>
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--antique-gold-1)] font-medium mb-3">How We Heal</p>
         <div className="grid grid-cols-3 gap-2">
           {['Physical', 'Mental', 'Nurture', 'Expression', 'Improvement', 'Education'].map((h) => (
-            <div key={h} className="rounded-lg bg-[#d8b15a]/[0.05] border border-[#d8b15a]/10 py-2.5 px-2 text-center">
+            <div key={h} className="rounded-lg bg-[var(--antique-gold-1)]/[0.05] border border-[var(--antique-gold-1)]/10 py-2.5 px-2 text-center">
               <p className="text-[11px] text-[var(--cream)] font-light">{h}</p>
             </div>
           ))}
@@ -228,7 +228,7 @@ export default function LionOrderPage() {
 
       {/* ═══ PERSONALITY ═══ */}
       <motion.div {...fade} className="px-6 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">Our Personality</p>
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--antique-gold-1)] font-medium mb-3">Our Personality</p>
         <div className="flex flex-wrap gap-2">
           {personality.map((p) => (
             <span key={p} className="text-xs text-[var(--cream)] bg-[var(--bg2)] border border-[var(--line)] px-3 py-1.5 rounded-full">
@@ -240,7 +240,7 @@ export default function LionOrderPage() {
 
       {/* ═══ COMMUNITY ═══ */}
       <motion.div {...fade} className="px-4 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3 px-2">Our Community</p>
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--antique-gold-1)] font-medium mb-3 px-2">Our Community</p>
         <div className="grid grid-cols-3 gap-1.5">
           <div className="rounded-lg overflow-hidden">
             <Image src="/lion-order/community-vinyl.jpg" alt="Vinyl culture" width={120} height={160} className="w-full h-32 object-cover" />
@@ -256,7 +256,7 @@ export default function LionOrderPage() {
 
       {/* ═══ CHARACTERS ═══ */}
       <motion.div {...fade} className="px-6 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">Our Characters</p>
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--antique-gold-1)] font-medium mb-3">Our Characters</p>
         <p className="text-[var(--dim)] text-sm font-light mb-4 leading-relaxed">
           The animated world of Lion Order &mdash; manga storytelling meets Rastafari culture.
         </p>
@@ -284,7 +284,7 @@ export default function LionOrderPage() {
         <div className="rounded-2xl overflow-hidden bg-[var(--bg2)] border border-[var(--line)]">
           <Image src="/lion-order/selassie.jpg" alt="Rastafari heritage" width={380} height={500} className="w-full h-64 object-cover object-top" />
           <div className="p-4 text-center">
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-1">Rastafari Legacy</p>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--antique-gold-1)] font-medium mb-1">Rastafari Legacy</p>
             <p className="text-[var(--dim)] text-xs font-light">The deep roots binding Jamaica and Ethiopia. Heritage is the foundation.</p>
           </div>
         </div>
@@ -299,7 +299,7 @@ export default function LionOrderPage() {
 
       {/* ═══ THE ECOSYSTEM ═══ */}
       <motion.div {...fade} className="px-6 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">The Ecosystem</p>
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--antique-gold-1)] font-medium mb-3">The Ecosystem</p>
         <div className="space-y-2">
           {[
             { name: 'Lion Order Flower', sub: 'Small batch, strain-hunted, high-quality cannabis' },
@@ -317,7 +317,7 @@ export default function LionOrderPage() {
 
       {/* ═══ VISUAL IDENTITY ═══ */}
       <motion.div {...fade} className="px-4 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3 px-2">Visual Identity</p>
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--antique-gold-1)] font-medium mb-3 px-2">Visual Identity</p>
         <div className="rounded-2xl overflow-hidden bg-[var(--bg2)] border border-[var(--line)]">
           <Image src="/lion-order/wordmark.jpg" alt="Lion Order wordmark" width={380} height={200} className="w-full h-40 object-cover" />
           <div className="p-4">
@@ -325,7 +325,7 @@ export default function LionOrderPage() {
             <p className="text-[9px] tracking-[0.15em] uppercase text-[var(--dim)] mb-2">Color Palette</p>
             <div className="flex gap-2 mb-3">
               {[
-                { color: '#d8b15a', name: 'Royalty Yellow' },
+                { color: 'var(--antique-gold-1)', name: 'Royalty Yellow' },
                 { color: '#a9812f', name: 'AG01' },
                 { color: '#c98a3c', name: 'AG02' },
                 { color: '#FFD700', name: '24K Gold' },
@@ -358,8 +358,8 @@ export default function LionOrderPage() {
 
       {/* ═══ CTA ═══ */}
       <motion.div {...fade} className="px-6 pb-10">
-        <div className="rounded-2xl border border-[#d8b15a]/25 bg-gradient-to-b from-[#d8b15a]/[0.08] to-transparent p-6 text-center">
-          <Shield size={24} className="text-[#d8b15a] mx-auto mb-3" />
+        <div className="rounded-2xl border border-[var(--antique-gold-1)]/25 bg-gradient-to-b from-[var(--antique-gold-1)]/[0.08] to-transparent p-6 text-center">
+          <Shield size={24} className="text-[var(--antique-gold-1)] mx-auto mb-3" />
           <h3 className="font-display text-xl text-[var(--cream)] font-light mb-2">Enter the Order</h3>
           <p className="text-[var(--dim)] text-sm font-light leading-relaxed mb-5">
             The story is the order. The order is the movement.
@@ -368,14 +368,14 @@ export default function LionOrderPage() {
             <AppLink
               href="https://lionorder.com/"
               title="Lion Order"
-              className="block w-full bg-[#d8b15a] text-[var(--bg)] py-3 rounded-xl text-sm font-medium tracking-wide"
+              className="block w-full bg-[var(--antique-gold-1)] text-[var(--bg)] py-3 rounded-xl text-sm font-medium tracking-wide"
             >
               lionorder.com
             </AppLink>
             <AppLink
               href="https://www.instagram.com/lionorder/"
               title="Lion Order on Instagram"
-              className="block w-full bg-[#d8b15a]/10 text-[#d8b15a] py-3 rounded-xl text-sm font-medium tracking-wide border border-[#d8b15a]/20"
+              className="block w-full bg-[var(--antique-gold-1)]/10 text-[var(--antique-gold-1)] py-3 rounded-xl text-sm font-medium tracking-wide border border-[var(--antique-gold-1)]/20"
             >
               @lionorder
             </AppLink>

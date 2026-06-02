@@ -16,13 +16,15 @@
   --blue: #14110c;
   --line: rgba(20, 17, 12, 0.10);
 
-  /* Lion Order Brand Colors */
+  /* Lion Order Brand Colors — BRAND DECK 2026 pp.56-57 */
+  --antique-gold-1: #B98524;   /* AG01 · Pantone 10129 C */
+  --antique-gold-2: #825B0D;   /* AG02 */
+  --gold-24k: #E8C23A;         /* 24K foil flat stand-in */
+  --cover-gold: #EFC11F;       /* saturated full-bleed ground */
   --royalty-yellow: #F4C71F;
-  --antique-gold-1: #B98524;
-  --antique-gold-2: #825B0D;
-  --ivory: #f7f3ea;
+  --ivory: #F0F0E3;
   --bone: #efe8d8;
-  --ink: #14110c;
+  --ink: #14110C;
 
   /* Rooms — brand-aligned */
   --room-coffee: #B98524;
