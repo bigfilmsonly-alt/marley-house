@@ -97,7 +97,7 @@ export default function CoffeePage() {
 
       {/* Premium Hero — Jamaican Blue Mountain */}
       <div className="px-6 py-4">
-        <div className="rounded-2xl overflow-hidden border border-[var(--gold)]/20 bg-gradient-to-b from-[#1a3a5e]/30 via-[var(--bg2)] to-[var(--bg2)] relative">
+        <div className="overflow-hidden border border-[var(--gold)]/20 bg-gradient-to-b from-[var(--gold-deep)]/30 via-[var(--panel)] to-[var(--panel)] relative">
           {/* Gold accent line at top */}
           <div className="h-0.5 bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent" />
 
@@ -139,7 +139,7 @@ export default function CoffeePage() {
                   const blueMtn = products.find(p => p.id === 'jamaican-blue-mountain');
                   if (blueMtn) { setSelected(blueMtn); setPdpQty(1); }
                 }}
-                className="bg-[var(--gold)] text-[var(--bg)] px-5 py-2.5 rounded-xl text-sm font-medium tracking-wide"
+                className="bg-[var(--gold)] text-[var(--bg)] px-5 py-2.5 text-sm font-medium tracking-wide"
               >
                 View Details
               </button>
@@ -163,7 +163,7 @@ export default function CoffeePage() {
 
       {/* Coffee Ritual */}
       <div className="px-6 py-4">
-        <div className="rounded-xl border border-[var(--room-coffee)]/15 bg-[var(--room-coffee)]/[0.04] p-4">
+        <div className="border border-[var(--room-coffee)]/15 bg-[var(--room-coffee)]/[0.04] p-4">
           <p className="text-[9px] tracking-[0.2em] uppercase text-[var(--room-coffee)] mb-1.5 font-medium">
             The Daily Ritual
           </p>
@@ -177,7 +177,7 @@ export default function CoffeePage() {
       <div className="px-6 pb-4">
         <button
           onClick={() => setQuizOpen(true)}
-          className="w-full rounded-xl border border-[var(--room-coffee)]/20 bg-[var(--room-coffee)]/[0.05] p-4 flex items-center justify-between gap-3 text-left"
+          className="w-full border border-[var(--room-coffee)]/20 bg-[var(--room-coffee)]/[0.05] p-4 flex items-center justify-between gap-3 text-left"
         >
           <div>
             <p className="font-display text-sm text-[var(--cream)]">Not sure which to brew?</p>
@@ -204,7 +204,7 @@ export default function CoffeePage() {
           ].map((s) => (
             <div
               key={s.step}
-              className="shrink-0 w-[140px] rounded-xl border border-[var(--line)] bg-[var(--bg2)] p-3.5"
+              className="shrink-0 w-[140px] border border-[var(--line)] bg-[var(--panel)] p-3.5"
             >
               <span className="text-xl mb-2 block">{s.icon}</span>
               <p className="text-[9px] tracking-wider uppercase text-[var(--room-coffee)] font-medium mb-0.5">
@@ -233,9 +233,9 @@ export default function CoffeePage() {
           <button
             key={blend.id}
             onClick={() => { setSelected(blend); setPdpQty(1); }}
-            className="rounded-xl border border-[var(--line)] bg-[var(--bg2)] overflow-hidden text-left hover:border-[var(--room-coffee)]/25 transition-all group"
+            className="border border-[var(--line)] bg-[var(--panel)] overflow-hidden text-left hover:border-[var(--room-coffee)]/25 transition-all group"
           >
-            <div className="aspect-square bg-gradient-to-b from-[var(--room-coffee)]/[0.08] to-[var(--bg2)] flex items-center justify-center relative p-4">
+            <div className="aspect-square bg-gradient-to-b from-[var(--room-coffee)]/[0.08] to-[var(--panel)] flex items-center justify-center relative p-4">
               {blend.image ? (
                 <Image
                   src={blend.image}
@@ -311,7 +311,7 @@ export default function CoffeePage() {
                 </div>
 
                 {/* Hero */}
-                <div className="aspect-[4/3] rounded-xl bg-gradient-to-b from-[var(--room-coffee)]/[0.08] to-[var(--bg2)] flex items-center justify-center mb-5 border border-[var(--line)] p-6">
+                <div className="aspect-[4/3] bg-gradient-to-b from-[var(--room-coffee)]/[0.08] to-[var(--panel)] flex items-center justify-center mb-5 border border-[var(--line)] p-6">
                   {selected.image ? (
                     <Image
                       src={selected.image}
@@ -390,7 +390,7 @@ export default function CoffeePage() {
 
                 {/* Brewing Tip */}
                 {selected.brewingTip && (
-                  <div className="mt-5 p-3.5 rounded-xl bg-[var(--room-coffee)]/[0.05] border border-[var(--room-coffee)]/15">
+                  <div className="mt-5 p-3.5 bg-[var(--room-coffee)]/[0.05] border border-[var(--room-coffee)]/15">
                     <p className="text-[10px] tracking-[0.15em] uppercase text-[var(--room-coffee)] mb-1.5 font-medium">Brewing Tip</p>
                     <p className="text-sm text-[var(--cream)] font-light leading-relaxed">{selected.brewingTip}</p>
                   </div>
@@ -408,13 +408,13 @@ export default function CoffeePage() {
                 {(selected.region || selected.elevation) && (
                   <div className="mt-4 flex gap-3">
                     {selected.region && (
-                      <div className="flex-1 p-3 rounded-xl bg-[var(--bg2)] border border-[var(--line)]">
+                      <div className="flex-1 p-3 bg-[var(--panel)] border border-[var(--line)]">
                         <p className="text-[9px] tracking-[0.15em] uppercase text-[var(--dim)] mb-0.5">Region</p>
                         <p className="text-xs text-[var(--cream)] font-light">{selected.region}</p>
                       </div>
                     )}
                     {selected.elevation && (
-                      <div className="flex-1 p-3 rounded-xl bg-[var(--bg2)] border border-[var(--line)]">
+                      <div className="flex-1 p-3 bg-[var(--panel)] border border-[var(--line)]">
                         <p className="text-[9px] tracking-[0.15em] uppercase text-[var(--dim)] mb-0.5">Elevation</p>
                         <p className="text-xs text-[var(--cream)] font-light">{selected.elevation}</p>
                       </div>
@@ -432,7 +432,7 @@ export default function CoffeePage() {
 
                 {/* Quantity + Add */}
                 <div className="flex items-center gap-4 mt-6 pt-5 border-t border-[var(--line)]">
-                  <div className="flex items-center gap-3 bg-[var(--bg2)] rounded-xl border border-[var(--line)] px-3 py-2">
+                  <div className="flex items-center gap-3 bg-[var(--panel)] border border-[var(--line)] px-3 py-2">
                     <button onClick={() => setPdpQty(Math.max(1, pdpQty - 1))} className="text-[var(--dim)]">
                       <Minus size={14} />
                     </button>
@@ -443,7 +443,7 @@ export default function CoffeePage() {
                   </div>
                   <button
                     onClick={() => addToBag(selected, pdpQty)}
-                    className="flex-1 bg-[var(--gold)] text-[var(--bg)] py-2.5 rounded-xl text-sm font-medium tracking-wide"
+                    className="flex-1 bg-[var(--gold)] text-[var(--bg)] py-2.5 text-sm font-medium tracking-wide"
                   >
                     Add to Bag &mdash; ${(selected.price * pdpQty).toFixed(2)}
                   </button>
@@ -489,7 +489,7 @@ export default function CoffeePage() {
                   <>
                     <div className="space-y-3">
                       {bag.map((item) => (
-                        <div key={item.blend.id} className="flex items-center gap-3 rounded-xl bg-[var(--bg2)] border border-[var(--line)] p-3">
+                        <div key={item.blend.id} className="flex items-center gap-3 bg-[var(--panel)] border border-[var(--line)] p-3">
                           <div className="w-10 h-10 rounded-lg bg-[var(--room-coffee)]/10 flex items-center justify-center shrink-0 overflow-hidden">
                             {item.blend.image ? (
                               <Image src={item.blend.image} alt={item.blend.name} width={36} height={36} className="object-contain" />
@@ -518,7 +518,7 @@ export default function CoffeePage() {
 
                     <button
                       onClick={() => setCheckoutMsg(true)}
-                      className="w-full mt-4 bg-[var(--gold)] text-[var(--bg)] py-3 rounded-xl text-sm font-medium tracking-wide"
+                      className="w-full mt-4 bg-[var(--gold)] text-[var(--bg)] py-3 text-sm font-medium tracking-wide"
                     >
                       Checkout (Demo)
                     </button>
@@ -548,7 +548,7 @@ export default function CoffeePage() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[61] w-72 bg-[var(--bg2)] border border-[var(--line)] rounded-2xl p-6 text-center"
+              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[61] w-72 bg-[var(--panel)] border border-[var(--line)] p-6 text-center"
             >
               <Image src="/rhr-logo.png" alt="Marley House" width={56} height={56} className="mx-auto mb-3" />
               <h3 className="font-display text-lg text-[var(--cream)] mb-2">Prototype Store</h3>
