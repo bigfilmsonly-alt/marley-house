@@ -34,33 +34,36 @@ export default function Threshold() {
           exit={{ opacity: 0 }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           onClick={enter}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center cursor-pointer"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-start cursor-pointer overflow-hidden"
           style={{ background: '#EFC11F' }}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 1.02 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center flex flex-col items-center"
+            className="flex flex-col items-center w-full"
           >
-            <Image
-              src="/brand/lion-crest-clean.png"
-              alt="Lion Order"
-              width={140}
-              height={140}
-              className="mb-10"
-              priority
-            />
+            <div className="relative w-full" style={{ height: '65vh' }}>
+              <Image
+                src="/lion-order/lion-eyes.jpg"
+                alt="Lion Order"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
 
-            <p className="text-[#1c1810] text-[11px] tracking-[0.5em] uppercase font-medium mb-4">
-              Lion Order
-            </p>
+            <div className="text-center mt-6 flex flex-col items-center">
+              <p className="text-[#1c1810] text-[11px] tracking-[0.5em] uppercase font-medium mb-4">
+                Lion Order
+              </p>
 
-            <div className="w-10 h-px bg-[#1c1810]/20 mb-4" />
+              <div className="w-10 h-px bg-[#1c1810]/20 mb-4" />
 
-            <p className="text-[#1c1810]/50 text-[9px] tracking-[0.3em] uppercase font-light">
-              Est. 2022
-            </p>
+              <p className="text-[#1c1810]/50 text-[9px] tracking-[0.3em] uppercase font-light">
+                Est. 2022
+              </p>
+            </div>
           </motion.div>
 
           <motion.p

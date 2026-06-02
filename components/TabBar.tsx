@@ -2,24 +2,23 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, BookOpen, Crown, Palette, Library, Globe } from 'lucide-react';
+import { Home, Coffee, Play, Crown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { LucideIcon } from 'lucide-react';
-import { tabView } from '@/lib/tracking';
+import { tabView, linkOut } from '@/lib/tracking';
 
 interface Tab {
   href: string;
   icon: LucideIcon;
   label: string;
+  external?: boolean;
 }
 
 const tabs: Tab[] = [
   { href: '/', icon: Home, label: 'Home' },
-  { href: '/story', icon: BookOpen, label: 'Story' },
-  { href: '/brand', icon: Crown, label: 'Brand' },
-  { href: '/identity', icon: Palette, label: 'Identity' },
-  { href: '/book', icon: Library, label: 'Book' },
-  { href: '/connect', icon: Globe, label: 'Connect' },
+  { href: '/coffee', icon: Coffee, label: 'Coffee' },
+  { href: '/watch', icon: Play, label: 'Watch' },
+  { href: 'https://lionorder.com', icon: Crown, label: 'Lion Order', external: true },
 ];
 
 export default function TabBar() {
@@ -30,15 +29,11 @@ export default function TabBar() {
       <div className="flex items-center justify-around w-full px-1 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
         {tabs.map((tab) => {
           const active =
-            tab.href === '/' ? pathname === '/' : pathname.startsWith(tab.href);
+            !tab.external &&
+            (tab.href === '/' ? pathname === '/' : pathname.startsWith(tab.href));
 
-          return (
-            <Link
-              key={tab.href}
-              href={tab.href}
-              onClick={() => tabView(tab.label)}
-              className="flex flex-col items-center gap-0.5 px-2 py-1 relative"
-            >
+          const inner = (
+            <>
               <motion.div
                 whileTap={{ scale: 0.82 }}
                 transition={{ type: 'spring', stiffness: 500, damping: 18 }}
@@ -70,6 +65,32 @@ export default function TabBar() {
               >
                 {tab.label}
               </span>
+            </>
+          );
+
+          if (tab.external) {
+            return (
+              <a
+                key={tab.href}
+                href={tab.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => linkOut(tab.label, tab.href)}
+                className="flex flex-col items-center gap-0.5 px-2 py-1 relative"
+              >
+                {inner}
+              </a>
+            );
+          }
+
+          return (
+            <Link
+              key={tab.href}
+              href={tab.href}
+              onClick={() => tabView(tab.label)}
+              className="flex flex-col items-center gap-0.5 px-2 py-1 relative"
+            >
+              {inner}
             </Link>
           );
         })}
