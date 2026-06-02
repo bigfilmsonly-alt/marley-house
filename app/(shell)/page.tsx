@@ -5,6 +5,7 @@ import ConnectedProperties from '@/components/ConnectedProperties';
 import JoinHouse from '@/components/JoinHouse';
 import WeatherDisplay from '@/components/WeatherDisplay';
 import VideoPlayer from '@/components/VideoPlayer';
+import FooterNewsletter from '@/components/FooterNewsletter';
 import { Flame, ChevronRight, ArrowUpRight, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { stories } from '@/content/stories';
@@ -178,6 +179,9 @@ export default function HomePage() {
           </p>
         </button>
       </div>
+
+      {/* Footer Newsletter */}
+      <FooterNewsletter />
 
       <div className="px-6"><div className="border-t border-[var(--line)]" /></div>
 

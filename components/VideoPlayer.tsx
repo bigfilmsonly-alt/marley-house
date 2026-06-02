@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react';
 import { Play } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { usePlayer } from './PlayerContext';
+import { watchVideo } from '@/lib/tracking';
 
 interface VideoPlayerProps {
   videoId?: string;
@@ -38,6 +39,7 @@ export default function VideoPlayer({ videoId, playlistId, title, thumbnail, com
   const handlePlay = useCallback(() => {
     setPlaying(true);
     play({ videoId, playlistId, title });
+    watchVideo(videoId || playlistId || '', title);
   }, [videoId, playlistId, title, play]);
 
   if (playing) {
@@ -126,6 +128,7 @@ export function VideoCard({
       onClick={() => {
         setPlaying(true);
         play({ videoId, playlistId, title });
+        watchVideo(videoId || playlistId || '', title);
       }}
       className="w-full text-left rounded-2xl overflow-hidden bg-[var(--bg2)] border border-[var(--line)] group cursor-pointer block"
     >

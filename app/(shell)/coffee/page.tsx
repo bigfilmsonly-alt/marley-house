@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import BlendQuiz from '@/components/BlendQuiz';
 import { products } from '@/content/products';
 import type { Product } from '@/lib/types';
+import { addToBag as trackAddToBag } from '@/lib/tracking';
 
 interface BagItem { blend: Product; qty: number; }
 
@@ -29,6 +30,7 @@ export default function CoffeePage() {
       }
       return [...prev, { blend, qty }];
     });
+    trackAddToBag(blend.id);
     setSelected(null);
     setPdpQty(1);
   }

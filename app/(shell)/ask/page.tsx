@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { Sparkles, Send, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { askSubmit } from '@/lib/tracking';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -36,6 +37,7 @@ export default function AskPage() {
     setMessages([...allMessages, { role: 'assistant', content: '' }]);
     setInput('');
     setStreaming(true);
+    askSubmit();
 
     try {
       const res = await fetch('/api/ask', {
