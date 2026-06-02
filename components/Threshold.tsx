@@ -53,7 +53,7 @@ export default function Threshold() {
               transition={{ delay: 0.2, duration: 1 }}
               className="mb-6"
             >
-              <Image src="/marley-logo.png" alt="Marley Coffee" width={90} height={90} className="invert" />
+              <Image src="/rhr-logo.png" alt="Marley House" width={90} height={90} />
             </motion.div>
 
             <h1 className="font-display text-5xl text-white font-light tracking-tight mb-1">

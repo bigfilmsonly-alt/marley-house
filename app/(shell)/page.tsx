@@ -6,6 +6,7 @@ import JoinHouse from '@/components/JoinHouse';
 import VideoPlayer, { VideoCard } from '@/components/VideoPlayer';
 import FooterNewsletter from '@/components/FooterNewsletter';
 import { Flame, ChevronRight, ArrowUpRight, Sparkles, Play, Crown, Sword } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { stories } from '@/content/stories';
 import { AppLink } from '@/components/InAppBrowser';
@@ -103,7 +104,10 @@ export default function HomePage() {
 
       {/* Section title */}
       <div className="px-4 pt-2 pb-3 text-center">
-        <p className="text-[9px] tracking-[0.3em] uppercase text-[var(--ember)] font-semibold">Marley House</p>
+        <div className="flex items-center gap-2">
+          <Image src="/rhr-logo.png" alt="Marley House" width={28} height={28} />
+          <p className="text-[9px] tracking-[0.3em] uppercase text-[var(--gold)] font-semibold">Marley House</p>
+        </div>
         <div className="rasta-stripe mt-2 w-16 mx-auto" />
       </div>
 

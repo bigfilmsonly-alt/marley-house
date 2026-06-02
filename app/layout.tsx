@@ -22,13 +22,17 @@ export const metadata: Metadata = {
     siteName: 'Marley House',
     title: 'Marley House — Coffee is the Invitation',
     description: 'A digital home for the Marley legacy — coffee, music, story, and community under one roof.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Marley House' }],
+    images: [{ url: '/rhr-logo.png', width: 1200, height: 630, alt: 'Marley House' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Marley House — Coffee is the Invitation',
     description: 'A digital home for the Marley legacy — coffee, music, story, and community.',
-    images: ['/og-image.png'],
+    images: ['/rhr-logo.png'],
+  },
+  icons: {
+    icon: '/rhr-logo.png',
+    apple: '/rhr-logo.png',
   },
   robots: { index: true, follow: true },
 };

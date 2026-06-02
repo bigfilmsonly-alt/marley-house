@@ -61,7 +61,7 @@ export default function CoffeePage() {
         <div className="flex items-center justify-between">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <Image src="/marley-logo.png" alt="Marley Coffee" width={20} height={20} className="opacity-70" />
+              <Image src="/rhr-logo.png" alt="Marley House" width={24} height={24} />
               <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--room-coffee)] font-medium">
                 The Store
               </p>
@@ -549,7 +549,7 @@ export default function CoffeePage() {
               exit={{ opacity: 0, scale: 0.95 }}
               className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[61] w-72 bg-[var(--bg2)] border border-[var(--line)] rounded-2xl p-6 text-center"
             >
-              <Image src="/marley-logo.png" alt="Marley Coffee" width={48} height={48} className="mx-auto mb-3 opacity-80" />
+              <Image src="/rhr-logo.png" alt="Marley House" width={56} height={56} className="mx-auto mb-3" />
               <h3 className="font-display text-lg text-[var(--cream)] mb-2">Prototype Store</h3>
               <p className="text-[var(--dim)] text-sm font-light leading-relaxed mb-4">
                 This is a demo experience. No real payment will be processed. Visit{' '}
