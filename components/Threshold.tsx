@@ -55,7 +55,7 @@ export default function Threshold() {
               alt="Rohan Marley Signature"
               width={140}
               height={50}
-              className="mt-8 w-[140px] h-auto opacity-50 mx-auto"
+              className="mt-10 w-[220px] h-auto opacity-90 mx-auto brightness-125"
             />
           </motion.div>
 
