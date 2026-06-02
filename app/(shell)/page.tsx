@@ -205,7 +205,7 @@ export default function HomePage() {
                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
                   {section.id === 'daily-drop' && (
                     <div>
-                      <div className="relative w-full aspect-[16/11] mb-6 -mx-6 -mt-8" style={{ width: 'calc(100% + 48px)' }}>
+                      <div className="relative w-full aspect-[16/11] mb-8" style={{ width: '100%' }}>
                         <Image src="/brandbook/p02.jpg" alt="Flower to the People" fill className="object-cover object-center" sizes="100vw" />
                       </div>
                       <div className="border border-[var(--line)] bg-[var(--bg)] p-8">
@@ -243,7 +243,7 @@ export default function HomePage() {
                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
                   {section.id === 'movement' && (
                     <div className="text-center">
-                      <div className="relative w-full aspect-[16/11] mb-6 -mx-6 -mt-8" style={{ width: 'calc(100% + 48px)' }}>
+                      <div className="relative w-full aspect-[16/11] mb-8" style={{ width: '100%' }}>
                         <Image src="/brandbook/p06.jpg" alt="Our Reasons to Believe" fill className="object-cover object-center" sizes="100vw" />
                       </div>
                       <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-5 font-medium">
@@ -277,7 +277,7 @@ export default function HomePage() {
                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
                   {section.id === 'truth' && (
                     <div>
-                      <div className="relative w-full aspect-[16/11] mb-6 -mx-6 -mt-8" style={{ width: 'calc(100% + 48px)' }}>
+                      <div className="relative w-full aspect-[16/11] mb-8" style={{ width: '100%' }}>
                         <Image src="/brandbook/p12.jpg" alt="Our Brand Truth" fill className="object-cover object-center" sizes="100vw" />
                       </div>
                       <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-3 text-center font-medium">
@@ -336,7 +336,7 @@ export default function HomePage() {
                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
                   {section.id === 'code' && (
                     <div>
-                      <div className="relative w-full aspect-[16/11] mb-6 -mx-6 -mt-8" style={{ width: 'calc(100% + 48px)' }}>
+                      <div className="relative w-full aspect-[16/11] mb-8" style={{ width: '100%' }}>
                         <Image src="/brandbook/p22.jpg" alt="The Lion Within" fill className="object-cover object-center" sizes="100vw" />
                       </div>
                       <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-3 text-center font-medium">
@@ -373,7 +373,7 @@ export default function HomePage() {
                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
                   {section.id === 'founder' && (
                     <div>
-                      <div className="relative w-full aspect-[16/11] mb-6 -mx-6 -mt-8" style={{ width: 'calc(100% + 48px)' }}>
+                      <div className="relative w-full aspect-[16/11] mb-8" style={{ width: '100%' }}>
                         <Image src="/brandbook/p04.jpg" alt="We've Been Around A Long Time" fill className="object-cover object-center" sizes="100vw" />
                       </div>
 
@@ -419,7 +419,7 @@ export default function HomePage() {
                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
                   {section.id === 'empire' && (
                     <div>
-                      <div className="relative w-full aspect-[16/11] mb-6 -mx-6 -mt-8" style={{ width: 'calc(100% + 48px)' }}>
+                      <div className="relative w-full aspect-[16/11] mb-8" style={{ width: '100%' }}>
                         <Image src="/brandbook/p42.jpg" alt="Lion Order Smoking Lounge & Cafes" fill className="object-cover object-center" sizes="100vw" />
                       </div>
 
@@ -508,7 +508,7 @@ export default function HomePage() {
                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
                   {section.id === 'wisdom' && (
                     <div>
-                      <div className="relative w-full aspect-[16/11] mb-6 -mx-6 -mt-8" style={{ width: 'calc(100% + 48px)' }}>
+                      <div className="relative w-full aspect-[16/11] mb-8" style={{ width: '100%' }}>
                         <Image src="/brandbook/p16.jpg" alt="How We Heal" fill className="object-cover object-center" sizes="100vw" />
                       </div>
                       <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-6 text-center font-medium">
