@@ -58,10 +58,14 @@ export default function JoinHouse({ open, onClose, source = 'hero' }: JoinHouseP
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
+            drag="y"
+            dragConstraints={{ top: 0 }}
+            dragElastic={0.2}
+            onDragEnd={(_, info) => { if (info.offset.y > 100) handleClose(); }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             className="fixed bottom-0 left-0 right-0 z-[61] bg-[var(--bg)] border-t border-[var(--line)] rounded-t-3xl md:left-1/2 md:-translate-x-1/2 md:max-w-[390px]"
           >
-            <div className="flex justify-center pt-3 pb-2">
+            <div className="flex justify-center pt-3 pb-2 cursor-grab active:cursor-grabbing">
               <div className="w-10 h-1 rounded-full bg-[var(--dim)]/30" />
             </div>
 

@@ -75,6 +75,10 @@ function BrowserOverlay({ state, onClose }: { state: BrowserState | null; onClos
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
+            drag="y"
+            dragConstraints={{ top: 0 }}
+            dragElastic={0.2}
+            onDragEnd={(_, info) => { if (info.offset.y > 120) onClose(); }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             className="fixed inset-x-0 bottom-0 top-8 z-[81] bg-[var(--bg)] rounded-t-2xl flex flex-col overflow-hidden md:left-1/2 md:-translate-x-1/2 md:max-w-[390px]"
           >

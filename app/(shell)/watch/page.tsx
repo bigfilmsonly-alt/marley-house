@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { Play } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import { Play, Search, X } from 'lucide-react';
 import VideoPlayer, { VideoCard } from '@/components/VideoPlayer';
 import { AppLink } from '@/components/InAppBrowser';
 import {
@@ -54,7 +54,13 @@ const allVideos = [
 
 export default function WatchPage() {
   const [activeCategory, setActiveCategory] = useState('all');
-  const videos = activeCategory === 'all' ? allVideos : (categoryVideos[activeCategory] ?? []);
+  const [query, setQuery] = useState('');
+  const filtered = activeCategory === 'all' ? allVideos : (categoryVideos[activeCategory] ?? []);
+  const videos = useMemo(() => {
+    if (!query.trim()) return filtered;
+    const q = query.toLowerCase();
+    return filtered.filter(v => v.title.toLowerCase().includes(q) || v.channel?.toLowerCase().includes(q));
+  }, [filtered, query]);
   const total = allVideos.length;
 
   return (
@@ -69,6 +75,25 @@ export default function WatchPage() {
           <div className="w-8 h-8 rounded-full bg-[var(--ember)] flex items-center justify-center">
             <Play size={14} className="text-white ml-0.5" fill="white" />
           </div>
+        </div>
+      </div>
+
+      {/* Search */}
+      <div className="px-4 pb-3">
+        <div className="flex items-center gap-2 rounded-xl bg-[var(--bg2)] border border-[var(--line)] px-3 py-2">
+          <Search size={14} className="text-[var(--dim)] shrink-0" />
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search videos..."
+            className="flex-1 bg-transparent text-sm text-[var(--cream)] placeholder:text-[var(--dim)]/50 outline-none font-light"
+          />
+          {query && (
+            <button onClick={() => setQuery('')} aria-label="Clear search" className="p-0.5">
+              <X size={14} className="text-[var(--dim)]" />
+            </button>
+          )}
         </div>
       </div>
 
@@ -105,17 +130,33 @@ export default function WatchPage() {
         </div>
       )}
 
+      {/* Result count when searching */}
+      {query && (
+        <p className="px-4 pb-2 text-[var(--dim)] text-xs">
+          {videos.length} result{videos.length !== 1 ? 's' : ''}
+        </p>
+      )}
+
       {/* Video feed */}
       <div className="px-4 pb-10 space-y-4">
-        {videos.map((v) => (
-          <VideoCard
-            key={v.id}
-            videoId={v.videoId}
-            playlistId={v.playlistId}
-            title={v.title}
-            subtitle={v.channel}
-          />
-        ))}
+        {videos.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-[var(--dim)] text-sm">No videos found</p>
+            <button onClick={() => { setQuery(''); setActiveCategory('all'); }} className="text-[var(--gold)] text-xs mt-2">
+              Clear filters
+            </button>
+          </div>
+        ) : (
+          videos.map((v) => (
+            <VideoCard
+              key={v.id}
+              videoId={v.videoId}
+              playlistId={v.playlistId}
+              title={v.title}
+              subtitle={v.channel}
+            />
+          ))
+        )}
       </div>
 
       {/* Channels */}
