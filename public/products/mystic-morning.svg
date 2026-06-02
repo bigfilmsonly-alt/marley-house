@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <linearGradient id="bagGradientM" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5B4A8A"/>
+      <stop offset="60%" stop-color="#4E3F7A"/>
+      <stop offset="100%" stop-color="#3A2D5E"/>
+    </linearGradient>
+    <linearGradient id="foldGradientM" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3A2D5E"/>
+      <stop offset="100%" stop-color="#493B6E"/>
+    </linearGradient>
+    <linearGradient id="labelGradientM" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D4CCE6"/>
+      <stop offset="100%" stop-color="#C4BAD9"/>
+    </linearGradient>
+    <linearGradient id="sunriseGrad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#D4A843" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#D4A843" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse cx="200" cy="470" rx="120" ry="12" fill="#00000010"/>
+
+  <!-- Bag body -->
+  <path d="M70,90 L70,420 Q70,460 110,460 L290,460 Q330,460 330,420 L330,90 Z" fill="url(#bagGradientM)"/>
+
+  <!-- Subtle side shading -->
+  <path d="M70,90 L70,420 Q70,460 110,460 L130,460 L130,90 Z" fill="#00000008"/>
+  <path d="M270,90 L330,90 L330,420 Q330,460 290,460 L270,460 Z" fill="#00000012"/>
+
+  <!-- Folded top -->
+  <path d="M60,90 Q130,75 200,80 Q270,85 340,90 L330,90 Q270,100 200,95 Q130,90 70,90 Z" fill="url(#foldGradientM)"/>
+  <path d="M60,90 Q130,65 200,70 Q270,75 340,90 Q270,85 200,80 Q130,75 60,90 Z" fill="#3A2D5E"/>
+  <path d="M65,85 Q130,60 200,65 Q270,70 335,85 Q270,78 200,73 Q130,68 65,85 Z" fill="#2E2350"/>
+
+  <!-- Top fold crease line -->
+  <path d="M68,88 Q130,63 200,68 Q270,73 332,88" fill="none" stroke="#251E45" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- Center label panel -->
+  <rect x="100" y="160" width="200" height="220" rx="8" fill="url(#labelGradientM)"/>
+  <rect x="100" y="160" width="200" height="220" rx="8" fill="none" stroke="#5B4A8A" stroke-width="1.5"/>
+
+  <!-- Brand name -->
+  <text x="200" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" letter-spacing="4" fill="#D4CCE6">MARLEY COFFEE</text>
+  <line x1="140" y1="133" x2="260" y2="133" stroke="#D4CCE6" stroke-width="0.5" opacity="0.6"/>
+
+  <!-- Decorative top line on label -->
+  <line x1="120" y1="180" x2="280" y2="180" stroke="#5B4A8A" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- Sunrise / crescent moon motif -->
+  <g transform="translate(200, 230)" opacity="0.85">
+    <!-- Horizon line -->
+    <line x1="-35" y1="15" x2="35" y2="15" stroke="#3A2D5E" stroke-width="1" opacity="0.5"/>
+
+    <!-- Sunrise rays (behind) -->
+    <g opacity="0.3">
+      <line x1="0" y1="-5" x2="0" y2="-30" stroke="#D4A843" stroke-width="0.8"/>
+      <line x1="0" y1="-5" x2="18" y2="-26" stroke="#D4A843" stroke-width="0.8"/>
+      <line x1="0" y1="-5" x2="-18" y2="-26" stroke="#D4A843" stroke-width="0.8"/>
+      <line x1="0" y1="-5" x2="28" y2="-16" stroke="#D4A843" stroke-width="0.8"/>
+      <line x1="0" y1="-5" x2="-28" y2="-16" stroke="#D4A843" stroke-width="0.8"/>
+    </g>
+
+    <!-- Sun half-circle (rising) -->
+    <path d="M-18,15 A18,18 0 0,1 18,15" fill="none" stroke="#D4A843" stroke-width="1.5"/>
+    <path d="M-18,15 A18,18 0 0,1 18,15 Z" fill="#D4A843" fill-opacity="0.15"/>
+
+    <!-- Crescent moon -->
+    <g transform="translate(22, -22)">
+      <circle cx="0" cy="0" r="10" fill="none" stroke="#3A2D5E" stroke-width="1.2"/>
+      <path d="M3,-10 A8,8 0 0,0 3,10 A11,11 0 0,1 3,-10 Z" fill="#3A2D5E" opacity="0.6"/>
+    </g>
+
+    <!-- Small stars -->
+    <circle cx="-25" cy="-25" r="1.2" fill="#3A2D5E" opacity="0.5"/>
+    <circle cx="-15" cy="-35" r="0.8" fill="#3A2D5E" opacity="0.4"/>
+    <circle cx="10" cy="-40" r="1" fill="#3A2D5E" opacity="0.45"/>
+    <circle cx="-30" cy="-10" r="0.8" fill="#3A2D5E" opacity="0.35"/>
+
+    <!-- Horizon reflection lines -->
+    <line x1="-25" y1="22" x2="-10" y2="22" stroke="#3A2D5E" stroke-width="0.5" opacity="0.3"/>
+    <line x1="-5" y1="28" x2="15" y2="28" stroke="#3A2D5E" stroke-width="0.5" opacity="0.25"/>
+    <line x1="5" y1="22" x2="20" y2="22" stroke="#3A2D5E" stroke-width="0.5" opacity="0.3"/>
+  </g>
+
+  <!-- Product name -->
+  <text x="200" y="305" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="700" fill="#3A2D5E">Mystic Morning</text>
+
+  <!-- Decorative line under name -->
+  <line x1="140" y1="317" x2="260" y2="317" stroke="#5B4A8A" stroke-width="0.8" opacity="0.5"/>
+
+  <!-- Subtitle -->
+  <text x="200" y="342" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" letter-spacing="2" fill="#3A2D5E" opacity="0.8">MEDIUM ROAST</text>
+  <text x="200" y="359" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" letter-spacing="1.5" fill="#3A2D5E" opacity="0.6">BLEND</text>
+
+  <!-- Bottom decorative line on label -->
+  <line x1="120" y1="370" x2="280" y2="370" stroke="#5B4A8A" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- Weight -->
+  <text x="200" y="440" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" letter-spacing="1" fill="#D4CCE6" opacity="0.7">340g / 12oz</text>
+</svg>

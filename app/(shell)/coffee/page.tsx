@@ -92,6 +92,72 @@ export default function CoffeePage() {
         </div>
       </div>
 
+      {/* Premium Hero — Jamaican Blue Mountain */}
+      <div className="px-6 py-4">
+        <div className="rounded-2xl overflow-hidden border border-[var(--gold)]/20 bg-gradient-to-b from-[#1a3a5e]/30 via-[var(--bg2)] to-[var(--bg2)] relative">
+          {/* Gold accent line at top */}
+          <div className="h-0.5 bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent" />
+
+          <div className="p-5 text-center">
+            <span className="text-[8px] tracking-[0.3em] uppercase text-[var(--gold)] font-medium bg-[var(--gold)]/10 px-3 py-1 rounded-full border border-[var(--gold)]/15 inline-block mb-4">
+              The Rarest Cup
+            </span>
+
+            {/* Product image */}
+            <div className="w-32 h-32 mx-auto mb-4 flex items-center justify-center">
+              {products.find(p => p.id === 'jamaican-blue-mountain')?.image ? (
+                <Image
+                  src={products.find(p => p.id === 'jamaican-blue-mountain')!.image!}
+                  alt="Jamaican Blue Mountain"
+                  width={128}
+                  height={128}
+                  className="object-contain drop-shadow-xl"
+                />
+              ) : (
+                <Coffee size={48} className="text-[var(--gold)] opacity-40" strokeWidth={0.8} />
+              )}
+            </div>
+
+            <h2 className="font-display text-xl text-[var(--cream)] font-light">
+              Jamaican Blue Mountain
+            </h2>
+            <p className="text-[var(--dim)] text-xs font-light mt-1.5">
+              Premium Single Origin &middot; Jamaica
+            </p>
+            <p className="text-[var(--cream)] text-sm font-light mt-3 leading-relaxed max-w-[280px] mx-auto">
+              One of the world&apos;s rarest coffees. Grown at elevation, hand-picked and sun-dried. Zero bitterness.
+            </p>
+
+            {/* Price + CTA */}
+            <div className="flex items-center justify-center gap-4 mt-5">
+              <span className="font-display text-2xl text-[var(--gold)]">$42.99</span>
+              <button
+                onClick={() => {
+                  const blueMtn = products.find(p => p.id === 'jamaican-blue-mountain');
+                  if (blueMtn) { setSelected(blueMtn); setPdpQty(1); }
+                }}
+                className="bg-[var(--gold)] text-[var(--bg)] px-5 py-2.5 rounded-xl text-sm font-medium tracking-wide"
+              >
+                View Details
+              </button>
+            </div>
+
+            {/* Origin badges */}
+            <div className="flex items-center justify-center gap-3 mt-4">
+              <span className="text-[9px] tracking-wider uppercase text-[var(--gold)]/70 bg-[var(--gold)]/[0.06] px-2 py-0.5 rounded-full">
+                900–1,700m Elevation
+              </span>
+              <span className="text-[9px] tracking-wider uppercase text-[var(--gold)]/70 bg-[var(--gold)]/[0.06] px-2 py-0.5 rounded-full">
+                Single Origin
+              </span>
+            </div>
+          </div>
+
+          {/* Gold accent line at bottom */}
+          <div className="h-0.5 bg-gradient-to-r from-transparent via-[var(--gold)]/30 to-transparent" />
+        </div>
+      </div>
+
       {/* Coffee Ritual */}
       <div className="px-6 py-4">
         <div className="rounded-xl border border-[var(--room-coffee)]/15 bg-[var(--room-coffee)]/[0.04] p-4">

@@ -31,6 +31,12 @@ export interface Product {
   badges: string[];
   image?: string;
   prototype: true;
+  description?: string;
+  brewingTip?: string;
+  flavorProfile?: { label: string; value: number }[];
+  pairing?: string;
+  elevation?: string;
+  region?: string;
 }
 
 export interface WisdomCard {

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Flame, Coffee, Play, Archive, Sparkles } from 'lucide-react';
+import { Flame, Coffee, Play, Music, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { LucideIcon } from 'lucide-react';
 
@@ -16,7 +16,7 @@ const tabs: Tab[] = [
   { href: '/', icon: Flame, label: 'Home' },
   { href: '/coffee', icon: Coffee, label: 'Coffee' },
   { href: '/watch', icon: Play, label: 'Watch' },
-  { href: '/vault', icon: Archive, label: 'Vault' },
+  { href: '/vault', icon: Music, label: 'Music' },
   { href: '/ask', icon: Sparkles, label: 'Ask' },
 ];
 

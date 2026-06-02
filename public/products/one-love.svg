@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <linearGradient id="bagGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D4A843"/>
+      <stop offset="60%" stop-color="#C49A38"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+    <linearGradient id="foldGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8B6914"/>
+      <stop offset="100%" stop-color="#A07C20"/>
+    </linearGradient>
+    <linearGradient id="labelGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5E6C0"/>
+      <stop offset="100%" stop-color="#EDD9A8"/>
+    </linearGradient>
+    <clipPath id="bagClip">
+      <path d="M70,90 L70,420 Q70,460 110,460 L290,460 Q330,460 330,420 L330,90 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse cx="200" cy="470" rx="120" ry="12" fill="#00000010"/>
+
+  <!-- Bag body -->
+  <path d="M70,90 L70,420 Q70,460 110,460 L290,460 Q330,460 330,420 L330,90 Z" fill="url(#bagGradient)"/>
+
+  <!-- Subtle side shading -->
+  <path d="M70,90 L70,420 Q70,460 110,460 L130,460 L130,90 Z" fill="#00000008"/>
+  <path d="M270,90 L330,90 L330,420 Q330,460 290,460 L270,460 Z" fill="#00000012"/>
+
+  <!-- Folded top -->
+  <path d="M60,90 Q130,75 200,80 Q270,85 340,90 L330,90 Q270,100 200,95 Q130,90 70,90 Z" fill="url(#foldGradient)"/>
+  <path d="M60,90 Q130,65 200,70 Q270,75 340,90 Q270,85 200,80 Q130,75 60,90 Z" fill="#8B6914"/>
+  <path d="M65,85 Q130,60 200,65 Q270,70 335,85 Q270,78 200,73 Q130,68 65,85 Z" fill="#7A5E12"/>
+
+  <!-- Top fold crease line -->
+  <path d="M68,88 Q130,63 200,68 Q270,73 332,88" fill="none" stroke="#6B5210" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- Center label panel -->
+  <rect x="100" y="160" width="200" height="220" rx="8" fill="url(#labelGradient)"/>
+  <rect x="100" y="160" width="200" height="220" rx="8" fill="none" stroke="#D4A843" stroke-width="1.5"/>
+
+  <!-- Brand name -->
+  <text x="200" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" letter-spacing="4" fill="#F5E6C0">MARLEY COFFEE</text>
+  <line x1="140" y1="133" x2="260" y2="133" stroke="#F5E6C0" stroke-width="0.5" opacity="0.6"/>
+
+  <!-- Decorative top line on label -->
+  <line x1="120" y1="180" x2="280" y2="180" stroke="#D4A843" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- Coffee leaf motif -->
+  <g transform="translate(200, 230)" opacity="0.85">
+    <!-- Main leaf -->
+    <path d="M0,-35 Q20,-25 25,-5 Q28,15 15,30 Q8,38 0,40 Q-8,38 -15,30 Q-28,15 -25,-5 Q-20,-25 0,-35 Z" fill="none" stroke="#8B6914" stroke-width="1.5"/>
+    <!-- Center vein -->
+    <line x1="0" y1="-30" x2="0" y2="36" stroke="#8B6914" stroke-width="1" opacity="0.7"/>
+    <!-- Side veins -->
+    <line x1="0" y1="-18" x2="14" y2="-8" stroke="#8B6914" stroke-width="0.7" opacity="0.5"/>
+    <line x1="0" y1="-18" x2="-14" y2="-8" stroke="#8B6914" stroke-width="0.7" opacity="0.5"/>
+    <line x1="0" y1="-4" x2="18" y2="6" stroke="#8B6914" stroke-width="0.7" opacity="0.5"/>
+    <line x1="0" y1="-4" x2="-18" y2="6" stroke="#8B6914" stroke-width="0.7" opacity="0.5"/>
+    <line x1="0" y1="12" x2="14" y2="22" stroke="#8B6914" stroke-width="0.7" opacity="0.5"/>
+    <line x1="0" y1="12" x2="-14" y2="22" stroke="#8B6914" stroke-width="0.7" opacity="0.5"/>
+    <!-- Small stem -->
+    <line x1="0" y1="40" x2="0" y2="50" stroke="#8B6914" stroke-width="1.2" opacity="0.6"/>
+  </g>
+
+  <!-- Product name -->
+  <text x="200" y="310" text-anchor="middle" font-family="Georgia, serif" font-size="30" font-weight="700" fill="#8B6914">One Love</text>
+
+  <!-- Decorative line under name -->
+  <line x1="150" y1="322" x2="250" y2="322" stroke="#D4A843" stroke-width="0.8" opacity="0.5"/>
+
+  <!-- Subtitle -->
+  <text x="200" y="345" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" letter-spacing="2" fill="#8B6914" opacity="0.8">MEDIUM ROAST</text>
+  <text x="200" y="362" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" letter-spacing="1.5" fill="#8B6914" opacity="0.6">ETHIOPIA</text>
+
+  <!-- Bottom decorative line on label -->
+  <line x1="120" y1="370" x2="280" y2="370" stroke="#D4A843" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- Weight -->
+  <text x="200" y="440" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" letter-spacing="1" fill="#F5E6C0" opacity="0.7">340g / 12oz</text>
+</svg>
