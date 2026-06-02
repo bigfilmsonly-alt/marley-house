@@ -1,20 +1,28 @@
-import { Bodoni_Moda, Source_Serif_4 } from 'next/font/google';
+import { Cormorant_Garamond, EB_Garamond } from 'next/font/google';
 
-export const bodoniModa = Bodoni_Moda({
+// Lion Order Brand System — Typography
+// Primary (licensed — self-host .woff2 for production):
+//   Display:  Salter Roman / Italic
+//   Body:     Minion Variable Concept Bold
+//   Wordmark: GothBallCrap-Bold (blackletter)
+//   Accent:   Cardinal Fruit Medium · Boiling Thin
+// Fallbacks per brand deck pp.52-53:
+
+export const cormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
   variable: '--font-fraunces',
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '500', '600'],
   style: ['normal', 'italic'],
   display: 'swap',
 });
 
-export const sourceSerif = Source_Serif_4({
+export const ebGaramond = EB_Garamond({
   subsets: ['latin'],
   variable: '--font-spline',
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600'],
   display: 'swap',
 });
 
 // Re-export with original names for compatibility
-export const fraunces = bodoniModa;
-export const splineSans = sourceSerif;
+export const fraunces = cormorantGaramond;
+export const splineSans = ebGaramond;

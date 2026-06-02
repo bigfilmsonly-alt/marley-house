@@ -59,7 +59,7 @@ export default function TabBar() {
                 />
               </motion.div>
               <span
-                className={`text-[10px] tracking-wide ${
+                className={`font-display text-[10px] tracking-[0.15em] uppercase ${
                   active
                     ? 'text-[var(--gold)] font-medium'
                     : 'text-[var(--dim)] font-light'

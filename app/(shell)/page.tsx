@@ -83,6 +83,7 @@ export default function HomePage() {
         <h1 className="font-display text-4xl text-[var(--cream)] font-light tracking-[0.06em] uppercase mb-2">
           Rohan Marley
         </h1>
+        <p className="text-[10px] text-[var(--dim)] font-light italic mt-0.5">Flower to the People</p>
 
         {/* Gold rule */}
         <div className="gold-rule w-16 mx-auto my-4" />
@@ -240,6 +241,17 @@ export default function HomePage() {
       </div>
 
       <FooterNewsletter />
+
+      {/* Lion Order mark */}
+      <div className="px-6 py-8 text-center">
+        <div className="gold-rule mb-6" />
+        <p className="font-display text-xs text-[var(--gold)] italic tracking-wide">
+          Lion Order &middot; Est. 2022
+        </p>
+        <p className="text-[8px] text-[var(--dim)] mt-1 tracking-[0.2em] uppercase">
+          Find the Lion Within
+        </p>
+      </div>
 
       <JoinHouse open={joinOpen} onClose={() => setJoinOpen(false)} />
     </div>

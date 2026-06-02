@@ -33,7 +33,7 @@ export default function Threshold() {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           onClick={enter}
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center cursor-pointer"
-          style={{ background: '#14110c' }}
+          style={{ background: 'var(--bg)' }}
         >
           {/* Gold rule top */}
           <div className="absolute top-0 left-0 right-0 rasta-stripe-thick" />
@@ -54,10 +54,10 @@ export default function Threshold() {
               className="mb-6 opacity-90"
             />
 
-            <p className="text-[#F4C71F] text-[9px] tracking-[0.5em] uppercase font-light mb-3">
-              The Maison of
+            <p className="text-[#5C564C] text-[10px] font-light tracking-[0.2em] max-w-[280px] text-center leading-relaxed mb-3">
+              A movement led by Rohan Marley — the elevation of consciousness via plant medicine, coffee, music, and culture.
             </p>
-            <h1 className="text-[#efe8d8] text-3xl font-light tracking-[0.12em] uppercase" style={{ fontFamily: 'var(--font-display)' }}>
+            <h1 className="text-[#1B1916] text-3xl font-light tracking-[0.12em] uppercase" style={{ fontFamily: 'var(--font-display)' }}>
               Rohan Marley
             </h1>
 
@@ -65,7 +65,7 @@ export default function Threshold() {
             <div className="w-12 h-px bg-[#B98524] my-6 opacity-50" />
 
             <p className="text-[#6B6358] text-[10px] font-light tracking-[0.2em]">
-              Flower to the People
+              Find the Lion Within
             </p>
           </motion.div>
 

@@ -51,15 +51,15 @@
   --color-blue: #14110c;
   --color-line: rgba(20, 17, 12, 0.10);
   --color-panel: rgba(247, 243, 234, 0.92);
-  --font-display: var(--font-fraunces);
-  --font-body: var(--font-spline);
+  --font-display: var(--font-fraunces), 'Playfair Display', Georgia, serif;
+  --font-body: var(--font-spline), 'Cormorant Garamond', 'Times New Roman', serif;
 }
 
 /* ─── Base ─── */
 body {
   background: var(--bg);
   color: var(--cream);
-  font-family: var(--font-body), system-ui, sans-serif;
+  font-family: var(--font-body), 'Cormorant Garamond', Georgia, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
