@@ -29,6 +29,7 @@ const houses = [
     href: '/lion-order',
     icon: Crown,
     accent: '#c4a049',
+    crest: '/brand/lion-order-crest.png',
   },
   {
     name: 'RoMarley Beach House',
@@ -108,8 +109,12 @@ export default function HomePage() {
             const Icon = house.icon;
             const inner = (
               <div className="flex items-center gap-4 rounded-xl bg-[var(--bg2)] border border-[var(--line)] p-4 hover:border-[var(--gold)]/20 transition-colors">
-                <div className="w-11 h-11 rounded-xl bg-[var(--gold)]/8 flex items-center justify-center shrink-0">
-                  <Icon size={20} className="text-[var(--gold)]" />
+                <div className="w-11 h-11 rounded-xl bg-[var(--gold)]/8 flex items-center justify-center shrink-0 overflow-hidden">
+                  {house.crest ? (
+                    <Image src={house.crest} alt="" width={36} height={36} className="object-contain" />
+                  ) : (
+                    <Icon size={20} className="text-[var(--gold)]" />
+                  )}
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-[var(--cream)] tracking-wide">{house.name}</p>
