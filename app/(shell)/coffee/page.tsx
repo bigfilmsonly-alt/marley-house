@@ -5,32 +5,13 @@ import Image from 'next/image';
 import { Coffee, Minus, Plus, X, ShoppingBag, Leaf, TreePine, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import BlendQuiz from '@/components/BlendQuiz';
+import { products } from '@/content/products';
+import type { Product } from '@/lib/types';
 
-interface Blend {
-  id: string;
-  name: string;
-  roast: string;
-  notes: string;
-  origin: string;
-  price: number;
-  badges: string[];
-  image?: string;
-}
-
-const blends: Blend[] = [
-  { id: 'gusup', name: 'Get Up, Stand Up', roast: 'Light', notes: 'Bright, nutty, caramel', origin: 'Blend', price: 16.99, badges: ['Fairtrade Certified', 'One Tree Planted'], image: '/products/get-up-stand-up.webp' },
-  { id: 'onelove', name: 'One Love', roast: 'Medium', notes: '100% Ethiopian, balanced, smooth, exotic', origin: 'Ethiopia', price: 17.99, badges: ['Fairtrade Certified', 'One Tree Planted'] },
-  { id: 'buffalo', name: 'Buffalo Soldier', roast: 'Medium-Dark', notes: 'Rich, full-bodied, dark chocolate', origin: 'Blend', price: 17.99, badges: ['Fairtrade Certified', 'One Tree Planted'], image: '/products/buffalo-soldier.webp' },
-  { id: 'lively', name: 'Lively Up', roast: 'Dark', notes: 'Bold, chocolate, subtle citrus', origin: 'Blend', price: 16.99, badges: ['Fairtrade Certified', 'One Tree Planted'], image: '/products/lively-up.webp' },
-  { id: 'simmer', name: 'Simmer Down', roast: 'Decaf (Swiss Water)', notes: 'Balanced, hints of cocoa', origin: 'Blend', price: 18.99, badges: ['Fairtrade Certified', 'Swiss Water Process'], image: '/products/simmer-down.webp' },
-  { id: 'mystic', name: 'Mystic Morning', roast: 'Medium', notes: 'Smooth, balanced, legacy blend', origin: 'Blend', price: 16.99, badges: ['Fairtrade Certified'] },
-  { id: 'jbm', name: 'Jamaican Blue Mountain', roast: 'Premium Single Origin', notes: 'Rare, smooth, refined complexity', origin: 'Jamaica', price: 42.99, badges: ['Single Origin', 'Premium'] },
-];
-
-interface BagItem { blend: Blend; qty: number; }
+interface BagItem { blend: Product; qty: number; }
 
 export default function CoffeePage() {
-  const [selected, setSelected] = useState<Blend | null>(null);
+  const [selected, setSelected] = useState<Product | null>(null);
   const [bag, setBag] = useState<BagItem[]>([]);
   const [bagOpen, setBagOpen] = useState(false);
   const [checkoutMsg, setCheckoutMsg] = useState(false);
@@ -40,7 +21,7 @@ export default function CoffeePage() {
   const bagCount = bag.reduce((s, i) => s + i.qty, 0);
   const bagTotal = bag.reduce((s, i) => s + i.blend.price * i.qty, 0);
 
-  function addToBag(blend: Blend, qty: number) {
+  function addToBag(blend: Product, qty: number) {
     setBag((prev) => {
       const existing = prev.find((i) => i.blend.id === blend.id);
       if (existing) {
@@ -139,7 +120,7 @@ export default function CoffeePage() {
 
       {/* Product grid */}
       <div className="px-6 pb-6 grid grid-cols-2 gap-3">
-        {blends.map((blend) => (
+        {products.map((blend) => (
           <button
             key={blend.id}
             onClick={() => { setSelected(blend); setPdpQty(1); }}

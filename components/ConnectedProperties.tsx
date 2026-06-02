@@ -1,4 +1,5 @@
 import { ExternalLink } from 'lucide-react';
+import { brandLinks } from '@/content/links';
 
 const statusColors: Record<string, string> = {
   active: 'text-[var(--green)]',
@@ -14,52 +15,21 @@ const statusDots: Record<string, string> = {
   verify: 'bg-[var(--ember)]',
 };
 
-interface PropertyGroup {
-  label: string;
-  items: {
-    name: string;
-    url: string;
-    handle?: string;
-    status: 'active' | 'dormant' | 'licensed' | 'verify';
-  }[];
-}
+const categoryLabels: Record<string, string> = {
+  coffee: 'Coffee',
+  rohan: 'Rohan Marley',
+  ventures: 'Ventures',
+  music: 'Music Legacy',
+};
 
-const groups: PropertyGroup[] = [
-  {
-    label: 'Coffee',
-    items: [
-      { name: 'Marley Coffee', url: 'https://marleycoffee.com/', status: 'active' },
-      { name: '@marleycoffee', url: 'https://www.instagram.com/marleycoffee/', handle: 'IG', status: 'active' },
-      { name: 'Marley Coffee Latam', url: 'https://www.youtube.com/@MarleyCoffeeLatam', handle: 'YT', status: 'active' },
-    ],
-  },
-  {
-    label: 'Rohan Marley',
-    items: [
-      { name: '@romarley', url: 'https://www.instagram.com/romarley/', handle: '663K', status: 'active' },
-      { name: 'LinkedIn', url: 'https://www.linkedin.com/in/rohanmarley', status: 'active' },
-    ],
-  },
-  {
-    label: 'Ventures',
-    items: [
-      { name: 'Lion Order', url: 'https://lionorder.com/', status: 'active' },
-      { name: 'RoMarley Beach House', url: 'https://www.romarleybeachhouse.com/', status: 'active' },
-      { name: 'House of Marley', url: 'https://thehouseofmarley.com/', handle: 'Licensed', status: 'licensed' },
-    ],
-  },
-  {
-    label: 'Music Legacy',
-    items: [
-      { name: 'Bob Marley Official', url: 'https://www.bobmarley.com/', status: 'licensed' },
-      { name: 'Tuff Gong', url: 'https://www.tuffgong.com/', status: 'licensed' },
-      { name: 'Tuff Gong Television', url: 'https://www.youtube.com/user/TuffGongTelevision', handle: 'YT', status: 'licensed' },
-      { name: 'Tuff Gong Radio', url: 'https://tuffgongmusic.com/', handle: 'SiriusXM Ch.19', status: 'licensed' },
-    ],
-  },
-];
+const categoryOrder = ['coffee', 'rohan', 'ventures', 'music'];
 
 export default function ConnectedProperties() {
+  const grouped = categoryOrder.map((cat) => ({
+    label: categoryLabels[cat],
+    items: brandLinks.filter((l) => l.category === cat),
+  }));
+
   return (
     <div className="px-6 pb-10">
       <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold-deep)] mb-4 font-medium">
@@ -67,7 +37,7 @@ export default function ConnectedProperties() {
       </p>
 
       <div className="space-y-5">
-        {groups.map((group) => (
+        {grouped.map((group) => (
           <div key={group.label}>
             <p className="text-[11px] text-[var(--dim)] font-medium mb-2 tracking-wide">
               {group.label}
@@ -75,7 +45,7 @@ export default function ConnectedProperties() {
             <div className="space-y-1.5">
               {group.items.map((item) => (
                 <a
-                  key={item.url}
+                  key={item.id}
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -86,6 +56,11 @@ export default function ConnectedProperties() {
                   {item.handle && (
                     <span className={`text-[9px] font-medium tracking-wide ${statusColors[item.status]}`}>
                       {item.handle}
+                    </span>
+                  )}
+                  {item.status === 'verify' && (
+                    <span className="text-[8px] tracking-wider uppercase text-[var(--ember)] bg-[var(--ember)]/10 px-1.5 py-0.5 rounded-full border border-[var(--ember)]/20">
+                      Verify
                     </span>
                   )}
                   <ExternalLink size={12} className="text-[var(--dim)] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
@@ -104,6 +79,10 @@ export default function ConnectedProperties() {
         <div className="flex items-center gap-1.5">
           <div className="w-1.5 h-1.5 rounded-full bg-[var(--gold)]" />
           <span className="text-[9px] text-[var(--dim)]">Licensed</span>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <div className="w-1.5 h-1.5 rounded-full bg-[var(--dim)]" />
+          <span className="text-[9px] text-[var(--dim)]">Dormant</span>
         </div>
         <div className="flex items-center gap-1.5">
           <div className="w-1.5 h-1.5 rounded-full bg-[var(--ember)]" />

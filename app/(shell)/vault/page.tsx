@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { Archive, BookOpen, Mic, Camera, Music, GraduationCap, Video, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { wisdomCards } from '@/content/wisdom';
+import { roomAccents } from '@/lib/theme';
 
 const archiveTypes = [
   { icon: Camera, label: 'Photos', count: 24 },
@@ -11,17 +13,6 @@ const archiveTypes = [
   { icon: Music, label: 'Audio', count: 16 },
   { icon: Video, label: 'Video', count: 10 },
   { icon: GraduationCap, label: 'Lessons', count: 6 },
-];
-
-const wisdomCards = [
-  { lesson: 'Fear is not the opposite of courage — it is the beginning of it.', room: 'fire', color: '#e2622f', expanded: 'Every step into the unknown begins with the acknowledgment that you do not know. That is not weakness. That is the door.' },
-  { lesson: 'The ritual of coffee is the ritual of presence.', room: 'coffee', color: '#c98a3c', expanded: 'Grind, pour, wait. In the waiting is the teaching. Before the world asks anything of you, you gave yourself this.' },
-  { lesson: 'Legacy is not what you leave — it is what lives on without you.', room: 'legacy', color: '#b98a5a', expanded: 'A name on a building fades. A lesson passed to a child, passed to their child — that is architecture that outlasts stone.' },
-  { lesson: 'Music does not end. It only changes rooms.', room: 'music', color: '#7ba36e', expanded: 'From the studio to the street, from the record to the memory. The frequency carries. The house holds the sound.' },
-  { lesson: 'The table is the truest meeting room.', room: 'family', color: '#caa15e', expanded: 'No titles at the table. No hierarchy in hunger. Everyone eats the same food, and that is where real business happens.' },
-  { lesson: 'Mistakes are not the fire. They are what the fire burns to keep you warm.', room: 'fire', color: '#e2622f', expanded: 'Without fuel, there is no flame. Every wrong turn gave heat to the right one. Do not regret the kindling.' },
-  { lesson: 'A blend is a conversation between origins.', room: 'coffee', color: '#c98a3c', expanded: 'One bean alone is a voice. Blended, it becomes harmony. One love, many roots. That is the cup.' },
-  { lesson: 'The future does not forget the foundation. It builds another floor.', room: 'future', color: '#86b4cc', expanded: 'YG on the mic, new blends in the lab, new rooms in the house. The root stays. Everything above it grows.' },
 ];
 
 export default function VaultPage() {
@@ -75,7 +66,7 @@ export default function VaultPage() {
         <div className="space-y-3">
           {wisdomCards.map((card, i) => (
             <motion.div
-              key={i}
+              key={card.id}
               layout
               onClick={() => setExpandedCard(expandedCard === i ? null : i)}
               className="rounded-xl border border-[var(--line)] bg-[var(--bg2)] p-4 cursor-pointer hover:border-[var(--gold)]/20 transition-colors overflow-hidden"
@@ -83,7 +74,7 @@ export default function VaultPage() {
               <div className="flex items-start gap-3">
                 <div
                   className="w-1.5 h-1.5 rounded-full mt-2 shrink-0"
-                  style={{ background: card.color }}
+                  style={{ background: roomAccents[card.room] }}
                 />
                 <div className="flex-1">
                   <p className="font-display text-sm text-[var(--cream)] font-light italic leading-relaxed">
