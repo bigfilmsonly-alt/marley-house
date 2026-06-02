@@ -1,11 +1,11 @@
 export const colors = {
-  bg: '#f7f3ea',
-  bg2: '#FFFFFF',
-  ivory: '#f7f3ea',
-  bone: '#efe8d8',
-  ink: '#14110c',
-  cream: '#14110c',
-  dim: '#6B6358',
+  bg: '#0A0A0A',
+  bg2: '#141414',
+  ivory: '#0A0A0A',
+  bone: '#141414',
+  ink: '#FAFAFA',
+  cream: '#FAFAFA',
+  dim: '#8A8A8A',
   // Lion Order Brand Colors
   royaltyYellow: '#F4C71F',
   antiqueGold1: '#B98524',
@@ -14,18 +14,18 @@ export const colors = {
   goldDeep: '#B98524',
   goldHi: '#F4C71F',
   ember: '#F4C71F',
-  green: '#825B0D',
-  blue: '#14110c',
+  green: '#B98524',
+  blue: '#F4C71F',
 } as const;
 
 export const roomAccents: Record<string, string> = {
-  coffee: '#B98524',
-  fire: '#B98524',
-  wisdom: '#B98524',
-  music: '#B98524',
-  legacy: '#825B0D',
-  family: '#B98524',
-  future: '#B98524',
+  coffee: '#F4C71F',
+  fire: '#F4C71F',
+  wisdom: '#F4C71F',
+  music: '#F4C71F',
+  legacy: '#B98524',
+  family: '#F4C71F',
+  future: '#F4C71F',
 };
 
 export const tabGlows: Record<string, string> = {

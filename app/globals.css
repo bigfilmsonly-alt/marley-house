@@ -1,58 +1,58 @@
 @import "tailwindcss";
 
-/* ─── Design Tokens — LION ORDER BRAND SYSTEM ─── */
+/* ─── Design Tokens — BLACK & GOLD ─── */
 :root {
-  --bg: #f7f3ea;
-  --bg2: #FFFFFF;
-  --bg3: #efe8d8;
-  --panel: rgba(247, 243, 234, 0.92);
-  --cream: #14110c;
-  --dim: #6B6358;
+  --bg: #0A0A0A;
+  --bg2: #141414;
+  --bg3: #1A1A1A;
+  --panel: rgba(10, 10, 10, 0.92);
+  --cream: #FAFAFA;
+  --dim: #8A8A8A;
   --gold: #F4C71F;
   --gold-deep: #B98524;
   --gold-hi: #F4C71F;
   --ember: #F4C71F;
-  --green: #14110c;
-  --blue: #14110c;
-  --line: rgba(20, 17, 12, 0.10);
+  --green: #F4C71F;
+  --blue: #F4C71F;
+  --line: rgba(255, 255, 255, 0.08);
 
-  /* Lion Order Brand Colors — BRAND DECK 2026 pp.56-57 */
-  --antique-gold-1: #B98524;   /* AG01 · Pantone 10129 C */
-  --antique-gold-2: #825B0D;   /* AG02 */
-  --gold-24k: #E8C23A;         /* 24K foil flat stand-in */
-  --cover-gold: #EFC11F;       /* saturated full-bleed ground */
+  /* Lion Order Brand Colors — BRAND DECK 2026 pp.55-56 */
+  --antique-gold-1: #B98524;
+  --antique-gold-2: #825B0D;
+  --gold-24k: #E8C23A;
+  --cover-gold: #EFC11F;
   --royalty-yellow: #F4C71F;
-  --ivory: #F0F0E3;
-  --bone: #efe8d8;
-  --ink: #14110C;
+  --ivory: #0A0A0A;
+  --bone: #141414;
+  --ink: #FAFAFA;
 
-  /* Rooms — brand-aligned */
-  --room-coffee: #B98524;
-  --room-fire: #B98524;
-  --room-wisdom: #B98524;
-  --room-music: #B98524;
-  --room-legacy: #825B0D;
-  --room-family: #B98524;
-  --room-future: #B98524;
+  /* Rooms */
+  --room-coffee: #F4C71F;
+  --room-fire: #F4C71F;
+  --room-wisdom: #F4C71F;
+  --room-music: #F4C71F;
+  --room-legacy: #B98524;
+  --room-family: #F4C71F;
+  --room-future: #F4C71F;
 
   /* Compat */
-  --ja-green: #825B0D;
+  --ja-green: #B98524;
   --ja-gold: #F4C71F;
-  --ja-black: #14110c;
+  --ja-black: #0A0A0A;
 }
 
 @theme inline {
-  --color-bg: #f7f3ea;
-  --color-bg2: #FFFFFF;
-  --color-cream: #14110c;
-  --color-dim: #6B6358;
+  --color-bg: #0A0A0A;
+  --color-bg2: #141414;
+  --color-cream: #FAFAFA;
+  --color-dim: #8A8A8A;
   --color-gold: #F4C71F;
   --color-gold-deep: #B98524;
   --color-ember: #F4C71F;
-  --color-green: #825B0D;
-  --color-blue: #14110c;
-  --color-line: rgba(20, 17, 12, 0.10);
-  --color-panel: rgba(247, 243, 234, 0.92);
+  --color-green: #B98524;
+  --color-blue: #F4C71F;
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-panel: rgba(10, 10, 10, 0.92);
   --font-display: var(--font-fraunces), 'Playfair Display', Georgia, serif;
   --font-body: var(--font-spline), 'Cormorant Garamond', 'Times New Roman', serif;
 }
@@ -73,35 +73,35 @@ body {
 /* ─── Gold Rules ─── */
 .rasta-stripe {
   height: 1px;
-  background: var(--antique-gold-1);
-  opacity: 0.25;
+  background: var(--royalty-yellow);
+  opacity: 0.35;
 }
 .rasta-stripe-thick {
   height: 2px;
   background: linear-gradient(to right, var(--antique-gold-2), var(--royalty-yellow), var(--antique-gold-2));
-  opacity: 0.5;
+  opacity: 0.6;
 }
 .gold-rule {
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--antique-gold-1), transparent);
-  opacity: 0.3;
+  background: linear-gradient(to right, transparent, var(--royalty-yellow), transparent);
+  opacity: 0.4;
 }
 
 /* ─── Monogram Canvas ─── */
 .monogram-canvas {
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='central' font-family='serif' font-size='11' fill='%23B98524' opacity='0.035'%3EM%3C/text%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='central' font-family='serif' font-size='11' fill='%23F4C71F' opacity='0.04'%3EM%3C/text%3E%3C/svg%3E");
   background-size: 60px 60px;
 }
 
-/* ─── Film Grain (barely visible on ivory) ─── */
+/* ─── Film Grain ─── */
 .film-grain::after {
   content: '';
   position: fixed;
   inset: 0;
   z-index: 999;
   pointer-events: none;
-  opacity: 0.01;
-  mix-blend-mode: multiply;
+  opacity: 0.025;
+  mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 256px 256px;
 }
@@ -162,12 +162,12 @@ body {
     width: 396px;
     height: 856px;
     border-radius: 55px;
-    background: linear-gradient(165deg, #f0ece4 0%, #e8e2d8 30%, #ddd6c8 60%, #d4ccbc 100%);
+    background: linear-gradient(165deg, #2A2A2A 0%, #1A1A1A 30%, #111111 60%, #0A0A0A 100%);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.5),
-      0 0 0 1px rgba(0, 0, 0, 0.06),
-      0 30px 80px rgba(0, 0, 0, 0.15),
-      0 0 100px rgba(185, 133, 36, 0.03);
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 0 0 1px rgba(255, 255, 255, 0.04),
+      0 30px 80px rgba(0, 0, 0, 0.8),
+      0 0 120px rgba(244, 199, 31, 0.04);
     padding: 3px;
     flex-shrink: 0;
   }
@@ -175,7 +175,7 @@ body {
   .device-btn {
     display: block;
     position: absolute;
-    background: linear-gradient(180deg, #e0dcd4, #ccc6ba);
+    background: linear-gradient(180deg, #2A2A2A, #1A1A1A);
   }
   .device-btn--silent { left: -3px; top: 160px; width: 4px; height: 30px; border-radius: 2px 0 0 2px; }
   .device-btn--vol-up { left: -3px; top: 210px; width: 4px; height: 54px; border-radius: 2px 0 0 2px; }
