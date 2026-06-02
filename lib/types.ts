@@ -69,3 +69,15 @@ export interface CoffeeRitual {
   blend: string;
   message: string;
 }
+
+export interface MerchItem {
+  id: string;
+  name: string;
+  category: 'apparel' | 'accessories' | 'home' | 'music';
+  description: string;
+  price: number;
+  image: string;
+  sizes?: string[];
+  badge?: string;
+  prototype: true;
+}

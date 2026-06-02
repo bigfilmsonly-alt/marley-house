@@ -1,6 +1,7 @@
 'use client';
 
-import { Music, ExternalLink, Disc3, Headphones } from 'lucide-react';
+import { Music, Disc3, Headphones } from 'lucide-react';
+import { AppLink } from '@/components/InAppBrowser';
 
 interface Artist {
   name: string;
@@ -88,22 +89,24 @@ const platformColors: Record<string, string> = {
   youtube: '#FF0000',
 };
 
-function PlatformPill({ platform, url }: { platform: string; url: string }) {
+function PlatformPill({ platform, url, artistName }: { platform: string; url: string; artistName: string }) {
   return (
-    <a
+    <AppLink
       href={url}
-      target="_blank"
-      rel="noopener noreferrer"
+      title={`${artistName} on ${platformIcons[platform]}`}
       className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[11px] font-medium transition-colors hover:brightness-110"
-      style={{
-        borderColor: `${platformColors[platform]}30`,
-        background: `${platformColors[platform]}10`,
-        color: platform === 'tidal' ? 'var(--cream)' : platformColors[platform],
-      }}
     >
-      {platformIcons[platform]}
-      <ExternalLink size={10} />
-    </a>
+      <span
+        style={{
+          borderColor: `${platformColors[platform]}30`,
+          background: `${platformColors[platform]}10`,
+          color: platform === 'tidal' ? 'var(--cream)' : platformColors[platform],
+        }}
+        className="contents"
+      >
+        {platformIcons[platform]}
+      </span>
+    </AppLink>
   );
 }
 
@@ -161,7 +164,16 @@ export default function MusicPage() {
                 {/* Platform pills */}
                 <div className="flex flex-wrap gap-2 mt-3">
                   {platforms.map((p) => (
-                    <PlatformPill key={p} platform={p} url={artist[p]!} />
+                    <AppLink
+                      key={p}
+                      href={artist[p]!}
+                      title={`${artist.name} on ${platformIcons[p]}`}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[11px] font-medium transition-colors hover:brightness-110"
+                    >
+                      <span style={{ color: p === 'tidal' ? 'var(--cream)' : platformColors[p] }}>
+                        {platformIcons[p]}
+                      </span>
+                    </AppLink>
                   ))}
                 </div>
               </div>
@@ -178,12 +190,11 @@ export default function MusicPage() {
         </div>
         <div className="space-y-2">
           {studioLinks.map((link) => (
-            <a
+            <AppLink
               key={link.url}
               href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-start gap-3 rounded-xl bg-[var(--bg2)] border border-[var(--line)] p-3 group hover:border-[var(--gold)]/20 transition-colors"
+              title={link.name}
+              className="flex items-start gap-3 rounded-xl bg-[var(--bg2)] border border-[var(--line)] p-3 group hover:border-[var(--gold)]/20 transition-colors w-full text-left"
             >
               <div className="w-1 h-full rounded-full bg-[var(--gold)] shrink-0 self-stretch" />
               <div className="flex-1 min-w-0">
@@ -193,7 +204,7 @@ export default function MusicPage() {
               <span className="text-[8px] tracking-wider uppercase text-[var(--gold)] bg-[var(--gold)]/10 px-1.5 py-0.5 rounded-full border border-[var(--gold)]/15 shrink-0 mt-0.5">
                 {link.status}
               </span>
-            </a>
+            </AppLink>
           ))}
         </div>
       </div>
@@ -202,11 +213,10 @@ export default function MusicPage() {
       <div className="px-4 pb-6">
         <p className="text-sm font-semibold text-[var(--cream)] mb-3">Playlists</p>
         <div className="space-y-2">
-          <a
+          <AppLink
             href="https://open.spotify.com/artist/2QsynagSdAqZj3U9HgDzjD"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 rounded-xl bg-[#1DB954]/10 border border-[#1DB954]/20 p-3"
+            title="Bob Marley Essentials on Spotify"
+            className="flex items-center gap-3 rounded-xl bg-[#1DB954]/10 border border-[#1DB954]/20 p-3 w-full text-left"
           >
             <div className="w-9 h-9 rounded-lg bg-[#1DB954]/20 flex items-center justify-center shrink-0">
               <Music size={16} className="text-[#1DB954]" />
@@ -215,14 +225,12 @@ export default function MusicPage() {
               <p className="text-sm text-[var(--cream)]">Bob Marley Essentials</p>
               <p className="text-[#1DB954] text-[10px]">Spotify</p>
             </div>
-            <ExternalLink size={12} className="text-[#1DB954]" />
-          </a>
+          </AppLink>
 
-          <a
+          <AppLink
             href="https://music.apple.com/us/artist/bob-marley-the-wailers/3174628"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 rounded-xl bg-[#FA243C]/10 border border-[#FA243C]/20 p-3"
+            title="Marley on Apple Music"
+            className="flex items-center gap-3 rounded-xl bg-[#FA243C]/10 border border-[#FA243C]/20 p-3 w-full text-left"
           >
             <div className="w-9 h-9 rounded-lg bg-[#FA243C]/20 flex items-center justify-center shrink-0">
               <Music size={16} className="text-[#FA243C]" />
@@ -231,14 +239,12 @@ export default function MusicPage() {
               <p className="text-sm text-[var(--cream)]">Marley on Apple Music</p>
               <p className="text-[#FA243C] text-[10px]">Apple Music</p>
             </div>
-            <ExternalLink size={12} className="text-[#FA243C]" />
-          </a>
+          </AppLink>
 
-          <a
+          <AppLink
             href="https://tidal.com/browse/artist/5927"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 rounded-xl bg-white/5 border border-white/10 p-3"
+            title="Bob Marley on Tidal"
+            className="flex items-center gap-3 rounded-xl bg-white/5 border border-white/10 p-3 w-full text-left"
           >
             <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
               <Music size={16} className="text-[var(--cream)]" />
@@ -247,8 +253,7 @@ export default function MusicPage() {
               <p className="text-sm text-[var(--cream)]">Bob Marley on Tidal</p>
               <p className="text-[var(--dim)] text-[10px]">Tidal Hi-Res</p>
             </div>
-            <ExternalLink size={12} className="text-[var(--dim)]" />
-          </a>
+          </AppLink>
         </div>
       </div>
 

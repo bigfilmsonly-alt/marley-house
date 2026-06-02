@@ -1,5 +1,6 @@
 import { ExternalLink } from 'lucide-react';
 import { brandLinks } from '@/content/links';
+import { AppLink } from '@/components/InAppBrowser';
 
 const statusColors: Record<string, string> = {
   active: 'text-[var(--green)]',
@@ -44,12 +45,11 @@ export default function ConnectedProperties() {
             </p>
             <div className="space-y-1.5">
               {group.items.map((item) => (
-                <a
+                <AppLink
                   key={item.id}
                   href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 rounded-lg bg-[var(--bg2)] border border-[var(--line)] px-3 py-2.5 group hover:border-[var(--gold)]/20 transition-colors"
+                  title={item.name}
+                  className="flex items-center gap-2.5 rounded-lg bg-[var(--bg2)] border border-[var(--line)] px-3 py-2.5 group hover:border-[var(--gold)]/20 transition-colors w-full text-left"
                 >
                   <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${statusDots[item.status]}`} />
                   <span className="text-sm text-[var(--cream)] flex-1 truncate">{item.name}</span>
@@ -64,7 +64,7 @@ export default function ConnectedProperties() {
                     </span>
                   )}
                   <ExternalLink size={12} className="text-[var(--dim)] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
-                </a>
+                </AppLink>
               ))}
             </div>
           </div>

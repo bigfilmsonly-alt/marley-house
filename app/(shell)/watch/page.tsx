@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Play } from 'lucide-react';
 import VideoPlayer, { VideoCard } from '@/components/VideoPlayer';
+import { AppLink } from '@/components/InAppBrowser';
 import {
   sessionsPlaylist,
   storyVideos,
@@ -122,18 +123,17 @@ export default function WatchPage() {
         <h2 className="text-sm font-semibold text-[var(--cream)] mb-3">Channels</h2>
         <div className="space-y-2">
           {channels.map((ch) => (
-            <a
+            <AppLink
               key={ch.name}
               href={ch.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 rounded-xl bg-[var(--bg2)] border border-[var(--line)] p-3 hover:border-[var(--ember)]/30 transition-colors"
+              title={ch.name}
+              className="flex items-center gap-3 rounded-xl bg-[var(--bg2)] border border-[var(--line)] p-3 hover:border-[var(--ember)]/30 transition-colors w-full text-left"
             >
               <div className="w-8 h-8 rounded-full bg-[var(--ember)] flex items-center justify-center shrink-0">
                 <Play size={12} className="text-white ml-px" fill="white" />
               </div>
               <span className="text-sm text-[var(--cream)] font-medium">{ch.name}</span>
-            </a>
+            </AppLink>
           ))}
         </div>
       </div>

@@ -8,6 +8,7 @@ import SlideInCTA from '@/components/SlideInCTA';
 import StickyHeaderCTA from '@/components/StickyHeaderCTA';
 import FloatingContact from '@/components/FloatingContact';
 import { PlayerProvider } from '@/components/PlayerContext';
+import { InAppBrowserProvider } from '@/components/InAppBrowser';
 
 export default function ShellLayout({
   children,
@@ -16,6 +17,7 @@ export default function ShellLayout({
 }) {
   return (
     <PlayerProvider>
+      <InAppBrowserProvider>
       <DeviceFrame>
         <div className="flex flex-col h-full">
           {/* Rasta stripe */}
@@ -34,6 +36,7 @@ export default function ShellLayout({
         <SlideInCTA />
         <FloatingContact />
       </DeviceFrame>
+      </InAppBrowserProvider>
     </PlayerProvider>
   );
 }

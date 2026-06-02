@@ -8,6 +8,7 @@ import FooterNewsletter from '@/components/FooterNewsletter';
 import { Flame, ChevronRight, ArrowUpRight, Sparkles, Play } from 'lucide-react';
 import Link from 'next/link';
 import { stories } from '@/content/stories';
+import { AppLink } from '@/components/InAppBrowser';
 import { podcastVideos, storyVideos, tasteVideos, musicVideos } from '@/content/videos';
 import { roomAccents } from '@/lib/theme';
 
@@ -135,11 +136,10 @@ export default function HomePage() {
 
       {/* Lion Order */}
       <div className="px-4 pb-6">
-        <a
+        <AppLink
           href="https://lionorder.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block rounded-2xl border border-[var(--ember)]/30 p-4 bg-gradient-to-r from-[var(--ember)]/10 to-transparent"
+          title="Lion Order"
+          className="block rounded-2xl border border-[var(--ember)]/30 p-4 bg-gradient-to-r from-[var(--ember)]/10 to-transparent w-full text-left"
         >
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-[var(--ember)] flex items-center justify-center shrink-0">
@@ -151,7 +151,7 @@ export default function HomePage() {
             </div>
             <ArrowUpRight size={16} className="text-[var(--ember)]" />
           </div>
-        </a>
+        </AppLink>
       </div>
 
       {/* Join CTA */}

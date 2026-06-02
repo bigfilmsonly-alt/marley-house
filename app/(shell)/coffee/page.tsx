@@ -8,6 +8,7 @@ import BlendQuiz from '@/components/BlendQuiz';
 import { products } from '@/content/products';
 import type { Product } from '@/lib/types';
 import { addToBag as trackAddToBag } from '@/lib/tracking';
+import { useInAppBrowser } from '@/components/InAppBrowser';
 
 interface BagItem { blend: Product; qty: number; }
 
@@ -18,6 +19,7 @@ export default function CoffeePage() {
   const [checkoutMsg, setCheckoutMsg] = useState(false);
   const [pdpQty, setPdpQty] = useState(1);
   const [quizOpen, setQuizOpen] = useState(false);
+  const { openLink } = useInAppBrowser();
 
   const bagCount = bag.reduce((s, i) => s + i.qty, 0);
   const bagTotal = bag.reduce((s, i) => s + i.blend.price * i.qty, 0);
@@ -551,9 +553,9 @@ export default function CoffeePage() {
               <h3 className="font-display text-lg text-[var(--cream)] mb-2">Prototype Store</h3>
               <p className="text-[var(--dim)] text-sm font-light leading-relaxed mb-4">
                 This is a demo experience. No real payment will be processed. Visit{' '}
-                <a href="https://marleycoffee.com/" target="_blank" rel="noopener noreferrer" className="text-[var(--gold)] underline">
+                <button onClick={() => openLink('https://marleycoffee.com/', 'Marley Coffee')} className="text-[var(--gold)] underline">
                   marleycoffee.com
-                </a>{' '}
+                </button>{' '}
                 to order real coffee.
               </p>
               <button
