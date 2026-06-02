@@ -608,14 +608,31 @@ export default function HomePage() {
       ═══════════════════════════════════════════════════════════ */}
       <div className="gold-rule mx-8 mt-2" />
 
-      <footer className="px-8 py-16 text-center">
-        <Image
-          src="/brand/lion-order-crest.png"
-          alt="Lion Order"
-          width={200}
-          height={200}
-          className="mx-auto mb-8 brightness-110"
-        />
+      <footer className="px-6 py-16 text-center bg-black">
+        {/* Three logos side by side */}
+        <div className="flex items-center justify-center gap-6 mb-10">
+          <Image
+            src="/brand/lion-of-judah.png"
+            alt="Lion of Judah"
+            width={120}
+            height={120}
+            className="brightness-110 opacity-90"
+          />
+          <Image
+            src="/brand/lion-order-crest.png"
+            alt="Lion Order"
+            width={160}
+            height={160}
+            className="brightness-110"
+          />
+          <Image
+            src="/brand/marley-enterprise.png"
+            alt="Marley Enterprise"
+            width={120}
+            height={120}
+            className="brightness-110 opacity-90"
+          />
+        </div>
         <p className="text-[var(--cream)] text-[10px] tracking-[0.4em] uppercase mb-3 font-medium">
           Lion Order &middot; Est. 2022
         </p>
