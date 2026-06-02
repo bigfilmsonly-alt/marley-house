@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { wisdomCards } from '@/content/wisdom';
+import SplashReturn from '@/components/SplashReturn';
 
 /* ── static data ─────────────────────────────────────────────── */
 
@@ -131,6 +132,8 @@ export default function HomePage() {
 
   return (
     <div className="relative min-h-full bg-[var(--bg)]">
+
+      <SplashReturn />
 
       {/* ═══════════════════════════════════════════════════════════
           1. HERO — R-M Monogram + Taglines (always on home page)

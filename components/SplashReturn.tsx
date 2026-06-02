@@ -11,7 +11,7 @@ export default function SplashReturn() {
   return (
     <button
       onClick={handleReturn}
-      className="absolute top-3 left-3 z-40 opacity-90 hover:opacity-100 transition-opacity"
+      className="absolute top-3 right-3 z-40 opacity-90 hover:opacity-100 transition-opacity"
       aria-label="Return to welcome"
     >
       <Image
