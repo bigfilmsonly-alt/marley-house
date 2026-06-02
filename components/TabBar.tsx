@@ -30,6 +30,7 @@ export default function TabBar() {
   const router = useRouter();
   const { openLink } = useInAppBrowser();
   const [splashTab, setSplashTab] = useState<string | null>(null);
+  const [isFading, setIsFading] = useState(false);
 
   const splashImages: Record<string, { src: string; alt: string }> = {
     'Lion Order': { src: '/brand/lion-order-wordmark-gold.jpg', alt: 'Lion Order' },
@@ -40,15 +41,20 @@ export default function TabBar() {
 
   function handleSplashTab(tab: Tab) {
     setSplashTab(tab.label);
+    setIsFading(false);
     tabView(tab.label);
+    // Start logo fade out after 3s hold (3500ms total hold = 500ms fade overlap)
+    setTimeout(() => setIsFading(true), 3000);
+    // Remove overlay and navigate after logo fade (1.2s) + bg fade (0.8s) buffer
     setTimeout(() => {
       setSplashTab(null);
+      setIsFading(false);
       if (tab.embed) {
         openLink(tab.embed.url, tab.embed.title);
       } else {
         router.push(tab.href);
       }
-    }, 3000);
+    }, 4200);
   }
 
   return (
@@ -60,13 +66,19 @@ export default function TabBar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1.0] }}
+            transition={isFading
+              ? { duration: 0.8, ease: [0.4, 0, 0.2, 1] }
+              : { duration: 1, ease: [0.25, 0.1, 0.25, 1.0] }}
             className="fixed inset-0 z-[95] flex items-center justify-center bg-[#0b0805]"
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.94 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3, duration: 2, ease: [0.16, 0.6, 0.3, 1.0] }}
+              initial={{ opacity: 0, scale: 0.88 }}
+              animate={isFading
+                ? { opacity: 0, scale: 1.04 }
+                : { opacity: 1, scale: 1 }}
+              transition={isFading
+                ? { duration: 1.2, ease: [0.4, 0, 0.2, 1] }
+                : { delay: 0.4, duration: 2.5, ease: [0.22, 0.68, 0.36, 1.0] }}
             >
               <Image
                 src={splashImages[splashTab].src}
