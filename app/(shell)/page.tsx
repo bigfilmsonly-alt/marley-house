@@ -133,23 +133,6 @@ export default function HomePage() {
     <div className="relative min-h-full bg-[var(--bg)]">
 
       {/* ═══════════════════════════════════════════════════════════
-          0. LION BACK BUTTON
-      ═══════════════════════════════════════════════════════════ */}
-      <button
-        onClick={handleBackToSplash}
-        aria-label="Return to welcome"
-        className="fixed top-4 left-4 z-50 w-8 h-8 flex items-center justify-center cursor-pointer opacity-70 hover:opacity-100 transition-opacity"
-      >
-        <Image
-          src="/brand/lion-head-gold.png"
-          alt="Back to welcome"
-          width={32}
-          height={32}
-          className="drop-shadow-lg"
-        />
-      </button>
-
-      {/* ═══════════════════════════════════════════════════════════
           1. HERO — R-M Monogram + Taglines (above the fold)
       ═══════════════════════════════════════════════════════════ */}
       <section className="w-full bg-black pt-16 pb-10">

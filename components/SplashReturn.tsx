@@ -11,14 +11,15 @@ export default function SplashReturn() {
   return (
     <button
       onClick={handleReturn}
-      className="absolute top-3 left-3 z-40 opacity-50 hover:opacity-80 transition-opacity"
+      className="absolute top-3 left-3 z-40 opacity-90 hover:opacity-100 transition-opacity"
       aria-label="Return to welcome"
     >
       <Image
         src="/brand/lion-head-gold.png"
         alt="Lion Order"
-        width={28}
-        height={28}
+        width={40}
+        height={40}
+        className="brightness-125 drop-shadow-lg"
       />
     </button>
   );
