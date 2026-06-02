@@ -21,8 +21,11 @@ export default function ShellLayout({
           {/* Rasta stripe + top bar */}
           <div className="shrink-0">
             <div className="rasta-stripe" />
-            <div className="flex items-center justify-between px-4 pt-2 pb-1">
-              <span className="font-display text-sm text-[var(--green)] font-medium italic">MH</span>
+            <div className="flex items-center justify-between px-4 pt-2 pb-1 bg-black/50 backdrop-blur-sm">
+              <span className="font-display text-sm font-semibold tracking-tight">
+                <span className="text-[var(--ember)]">MARLEY</span>
+                <span className="text-[var(--ja-gold)] ml-1">HOUSE</span>
+              </span>
               <AmbientSound />
             </div>
           </div>

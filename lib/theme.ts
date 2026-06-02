@@ -1,37 +1,35 @@
 export const colors = {
-  bg: '#F7F4ED',
-  bg2: '#FFFFFF',
-  cream: '#1A1610',
-  dim: '#6B6358',
-  gold: '#D4A800',
-  goldDeep: '#B8920A',
-  ember: '#e2622f',
+  bg: '#0A0A0A',
+  bg2: '#161616',
+  cream: '#FAFAFA',
+  dim: '#A1A1AA',
+  gold: '#FED100',
+  goldDeep: '#D4A800',
+  ember: '#E2622F',
   green: '#009B3A',
   blue: '#1B8ED4',
   jaGreen: '#009B3A',
   jaGold: '#FED100',
-  jaBlack: '#1A1610',
 } as const;
 
 export const roomAccents: Record<string, string> = {
-  coffee: '#A06830',
-  fire: '#e2622f',
-  wisdom: '#D4A800',
-  music: '#009B3A',
-  legacy: '#8B6E4E',
-  family: '#D4A800',
-  future: '#1B8ED4',
+  coffee: '#D4A040',
+  fire: '#E2622F',
+  wisdom: '#FED100',
+  music: '#22C55E',
+  legacy: '#D4A040',
+  family: '#FED100',
+  future: '#38BDF8',
 };
 
 export const tabGlows: Record<string, string> = {
-  '/': '#FED100',
-  '/coffee': '#A06830',
-  '/watch': '#e2622f',
-  '/vault': '#8B6E4E',
-  '/ask': '#D4A800',
+  '/': '#E2622F',
+  '/coffee': '#D4A040',
+  '/watch': '#E2622F',
+  '/vault': '#FED100',
+  '/ask': '#009B3A',
 };
 
-// WMO weather codes → condition + suggested coffee
 export const weatherConditions: Record<number, { condition: string; icon: string }> = {
   0: { condition: 'Clear sky', icon: 'sun' },
   1: { condition: 'Mainly clear', icon: 'sun' },

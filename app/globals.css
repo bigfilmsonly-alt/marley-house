@@ -1,46 +1,47 @@
 @import "tailwindcss";
 
-/* ─── Design Tokens — BRIGHT JAMAICAN ─── */
+/* ─── Design Tokens — DARK CONTENT-FIRST ─── */
 :root {
-  --bg: #F7F4ED;
-  --bg2: #FFFFFF;
-  --panel: rgba(255, 255, 255, 0.88);
-  --cream: #1A1610;
-  --dim: #6B6358;
-  --gold: #D4A800;
-  --gold-deep: #B8920A;
+  --bg: #0A0A0A;
+  --bg2: #161616;
+  --bg3: #1E1E1E;
+  --panel: rgba(22, 22, 22, 0.92);
+  --cream: #FAFAFA;
+  --dim: #A1A1AA;
+  --gold: #FED100;
+  --gold-deep: #D4A800;
   --ember: #E2622F;
   --green: #009B3A;
   --blue: #1B8ED4;
-  --line: rgba(0, 0, 0, 0.07);
+  --line: rgba(255, 255, 255, 0.08);
 
-  /* Jamaican flag palette */
+  /* Jamaican palette */
   --ja-green: #009B3A;
   --ja-gold: #FED100;
-  --ja-black: #1A1610;
+  --ja-black: #0A0A0A;
 
-  /* Room accents — vivid */
-  --room-coffee: #A06830;
+  /* Rooms — vivid on dark */
+  --room-coffee: #D4A040;
   --room-fire: #E2622F;
-  --room-wisdom: #D4A800;
-  --room-music: #009B3A;
-  --room-legacy: #8B6E4E;
-  --room-family: #D4A800;
-  --room-future: #1B8ED4;
+  --room-wisdom: #FED100;
+  --room-music: #22C55E;
+  --room-legacy: #D4A040;
+  --room-family: #FED100;
+  --room-future: #38BDF8;
 }
 
 @theme inline {
-  --color-bg: #F7F4ED;
-  --color-bg2: #FFFFFF;
-  --color-cream: #1A1610;
-  --color-dim: #6B6358;
-  --color-gold: #D4A800;
-  --color-gold-deep: #B8920A;
+  --color-bg: #0A0A0A;
+  --color-bg2: #161616;
+  --color-cream: #FAFAFA;
+  --color-dim: #A1A1AA;
+  --color-gold: #FED100;
+  --color-gold-deep: #D4A800;
   --color-ember: #E2622F;
   --color-green: #009B3A;
   --color-blue: #1B8ED4;
-  --color-line: rgba(0, 0, 0, 0.07);
-  --color-panel: rgba(255, 255, 255, 0.88);
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-panel: rgba(22, 22, 22, 0.92);
   --font-display: var(--font-fraunces);
   --font-body: var(--font-spline);
 }
@@ -62,24 +63,22 @@ body {
 .rasta-stripe {
   height: 3px;
   background: linear-gradient(to right, var(--ja-green) 33.33%, var(--ja-gold) 33.33% 66.66%, var(--ember) 66.66%);
-  border-radius: 2px;
 }
 
 .rasta-stripe-thick {
-  height: 5px;
+  height: 4px;
   background: linear-gradient(to right, var(--ja-green) 33.33%, var(--ja-gold) 33.33% 66.66%, var(--ember) 66.66%);
-  border-radius: 3px;
 }
 
-/* ─── Film Grain (subtle on light) ─── */
+/* ─── Film Grain ─── */
 .film-grain::after {
   content: '';
   position: fixed;
   inset: 0;
   z-index: 999;
   pointer-events: none;
-  opacity: 0.018;
-  mix-blend-mode: multiply;
+  opacity: 0.025;
+  mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 256px 256px;
   animation: grain 8s steps(10) infinite;
@@ -98,18 +97,14 @@ body {
   90% { transform: translate(-10%, 10%); }
 }
 
-/* ─── Device Frame (CSS-first responsive) ─── */
+/* ─── Device Frame ─── */
 .device-wrapper {
   width: 100%;
   height: 100dvh;
   position: relative;
 }
 .device-ambient { display: none; }
-.device-shell {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
+.device-shell { width: 100%; height: 100%; position: relative; }
 .device-notch { display: none; }
 .device-btn { display: none; }
 .device-viewport {
@@ -127,30 +122,30 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(145deg, #E8E2D6 0%, #F5F0E6 40%, #F0EBE0 100%);
+    background: #000000;
     overflow: hidden;
+  }
+
+  /* Rasta accent top bar on desktop */
+  .device-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--ja-green) 33.33%, var(--ja-gold) 33.33% 66.66%, var(--ember) 66.66%);
+    z-index: 2;
   }
 
   .device-ambient {
     display: block;
     position: absolute;
-    width: 700px;
-    height: 700px;
+    width: 600px;
+    height: 600px;
     border-radius: 50%;
-    opacity: 0.12;
+    opacity: 0.08;
     filter: blur(120px);
     pointer-events: none;
     transition: background 1s ease;
-  }
-
-  /* Rasta accent lines on desktop backdrop */
-  .device-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(to right, var(--ja-green) 33.33%, var(--ja-gold) 33.33% 66.66%, var(--ember) 66.66%);
-    z-index: 2;
   }
 
   .device-shell {
@@ -158,12 +153,12 @@ body {
     width: 396px;
     height: 856px;
     border-radius: 55px;
-    background: linear-gradient(165deg, #FAFAFA 0%, #F0F0F0 30%, #E8E8E8 60%, #E0E0E0 100%);
+    background: linear-gradient(165deg, #2A2A2A 0%, #1A1A1A 30%, #111111 60%, #0A0A0A 100%);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.9),
-      0 0 0 1px rgba(0, 0, 0, 0.08),
-      0 25px 70px rgba(0, 0, 0, 0.12),
-      0 8px 24px rgba(0, 0, 0, 0.06);
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 0 0 1px rgba(255, 255, 255, 0.04),
+      0 30px 80px rgba(0, 0, 0, 0.8),
+      0 0 120px rgba(226, 98, 47, 0.04);
     padding: 3px;
     flex-shrink: 0;
   }
@@ -176,7 +171,7 @@ body {
     transform: translateX(-50%);
     width: 126px;
     height: 37px;
-    background: #1A1610;
+    background: #000;
     border-radius: 20px;
     z-index: 50;
   }
@@ -197,32 +192,12 @@ body {
   .device-btn {
     display: block;
     position: absolute;
-    background: linear-gradient(180deg, #E0E0E0, #C8C8C8);
+    background: linear-gradient(180deg, #2A2A2A, #1A1A1A);
   }
-  .device-btn--silent {
-    left: -3px; top: 160px;
-    width: 4px; height: 30px;
-    border-radius: 2px 0 0 2px;
-    box-shadow: -1px 0 2px rgba(0,0,0,0.08);
-  }
-  .device-btn--vol-up {
-    left: -3px; top: 210px;
-    width: 4px; height: 54px;
-    border-radius: 2px 0 0 2px;
-    box-shadow: -1px 0 2px rgba(0,0,0,0.08);
-  }
-  .device-btn--vol-down {
-    left: -3px; top: 274px;
-    width: 4px; height: 54px;
-    border-radius: 2px 0 0 2px;
-    box-shadow: -1px 0 2px rgba(0,0,0,0.08);
-  }
-  .device-btn--power {
-    right: -3px; top: 232px;
-    width: 4px; height: 82px;
-    border-radius: 0 2px 2px 0;
-    box-shadow: 1px 0 2px rgba(0,0,0,0.08);
-  }
+  .device-btn--silent { left: -3px; top: 160px; width: 4px; height: 30px; border-radius: 2px 0 0 2px; }
+  .device-btn--vol-up { left: -3px; top: 210px; width: 4px; height: 54px; border-radius: 2px 0 0 2px; }
+  .device-btn--vol-down { left: -3px; top: 274px; width: 4px; height: 54px; border-radius: 2px 0 0 2px; }
+  .device-btn--power { right: -3px; top: 232px; width: 4px; height: 82px; border-radius: 0 2px 2px 0; }
 
   .device-viewport {
     border-radius: 52px;
@@ -230,7 +205,7 @@ body {
   }
 }
 
-/* ─── Fade-up reveal ─── */
+/* ─── Animations ─── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -247,16 +222,10 @@ body {
 .stagger > *:nth-child(5) { animation-delay: 0.4s; }
 .stagger > *:nth-child(6) { animation-delay: 0.48s; }
 
-/* ─── Ambient section glow ─── */
 .section-glow {
   position: absolute;
-  top: -120px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.08;
+  top: -120px; left: 50%; transform: translateX(-50%);
+  width: 300px; height: 300px;
+  border-radius: 50%; filter: blur(90px); opacity: 0.1;
   pointer-events: none;
 }
