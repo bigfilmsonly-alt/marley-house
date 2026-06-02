@@ -50,6 +50,13 @@ export default function Threshold() {
               className="w-[100vw] max-w-[500px] h-auto"
               priority
             />
+            <Image
+              src="/brand/rohan-signature.png"
+              alt="Rohan Marley Signature"
+              width={140}
+              height={50}
+              className="mt-8 w-[140px] h-auto opacity-50 mx-auto"
+            />
           </motion.div>
 
           <motion.p

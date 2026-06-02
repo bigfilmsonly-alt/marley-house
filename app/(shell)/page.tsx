@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { wisdomCards } from '@/content/wisdom';
-import { stories } from '@/content/stories';
 
 /* ── static data ─────────────────────────────────────────────── */
 
@@ -16,16 +15,19 @@ const drop = {
 
 const narrativePillars = [
   {
+    key: 'landscape',
     image: '/lion-order/field-sunset.jpg',
     title: 'The Landscape',
     subtitle: 'Where the root meets the soil.',
   },
   {
+    key: 'culture',
     image: '/lion-order/culture.jpg',
     title: 'The Culture',
     subtitle: 'What the people carry forward.',
   },
   {
+    key: 'values',
     image: '/lion-order/rohan-bw.jpg',
     title: 'The Values',
     subtitle: 'What we will not compromise.',
@@ -66,7 +68,7 @@ const codesOfLionOrder = [
   {
     name: 'Our Way',
     description:
-      'We live by higher principles, spreading the love and the herb to all. We are joy seekers and troublemakers \u2014 always have been, always will be.',
+      'We live by higher principles, spreading the love and the herb to all. We are joy seekers and troublemakers — always have been, always will be.',
   },
   {
     name: 'Respect Your Nature',
@@ -92,7 +94,7 @@ const maison = [
     crest: '/brand/lion-head-gold.png',
     name: 'Lion Order',
     description:
-      'Sacred herb. Elevated ritual. The cannabis arm of the Marley legacy \u2014 a movement of professional athletes, activists, and visionaries seeking everlasting change.',
+      'Sacred herb. Elevated ritual. The cannabis arm of the Marley legacy — a movement of professional athletes, activists, and visionaries seeking everlasting change.',
   },
   {
     crest: '/brand/lion-crest-clean.png',
@@ -120,6 +122,7 @@ const communityPages = [
 /* ── page ─────────────────────────────────────────────────────── */
 
 export default function HomePage() {
+  const [openPillar, setOpenPillar] = useState<string | null>(null);
   const [expandedWisdom, setExpandedWisdom] = useState<string | null>(null);
 
   const handleBackToSplash = () => {
@@ -127,6 +130,10 @@ export default function HomePage() {
       sessionStorage.removeItem('marley-threshold');
       window.location.reload();
     }
+  };
+
+  const togglePillar = (key: string) => {
+    setOpenPillar(openPillar === key ? null : key);
   };
 
   return (
@@ -151,11 +158,9 @@ export default function HomePage() {
 
       {/* ═══════════════════════════════════════════════════════════
           1. R-M MONOGRAM HERO — Large monogram on pure black
-             This is the FIRST thing you see after entering.
       ═══════════════════════════════════════════════════════════ */}
       <section className="w-full bg-black pt-16 pb-12">
         <div className="flex flex-col items-center justify-center px-8">
-          {/* Large monogram */}
           <div className="relative w-[220px] h-[220px] mb-8">
             <Image
               src="/brand/rhr-monogram-transparent.png"
@@ -167,26 +172,22 @@ export default function HomePage() {
             />
           </div>
 
-          {/* Tagline */}
           <p className="font-display text-2xl text-[var(--cream)] italic leading-[1.4] tracking-[0.01em] text-center mb-8">
             Awaken the lion<br />in everyone.
           </p>
 
-          {/* Gold rule */}
           <div className="gold-rule w-full max-w-[200px]" />
 
-          {/* Subtle house label */}
           <p className="text-[8px] tracking-[0.5em] uppercase text-[var(--dim)] mt-6">
             Marley House
           </p>
         </div>
       </section>
 
-      {/* Gold rule */}
       <div className="gold-rule mx-8" />
 
       {/* ═══════════════════════════════════════════════════════════
-          2. WELCOME TEXT — Lion Order introduction (p03)
+          2. WELCOME TEXT — Lion Order introduction
       ═══════════════════════════════════════════════════════════ */}
       <section className="px-8 py-16 text-center">
         <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-6">
@@ -214,7 +215,6 @@ export default function HomePage() {
         </p>
       </section>
 
-      {/* Gold rule */}
       <div className="gold-rule mx-8" />
 
       {/* ═══════════════════════════════════════════════════════════
@@ -254,11 +254,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Gold rule */}
       <div className="gold-rule mx-8" />
 
       {/* ═══════════════════════════════════════════════════════════
-          4. NARRATIVE PILLARS — The Landscape, The Culture, The Values (p20)
+          4. NARRATIVE PILLARS — 3 tappable accordion cards
       ═══════════════════════════════════════════════════════════ */}
       <section className="px-6 py-14">
         <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-3 text-center">
@@ -269,35 +268,222 @@ export default function HomePage() {
         </p>
 
         <div className="space-y-4">
-          {narrativePillars.map((pillar) => (
-            <div
-              key={pillar.title}
-              className="relative w-full aspect-[16/9] overflow-hidden"
-            >
-              <Image
-                src={pillar.image}
-                alt={pillar.title}
-                fill
-                className="object-cover"
-                sizes="100vw"
-              />
-              {/* Dark gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-              {/* Text overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <p className="font-display text-xl text-[var(--gold)] italic leading-tight mb-1">
-                  {pillar.title}
-                </p>
-                <p className="font-body text-[12px] text-[var(--cream)] leading-[1.6] font-light opacity-80">
-                  {pillar.subtitle}
-                </p>
+          {narrativePillars.map((pillar) => {
+            const isOpen = openPillar === pillar.key;
+            return (
+              <div key={pillar.key}>
+                {/* Tappable image card */}
+                <button
+                  onClick={() => togglePillar(pillar.key)}
+                  className="relative w-full aspect-[4/3] overflow-hidden cursor-pointer block"
+                  aria-expanded={isOpen}
+                >
+                  <Image
+                    src={pillar.image}
+                    alt={pillar.title}
+                    fill
+                    className="object-cover object-center"
+                    sizes="100vw"
+                  />
+                  {/* Dark gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
+                  {/* Text overlay — centered */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center px-6">
+                    <p className="font-display text-2xl text-[var(--gold)] italic leading-tight mb-2">
+                      {pillar.title}
+                    </p>
+                    <p className="font-body text-[12px] text-[var(--cream)] leading-[1.6] font-light opacity-80 mb-4">
+                      {pillar.subtitle}
+                    </p>
+                    {/* Chevron indicator */}
+                    {isOpen ? (
+                      <ChevronUp className="w-5 h-5 text-[var(--gold)] opacity-70" />
+                    ) : (
+                      <ChevronDown className="w-5 h-5 text-[var(--gold)] opacity-70" />
+                    )}
+                  </div>
+                </button>
+
+                {/* Expandable content panel */}
+                <div
+                  className="overflow-hidden transition-all duration-500 ease-in-out"
+                  style={{
+                    maxHeight: isOpen ? '2000px' : '0px',
+                    opacity: isOpen ? 1 : 0,
+                  }}
+                >
+                  <div className="bg-[var(--panel)] border border-[var(--line)] border-t-0 px-6 py-10">
+
+                    {/* ── LANDSCAPE: Brand Truths + Quality Factors ── */}
+                    {pillar.key === 'landscape' && (
+                      <>
+                        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-3 text-center">
+                          Summary Truths
+                        </p>
+                        <p className="font-display text-lg text-[var(--cream)] italic leading-[1.5] text-center mb-8">
+                          What we know to be true.
+                        </p>
+
+                        <div className="space-y-5 mb-10">
+                          {brandTruths.map((truth, i) => (
+                            <div key={truth.name} className="border-l-2 border-[var(--gold)] pl-5 py-1">
+                              <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-2">
+                                {String(i + 1).padStart(2, '0')} &mdash; {truth.name}
+                              </p>
+                              <p className="font-display text-base text-[var(--cream)] italic leading-[1.6]">
+                                &ldquo;{truth.statement}&rdquo;
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="gold-rule mb-8" />
+
+                        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-3 text-center">
+                          Quality
+                        </p>
+                        <p className="font-display text-lg text-[var(--cream)] italic leading-[1.5] text-center mb-6">
+                          Five Quality Factors
+                        </p>
+
+                        <div className="flex flex-wrap justify-center gap-3">
+                          {qualityFactors.map((factor) => (
+                            <span
+                              key={factor}
+                              className="border border-[var(--gold)] text-[var(--gold)] text-[11px] tracking-[0.2em] uppercase px-5 py-2.5 font-body"
+                            >
+                              {factor}
+                            </span>
+                          ))}
+                        </div>
+
+                        <p className="font-body text-[12px] text-[var(--dim)] leading-[1.8] font-light text-center mt-6 max-w-[320px] mx-auto">
+                          Every product, every experience, every moment is measured against these five pillars.
+                          Nothing leaves the house without passing through all five.
+                        </p>
+                      </>
+                    )}
+
+                    {/* ── CULTURE: Codes of Lion Order ── */}
+                    {pillar.key === 'culture' && (
+                      <>
+                        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-3 text-center">
+                          Our Codes
+                        </p>
+                        <p className="font-display text-xl text-[var(--cream)] italic leading-[1.35] text-center mb-8">
+                          Codes of Lion Order
+                        </p>
+
+                        <div className="space-y-5">
+                          {codesOfLionOrder.map((code) => (
+                            <div key={code.name} className="border border-[var(--line)] bg-[var(--bg)] p-5">
+                              <div className="flex items-start gap-4">
+                                <span className="mt-2 w-2 h-2 bg-[var(--gold)] shrink-0" />
+                                <div>
+                                  <p className="font-display text-base text-[var(--cream)] italic leading-tight mb-2">
+                                    {code.name}
+                                  </p>
+                                  <p className="font-body text-[13px] text-[var(--dim)] leading-[1.8] font-light">
+                                    {code.description}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </>
+                    )}
+
+                    {/* ── VALUES: Wisdom + Mission/Vision ── */}
+                    {pillar.key === 'values' && (
+                      <>
+                        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-8 text-center">
+                          Wisdom
+                        </p>
+
+                        <div className="space-y-5 mb-10">
+                          {wisdomCards.slice(0, 3).map((card) => {
+                            const isWisdomOpen = expandedWisdom === card.id;
+                            return (
+                              <button
+                                key={card.id}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setExpandedWisdom(isWisdomOpen ? null : card.id);
+                                }}
+                                className="w-full text-left border border-[var(--line)] bg-[var(--bg)] p-5 cursor-pointer transition-colors hover:border-[var(--gold)]/30"
+                              >
+                                <span className="font-display text-3xl text-[var(--gold)] leading-none block mb-3">
+                                  &ldquo;
+                                </span>
+
+                                <p className="font-display text-base text-[var(--cream)] italic leading-[1.6]">
+                                  {card.lesson}
+                                </p>
+
+                                {isWisdomOpen && (
+                                  <p className="font-body text-[13px] text-[var(--dim)] leading-[1.8] mt-4 font-light">
+                                    {card.expanded}
+                                  </p>
+                                )}
+
+                                <div className="flex items-center justify-between mt-4">
+                                  <p className="text-[9px] tracking-[0.3em] uppercase text-[var(--dim)]">
+                                    Room: {card.room}
+                                  </p>
+                                  {isWisdomOpen ? (
+                                    <ChevronUp className="w-4 h-4 text-[var(--dim)]" />
+                                  ) : (
+                                    <ChevronDown className="w-4 h-4 text-[var(--dim)]" />
+                                  )}
+                                </div>
+                              </button>
+                            );
+                          })}
+                        </div>
+
+                        <div className="gold-rule mb-10" />
+
+                        {/* Mission */}
+                        <div className="text-center mb-12">
+                          <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-6">
+                            Our Mission
+                          </p>
+                          <p className="font-display text-xl text-[var(--cream)] italic leading-[1.5] max-w-[340px] mx-auto mb-6">
+                            Create the highest quality goods that elevate consciousness and culture.
+                          </p>
+                          <p className="font-body text-[13px] text-[var(--dim)] leading-[1.8] font-light max-w-[340px] mx-auto">
+                            From the soil to the soul. Everything we touch carries intention, heritage, and the
+                            unwavering belief that quality is a form of respect.
+                          </p>
+                        </div>
+
+                        <div className="gold-rule max-w-[80px] mx-auto mb-12" />
+
+                        {/* Vision */}
+                        <div className="text-center">
+                          <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-6">
+                            Our Vision
+                          </p>
+                          <p className="font-display text-xl text-[var(--cream)] italic leading-[1.5] max-w-[340px] mx-auto mb-6">
+                            To awaken the lion in everyone.
+                          </p>
+                          <p className="font-body text-[13px] text-[var(--dim)] leading-[1.8] font-light max-w-[340px] mx-auto">
+                            The lion is not an animal. It is a frequency. A way of standing in the world — with
+                            dignity, with purpose, with the courage to build something that outlasts you.
+                          </p>
+                        </div>
+                      </>
+                    )}
+
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
-      {/* Gold rule */}
       <div className="gold-rule mx-8" />
 
       {/* ═══════════════════════════════════════════════════════════
@@ -309,10 +495,9 @@ export default function HomePage() {
             src="/lion-order/rohan-portrait.jpg"
             alt="Rohan Marley"
             fill
-            className="object-cover object-top"
+            className="object-cover object-center"
             sizes="100vw"
           />
-          {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/40 to-transparent" />
         </div>
 
@@ -333,7 +518,6 @@ export default function HomePage() {
             that shelters the next generation.
           </p>
 
-          {/* Rohan signature (p50) */}
           <Image
             src="/brand/rohan-signature.png"
             alt="Rohan Marley signature"
@@ -344,104 +528,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Gold rule */}
       <div className="gold-rule mx-8" />
 
       {/* ═══════════════════════════════════════════════════════════
-          6. BRAND TRUTHS — The 4 truths from p10
-      ═══════════════════════════════════════════════════════════ */}
-      <section className="px-8 py-14">
-        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-3 text-center">
-          Summary Truths
-        </p>
-        <p className="font-display text-lg text-[var(--cream)] italic leading-[1.5] text-center mb-10">
-          What we know to be true.
-        </p>
-
-        <div className="space-y-6">
-          {brandTruths.map((truth, i) => (
-            <div key={truth.name} className="border-l-2 border-[var(--gold)] pl-5 py-1">
-              <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-2">
-                {String(i + 1).padStart(2, '0')} &mdash; {truth.name}
-              </p>
-              <p className="font-display text-base text-[var(--cream)] italic leading-[1.6]">
-                &ldquo;{truth.statement}&rdquo;
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Gold rule */}
-      <div className="gold-rule mx-8" />
-
-      {/* ═══════════════════════════════════════════════════════════
-          7. CODES OF LION ORDER — Full 7 codes from p25
-      ═══════════════════════════════════════════════════════════ */}
-      <section className="px-6 py-14">
-        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-3 text-center">
-          Our Codes
-        </p>
-        <h2 className="font-display text-2xl text-[var(--cream)] italic leading-[1.35] text-center mb-10">
-          Codes of Lion Order
-        </h2>
-
-        <div className="space-y-8">
-          {codesOfLionOrder.map((code, i) => (
-            <div key={code.name} className="border border-[var(--line)] bg-[var(--panel)] p-6">
-              {/* Gold dot accent */}
-              <div className="flex items-start gap-4">
-                <span className="mt-2 w-2 h-2 bg-[var(--gold)] shrink-0" />
-                <div>
-                  <p className="font-display text-lg text-[var(--cream)] italic leading-tight mb-3">
-                    {code.name}
-                  </p>
-                  <p className="font-body text-[13px] text-[var(--dim)] leading-[1.8] font-light">
-                    {code.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Gold rule */}
-      <div className="gold-rule mx-8" />
-
-      {/* ═══════════════════════════════════════════════════════════
-          8. FIVE QUALITY FACTORS — from p15
-      ═══════════════════════════════════════════════════════════ */}
-      <section className="px-6 py-14">
-        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-3 text-center">
-          Quality
-        </p>
-        <p className="font-display text-lg text-[var(--cream)] italic leading-[1.5] text-center mb-10">
-          Five Quality Factors
-        </p>
-
-        <div className="flex flex-wrap justify-center gap-3">
-          {qualityFactors.map((factor) => (
-            <span
-              key={factor}
-              className="border border-[var(--gold)] text-[var(--gold)] text-[11px] tracking-[0.2em] uppercase px-5 py-2.5 font-body"
-            >
-              {factor}
-            </span>
-          ))}
-        </div>
-
-        <p className="font-body text-[12px] text-[var(--dim)] leading-[1.8] font-light text-center mt-8 max-w-[320px] mx-auto">
-          Every product, every experience, every moment is measured against these five pillars.
-          Nothing leaves the house without passing through all five.
-        </p>
-      </section>
-
-      {/* Gold rule */}
-      <div className="gold-rule mx-8" />
-
-      {/* ═══════════════════════════════════════════════════════════
-          9. COMMUNITY — from p30, lifestyle imagery
+          6. COMMUNITY — horizontal scroll + collage
       ═══════════════════════════════════════════════════════════ */}
       <section className="py-14">
         <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-3 text-center">
@@ -451,7 +541,6 @@ export default function HomePage() {
           Our Community
         </p>
 
-        {/* Horizontal scroll of brand book pages */}
         <div className="flex gap-3 overflow-x-auto px-6 pb-4 scrollbar-hide">
           {communityPages.map((src, i) => (
             <div
@@ -462,20 +551,19 @@ export default function HomePage() {
                 src={src}
                 alt={`Community ${i + 1}`}
                 fill
-                className="object-cover"
+                className="object-cover object-center"
                 sizes="224px"
               />
             </div>
           ))}
         </div>
 
-        {/* Full-width p40 community collage */}
         <div className="relative w-full aspect-[16/9] mt-6 overflow-hidden">
           <Image
             src="/brandbook/p40.jpg"
             alt="Lion Order Community"
             fill
-            className="object-cover"
+            className="object-cover object-center"
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent" />
@@ -487,11 +575,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Gold rule */}
       <div className="gold-rule mx-8" />
 
       {/* ═══════════════════════════════════════════════════════════
-          10. THE MAISON — 3 brand cards
+          7. THE MAISON — 3 brand cards
       ═══════════════════════════════════════════════════════════ */}
       <section className="px-6 py-14">
         <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-3 text-center">
@@ -527,109 +614,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Gold rule */}
       <div className="gold-rule mx-8" />
 
       {/* ═══════════════════════════════════════════════════════════
-          11. WISDOM — 3 expandable wisdom cards
+          8. FOOTER — Large Lion Order logo, proud and centered
       ═══════════════════════════════════════════════════════════ */}
-      <section className="px-6 py-14">
-        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-8 text-center">
-          Wisdom
-        </p>
-
-        <div className="space-y-6">
-          {wisdomCards.slice(0, 3).map((card) => {
-            const isExpanded = expandedWisdom === card.id;
-            return (
-              <button
-                key={card.id}
-                onClick={() =>
-                  setExpandedWisdom(isExpanded ? null : card.id)
-                }
-                className="w-full text-left border border-[var(--line)] bg-[var(--panel)] p-6 cursor-pointer transition-colors hover:border-[var(--gold)]/30"
-              >
-                {/* Gold quote mark */}
-                <span className="font-display text-3xl text-[var(--gold)] leading-none block mb-3">
-                  &ldquo;
-                </span>
-
-                <p className="font-display text-base text-[var(--cream)] italic leading-[1.6]">
-                  {card.lesson}
-                </p>
-
-                {isExpanded && (
-                  <p className="font-body text-[13px] text-[var(--dim)] leading-[1.8] mt-4 font-light">
-                    {card.expanded}
-                  </p>
-                )}
-
-                <div className="flex items-center justify-between mt-4">
-                  <p className="text-[9px] tracking-[0.3em] uppercase text-[var(--dim)]">
-                    Room: {card.room}
-                  </p>
-                  {isExpanded ? (
-                    <ChevronUp className="w-4 h-4 text-[var(--dim)]" />
-                  ) : (
-                    <ChevronDown className="w-4 h-4 text-[var(--dim)]" />
-                  )}
-                </div>
-              </button>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Gold rule */}
-      <div className="gold-rule mx-8" />
-
-      {/* ═══════════════════════════════════════════════════════════
-          12. MISSION / VISION — generous spacing
-      ═══════════════════════════════════════════════════════════ */}
-      <section className="px-8 py-20 text-center">
-        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-6">
-          Our Mission
-        </p>
-        <p className="font-display text-xl text-[var(--cream)] italic leading-[1.5] max-w-[340px] mx-auto mb-6">
-          Create the highest quality goods that elevate consciousness and culture.
-        </p>
-        <p className="font-body text-[13px] text-[var(--dim)] leading-[1.8] font-light max-w-[340px] mx-auto">
-          From the soil to the soul. Everything we touch carries intention, heritage, and the
-          unwavering belief that quality is a form of respect.
-        </p>
-
-        <div className="gold-rule max-w-[80px] mx-auto my-14" />
-
-        <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-6">
-          Our Vision
-        </p>
-        <p className="font-display text-xl text-[var(--cream)] italic leading-[1.5] max-w-[340px] mx-auto mb-6">
-          To awaken the lion in everyone.
-        </p>
-        <p className="font-body text-[13px] text-[var(--dim)] leading-[1.8] font-light max-w-[340px] mx-auto">
-          The lion is not an animal. It is a frequency. A way of standing in the world — with
-          dignity, with purpose, with the courage to build something that outlasts you.
-        </p>
-      </section>
-
-      {/* Gold rule */}
-      <div className="gold-rule mx-8" />
-
-      {/* ═══════════════════════════════════════════════════════════
-          13. FOOTER — Lion crest + Est. 2022
-      ═══════════════════════════════════════════════════════════ */}
-      <footer className="px-8 py-16 text-center">
+      <footer className="px-8 py-20 text-center">
         <Image
-          src="/brand/lion-crest-icon.png"
+          src="/brand/lion-head-gold.png"
           alt="Lion Order"
-          width={40}
-          height={40}
-          className="mx-auto mb-5 opacity-40"
+          width={120}
+          height={120}
+          className="mx-auto mb-8 opacity-80"
         />
-        <p className="text-[var(--dim)] text-[8px] tracking-[0.4em] uppercase mb-2">
+        <p className="text-[var(--dim)] text-[9px] tracking-[0.4em] uppercase mb-3">
           Lion Order &middot; Est. 2022
         </p>
-        <p className="text-[var(--dim)] text-[7px] tracking-[0.2em] uppercase opacity-50">
+        <p className="text-[var(--dim)] text-[8px] tracking-[0.2em] uppercase opacity-60">
           One Love. One House. One Order.
         </p>
       </footer>
