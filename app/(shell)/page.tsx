@@ -26,10 +26,9 @@ const houses = [
   {
     name: 'Lion Order',
     tagline: 'The movement. Anime, culture, lifestyle.',
-    href: 'https://lionorder.com/',
+    href: '/lion-order',
     icon: Crown,
     accent: '#c4a049',
-    external: true,
   },
   {
     name: 'RoMarley Beach House',
