@@ -135,7 +135,7 @@ export function VideoCard({
       {/* Large thumbnail */}
       <div className="relative w-full aspect-video">
         {thumbUrl ? (
-          <img src={thumbUrl} alt="" className="w-full h-full object-cover" loading="lazy" />
+          <img src={thumbUrl} alt={title} className="w-full h-full object-cover" loading="lazy" />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-[var(--ember)]/20 via-[var(--bg2)] to-[var(--gold)]/10" />
         )}

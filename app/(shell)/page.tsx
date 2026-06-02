@@ -77,6 +77,11 @@ export default function HomePage() {
         {/* Gold glow behind lion */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[350px] h-[350px] rounded-full bg-[var(--gold)] blur-[120px] opacity-[0.15] pointer-events-none" />
 
+        {/* ROHAN MARLEY — name above the lion, bright */}
+        <h1 className="relative font-display text-4xl text-[var(--gold)] font-light tracking-[0.08em] uppercase mb-4 drop-shadow-[0_0_20px_rgba(244,199,31,0.3)]">
+          Rohan Marley
+        </h1>
+
         {/* Lion Head — hero crest, big and bright */}
         <div className="relative">
           <Image
@@ -89,13 +94,16 @@ export default function HomePage() {
           />
         </div>
 
-        <p className="text-[var(--gold)] text-[9px] tracking-[0.5em] uppercase font-medium mb-2">
-          The Maison of
-        </p>
-        <h1 className="font-display text-4xl text-[var(--cream)] font-light tracking-[0.06em] uppercase mb-2">
-          Rohan Marley
-        </h1>
-        <p className="text-[10px] text-[var(--dim)] font-light italic mt-0.5">Flower to the People</p>
+        {/* R-M Monogram — underneath the lion */}
+        <Image
+          src="/brand/rhr-monogram.jpg"
+          alt="R-M Monogram"
+          width={80}
+          height={80}
+          className="mx-auto mb-4 rounded-lg"
+        />
+
+        <p className="text-[10px] text-[var(--dim)] font-light italic">Flower to the People</p>
 
         {/* Gold rule */}
         <div className="gold-rule w-16 mx-auto my-4" />

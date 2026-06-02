@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Coffee, X, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { blendQuizComplete } from '@/lib/tracking';
+import { useFocusTrap } from '@/lib/useFocusTrap';
 
 const QUIZ = [
   { q: 'How does your morning start?', a: [
@@ -66,6 +67,7 @@ export default function BlendQuiz({ open, onClose }: BlendQuizProps) {
   const [name, setName] = useState('');
   const [gated, setGated] = useState(false);
   const [captured, setCaptured] = useState(false);
+  const trapRef = useFocusTrap(open);
 
   function reset() {
     setStep(0);
@@ -123,6 +125,10 @@ export default function BlendQuiz({ open, onClose }: BlendQuizProps) {
             onClick={handleClose}
           />
           <motion.div
+            ref={trapRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Find Your Blend quiz"
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
@@ -130,12 +136,12 @@ export default function BlendQuiz({ open, onClose }: BlendQuizProps) {
             className="fixed bottom-0 left-0 right-0 z-50 bg-[var(--bg)] border-t border-[var(--line)] rounded-t-3xl max-h-[85vh] overflow-y-auto md:left-1/2 md:-translate-x-1/2 md:max-w-[390px]"
           >
             <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 rounded-full bg-[var(--dim)]/30" />
+              <div className="w-10 h-1 rounded-full bg-[var(--dim)]/30" aria-hidden="true" />
             </div>
 
             <div className="px-6 pb-8">
               <div className="flex justify-end mb-2">
-                <button onClick={handleClose} className="p-1"><X size={18} className="text-[var(--dim)]" /></button>
+                <button onClick={handleClose} aria-label="Close" className="p-1"><X size={18} className="text-[var(--dim)]" /></button>
               </div>
 
               {/* Quiz questions */}

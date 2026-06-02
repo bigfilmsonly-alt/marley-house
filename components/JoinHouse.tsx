@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Sparkles, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { joinHouse } from '@/lib/tracking';
+import { useFocusTrap } from '@/lib/useFocusTrap';
 
 interface JoinHouseProps {
   open: boolean;
@@ -14,6 +15,7 @@ interface JoinHouseProps {
 export default function JoinHouse({ open, onClose, source = 'hero' }: JoinHouseProps) {
   const [email, setEmail] = useState('');
   const [joined, setJoined] = useState(false);
+  const trapRef = useFocusTrap(open);
 
   async function submit() {
     if (!email.includes('@')) return;
@@ -49,6 +51,10 @@ export default function JoinHouse({ open, onClose, source = 'hero' }: JoinHouseP
             onClick={handleClose}
           />
           <motion.div
+            ref={trapRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Join the House"
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
@@ -61,7 +67,7 @@ export default function JoinHouse({ open, onClose, source = 'hero' }: JoinHouseP
 
             <div className="px-6 pb-8">
               <div className="flex justify-end mb-2">
-                <button onClick={handleClose} className="p-1"><X size={18} className="text-[var(--dim)]" /></button>
+                <button onClick={handleClose} aria-label="Close" className="p-1"><X size={18} className="text-[var(--dim)]" /></button>
               </div>
 
               {!joined ? (

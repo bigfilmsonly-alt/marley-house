@@ -3,6 +3,7 @@
 import { createContext, useContext, useState, useCallback } from 'react';
 import { X, ExternalLink, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useFocusTrap } from '@/lib/useFocusTrap';
 
 interface BrowserState {
   url: string;
