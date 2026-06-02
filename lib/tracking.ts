@@ -8,19 +8,13 @@ declare global {
   }
 }
 
-function gtag(...args: unknown[]) {
-  if (typeof window !== 'undefined' && window.dataLayer) {
-    window.dataLayer.push(Object.fromEntries(args.map((a, i) => [i === 0 ? 'event' : `param_${i}`, a])));
-  }
-}
-
 function fbq(...args: unknown[]) {
   if (typeof window !== 'undefined' && window.fbq) {
     window.fbq(...args);
   }
 }
 
-function trackEvent(name: string, params?: Record<string, string | number | boolean>) {
+export function trackEvent(name: string, params?: Record<string, string | number | boolean>) {
   // GA4 via dataLayer
   if (typeof window !== 'undefined' && window.dataLayer) {
     window.dataLayer.push({ event: name, ...params });
@@ -29,10 +23,34 @@ function trackEvent(name: string, params?: Record<string, string | number | bool
   fbq('trackCustom', name, params);
 }
 
-// ── Marley House Events ──
+// ── Lion Order / R-M Events ──
+
+export function enterApp() {
+  trackEvent('enter');
+}
+
+export function tabView(tab: string) {
+  trackEvent('tabView', { tab });
+}
+
+export function roomOpen(room: string) {
+  trackEvent('roomOpen', { room });
+}
+
+export function dropRead(dropNumber: number, tag: string) {
+  trackEvent('dropRead', { dropNumber, tag });
+}
 
 export function joinHouse(source: string) {
   trackEvent('joinHouse', { source });
+}
+
+export function linkOut(name: string, url: string) {
+  trackEvent('linkOut', { name, url });
+}
+
+export function watchVideo(videoId: string, title: string) {
+  trackEvent('watch', { videoId, title });
 }
 
 export function blendQuizComplete(blend: string) {
@@ -41,10 +59,6 @@ export function blendQuizComplete(blend: string) {
 
 export function addToBag(productId: string) {
   trackEvent('addToBag', { productId });
-}
-
-export function watchVideo(videoId: string, title: string) {
-  trackEvent('watchVideo', { videoId, title });
 }
 
 export function askSubmit() {
@@ -60,4 +74,4 @@ export function buttonClick(name: string, location: string) {
 }
 
 // Re-export for direct use
-export { trackEvent, gtag };
+export { fbq };

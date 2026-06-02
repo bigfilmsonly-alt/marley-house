@@ -19,26 +19,35 @@ export async function POST(req: NextRequest) {
       if (error) console.error('Supabase insert error:', error);
     }
 
-    // Send welcome email
+    // Send welcome email — dark brand
     const resend = getResend();
     if (resend) {
       await resend.emails.send({
         from: fromEmail,
         to: email,
-        subject: 'Welcome to Marley House',
+        subject: 'Welcome to the House',
         html: `
-          <div style="font-family: Georgia, serif; max-width: 520px; margin: 0 auto; color: #1a1a1a;">
-            <h1 style="font-weight: 300; font-size: 28px; margin-bottom: 8px;">Welcome to the House.</h1>
-            <p style="color: #666; font-size: 15px; line-height: 1.7;">
-              You just walked through the door. From here, you will receive daily drops —
-              a story, a lesson, a song — from the rooms of Marley House.
+          <div style="font-family: Georgia, 'Cormorant Garamond', serif; max-width: 520px; margin: 0 auto; background: #0b0805; padding: 48px 32px; color: #F3E9D8;">
+            <div style="text-align: center; margin-bottom: 32px;">
+              <img src="https://marley-house.vercel.app/brand/lion-crest-icon.png" alt="Lion Order" width="48" height="48" style="opacity: 0.7;" />
+            </div>
+            <h1 style="font-weight: 300; font-size: 28px; margin-bottom: 8px; text-align: center; letter-spacing: 0.04em; color: #F3E9D8;">
+              Welcome to the House.
+            </h1>
+            <div style="width: 40px; height: 1px; background: #B98524; margin: 24px auto; opacity: 0.4;"></div>
+            <p style="color: #b8a87f; font-size: 15px; line-height: 1.8; text-align: center;">
+              You just walked through the door. From here, you will receive daily drops &mdash;
+              a story, a lesson, a song &mdash; from the rooms of the maison.
             </p>
-            <p style="color: #666; font-size: 15px; line-height: 1.7;">
-              Coffee is the invitation. Belonging is the product.
+            <p style="color: #b8a87f; font-size: 15px; line-height: 1.8; text-align: center; margin-top: 16px;">
+              No noise. No incentives. Just the inner circle.
             </p>
-            <hr style="border: none; border-top: 1px solid #e5e5e5; margin: 24px 0;" />
-            <p style="color: #999; font-size: 12px;">
-              Marley House &middot; <a href="https://marley-house.vercel.app" style="color: #a9812f;">Visit the House</a>
+            <div style="width: 40px; height: 1px; background: #B98524; margin: 32px auto; opacity: 0.2;"></div>
+            <p style="color: #825B0D; font-size: 10px; text-align: center; letter-spacing: 0.2em; text-transform: uppercase;">
+              Lion Order &middot; Est. 2022
+            </p>
+            <p style="color: #825B0D; font-size: 10px; text-align: center; margin-top: 12px;">
+              <a href="https://marley-house.vercel.app" style="color: #B98524; text-decoration: none;">Visit the Maison</a>
             </p>
           </div>
         `,

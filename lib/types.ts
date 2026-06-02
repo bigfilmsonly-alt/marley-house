@@ -1,4 +1,4 @@
-export type Room = 'coffee' | 'fire' | 'wisdom' | 'music' | 'legacy' | 'family' | 'future';
+export type Room = 'coffee' | 'fire' | 'wisdom' | 'music' | 'legacy' | 'family' | 'future' | 'healing' | 'movement' | 'story';
 
 export interface Story {
   id: string;

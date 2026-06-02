@@ -2,9 +2,10 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Flame, Coffee, Play, Shirt, Sparkles } from 'lucide-react';
+import { Home, BookOpen, Crown, Palette, Library, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { LucideIcon } from 'lucide-react';
+import { tabView } from '@/lib/tracking';
 
 interface Tab {
   href: string;
@@ -13,19 +14,20 @@ interface Tab {
 }
 
 const tabs: Tab[] = [
-  { href: '/', icon: Flame, label: 'Home' },
-  { href: '/coffee', icon: Coffee, label: 'Coffee' },
-  { href: '/watch', icon: Play, label: 'Watch' },
-  { href: '/merch', icon: Shirt, label: 'Merch' },
-  { href: '/ask', icon: Sparkles, label: 'Ask' },
+  { href: '/', icon: Home, label: 'Home' },
+  { href: '/story', icon: BookOpen, label: 'Story' },
+  { href: '/brand', icon: Crown, label: 'Brand' },
+  { href: '/identity', icon: Palette, label: 'Identity' },
+  { href: '/book', icon: Library, label: 'Book' },
+  { href: '/connect', icon: Globe, label: 'Connect' },
 ];
 
 export default function TabBar() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex items-center justify-around border-t border-[var(--line)] bg-[var(--bg)]/90 backdrop-blur-xl">
-      <div className="flex items-center justify-around w-full px-2 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
+    <nav className="flex items-center justify-around border-t border-[var(--line)] bg-[var(--bg)]/95 backdrop-blur-xl">
+      <div className="flex items-center justify-around w-full px-1 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
         {tabs.map((tab) => {
           const active =
             tab.href === '/' ? pathname === '/' : pathname.startsWith(tab.href);
@@ -34,7 +36,8 @@ export default function TabBar() {
             <Link
               key={tab.href}
               href={tab.href}
-              className="flex flex-col items-center gap-0.5 px-3 py-1 relative"
+              onClick={() => tabView(tab.label)}
+              className="flex flex-col items-center gap-0.5 px-2 py-1 relative"
             >
               <motion.div
                 whileTap={{ scale: 0.82 }}
@@ -49,17 +52,17 @@ export default function TabBar() {
                   />
                 )}
                 <tab.icon
-                  size={22}
+                  size={20}
                   className={
                     active
                       ? 'text-[var(--gold)] relative z-10'
                       : 'text-[var(--dim)] relative z-10'
                   }
-                  strokeWidth={active ? 2.2 : 1.5}
+                  strokeWidth={active ? 2 : 1.4}
                 />
               </motion.div>
               <span
-                className={`font-display text-[10px] tracking-[0.15em] uppercase ${
+                className={`font-display text-[9px] tracking-[0.12em] uppercase ${
                   active
                     ? 'text-[var(--gold)] font-medium'
                     : 'text-[var(--dim)] font-light'

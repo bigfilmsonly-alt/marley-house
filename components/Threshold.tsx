@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { enterApp } from '@/lib/tracking';
 
 export default function Threshold() {
   const [visible, setVisible] = useState(false);
@@ -16,6 +17,7 @@ export default function Threshold() {
   function enter() {
     setVisible(false);
     sessionStorage.setItem('marley-threshold', '1');
+    enterApp();
   }
 
   useEffect(() => {
@@ -33,42 +35,39 @@ export default function Threshold() {
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           onClick={enter}
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center cursor-pointer"
-          style={{ background: '#0A0A0A' }}
+          style={{ background: '#EFC11F' }}
         >
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 2 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 2, ease: [0.16, 1, 0.3, 1] }}
             className="text-center flex flex-col items-center"
           >
             <Image
-              src="/brand/lion-order-crest.png"
+              src="/brand/lion-crest-clean.png"
               alt="Lion Order"
-              width={80}
-              height={80}
-              className="mb-8 opacity-70"
+              width={140}
+              height={140}
+              className="mb-10"
+              priority
             />
 
-            <p className="text-[#D4AF37] text-[9px] tracking-[0.6em] uppercase font-light mb-10">
+            <p className="text-[#1c1810] text-[11px] tracking-[0.5em] uppercase font-medium mb-4">
               Lion Order
             </p>
 
-            <h1 className="text-[#F4F1E8] font-display text-2xl font-light tracking-[0.15em] uppercase mb-3">
-              Flower to<br />the People
-            </h1>
+            <div className="w-10 h-px bg-[#1c1810]/20 mb-4" />
 
-            <div className="w-8 h-px bg-[#D4AF37]/30 my-6" />
-
-            <p className="text-[#5C5549] text-[10px] font-light tracking-[0.12em]">
+            <p className="text-[#1c1810]/50 text-[9px] tracking-[0.3em] uppercase font-light">
               Est. 2022
             </p>
           </motion.div>
 
           <motion.p
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.3 }}
-            transition={{ delay: 3, duration: 1.5 }}
-            className="absolute bottom-16 text-[#5C5549] text-[9px] font-light tracking-[0.4em] uppercase"
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2.5, duration: 1.5 }}
+            className="absolute bottom-16 text-[#1c1810] text-[11px] font-light tracking-[0.5em] uppercase"
           >
             Enter
           </motion.p>
