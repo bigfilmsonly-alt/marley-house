@@ -27,6 +27,7 @@ export const tabGlows: Record<string, string> = {
   '/coffee': '#D4A040',
   '/watch': '#E2622F',
   '/vault': '#FED100',
+  '/merch': '#E2622F',
   '/ask': '#009B3A',
 };
 
