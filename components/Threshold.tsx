@@ -34,43 +34,30 @@ export default function Threshold() {
           exit={{ opacity: 0 }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           onClick={enter}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-start cursor-pointer overflow-hidden"
-          style={{ background: '#EFC11F' }}
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center cursor-pointer"
+          style={{ background: '#0b0805' }}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 1.02 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 2, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col items-center w-full"
+            className="flex flex-col items-center"
           >
-            <div className="relative w-full" style={{ height: '65vh' }}>
-              <Image
-                src="/lion-order/lion-eyes.jpg"
-                alt="Lion Order"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-
-            <div className="text-center mt-6 flex flex-col items-center">
-              <p className="text-[#1c1810] text-[11px] tracking-[0.5em] uppercase font-medium mb-4">
-                Lion Order
-              </p>
-
-              <div className="w-10 h-px bg-[#1c1810]/20 mb-4" />
-
-              <p className="text-[#1c1810]/50 text-[9px] tracking-[0.3em] uppercase font-light">
-                Est. 2022
-              </p>
-            </div>
+            <Image
+              src="/brand/lion-crest-clean.png"
+              alt="Lion Order"
+              width={200}
+              height={200}
+              className="opacity-90"
+              priority
+            />
           </motion.div>
 
           <motion.p
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: 0.4 }}
             transition={{ delay: 2.5, duration: 1.5 }}
-            className="absolute bottom-16 text-[#1c1810] text-[11px] font-light tracking-[0.5em] uppercase"
+            className="absolute bottom-16 text-[var(--dim)] text-[10px] font-light tracking-[0.5em] uppercase"
           >
             Enter
           </motion.p>
