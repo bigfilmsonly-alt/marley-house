@@ -74,11 +74,8 @@ export default function HomePage() {
 
       {/* ═══════ MAISON HERO ═══════ */}
       <div className="relative px-6 pt-8 pb-10 text-center">
-        {/* Monogram */}
-        <Image src="/rhr-logo.png" alt="R-M Monogram" width={42} height={42} className="mx-auto mb-3 opacity-70" />
-
         {/* Lion Head — hero crest */}
-        <Image src="/brand/lion-order-crest.png" alt="Lion Order" width={160} height={160} className="mx-auto mb-5" />
+        <Image src="/brand/lion-order-crest.png" alt="Lion Order" width={220} height={220} className="mx-auto mb-5" />
 
         <p className="text-[var(--gold)] text-[9px] tracking-[0.5em] uppercase font-medium mb-2">
           The Maison of
