@@ -151,7 +151,7 @@ export default function HomePage() {
               <div className="flex items-center gap-4 rounded-xl bg-[var(--bg2)] border border-[var(--line)] p-4 hover:border-[var(--gold)]/20 transition-colors">
                 <div className="w-11 h-11 rounded-xl bg-[var(--gold)]/8 flex items-center justify-center shrink-0 overflow-hidden">
                   {house.crest ? (
-                    <Image src={house.crest} alt="" width={36} height={36} className="object-contain" />
+                    <Image src={house.crest} alt={house.name} width={36} height={36} className="object-contain" />
                   ) : (
                     <Icon size={20} className="text-[var(--gold)]" />
                   )}

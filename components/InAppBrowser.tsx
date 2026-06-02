@@ -54,6 +54,8 @@ function extractDomain(url: string) {
 }
 
 function BrowserOverlay({ state, onClose }: { state: BrowserState | null; onClose: () => void }) {
+  const trapRef = useFocusTrap(!!state);
+
   return (
     <AnimatePresence>
       {state && (
@@ -66,6 +68,10 @@ function BrowserOverlay({ state, onClose }: { state: BrowserState | null; onClos
             onClick={onClose}
           />
           <motion.div
+            ref={trapRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={state.title || 'External link'}
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
@@ -74,7 +80,7 @@ function BrowserOverlay({ state, onClose }: { state: BrowserState | null; onClos
           >
             {/* Browser chrome */}
             <div className="shrink-0 flex items-center gap-2 px-3 py-2.5 border-b border-[var(--line)] bg-[var(--bg2)]">
-              <button onClick={onClose} className="p-1.5 rounded-lg hover:bg-white/5 transition-colors">
+              <button onClick={onClose} aria-label="Close browser" className="p-1.5 rounded-lg hover:bg-white/5 transition-colors">
                 <X size={16} className="text-[var(--dim)]" />
               </button>
               <div className="flex-1 flex items-center gap-1.5 rounded-lg bg-[var(--bg)] border border-[var(--line)] px-3 py-1.5 min-w-0">

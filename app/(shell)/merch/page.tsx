@@ -77,7 +77,7 @@ export default function MerchPage() {
             </h1>
           </div>
           {bagCount > 0 && (
-            <button onClick={() => setBagOpen(true)} className="relative p-2">
+            <button onClick={() => setBagOpen(true)} aria-label={`Shopping bag, ${bagCount} items`} className="relative p-2">
               <ShoppingBag size={20} className="text-[var(--gold)]" />
               <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-[var(--ember)] text-white text-[9px] flex items-center justify-center font-medium">
                 {bagCount}
@@ -337,7 +337,7 @@ export default function MerchPage() {
                       {bag.map((bi) => (
                         <div key={bi.item.id + (bi.size ?? '')} className="flex items-center gap-3 rounded-xl bg-[var(--bg2)] border border-[var(--line)] p-3">
                           <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-[var(--bg)]">
-                            <Image src={bi.item.image} alt="" width={48} height={48} className="w-full h-full object-cover" />
+                            <Image src={bi.item.image} alt={bi.item.name} width={48} height={48} className="w-full h-full object-cover" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <p className="text-sm text-[var(--cream)] truncate">{bi.item.name}</p>

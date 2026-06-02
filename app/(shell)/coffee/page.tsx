@@ -73,6 +73,7 @@ export default function CoffeePage() {
           {bagCount > 0 && (
             <button
               onClick={() => setBagOpen(true)}
+              aria-label={`Shopping bag, ${bagCount} items`}
               className="relative p-2"
             >
               <ShoppingBag size={20} className="text-[var(--gold)]" />
@@ -491,7 +492,7 @@ export default function CoffeePage() {
                         <div key={item.blend.id} className="flex items-center gap-3 rounded-xl bg-[var(--bg2)] border border-[var(--line)] p-3">
                           <div className="w-10 h-10 rounded-lg bg-[var(--room-coffee)]/10 flex items-center justify-center shrink-0 overflow-hidden">
                             {item.blend.image ? (
-                              <Image src={item.blend.image} alt="" width={36} height={36} className="object-contain" />
+                              <Image src={item.blend.image} alt={item.blend.name} width={36} height={36} className="object-contain" />
                             ) : (
                               <Coffee size={16} className="text-[var(--room-coffee)] opacity-50" />
                             )}
