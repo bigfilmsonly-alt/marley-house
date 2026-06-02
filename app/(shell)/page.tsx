@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import ConnectedProperties from '@/components/ConnectedProperties';
 import JoinHouse from '@/components/JoinHouse';
-import WeatherDisplay from '@/components/WeatherDisplay';
 import VideoPlayer, { VideoCard } from '@/components/VideoPlayer';
 import FooterNewsletter from '@/components/FooterNewsletter';
 import { Flame, ChevronRight, ArrowUpRight, Sparkles, Play } from 'lucide-react';
@@ -29,8 +28,13 @@ export default function HomePage() {
 
   return (
     <div className="relative min-h-full bg-[var(--bg)]">
-      {/* Weather strip */}
-      <WeatherDisplay />
+      {/* Big bold title */}
+      <div className="px-4 pt-4 pb-3">
+        <h1 className="text-3xl font-bold text-[var(--cream)] tracking-tight">
+          Marley House
+        </h1>
+        <div className="rasta-stripe mt-2 w-20" />
+      </div>
 
       {/* Hero Video — full bleed */}
       <VideoPlayer
