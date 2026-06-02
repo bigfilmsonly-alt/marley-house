@@ -17,8 +17,8 @@ export default function SplashReturn() {
       <Image
         src="/brand/lion-head-gold.png"
         alt="Lion Order"
-        width={40}
-        height={40}
+        width={52}
+        height={52}
         className="brightness-125 drop-shadow-lg"
       />
     </button>
