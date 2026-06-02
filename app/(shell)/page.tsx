@@ -3,17 +3,12 @@
 import { useState } from 'react';
 import ConnectedProperties from '@/components/ConnectedProperties';
 import JoinHouse from '@/components/JoinHouse';
+import WeatherDisplay from '@/components/WeatherDisplay';
 import VideoPlayer from '@/components/VideoPlayer';
 import { Flame, ChevronRight, ArrowUpRight, Sparkles } from 'lucide-react';
 import Link from 'next/link';
-
-const fireStories = [
-  { tag: 'Fear', text: 'Carrying a name larger than yourself is its own weight. The fear was never failure. It was being remembered for the wrong thing.' },
-  { tag: 'Faith', text: 'Faith is not the absence of doubt. It is moving the seed into the ground before you can see the tree.' },
-  { tag: 'Mistakes', text: 'Every wrong turn cost something. None of them were wasted. The house was built from the broken pieces.' },
-  { tag: 'Resilience', text: 'Survival is quieter than fame. It is waking up the day after the storm and opening the door anyway.' },
-  { tag: 'Legacy', text: 'Legacy is not what you leave behind. It is what keeps growing once you let go of it.' },
-];
+import { stories } from '@/content/stories';
+import { roomAccents } from '@/lib/theme';
 
 const rooms = [
   { name: 'Coffee', color: '#c98a3c' },
@@ -25,11 +20,17 @@ const rooms = [
   { name: 'Future', color: '#86b4cc' },
 ];
 
+const featuredStory = stories.find((s) => s.featured);
+const storyStream = stories.filter((s) => s !== featuredStory);
+
 export default function HomePage() {
   const [joinOpen, setJoinOpen] = useState(false);
 
   return (
     <div className="relative min-h-full bg-[var(--bg)]">
+      {/* Weather + Coffee Ritual */}
+      <WeatherDisplay />
+
       {/* Hero Video */}
       <VideoPlayer
         playlistId="PLC7UTUpH-pK182kGnMXGHcutFSDNYZrYP"
@@ -48,18 +49,23 @@ export default function HomePage() {
             Today
           </span>
         </div>
-        <div className="relative rounded-2xl overflow-hidden bg-[var(--bg2)] border border-[var(--line)]">
-          <div className="absolute inset-0 bg-gradient-to-b from-[var(--gold)]/[0.04] to-transparent" />
-          <div className="relative p-6 py-10 text-center">
-            <Flame size={28} className="text-[var(--gold)] mx-auto mb-3 opacity-60" strokeWidth={1.5} />
-            <p className="font-display text-lg text-[var(--cream)] font-light italic leading-relaxed">
-              &ldquo;The fire teaches you everything the classroom never will.&rdquo;
-            </p>
-            <p className="text-[var(--dim)] text-xs mt-3 font-light">
-              From the Fire Room
-            </p>
+        {featuredStory && (
+          <div className="relative rounded-2xl overflow-hidden bg-[var(--bg2)] border border-[var(--line)]">
+            <div className="absolute inset-0 bg-gradient-to-b from-[var(--gold)]/[0.04] to-transparent" />
+            <div className="relative p-6 py-10 text-center">
+              <Flame size={28} className="text-[var(--gold)] mx-auto mb-3 opacity-60" strokeWidth={1.5} />
+              <p className="font-display text-lg text-[var(--cream)] font-light italic leading-relaxed">
+                {featuredStory.title}
+              </p>
+              <p className="text-[var(--dim)] text-sm font-light mt-3 leading-relaxed px-2">
+                {featuredStory.body}
+              </p>
+              <p className="text-[var(--dim)] text-[10px] font-light mt-3 capitalize">
+                {featuredStory.room} Room
+              </p>
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Quick actions */}
@@ -78,26 +84,30 @@ export default function HomePage() {
         </Link>
       </div>
 
-      {/* From the Fire — stories */}
+      {/* Story stream — multi-room */}
       <div className="px-6 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--ember)] mb-4 font-medium">
-          From the Fire
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--dim)] mb-4 font-medium">
+          From the House
         </p>
         <div className="space-y-3">
-          {fireStories.map((story, i) => (
+          {storyStream.map((story, i) => (
             <div
-              key={story.tag}
+              key={story.id}
               className="rounded-xl bg-[var(--bg2)] border border-[var(--line)] p-4 flex gap-4"
             >
-              <span className="font-display italic text-xl text-[var(--ember)] opacity-60 shrink-0 w-6">
+              <span className="font-display italic text-xl opacity-60 shrink-0 w-6" style={{ color: roomAccents[story.room] }}>
                 {String(i + 1).padStart(2, '0')}
               </span>
               <div>
-                <p className="text-[10px] tracking-[0.15em] uppercase text-[var(--ember)] mb-1.5 font-medium">
-                  {story.tag}
-                </p>
+                <div className="flex items-center gap-2 mb-1.5">
+                  <div className="w-1.5 h-1.5 rounded-full" style={{ background: roomAccents[story.room] }} />
+                  <p className="text-[10px] tracking-[0.15em] uppercase font-medium capitalize" style={{ color: roomAccents[story.room] }}>
+                    {story.room}
+                  </p>
+                  <span className="text-[var(--dim)] text-[9px] font-light">&middot; {story.kind}</span>
+                </div>
                 <p className="font-display text-sm text-[var(--cream)] font-light leading-relaxed">
-                  {story.text}
+                  {story.body}
                 </p>
               </div>
             </div>
