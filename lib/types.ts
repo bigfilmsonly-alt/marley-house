@@ -26,9 +26,10 @@ export interface Product {
   name: string;
   roast: string;
   notes: string;
+  origin: string;
   price: number;
   badges: string[];
-  image: string;
+  image?: string;
   prototype: true;
 }
 
@@ -36,6 +37,7 @@ export interface WisdomCard {
   id: string;
   lesson: string;
   room: Room;
+  expanded: string;
 }
 
 export interface BrandLink {

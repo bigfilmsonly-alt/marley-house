@@ -2,6 +2,49 @@
 
 import { Play } from 'lucide-react';
 import VideoPlayer, { VideoCard } from '@/components/VideoPlayer';
+import {
+  sessionsPlaylist,
+  storyVideos,
+  podcastVideos,
+  interviewVideos,
+  coffeeVideos,
+  tasteVideos,
+  footballVideos,
+  musicVideos,
+  lifestyleVideos,
+  channels,
+} from '@/content/videos';
+import type { VideoRef } from '@/lib/types';
+
+function Section({
+  title,
+  subtitle,
+  videos,
+}: {
+  title: string;
+  subtitle: string;
+  videos: VideoRef[];
+}) {
+  return (
+    <div>
+      <p className="font-display text-base text-[var(--cream)] mb-0.5">{title}</p>
+      <p className="text-[var(--dim)] text-[10px] font-light mb-3">
+        {subtitle} &mdash; {videos.length} videos
+      </p>
+      <div className="space-y-2">
+        {videos.map((v) => (
+          <VideoCard
+            key={v.id}
+            videoId={v.videoId}
+            playlistId={v.playlistId}
+            title={v.title}
+            subtitle={v.channel}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function WatchPage() {
   return (
@@ -21,7 +64,7 @@ export default function WatchPage() {
           Stories in Motion
         </h1>
         <p className="text-[var(--dim)] text-xs font-light mt-1">
-          Tap any video to play
+          Every video featuring Rohan Marley &mdash; tap to play
         </p>
       </div>
 
@@ -33,9 +76,9 @@ export default function WatchPage() {
             Preparaciones &mdash; Marley Coffee Latam
           </p>
           <VideoPlayer
-            playlistId="PLC7UTUpH-pK182kGnMXGHcutFSDNYZrYP"
+            playlistId={sessionsPlaylist.playlistId}
             title="House Sessions — Preparaciones (Full Playlist)"
-            thumbnail="https://img.youtube.com/vi/XE-uV_DsurA/hqdefault.jpg"
+            thumbnail={`https://img.youtube.com/vi/XE-uV_DsurA/hqdefault.jpg`}
           />
           <p className="text-[var(--dim)] text-[10px] font-light mt-2 text-center">
             Full playlist &mdash; multiple episodes
@@ -43,44 +86,60 @@ export default function WatchPage() {
         </div>
 
         {/* The Story */}
-        <div>
-          <p className="font-display text-base text-[var(--cream)] mb-0.5">The Story</p>
-          <p className="text-[var(--dim)] text-[10px] font-light mb-3">
-            Brand films &amp; origin stories
-          </p>
-          <div className="space-y-3">
-            <VideoPlayer
-              videoId="XE-uV_DsurA"
-              title="Marley Coffee Brand Film"
-              compact
-            />
-            <VideoCard
-              videoId="112LQ_4P9rI"
-              title="Rooted in Legacy — The Marley Coffee Story"
-              subtitle="6:44"
-            />
-          </div>
-        </div>
+        <Section
+          title="The Story"
+          subtitle="Brand films & origin stories"
+          videos={storyVideos}
+        />
 
-        {/* The Music Legacy */}
-        <div>
-          <p className="font-display text-base text-[var(--cream)] mb-0.5">The Music Legacy</p>
-          <p className="text-[var(--dim)] text-[10px] font-light mb-3">
-            Tuff Gong &amp; family
-          </p>
-          <div className="space-y-2">
-            <VideoCard
-              videoId="dQw4w9WgXcQ"
-              title="Tuff Gong Studio Sessions"
-              subtitle="Tuff Gong Television"
-            />
-            <VideoCard
-              videoId="cDpEzmYx0qs"
-              title="YG Marley — Praise Jah in the Moonlight"
-              subtitle="Official Music Video"
-            />
-          </div>
-        </div>
+        {/* Podcasts */}
+        <Section
+          title="Podcasts & Conversations"
+          subtitle="Long-form interviews & deep conversations"
+          videos={podcastVideos}
+        />
+
+        {/* Interviews */}
+        <Section
+          title="Interviews"
+          subtitle="Press, TV & media appearances"
+          videos={interviewVideos}
+        />
+
+        {/* Coffee */}
+        <Section
+          title="Coffee"
+          subtitle="Marley Coffee farm visits, brewing & brand"
+          videos={coffeeVideos}
+        />
+
+        {/* Taste of Marley */}
+        <Section
+          title="Taste of Marley"
+          subtitle="Jamaica food, culture & island life with Our Taste"
+          videos={tasteVideos}
+        />
+
+        {/* Football */}
+        <Section
+          title="Football"
+          subtitle="Miami Hurricanes & the gridiron years"
+          videos={footballVideos}
+        />
+
+        {/* Music & Family */}
+        <Section
+          title="Music & Family Legacy"
+          subtitle="YG Marley, reggae roots & family stories"
+          videos={musicVideos}
+        />
+
+        {/* Ventures */}
+        <Section
+          title="Ventures & Lifestyle"
+          subtitle="House of Marley, Lion Order & culture"
+          videos={lifestyleVideos}
+        />
 
         {/* Channels */}
         <div>
@@ -89,11 +148,7 @@ export default function WatchPage() {
             Follow on YouTube
           </p>
           <div className="space-y-2">
-            {[
-              { name: 'Marley Coffee Latam', url: 'https://www.youtube.com/@MarleyCoffeeLatam' },
-              { name: 'Tuff Gong Television', url: 'https://www.youtube.com/user/TuffGongTelevision' },
-              { name: 'House of Marley', url: 'https://www.youtube.com/user/TheHouseofMarley' },
-            ].map((ch) => (
+            {channels.map((ch) => (
               <a
                 key={ch.name}
                 href={ch.url}
