@@ -13,6 +13,7 @@ export const brandLinks: BrandLink[] = [
   // Rohan Marley
   { id: 'rm-ig', name: 'Rohan Marley IG', category: 'rohan', url: 'https://www.instagram.com/romarley/', handle: '@romarley', metric: '663K followers', status: 'active' },
   { id: 'rm-li', name: 'Rohan Marley LinkedIn', category: 'rohan', url: 'https://www.linkedin.com/in/rohanmarley', status: 'active' },
+  { id: 'rm-site', name: 'rohananthonymarley.com', category: 'rohan', url: 'https://rohananthonymarley.com/', status: 'active' },
   { id: 'rm-yt', name: 'Rohan Marley YT', category: 'rohan', url: 'https://www.youtube.com/@MrRohanmarley', handle: '@MrRohanmarley', status: 'active' },
 
   // Ventures
