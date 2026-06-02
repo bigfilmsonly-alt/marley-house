@@ -3,21 +3,31 @@
 import { useState } from 'react';
 import { Sparkles, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { joinHouse } from '@/lib/tracking';
 
 interface JoinHouseProps {
   open: boolean;
   onClose: () => void;
+  source?: string;
 }
 
-export default function JoinHouse({ open, onClose }: JoinHouseProps) {
+export default function JoinHouse({ open, onClose, source = 'hero' }: JoinHouseProps) {
   const [email, setEmail] = useState('');
   const [joined, setJoined] = useState(false);
 
-  function submit() {
-    if (email.includes('@')) {
-      setJoined(true);
-      // Prototype: in production → GA4 + Meta Pixel + Supabase
-    }
+  async function submit() {
+    if (!email.includes('@')) return;
+    joinHouse(source);
+
+    try {
+      await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source }),
+      });
+    } catch { /* graceful fallback */ }
+
+    setJoined(true);
   }
 
   function handleClose() {
@@ -79,7 +89,7 @@ export default function JoinHouse({ open, onClose }: JoinHouseProps) {
                     Enter the House
                   </button>
                   <p className="text-[var(--dim)] text-[10px] mt-3 font-light">
-                    Prototype &middot; no real data is stored
+                    No spam. Unsubscribe anytime.
                   </p>
                 </div>
               ) : (

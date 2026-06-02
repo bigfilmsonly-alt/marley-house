@@ -34,10 +34,16 @@ export default function Threshold() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           onClick={enter}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[var(--bg)] cursor-pointer"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center cursor-pointer"
+          style={{ background: 'linear-gradient(160deg, #F7F4ED 0%, #FFF9E6 50%, #F7F4ED 100%)' }}
         >
+          {/* Rasta stripe at top */}
+          <div className="absolute top-0 left-0 right-0 rasta-stripe-thick" />
+
           {/* Ambient glow */}
-          <div className="absolute w-80 h-80 rounded-full bg-[var(--gold)] blur-[120px] opacity-[0.06]" />
+          <div className="absolute w-96 h-96 rounded-full blur-[140px] opacity-[0.15]"
+            style={{ background: 'radial-gradient(circle, #FED100, #009B3A)' }}
+          />
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -48,25 +54,28 @@ export default function Threshold() {
             {/* Marley Coffee Lion Logo */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 0.7, scale: 1 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="mb-6"
             >
               <Image
                 src="/marley-logo.png"
                 alt="Marley Coffee"
-                width={80}
-                height={80}
-                className="invert opacity-80"
+                width={90}
+                height={90}
               />
             </motion.div>
 
-            <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold-deep)] mb-4 font-medium">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--green)] mb-4 font-semibold">
               Welcome to
             </p>
-            <h1 className="font-display text-4xl text-[var(--cream)] font-light tracking-tight mb-2">
+            <h1 className="font-display text-5xl text-[var(--cream)] font-light tracking-tight mb-2">
               Marley House
             </h1>
+
+            {/* Mini rasta stripe */}
+            <div className="w-20 rasta-stripe my-4" />
+
             <p className="font-display text-base text-[var(--dim)] font-light italic">
               Coffee is the invitation
             </p>
@@ -80,6 +89,9 @@ export default function Threshold() {
           >
             Tap to enter
           </motion.p>
+
+          {/* Rasta stripe at bottom */}
+          <div className="absolute bottom-0 left-0 right-0 rasta-stripe-thick" />
         </motion.div>
       )}
     </AnimatePresence>

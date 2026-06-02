@@ -103,7 +103,7 @@ export function VideoCard({
 
   if (playing) {
     return (
-      <div className="rounded-xl overflow-hidden bg-black">
+      <div className="rounded-2xl overflow-hidden bg-black">
         <div className="relative w-full aspect-video">
           <iframe
             src={getEmbedUrl(videoId, playlistId)}
@@ -112,6 +112,10 @@ export function VideoCard({
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
+        </div>
+        <div className="px-4 py-3 bg-[var(--bg2)]">
+          <p className="text-sm text-[var(--cream)] font-light">{title}</p>
+          {subtitle && <p className="text-[var(--dim)] text-[11px] font-light mt-0.5">{subtitle}</p>}
         </div>
       </div>
     );
@@ -123,21 +127,27 @@ export function VideoCard({
         setPlaying(true);
         play({ videoId, playlistId, title });
       }}
-      className="flex items-center gap-3 rounded-xl bg-[var(--bg2)] border border-[var(--line)] p-3 group cursor-pointer w-full text-left"
+      className="w-full text-left rounded-2xl overflow-hidden bg-[var(--bg2)] border border-[var(--line)] group cursor-pointer block"
     >
-      <div className="w-16 h-10 rounded-lg overflow-hidden shrink-0 relative">
+      {/* Large thumbnail */}
+      <div className="relative w-full aspect-video">
         {thumbUrl ? (
           <img src={thumbUrl} alt="" className="w-full h-full object-cover" loading="lazy" />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-[var(--ember)]/20 to-[var(--bg2)]" />
+          <div className="w-full h-full bg-gradient-to-br from-[var(--ember)]/20 via-[var(--bg2)] to-[var(--gold)]/10" />
         )}
-        <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/20 transition-colors">
-          <Play size={12} className="text-white ml-px" fill="white" />
+        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
+        {/* Play button */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-full bg-[var(--ember)]/90 flex items-center justify-center shadow-lg shadow-black/30 group-hover:scale-110 transition-transform">
+            <Play size={18} className="text-white ml-0.5" fill="white" />
+          </div>
         </div>
       </div>
-      <div className="flex-1 min-w-0">
-        <p className="text-sm text-[var(--cream)] truncate">{title}</p>
-        {subtitle && <p className="text-[var(--dim)] text-[10px] font-light">{subtitle}</p>}
+      {/* Title area below thumbnail */}
+      <div className="px-4 py-3">
+        <p className="text-sm text-[var(--cream)] font-light leading-snug">{title}</p>
+        {subtitle && <p className="text-[var(--dim)] text-[11px] font-light mt-0.5">{subtitle}</p>}
       </div>
     </button>
   );

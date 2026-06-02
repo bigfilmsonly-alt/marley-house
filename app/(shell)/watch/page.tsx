@@ -27,11 +27,15 @@ function Section({
 }) {
   return (
     <div>
-      <p className="font-display text-base text-[var(--cream)] mb-0.5">{title}</p>
-      <p className="text-[var(--dim)] text-[10px] font-light mb-3">
-        {subtitle} &mdash; {videos.length} videos
-      </p>
-      <div className="space-y-2">
+      {/* Section header */}
+      <div className="px-5 mb-4">
+        <p className="font-display text-lg text-[var(--cream)]">{title}</p>
+        <p className="text-[var(--dim)] text-xs font-light mt-0.5">
+          {subtitle} &mdash; {videos.length} videos
+        </p>
+      </div>
+      {/* Video feed */}
+      <div className="px-4 space-y-4">
         {videos.map((v) => (
           <VideoCard
             key={v.id}
@@ -53,7 +57,7 @@ export default function WatchPage() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full bg-[var(--ember)] blur-[100px] opacity-[0.06] pointer-events-none" />
 
       {/* Header */}
-      <div className="relative px-6 pt-14 pb-6">
+      <div className="relative px-5 pt-14 pb-6">
         <div className="flex items-center gap-2 mb-1">
           <Play size={16} className="text-[var(--ember)]" strokeWidth={1.5} />
           <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--ember)] font-medium">
@@ -64,25 +68,29 @@ export default function WatchPage() {
           Stories in Motion
         </h1>
         <p className="text-[var(--dim)] text-xs font-light mt-1">
-          Every video featuring Rohan Marley &mdash; tap to play
+          Scroll &amp; play &mdash; every Rohan Marley video
         </p>
       </div>
 
-      <div className="px-6 pb-10 space-y-10">
+      <div className="pb-10 space-y-10">
         {/* Featured: House Sessions Playlist */}
         <div>
-          <p className="font-display text-base text-[var(--cream)] mb-0.5">House Sessions</p>
-          <p className="text-[var(--dim)] text-[10px] font-light mb-3">
-            Preparaciones &mdash; Marley Coffee Latam
-          </p>
-          <VideoPlayer
-            playlistId={sessionsPlaylist.playlistId}
-            title="House Sessions — Preparaciones (Full Playlist)"
-            thumbnail={`https://img.youtube.com/vi/XE-uV_DsurA/hqdefault.jpg`}
-          />
-          <p className="text-[var(--dim)] text-[10px] font-light mt-2 text-center">
-            Full playlist &mdash; multiple episodes
-          </p>
+          <div className="px-5 mb-4">
+            <p className="font-display text-lg text-[var(--cream)]">House Sessions</p>
+            <p className="text-[var(--dim)] text-xs font-light mt-0.5">
+              Preparaciones &mdash; Marley Coffee Latam
+            </p>
+          </div>
+          <div className="px-4">
+            <VideoPlayer
+              playlistId={sessionsPlaylist.playlistId}
+              title="House Sessions — Preparaciones (Full Playlist)"
+              thumbnail={`https://img.youtube.com/vi/XE-uV_DsurA/hqdefault.jpg`}
+            />
+            <p className="text-[var(--dim)] text-[10px] font-light mt-2 text-center">
+              Full playlist &mdash; multiple episodes
+            </p>
+          </div>
         </div>
 
         {/* The Story */}
@@ -143,11 +151,13 @@ export default function WatchPage() {
 
         {/* Channels */}
         <div>
-          <p className="font-display text-base text-[var(--cream)] mb-0.5">Channels</p>
-          <p className="text-[var(--dim)] text-[10px] font-light mb-3">
-            Follow on YouTube
-          </p>
-          <div className="space-y-2">
+          <div className="px-5 mb-4">
+            <p className="font-display text-lg text-[var(--cream)]">Channels</p>
+            <p className="text-[var(--dim)] text-xs font-light mt-0.5">
+              Follow on YouTube
+            </p>
+          </div>
+          <div className="px-4 space-y-2">
             {channels.map((ch) => (
               <a
                 key={ch.name}

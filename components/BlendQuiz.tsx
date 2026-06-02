@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Coffee, X, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { blendQuizComplete } from '@/lib/tracking';
 
 const QUIZ = [
   { q: 'How does your morning start?', a: [
@@ -61,22 +62,48 @@ export default function BlendQuiz({ open, onClose }: BlendQuizProps) {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [result, setResult] = useState<Blend | null>(null);
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [gated, setGated] = useState(false);
+  const [captured, setCaptured] = useState(false);
 
   function reset() {
     setStep(0);
     setAnswers([]);
     setResult(null);
+    setEmail('');
+    setName('');
+    setGated(false);
+    setCaptured(false);
   }
 
   function answer(score: number) {
     const next = [...answers, score];
     if (next.length >= QUIZ.length) {
       setAnswers(next);
-      setResult(pickBlend(next));
+      const blend = pickBlend(next);
+      setResult(blend);
+      setGated(true); // Gate result behind email
     } else {
       setAnswers(next);
       setStep(step + 1);
     }
+  }
+
+  async function captureEmail() {
+    if (!email.includes('@') || !result) return;
+    blendQuizComplete(result.name);
+
+    try {
+      await fetch('/api/blend-quiz', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, name, answers, blend: result.name }),
+      });
+    } catch { /* graceful */ }
+
+    setCaptured(true);
+    setGated(false);
   }
 
   function handleClose() {
@@ -111,13 +138,13 @@ export default function BlendQuiz({ open, onClose }: BlendQuizProps) {
                 <button onClick={handleClose} className="p-1"><X size={18} className="text-[var(--dim)]" /></button>
               </div>
 
-              {!result ? (
+              {/* Quiz questions */}
+              {!result && (
                 <>
                   <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] mb-1 font-medium">
                     Find Your Blend &middot; {step + 1} / {QUIZ.length}
                   </p>
 
-                  {/* Progress bar */}
                   <div className="flex gap-1 mb-6">
                     {QUIZ.map((_, i) => (
                       <div
@@ -140,23 +167,62 @@ export default function BlendQuiz({ open, onClose }: BlendQuizProps) {
                         className="w-full text-left rounded-xl border border-[var(--line)] bg-[var(--bg2)] p-4 text-sm text-[var(--cream)] font-light hover:border-[var(--gold)]/30 transition-colors flex items-center justify-between"
                       >
                         {opt.t}
-                        <ArrowRight size={14} className="text-[var(--dim)] opacity-0 group-hover:opacity-100" />
+                        <ArrowRight size={14} className="text-[var(--dim)]" />
                       </button>
                     ))}
                   </div>
                 </>
-              ) : (
+              )}
+
+              {/* Email gate */}
+              {gated && result && (
+                <div className="text-center">
+                  <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] mb-3 font-medium">
+                    Your blend is ready
+                  </p>
+                  <p className="text-[var(--dim)] text-sm font-light mb-5 leading-relaxed">
+                    Enter your name and email to reveal your match — plus get <strong className="text-[var(--gold)]">10% off</strong> your first bag.
+                  </p>
+
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Your name"
+                    className="w-full bg-[var(--bg2)] border border-[var(--line)] rounded-xl px-4 py-3 text-sm text-[var(--cream)] placeholder:text-[var(--dim)]/50 outline-none mb-2"
+                  />
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && captureEmail()}
+                    placeholder="your@email.com"
+                    className="w-full bg-[var(--bg2)] border border-[var(--line)] rounded-xl px-4 py-3 text-sm text-[var(--cream)] placeholder:text-[var(--dim)]/50 outline-none mb-3"
+                  />
+                  <button
+                    onClick={captureEmail}
+                    className="w-full bg-[var(--gold)] text-[var(--bg)] py-3 rounded-xl text-sm font-medium tracking-wide"
+                  >
+                    Reveal My Blend
+                  </button>
+                  <p className="text-[var(--dim)] text-[9px] mt-2 font-light">
+                    Demo discount code &middot; not yet active
+                  </p>
+                </div>
+              )}
+
+              {/* Result */}
+              {captured && result && (
                 <div className="text-center py-4">
                   <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] mb-3 font-medium">
                     Your Blend
                   </p>
 
-                  {result.image && (
+                  {result.image ? (
                     <div className="w-32 h-32 mx-auto mb-4">
                       <Image src={result.image} alt={result.name} width={128} height={128} className="object-contain drop-shadow-lg" />
                     </div>
-                  )}
-                  {!result.image && (
+                  ) : (
                     <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-[var(--room-coffee)]/10 flex items-center justify-center">
                       <Coffee size={32} className="text-[var(--room-coffee)] opacity-50" />
                     </div>
@@ -166,9 +232,18 @@ export default function BlendQuiz({ open, onClose }: BlendQuizProps) {
                   <p className="text-[var(--gold)] text-xs tracking-wider uppercase mt-1">{result.roast}</p>
                   <p className="text-[var(--dim)] text-sm font-light mt-3 leading-relaxed">{result.note}</p>
 
+                  <div className="mt-4 p-3 rounded-xl bg-[var(--gold)]/[0.06] border border-[var(--gold)]/15">
+                    <p className="text-[var(--gold)] text-xs font-medium">
+                      Use code HOUSE10 for 10% off
+                    </p>
+                    <p className="text-[var(--dim)] text-[9px] font-light mt-0.5">
+                      Demo code &middot; will activate when store goes live
+                    </p>
+                  </div>
+
                   <button
                     onClick={handleClose}
-                    className="mt-6 w-full bg-[var(--gold)] text-[var(--bg)] py-3 rounded-xl text-sm font-medium tracking-wide"
+                    className="mt-5 w-full bg-[var(--gold)] text-[var(--bg)] py-3 rounded-xl text-sm font-medium tracking-wide"
                   >
                     Back to the Store
                   </button>
