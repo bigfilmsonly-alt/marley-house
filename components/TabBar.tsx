@@ -72,7 +72,7 @@ export default function TabBar() {
                 alt={splashImages[splashTab].alt}
                 width={500}
                 height={500}
-                className="brightness-125 w-[85vw] max-w-[500px] h-auto"
+                className={`brightness-125 h-auto ${splashTab === 'Home' ? 'w-[70vw] max-w-[280px]' : 'w-[85vw] max-w-[500px]'}`}
                 priority
               />
             </motion.div>
