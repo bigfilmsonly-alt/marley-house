@@ -133,10 +133,21 @@ export default function HomePage() {
     <div className="relative min-h-full bg-[var(--bg)]">
 
       {/* ═══════════════════════════════════════════════════════════
-          1. HERO — Taglines only (R-M monogram shown in tab splash)
+          1. HERO — R-M Monogram + Taglines (always on home page)
       ═══════════════════════════════════════════════════════════ */}
-      <section className="w-full bg-black pt-14 pb-10">
+      <section className="w-full bg-black pt-16 pb-10">
         <div className="flex flex-col items-center justify-center px-8">
+          <div className="relative w-[200px] h-[200px] mb-8">
+            <Image
+              src="/brand/rhr-monogram-transparent.png"
+              alt="R-M Monogram"
+              fill
+              className="object-contain"
+              priority
+              sizes="200px"
+            />
+          </div>
+
           <h1 className="text-3xl font-semibold text-white tracking-wide text-center leading-[1.3] mb-4">
             Awaken the Lion<br />in Everyone
           </h1>
