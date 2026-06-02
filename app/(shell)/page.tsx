@@ -74,15 +74,18 @@ export default function HomePage() {
 
       {/* ═══════ MAISON HERO ═══════ */}
       <div className="relative px-6 pt-6 pb-10 text-center">
-        {/* Gold RM monogram at top */}
-        <Image
-          src="/brand/rhr-monogram.jpg"
-          alt="R-M Monogram"
-          width={100}
-          height={100}
-          className="mx-auto mb-6 rounded-lg drop-shadow-[0_0_30px_rgba(244,199,31,0.25)]"
-          priority
-        />
+        {/* R·M Hero Monogram */}
+        <div className="relative">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[var(--gold)] blur-[100px] opacity-[0.15] pointer-events-none" />
+          <Image
+            src="/brand/rhr-monogram-transparent.png"
+            alt="Rohan Marley Monogram"
+            width={340}
+            height={410}
+            className="relative mx-auto mb-6 drop-shadow-[0_0_60px_rgba(244,199,31,0.4)]"
+            priority
+          />
+        </div>
 
         {/* ROHAN MARLEY — name, same gold as the RM logo */}
         <h1 className="relative font-display text-4xl font-light tracking-[0.08em] uppercase mb-6" style={{ color: '#D4A017' }}>
