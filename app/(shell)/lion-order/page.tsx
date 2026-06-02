@@ -325,14 +325,16 @@ export default function LionOrderPage() {
             <p className="text-[9px] tracking-[0.15em] uppercase text-[var(--dim)] mb-2">Color Palette</p>
             <div className="flex gap-2 mb-3">
               {[
-                { color: 'var(--antique-gold-1)', name: 'Royalty Yellow' },
-                { color: '#a9812f', name: 'AG01' },
-                { color: '#c98a3c', name: 'AG02' },
-                { color: '#FFD700', name: '24K Gold' },
+                { color: '#B98524', name: 'AG01' },
+                { color: '#825B0D', name: 'AG02' },
+                { color: '#E8C23A', name: '24K Gold' },
+                { color: '#EFC11F', name: 'Cover Gold' },
+                { color: '#F0F0E3', name: 'Ivory', border: true },
+                { color: '#14110C', name: 'Ink' },
               ].map((c) => (
                 <div key={c.name} className="text-center">
-                  <div className="w-8 h-8 rounded-lg mx-auto mb-1" style={{ background: c.color }} />
-                  <p className="text-[8px] text-[var(--dim)]">{c.name}</p>
+                  <div className="w-7 h-7 rounded-lg mx-auto mb-1" style={{ background: c.color, border: c.border ? '1px solid var(--line)' : undefined }} />
+                  <p className="text-[7px] text-[var(--dim)]">{c.name}</p>
                 </div>
               ))}
             </div>
@@ -341,8 +343,8 @@ export default function LionOrderPage() {
               <Image src="/lion-order/crest-gold.jpg" alt="Gold crest" width={40} height={40} className="rounded-lg" />
               <Image src="/lion-order/crest-white.jpg" alt="White crest" width={40} height={40} className="rounded-lg" />
               <div className="flex-1">
-                <p className="text-[10px] text-[var(--cream)]">Logo Crest</p>
-                <p className="text-[8px] text-[var(--dim)]">Min: 100px &middot; Display: Salter Roman</p>
+                <p className="text-[10px] text-[var(--cream)]">Logo Crest &middot; Signature</p>
+                <p className="text-[8px] text-[var(--dim)]">Min 100px &middot; Salter Roman &middot; Minion Variable &middot; GothBallCrap</p>
               </div>
             </div>
           </div>
