@@ -10,10 +10,10 @@ export const colors = {
   royaltyYellow: '#F4C71F',
   antiqueGold1: '#B98524',
   antiqueGold2: '#825B0D',
-  gold: '#B98524',
-  goldDeep: '#825B0D',
+  gold: '#F4C71F',
+  goldDeep: '#B98524',
   goldHi: '#F4C71F',
-  ember: '#B98524',
+  ember: '#F4C71F',
   green: '#825B0D',
   blue: '#14110c',
 } as const;
@@ -29,12 +29,12 @@ export const roomAccents: Record<string, string> = {
 };
 
 export const tabGlows: Record<string, string> = {
-  '/': '#B98524',
-  '/coffee': '#825B0D',
-  '/watch': '#B98524',
-  '/vault': '#825B0D',
-  '/merch': '#B98524',
-  '/ask': '#825B0D',
+  '/': '#F4C71F',
+  '/coffee': '#F4C71F',
+  '/watch': '#F4C71F',
+  '/vault': '#B98524',
+  '/merch': '#F4C71F',
+  '/ask': '#B98524',
   '/lion-order': '#F4C71F',
 };
 

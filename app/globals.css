@@ -8,10 +8,10 @@
   --panel: rgba(247, 243, 234, 0.92);
   --cream: #14110c;
   --dim: #6B6358;
-  --gold: #B98524;
-  --gold-deep: #825B0D;
+  --gold: #F4C71F;
+  --gold-deep: #B98524;
   --gold-hi: #F4C71F;
-  --ember: #B98524;
+  --ember: #F4C71F;
   --green: #14110c;
   --blue: #14110c;
   --line: rgba(20, 17, 12, 0.10);
@@ -46,9 +46,9 @@
   --color-bg2: #FFFFFF;
   --color-cream: #14110c;
   --color-dim: #6B6358;
-  --color-gold: #B98524;
-  --color-gold-deep: #825B0D;
-  --color-ember: #B98524;
+  --color-gold: #F4C71F;
+  --color-gold-deep: #B98524;
+  --color-ember: #F4C71F;
   --color-green: #825B0D;
   --color-blue: #14110c;
   --color-line: rgba(20, 17, 12, 0.10);
