@@ -8,20 +8,25 @@ export const brandLinks: BrandLink[] = [
   { id: 'mc-x', name: 'Marley Coffee X', category: 'coffee', url: 'https://x.com/MarleyCoffee', handle: '@MarleyCoffee', metric: '54K followers', status: 'dormant' },
   { id: 'mc-latam-yt', name: 'Marley Coffee Latam YT', category: 'coffee', url: 'https://www.youtube.com/@MarleyCoffeeLatam', status: 'active' },
   { id: 'mc-latam-site', name: 'Marley Coffee Chile', category: 'coffee', url: 'https://www.marleycoffee.cl/', status: 'verify' },
+  { id: 'mc-latam-ig', name: 'Marley Coffee Latam IG', category: 'coffee', url: '#', status: 'verify' },
 
   // Rohan Marley
   { id: 'rm-ig', name: 'Rohan Marley IG', category: 'rohan', url: 'https://www.instagram.com/romarley/', handle: '@romarley', metric: '663K followers', status: 'active' },
   { id: 'rm-li', name: 'Rohan Marley LinkedIn', category: 'rohan', url: 'https://www.linkedin.com/in/rohanmarley', status: 'active' },
-  { id: 'rm-site', name: 'Rohan Marley', category: 'rohan', url: 'https://rohanmarley.com/', status: 'verify' },
+  { id: 'rm-site', name: 'rohanmarley.com', category: 'rohan', url: 'https://rohanmarley.com/', status: 'verify' },
+  { id: 'rm-site2', name: 'rohananthonymarley.com', category: 'rohan', url: 'https://rohananthonymarley.com/', status: 'verify' },
 
   // Ventures
   { id: 'lo-site', name: 'Lion Order', category: 'ventures', url: 'https://lionorder.com/', status: 'active' },
   { id: 'lo-ig', name: 'Lion Order IG', category: 'ventures', url: 'https://www.instagram.com/lionorder/', handle: '@lionorder', status: 'verify' },
   { id: 'rb-site', name: 'RoMarley Beach House', category: 'ventures', url: 'https://www.romarleybeachhouse.com/', status: 'active' },
-  { id: 'rb-ig', name: 'RoMarley Beach House IG', category: 'ventures', url: 'https://www.instagram.com/romarleybeachhouse/', status: 'active' },
+  { id: 'rb-ig', name: 'RoMarley Beach House IG', category: 'ventures', url: 'https://www.instagram.com/romarleybeachhouse/', handle: '@romarleybeachhouse', status: 'active' },
   { id: 'hom-site', name: 'House of Marley', category: 'ventures', url: 'https://thehouseofmarley.com/', status: 'licensed' },
   { id: 'hom-ig', name: 'House of Marley IG', category: 'ventures', url: 'https://www.instagram.com/houseofmarley/', handle: '@houseofmarley', status: 'licensed' },
+  { id: 'hom-ig-uk', name: 'House of Marley UK IG', category: 'ventures', url: 'https://www.instagram.com/houseofmarleyuk/', handle: '@houseofmarleyuk', status: 'licensed' },
+  { id: 'hom-fb', name: 'House of Marley FB', category: 'ventures', url: 'https://www.facebook.com/HouseofMarley/', status: 'licensed' },
   { id: 'hom-yt', name: 'House of Marley YT', category: 'ventures', url: 'https://www.youtube.com/user/TheHouseofMarley', status: 'licensed' },
+  { id: 'hom-tiktok', name: 'House of Marley TikTok', category: 'ventures', url: 'https://www.tiktok.com/@thehouseofmarley', handle: '@thehouseofmarley', status: 'licensed' },
 
   // Music Legacy
   { id: 'bm-site', name: 'Bob Marley Official', category: 'music', url: 'https://www.bobmarley.com/', status: 'licensed' },
@@ -32,4 +37,5 @@ export const brandLinks: BrandLink[] = [
   { id: 'tg-radio-ig', name: 'Tuff Gong Radio IG', category: 'music', url: 'https://www.instagram.com/tuffgongradio/', handle: '@tuffgongradio', status: 'licensed' },
   { id: 'tg-tv', name: 'Tuff Gong Television', category: 'music', url: 'https://www.youtube.com/user/TuffGongTelevision', status: 'licensed' },
   { id: 'tg-ww', name: 'Tuff Gong Worldwide', category: 'music', url: 'http://www.tuffgongworldwide.com/', status: 'licensed' },
+  { id: 'yg-marley', name: 'YG Marley', category: 'music', url: '#', status: 'verify' },
 ];
