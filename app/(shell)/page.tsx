@@ -610,12 +610,12 @@ export default function HomePage() {
 
       <footer className="px-4 py-16 text-center bg-black">
         {/* Three logos side by side — fitted to screen */}
-        <div className="flex items-center justify-center gap-4 mb-10 px-2">
+        <div className="flex items-center justify-center gap-2 mb-10 px-2">
           <Image
             src="/brand/marley-enterprise.png"
             alt="Marley Enterprise"
-            width={110}
-            height={110}
+            width={130}
+            height={130}
             className="brightness-125 flex-shrink-0"
           />
           <Image
@@ -628,8 +628,8 @@ export default function HomePage() {
           <Image
             src="/brand/lion-crest-clean.png"
             alt="Lion Order Crest"
-            width={110}
-            height={110}
+            width={130}
+            height={130}
             className="brightness-125 flex-shrink-0"
           />
         </div>
