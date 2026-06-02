@@ -101,13 +101,13 @@ const communityPages = [
 /* ── dropdown section definitions ────────────────────────────── */
 
 const sections = [
-  { id: 'daily-drop', number: '01', title: 'Daily Drop' },
-  { id: 'movement', number: '02', title: 'The Movement' },
-  { id: 'truth', number: '03', title: 'Our Truth' },
-  { id: 'code', number: '04', title: 'The Code' },
+  { id: 'daily-drop', number: '01', title: 'Flower to the People' },
+  { id: 'movement', number: '02', title: 'Our Reasons to Believe' },
+  { id: 'truth', number: '03', title: 'Our Brand Truth' },
+  { id: 'code', number: '04', title: 'Codes of Lion Order' },
   { id: 'founder', number: '05', title: 'The Founder' },
   { id: 'empire', number: '06', title: 'The Empire' },
-  { id: 'wisdom', number: '07', title: 'Wisdom & Vision' },
+  { id: 'wisdom', number: '07', title: 'How We Heal' },
 ] as const;
 
 type SectionId = (typeof sections)[number]['id'];
@@ -218,10 +218,13 @@ export default function HomePage() {
                 <div className="bg-[var(--panel)] px-6 py-8 border-b border-[var(--line)]">
 
                   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                      01 — DAILY DROP
+                      01 — FLOWER TO THE PEOPLE
                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
                   {section.id === 'daily-drop' && (
                     <div>
+                      <div className="relative w-full aspect-[16/11] mb-6 -mx-6 -mt-8" style={{ width: 'calc(100% + 48px)' }}>
+                        <Image src="/brandbook/p02.jpg" alt="Flower to the People" fill className="object-cover object-center" sizes="100vw" />
+                      </div>
                       <div className="border border-[var(--line)] bg-[var(--bg)] p-8">
                         <div className="flex items-center gap-3 mb-6">
                           <span className="font-display text-4xl text-[#E8C23A] leading-none tracking-tight font-semibold">
@@ -253,10 +256,13 @@ export default function HomePage() {
                   )}
 
                   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                      02 — THE MOVEMENT
+                      02 — OUR REASONS TO BELIEVE
                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
                   {section.id === 'movement' && (
                     <div className="text-center">
+                      <div className="relative w-full aspect-[16/11] mb-6 -mx-6 -mt-8" style={{ width: 'calc(100% + 48px)' }}>
+                        <Image src="/brandbook/p06.jpg" alt="Our Reasons to Believe" fill className="object-cover object-center" sizes="100vw" />
+                      </div>
                       <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-5 font-medium">
                         Welcome to Lion Order
                       </p>
@@ -284,10 +290,13 @@ export default function HomePage() {
                   )}
 
                   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                      03 — OUR TRUTH
+                      03 — OUR BRAND TRUTH
                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
                   {section.id === 'truth' && (
                     <div>
+                      <div className="relative w-full aspect-[16/11] mb-6 -mx-6 -mt-8" style={{ width: 'calc(100% + 48px)' }}>
+                        <Image src="/brandbook/p12.jpg" alt="Our Brand Truth" fill className="object-cover object-center" sizes="100vw" />
+                      </div>
                       <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-3 text-center font-medium">
                         Brand Truths
                       </p>
@@ -306,6 +315,10 @@ export default function HomePage() {
                             </p>
                           </div>
                         ))}
+                      </div>
+
+                      <div className="relative w-full aspect-[16/11] my-8 -mx-6" style={{ width: 'calc(100% + 48px)' }}>
+                        <Image src="/brandbook/p09.jpg" alt="Cultural, Category & Medicinal Insight" fill className="object-cover object-center" sizes="100vw" />
                       </div>
 
                       <div className="gold-rule mb-8" />
@@ -336,10 +349,13 @@ export default function HomePage() {
                   )}
 
                   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                      04 — THE CODE
+                      04 — CODES OF LION ORDER
                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
                   {section.id === 'code' && (
                     <div>
+                      <div className="relative w-full aspect-[16/11] mb-6 -mx-6 -mt-8" style={{ width: 'calc(100% + 48px)' }}>
+                        <Image src="/brandbook/p22.jpg" alt="The Lion Within" fill className="object-cover object-center" sizes="100vw" />
+                      </div>
                       <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-3 text-center font-medium">
                         Our Codes
                       </p>
@@ -374,6 +390,10 @@ export default function HomePage() {
                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
                   {section.id === 'founder' && (
                     <div>
+                      <div className="relative w-full aspect-[16/11] mb-6 -mx-6 -mt-8" style={{ width: 'calc(100% + 48px)' }}>
+                        <Image src="/brandbook/p04.jpg" alt="We've Been Around A Long Time" fill className="object-cover object-center" sizes="100vw" />
+                      </div>
+
                       <div className="relative w-full aspect-video overflow-hidden mb-8">
                         <Image
                           src="/lion-order/rohan-portrait.jpg"
@@ -416,6 +436,10 @@ export default function HomePage() {
                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
                   {section.id === 'empire' && (
                     <div>
+                      <div className="relative w-full aspect-[16/11] mb-6 -mx-6 -mt-8" style={{ width: 'calc(100% + 48px)' }}>
+                        <Image src="/brandbook/p42.jpg" alt="Lion Order Smoking Lounge & Cafes" fill className="object-cover object-center" sizes="100vw" />
+                      </div>
+
                       <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-3 text-center font-medium">
                         The Portfolio
                       </p>
@@ -446,6 +470,10 @@ export default function HomePage() {
                             </div>
                           </div>
                         ))}
+                      </div>
+
+                      <div className="relative w-full aspect-[16/11] my-8 -mx-6" style={{ width: 'calc(100% + 48px)' }}>
+                        <Image src="/brandbook/p40.jpg" alt="Lion Order Community" fill className="object-cover object-center" sizes="100vw" />
                       </div>
 
                       <div className="gold-rule mb-8" />
@@ -493,10 +521,13 @@ export default function HomePage() {
                   )}
 
                   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                      07 — WISDOM & VISION
+                      07 — HOW WE HEAL
                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
                   {section.id === 'wisdom' && (
                     <div>
+                      <div className="relative w-full aspect-[16/11] mb-6 -mx-6 -mt-8" style={{ width: 'calc(100% + 48px)' }}>
+                        <Image src="/brandbook/p16.jpg" alt="How We Heal" fill className="object-cover object-center" sizes="100vw" />
+                      </div>
                       <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-6 text-center font-medium">
                         Wisdom
                       </p>
