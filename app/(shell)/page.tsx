@@ -28,12 +28,12 @@ export default function HomePage() {
 
   return (
     <div className="relative min-h-full bg-[var(--bg)]">
-      {/* Big bold title */}
-      <div className="px-4 pt-4 pb-3">
-        <h1 className="text-3xl font-bold text-[var(--cream)] tracking-tight">
+      {/* Big bold title — centered */}
+      <div className="px-4 pt-5 pb-3 text-center">
+        <h1 className="text-3xl font-bold text-white tracking-tight">
           Marley House
         </h1>
-        <div className="rasta-stripe mt-2 w-20" />
+        <div className="rasta-stripe mt-2 w-20 mx-auto" />
       </div>
 
       {/* Hero Video — full bleed */}
