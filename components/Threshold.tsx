@@ -38,17 +38,16 @@ export default function Threshold() {
           style={{ background: '#0b0805' }}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 2, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col items-center"
+            transition={{ delay: 0.2, duration: 2, ease: [0.16, 1, 0.3, 1] }}
           >
             <Image
-              src="/brand/lion-crest-clean.png"
+              src="/brand/lion-head-gold.png"
               alt="Lion Order"
-              width={200}
-              height={200}
-              className="opacity-90"
+              width={320}
+              height={320}
+              className="w-[70vw] max-w-[320px] h-auto"
               priority
             />
           </motion.div>
