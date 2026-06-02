@@ -73,9 +73,21 @@ export default function HomePage() {
     <div className="relative min-h-full bg-[var(--bg)] monogram-canvas">
 
       {/* ═══════ MAISON HERO ═══════ */}
-      <div className="relative px-6 pt-8 pb-10 text-center">
-        {/* Lion Head — hero crest */}
-        <Image src="/brand/lion-order-crest.png" alt="Lion Order" width={220} height={220} className="mx-auto mb-5" />
+      <div className="relative px-6 pt-6 pb-10 text-center">
+        {/* Gold glow behind lion */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[350px] h-[350px] rounded-full bg-[var(--gold)] blur-[120px] opacity-[0.15] pointer-events-none" />
+
+        {/* Lion Head — hero crest, big and bright */}
+        <div className="relative">
+          <Image
+            src="/brand/lion-order-crest.png"
+            alt="Lion Order"
+            width={300}
+            height={300}
+            className="mx-auto mb-4 drop-shadow-[0_0_40px_rgba(244,199,31,0.35)] brightness-110 saturate-[1.2]"
+            priority
+          />
+        </div>
 
         <p className="text-[var(--gold)] text-[9px] tracking-[0.5em] uppercase font-medium mb-2">
           The Maison of
