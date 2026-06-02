@@ -621,11 +621,11 @@ export default function HomePage() {
       ═══════════════════════════════════════════════════════════ */}
       <footer className="px-8 py-20 text-center">
         <Image
-          src="/brand/lion-head-gold.png"
+          src="/brand/lion-order-crest.png"
           alt="Lion Order"
-          width={120}
-          height={120}
-          className="mx-auto mb-8 opacity-80"
+          width={200}
+          height={200}
+          className="mx-auto mb-8 opacity-90 brightness-110"
         />
         <p className="text-[var(--dim)] text-[9px] tracking-[0.4em] uppercase mb-3">
           Lion Order &middot; Est. 2022
