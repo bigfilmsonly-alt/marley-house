@@ -1,26 +1,233 @@
 @import "tailwindcss";
 
+/* ─── Design Tokens ─── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0c0a08;
+  --bg2: #15110c;
+  --panel: rgba(28, 22, 16, 0.72);
+  --cream: #f3e9d8;
+  --dim: #bdae97;
+  --gold: #d8b15a;
+  --gold-deep: #a9812f;
+  --ember: #e2622f;
+  --green: #7ba36e;
+  --blue: #86b4cc;
+  --line: rgba(216, 177, 90, 0.16);
+  --room-coffee: #c98a3c;
+  --room-fire: #e2622f;
+  --room-wisdom: #d8b15a;
+  --room-music: #7ba36e;
+  --room-legacy: #b98a5a;
+  --room-family: #caa15e;
+  --room-future: #86b4cc;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: #0c0a08;
+  --color-bg2: #15110c;
+  --color-cream: #f3e9d8;
+  --color-dim: #bdae97;
+  --color-gold: #d8b15a;
+  --color-gold-deep: #a9812f;
+  --color-ember: #e2622f;
+  --color-green: #7ba36e;
+  --color-blue: #86b4cc;
+  --color-line: rgba(216, 177, 90, 0.16);
+  --color-panel: rgba(28, 22, 16, 0.72);
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-spline);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ─── Base ─── */
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 0; height: 0; }
+* { scrollbar-width: none; }
+
+/* ─── Film Grain ─── */
+.film-grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  animation: grain 8s steps(10) infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+/* ─── Device Frame (CSS-first responsive) ─── */
+.device-wrapper {
+  width: 100%;
+  height: 100dvh;
+  position: relative;
+}
+.device-ambient { display: none; }
+.device-shell {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.device-notch { display: none; }
+.device-btn { display: none; }
+.device-viewport {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  background: var(--bg);
+}
+
+@media (min-width: 768px) {
+  .device-wrapper {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #050403;
+    overflow: hidden;
+  }
+
+  .device-ambient {
+    display: block;
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    opacity: 0.06;
+    filter: blur(100px);
+    pointer-events: none;
+    transition: background 1s ease;
+  }
+
+  .device-shell {
+    position: relative;
+    width: 396px;
+    height: 856px;
+    border-radius: 55px;
+    background: linear-gradient(165deg, #3a3a3e 0%, #2a2a2c 30%, #1c1c1e 60%, #111112 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 0 0 1px rgba(0, 0, 0, 0.5),
+      0 25px 70px rgba(0, 0, 0, 0.6),
+      0 0 140px rgba(216, 177, 90, 0.02);
+    padding: 3px;
+    flex-shrink: 0;
+  }
+
+  .device-notch {
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 126px;
+    height: 37px;
+    background: #000;
+    border-radius: 20px;
+    z-index: 50;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
+  }
+
+  .device-notch::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 76px;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #1a1a2e 30%, #0d0d1a 70%);
+    box-shadow: inset 0 0 3px rgba(80, 80, 180, 0.2);
+  }
+
+  .device-btn {
+    display: block;
+    position: absolute;
+    background: linear-gradient(180deg, #3a3a3e, #1c1c1e);
+  }
+  .device-btn--silent {
+    left: -3px; top: 160px;
+    width: 4px; height: 30px;
+    border-radius: 2px 0 0 2px;
+    box-shadow: -1px 0 2px rgba(0,0,0,0.3);
+  }
+  .device-btn--vol-up {
+    left: -3px; top: 210px;
+    width: 4px; height: 54px;
+    border-radius: 2px 0 0 2px;
+    box-shadow: -1px 0 2px rgba(0,0,0,0.3);
+  }
+  .device-btn--vol-down {
+    left: -3px; top: 274px;
+    width: 4px; height: 54px;
+    border-radius: 2px 0 0 2px;
+    box-shadow: -1px 0 2px rgba(0,0,0,0.3);
+  }
+  .device-btn--power {
+    right: -3px; top: 232px;
+    width: 4px; height: 82px;
+    border-radius: 0 2px 2px 0;
+    box-shadow: 1px 0 2px rgba(0,0,0,0.3);
+  }
+
+  .device-viewport {
+    border-radius: 52px;
+    background: var(--bg);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Fade-up reveal ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stagger > * {
+  opacity: 0;
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.stagger > *:nth-child(1) { animation-delay: 0.08s; }
+.stagger > *:nth-child(2) { animation-delay: 0.16s; }
+.stagger > *:nth-child(3) { animation-delay: 0.24s; }
+.stagger > *:nth-child(4) { animation-delay: 0.32s; }
+.stagger > *:nth-child(5) { animation-delay: 0.4s; }
+.stagger > *:nth-child(6) { animation-delay: 0.48s; }
+
+/* ─── Ambient section glow ─── */
+.section-glow {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.12;
+  pointer-events: none;
 }
