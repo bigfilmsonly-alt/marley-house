@@ -6,31 +6,36 @@ export const colors = {
   ink: '#14110c',
   cream: '#14110c',
   dim: '#6B6358',
-  gold: '#c4a049',
-  goldDeep: '#9a7a2e',
-  goldHi: '#d8b35a',
-  ember: '#c4a049',
-  green: '#9a7a2e',
+  // Lion Order Brand Colors
+  royaltyYellow: '#F4C71F',
+  antiqueGold1: '#B98524',
+  antiqueGold2: '#825B0D',
+  gold: '#B98524',
+  goldDeep: '#825B0D',
+  goldHi: '#F4C71F',
+  ember: '#B98524',
+  green: '#825B0D',
   blue: '#14110c',
 } as const;
 
 export const roomAccents: Record<string, string> = {
-  coffee: '#9a7a2e',
-  fire: '#c4a049',
-  wisdom: '#c4a049',
-  music: '#9a7a2e',
-  legacy: '#9a7a2e',
-  family: '#c4a049',
-  future: '#9a7a2e',
+  coffee: '#B98524',
+  fire: '#B98524',
+  wisdom: '#B98524',
+  music: '#B98524',
+  legacy: '#825B0D',
+  family: '#B98524',
+  future: '#B98524',
 };
 
 export const tabGlows: Record<string, string> = {
-  '/': '#c4a049',
-  '/coffee': '#9a7a2e',
-  '/watch': '#c4a049',
-  '/vault': '#9a7a2e',
-  '/merch': '#c4a049',
-  '/ask': '#9a7a2e',
+  '/': '#B98524',
+  '/coffee': '#825B0D',
+  '/watch': '#B98524',
+  '/vault': '#825B0D',
+  '/merch': '#B98524',
+  '/ask': '#825B0D',
+  '/lion-order': '#F4C71F',
 };
 
 export const weatherConditions: Record<number, { condition: string; icon: string }> = {

@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* ─── Design Tokens — LUXURY MAISON ─── */
+/* ─── Design Tokens — LION ORDER BRAND SYSTEM ─── */
 :root {
   --bg: #f7f3ea;
   --bg2: #FFFFFF;
@@ -8,31 +8,34 @@
   --panel: rgba(247, 243, 234, 0.92);
   --cream: #14110c;
   --dim: #6B6358;
-  --gold: #c4a049;
-  --gold-deep: #9a7a2e;
-  --gold-hi: #d8b35a;
-  --ember: #c4a049;
+  --gold: #B98524;
+  --gold-deep: #825B0D;
+  --gold-hi: #F4C71F;
+  --ember: #B98524;
   --green: #14110c;
   --blue: #14110c;
   --line: rgba(20, 17, 12, 0.10);
 
-  /* Maison palette */
+  /* Lion Order Brand Colors */
+  --royalty-yellow: #F4C71F;
+  --antique-gold-1: #B98524;
+  --antique-gold-2: #825B0D;
   --ivory: #f7f3ea;
   --bone: #efe8d8;
   --ink: #14110c;
 
-  /* Rooms — muted luxury */
-  --room-coffee: #9a7a2e;
-  --room-fire: #c4a049;
-  --room-wisdom: #c4a049;
-  --room-music: #9a7a2e;
-  --room-legacy: #9a7a2e;
-  --room-family: #c4a049;
-  --room-future: #9a7a2e;
+  /* Rooms — brand-aligned */
+  --room-coffee: #B98524;
+  --room-fire: #B98524;
+  --room-wisdom: #B98524;
+  --room-music: #B98524;
+  --room-legacy: #825B0D;
+  --room-family: #B98524;
+  --room-future: #B98524;
 
-  /* Jamaican accent — used sparingly */
-  --ja-green: #9a7a2e;
-  --ja-gold: #c4a049;
+  /* Compat */
+  --ja-green: #825B0D;
+  --ja-gold: #F4C71F;
   --ja-black: #14110c;
 }
 
@@ -41,10 +44,10 @@
   --color-bg2: #FFFFFF;
   --color-cream: #14110c;
   --color-dim: #6B6358;
-  --color-gold: #c4a049;
-  --color-gold-deep: #9a7a2e;
-  --color-ember: #c4a049;
-  --color-green: #9a7a2e;
+  --color-gold: #B98524;
+  --color-gold-deep: #825B0D;
+  --color-ember: #B98524;
+  --color-green: #825B0D;
   --color-blue: #14110c;
   --color-line: rgba(20, 17, 12, 0.10);
   --color-panel: rgba(247, 243, 234, 0.92);
@@ -65,39 +68,37 @@ body {
 ::-webkit-scrollbar { width: 0; height: 0; }
 * { scrollbar-width: none; }
 
-/* ─── Maison Gold Line ─── */
+/* ─── Gold Rules ─── */
 .rasta-stripe {
   height: 1px;
-  background: var(--gold);
+  background: var(--antique-gold-1);
+  opacity: 0.25;
+}
+.rasta-stripe-thick {
+  height: 2px;
+  background: linear-gradient(to right, var(--antique-gold-2), var(--royalty-yellow), var(--antique-gold-2));
+  opacity: 0.5;
+}
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--antique-gold-1), transparent);
   opacity: 0.3;
 }
 
-.rasta-stripe-thick {
-  height: 1px;
-  background: var(--gold);
-  opacity: 0.4;
-}
-
-.gold-rule {
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--gold), transparent);
-  opacity: 0.4;
-}
-
-/* ─── Monogram Canvas Pattern ─── */
+/* ─── Monogram Canvas ─── */
 .monogram-canvas {
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='central' font-family='serif' font-size='11' fill='%23c4a049' opacity='0.04'%3EM%3C/text%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='central' font-family='serif' font-size='11' fill='%23B98524' opacity='0.035'%3EM%3C/text%3E%3C/svg%3E");
   background-size: 60px 60px;
 }
 
-/* ─── Film Grain (very subtle on ivory) ─── */
+/* ─── Film Grain (barely visible on ivory) ─── */
 .film-grain::after {
   content: '';
   position: fixed;
   inset: 0;
   z-index: 999;
   pointer-events: none;
-  opacity: 0.012;
+  opacity: 0.01;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 256px 256px;
@@ -136,9 +137,9 @@ body {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--gold), transparent);
-    opacity: 0.3;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--royalty-yellow), transparent);
+    opacity: 0.4;
     z-index: 2;
   }
 
@@ -164,7 +165,7 @@ body {
       inset 0 1px 0 rgba(255, 255, 255, 0.5),
       0 0 0 1px rgba(0, 0, 0, 0.06),
       0 30px 80px rgba(0, 0, 0, 0.15),
-      0 0 100px rgba(196, 160, 73, 0.03);
+      0 0 100px rgba(185, 133, 36, 0.03);
     padding: 3px;
     flex-shrink: 0;
   }
