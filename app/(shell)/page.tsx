@@ -109,13 +109,22 @@ export default function HomePage() {
         </p>
       </div>
 
-      {/* Hero Video — Drink Champs */}
+      {/* Hero Video — Marley Coffee */}
+      <VideoPlayer
+        videoId="XE-uV_DsurA"
+        title="Marley House — Making Marley Coffee"
+        thumbnail="https://img.youtube.com/vi/XE-uV_DsurA/maxresdefault.jpg"
+        hero
+      />
+
+      <div className="gold-rule mx-6 my-4" />
+
+      {/* Second Video — Drink Champs */}
       <div className="px-4 pb-6">
         <VideoPlayer
           videoId="X0SZf3r63ls"
           title="Rohan Marley — Bob Marley, Rastafari, Family & Legacy | Drink Champs"
           thumbnail="https://img.youtube.com/vi/X0SZf3r63ls/maxresdefault.jpg"
-          hero
         />
       </div>
 
