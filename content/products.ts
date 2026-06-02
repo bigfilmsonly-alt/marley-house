@@ -131,6 +131,18 @@ export const products: Product[] = [
     notes: 'Rare, smooth, refined complexity',
     price: 42.99,
     badges: ['Single Origin', 'Premium'],
+    image: '/products/jamaican-blue-mountain.svg',
     prototype: true,
+    description: 'One of the world\'s rarest and most sought-after coffees. Grown at elevation in Jamaica\'s Blue Mountains, hand-picked and sun-dried. Refined complexity with zero bitterness.',
+    brewingTip: 'Pour-over with precision: 200°F, 1:16 ratio. This coffee deserves attention.',
+    flavorProfile: [
+      { label: 'Brightness', value: 4 },
+      { label: 'Body', value: 4 },
+      { label: 'Sweetness', value: 5 },
+      { label: 'Complexity', value: 5 },
+    ],
+    pairing: 'On its own. Or with the finest dark chocolate.',
+    region: 'Blue Mountains, Jamaica',
+    elevation: '900–1,700m',
   },
 ];

@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <linearGradient id="bagGradientJ" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2D5F8A"/>
+      <stop offset="55%" stop-color="#245278"/>
+      <stop offset="100%" stop-color="#1A3A5E"/>
+    </linearGradient>
+    <linearGradient id="foldGradientJ" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A3A5E"/>
+      <stop offset="100%" stop-color="#224B70"/>
+    </linearGradient>
+    <linearGradient id="labelGradientJ" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#B8D4E8"/>
+      <stop offset="100%" stop-color="#A5C5DC"/>
+    </linearGradient>
+    <linearGradient id="goldShimmer" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D4A843"/>
+      <stop offset="50%" stop-color="#E8C468"/>
+      <stop offset="100%" stop-color="#D4A843"/>
+    </linearGradient>
+    <linearGradient id="ribbonGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D4A843"/>
+      <stop offset="100%" stop-color="#B8922E"/>
+    </linearGradient>
+    <linearGradient id="mountainGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A3A5E" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#1A3A5E" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse cx="200" cy="470" rx="120" ry="12" fill="#00000010"/>
+
+  <!-- Bag body -->
+  <path d="M70,90 L70,420 Q70,460 110,460 L290,460 Q330,460 330,420 L330,90 Z" fill="url(#bagGradientJ)"/>
+
+  <!-- Subtle side shading -->
+  <path d="M70,90 L70,420 Q70,460 110,460 L130,460 L130,90 Z" fill="#00000008"/>
+  <path d="M270,90 L330,90 L330,420 Q330,460 290,460 L270,460 Z" fill="#00000012"/>
+
+  <!-- Gold trim lines on bag edges -->
+  <line x1="73" y1="95" x2="73" y2="455" stroke="#D4A843" stroke-width="0.5" opacity="0.3"/>
+  <line x1="327" y1="95" x2="327" y2="455" stroke="#D4A843" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Folded top -->
+  <path d="M60,90 Q130,75 200,80 Q270,85 340,90 L330,90 Q270,100 200,95 Q130,90 70,90 Z" fill="url(#foldGradientJ)"/>
+  <path d="M60,90 Q130,65 200,70 Q270,75 340,90 Q270,85 200,80 Q130,75 60,90 Z" fill="#1A3A5E"/>
+  <path d="M65,85 Q130,60 200,65 Q270,70 335,85 Q270,78 200,73 Q130,68 65,85 Z" fill="#153050"/>
+
+  <!-- Gold accent on fold -->
+  <path d="M80,87 Q130,65 200,69 Q270,73 320,87" fill="none" stroke="#D4A843" stroke-width="0.7" opacity="0.4"/>
+
+  <!-- Top fold crease line -->
+  <path d="M68,88 Q130,63 200,68 Q270,73 332,88" fill="none" stroke="#122840" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- Center label panel -->
+  <rect x="95" y="155" width="210" height="235" rx="8" fill="url(#labelGradientJ)"/>
+  <!-- Gold border on label -->
+  <rect x="95" y="155" width="210" height="235" rx="8" fill="none" stroke="url(#goldShimmer)" stroke-width="2"/>
+  <!-- Inner border -->
+  <rect x="101" y="161" width="198" height="223" rx="5" fill="none" stroke="#D4A843" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- Brand name -->
+  <text x="200" y="122" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" letter-spacing="4" fill="#B8D4E8">MARLEY COFFEE</text>
+  <!-- Gold underline for brand -->
+  <line x1="135" y1="130" x2="265" y2="130" stroke="#D4A843" stroke-width="0.8" opacity="0.6"/>
+
+  <!-- Decorative top line on label -->
+  <line x1="115" y1="178" x2="285" y2="178" stroke="#D4A843" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- Mountain silhouette motif -->
+  <g transform="translate(200, 225)" opacity="0.8">
+    <!-- Far mountain -->
+    <path d="M-55,20 L-20,-25 L0,-15 L20,-30 L55,20 Z" fill="url(#mountainGrad)"/>
+    <!-- Snow caps -->
+    <path d="M-20,-25 L-14,-18 L-8,-22 L0,-15 L-10,-16 Z" fill="#B8D4E8" opacity="0.5"/>
+    <path d="M20,-30 L26,-22 L32,-25 L38,-18 L28,-18 L22,-24 Z" fill="#B8D4E8" opacity="0.5"/>
+    <!-- Near mountain -->
+    <path d="M-45,20 L-10,-15 L5,-8 L30,-20 L50,20 Z" fill="#1A3A5E" opacity="0.45"/>
+    <!-- Gold sun behind mountains -->
+    <circle cx="30" cy="-35" r="8" fill="#D4A843" opacity="0.25"/>
+    <circle cx="30" cy="-35" r="5" fill="#D4A843" opacity="0.15"/>
+    <!-- Cloud wisps -->
+    <path d="M-40,-10 Q-30,-14 -20,-10" fill="none" stroke="#B8D4E8" stroke-width="0.7" opacity="0.4"/>
+    <path d="M25,-12 Q35,-16 45,-12" fill="none" stroke="#B8D4E8" stroke-width="0.7" opacity="0.35"/>
+    <!-- Horizon line -->
+    <line x1="-60" y1="20" x2="60" y2="20" stroke="#1A3A5E" stroke-width="0.8" opacity="0.3"/>
+  </g>
+
+  <!-- Product name - two lines for longer name -->
+  <text x="200" y="295" text-anchor="middle" font-family="Georgia, serif" font-size="21" font-weight="700" fill="#1A3A5E">Jamaican</text>
+  <text x="200" y="322" text-anchor="middle" font-family="Georgia, serif" font-size="21" font-weight="700" fill="#1A3A5E">Blue Mountain</text>
+
+  <!-- Gold decorative line under name -->
+  <line x1="130" y1="334" x2="270" y2="334" stroke="#D4A843" stroke-width="1" opacity="0.6"/>
+
+  <!-- Subtitle -->
+  <text x="200" y="355" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" letter-spacing="2" fill="#1A3A5E" opacity="0.8">PREMIUM SINGLE ORIGIN</text>
+
+  <!-- Small gold diamond accents -->
+  <rect x="126" y="331" width="5" height="5" rx="0.5" transform="rotate(45, 128.5, 333.5)" fill="#D4A843" opacity="0.5"/>
+  <rect x="269" y="331" width="5" height="5" rx="0.5" transform="rotate(45, 271.5, 333.5)" fill="#D4A843" opacity="0.5"/>
+
+  <!-- Bottom decorative line on label -->
+  <line x1="115" y1="372" x2="285" y2="372" stroke="#D4A843" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- PREMIUM ribbon/badge -->
+  <g transform="translate(310, 165)">
+    <!-- Ribbon shape -->
+    <path d="M-25,-12 L25,-12 L25,12 L0,20 L-25,12 Z" fill="url(#ribbonGrad)"/>
+    <path d="M-25,-12 L25,-12 L25,12 L0,20 L-25,12 Z" fill="none" stroke="#B8922E" stroke-width="0.5"/>
+    <!-- Inner border -->
+    <path d="M-21,-8 L21,-8 L21,9 L0,16 L-21,9 Z" fill="none" stroke="#F5E6C0" stroke-width="0.5" opacity="0.6"/>
+    <!-- Text -->
+    <text x="0" y="3" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" font-weight="700" letter-spacing="2" fill="#F5E6C0">PREMIUM</text>
+  </g>
+
+  <!-- Weight with gold accent -->
+  <text x="200" y="438" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" letter-spacing="1" fill="#D4A843" opacity="0.7">340g / 12oz</text>
+</svg>

@@ -186,22 +186,60 @@ export default function CoffeePage() {
         </button>
       </div>
 
+      {/* From Farm to Cup */}
+      <div className="px-6 pb-5">
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--room-coffee)] mb-3 font-medium">
+          From Farm to Cup
+        </p>
+        <div className="flex gap-2 overflow-x-auto no-scrollbar -mx-6 px-6 pb-1">
+          {[
+            { step: '01', title: 'Grown', desc: 'Blue Mountains, Jamaica & select origins', icon: '🌱' },
+            { step: '02', title: 'Hand-Picked', desc: 'Only ripe cherries, selected by hand', icon: '✋' },
+            { step: '03', title: 'Sun-Dried', desc: 'Natural process under Caribbean sun', icon: '☀️' },
+            { step: '04', title: 'Small-Batch Roasted', desc: 'Crafted to bring out each origin', icon: '🔥' },
+            { step: '05', title: 'Your Cup', desc: 'From our family to yours', icon: '☕' },
+          ].map((s) => (
+            <div
+              key={s.step}
+              className="shrink-0 w-[140px] rounded-xl border border-[var(--line)] bg-[var(--bg2)] p-3.5"
+            >
+              <span className="text-xl mb-2 block">{s.icon}</span>
+              <p className="text-[9px] tracking-wider uppercase text-[var(--room-coffee)] font-medium mb-0.5">
+                Step {s.step}
+              </p>
+              <p className="text-sm text-[var(--cream)] font-light leading-tight">{s.title}</p>
+              <p className="text-[var(--dim)] text-[10px] font-light mt-1 leading-snug">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Product grid */}
+      <div className="px-6 pb-3">
+        <div className="flex items-center justify-between mb-3">
+          <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--room-coffee)] font-medium">
+            All Blends
+          </p>
+          <p className="text-[var(--dim)] text-[10px] font-light">
+            {products.length} blends
+          </p>
+        </div>
+      </div>
       <div className="px-6 pb-6 grid grid-cols-2 gap-3">
         {products.map((blend) => (
           <button
             key={blend.id}
             onClick={() => { setSelected(blend); setPdpQty(1); }}
-            className="rounded-xl border border-[var(--line)] bg-[var(--bg2)] overflow-hidden text-left hover:border-[var(--room-coffee)]/25 transition-colors"
+            className="rounded-xl border border-[var(--line)] bg-[var(--bg2)] overflow-hidden text-left hover:border-[var(--room-coffee)]/25 transition-all group"
           >
-            <div className="aspect-square bg-gradient-to-b from-[var(--room-coffee)]/[0.06] to-[var(--bg2)] flex items-center justify-center relative p-4">
+            <div className="aspect-square bg-gradient-to-b from-[var(--room-coffee)]/[0.08] to-[var(--bg2)] flex items-center justify-center relative p-4">
               {blend.image ? (
                 <Image
                   src={blend.image}
                   alt={blend.name}
                   width={160}
                   height={160}
-                  className="object-contain drop-shadow-lg"
+                  className="object-contain drop-shadow-lg group-hover:scale-105 transition-transform duration-300"
                 />
               ) : (
                 <Coffee size={32} className="text-[var(--room-coffee)] opacity-25" strokeWidth={1} />
@@ -215,7 +253,17 @@ export default function CoffeePage() {
             <div className="p-3">
               <p className="font-display text-sm text-[var(--cream)] leading-tight">{blend.name}</p>
               <p className="text-[var(--dim)] text-[10px] font-light mt-0.5">{blend.roast}</p>
-              <p className="text-[var(--gold)] text-sm mt-2">${blend.price.toFixed(2)}</p>
+              {blend.notes && (
+                <p className="text-[var(--dim)] text-[9px] font-light mt-1.5 leading-snug line-clamp-2 opacity-70">
+                  {blend.notes}
+                </p>
+              )}
+              <div className="flex items-center justify-between mt-2">
+                <p className="text-[var(--gold)] text-sm font-medium">${blend.price.toFixed(2)}</p>
+                <span className="text-[8px] tracking-wider uppercase text-[var(--dim)] opacity-60">
+                  {blend.origin}
+                </span>
+              </div>
             </div>
           </button>
         ))}
@@ -309,6 +357,75 @@ export default function CoffeePage() {
                     </span>
                   ))}
                 </div>
+
+                {/* Flavor Profile */}
+                {selected.flavorProfile && selected.flavorProfile.length > 0 && (
+                  <div className="mt-5">
+                    <p className="text-[10px] tracking-[0.15em] uppercase text-[var(--dim)] mb-3">Flavor Profile</p>
+                    <div className="space-y-2.5">
+                      {selected.flavorProfile.map((f) => (
+                        <div key={f.label} className="flex items-center gap-3">
+                          <span className="text-[11px] text-[var(--dim)] w-20 shrink-0">{f.label}</span>
+                          <div className="flex-1 flex gap-1">
+                            {[1, 2, 3, 4, 5].map((n) => (
+                              <div
+                                key={n}
+                                className="h-2 flex-1 rounded-full transition-colors"
+                                style={{
+                                  background: n <= f.value
+                                    ? 'var(--room-coffee)'
+                                    : 'var(--line)',
+                                }}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Brewing Tip */}
+                {selected.brewingTip && (
+                  <div className="mt-5 p-3.5 rounded-xl bg-[var(--room-coffee)]/[0.05] border border-[var(--room-coffee)]/15">
+                    <p className="text-[10px] tracking-[0.15em] uppercase text-[var(--room-coffee)] mb-1.5 font-medium">Brewing Tip</p>
+                    <p className="text-sm text-[var(--cream)] font-light leading-relaxed">{selected.brewingTip}</p>
+                  </div>
+                )}
+
+                {/* Pairing */}
+                {selected.pairing && (
+                  <div className="mt-4">
+                    <p className="text-[10px] tracking-[0.15em] uppercase text-[var(--dim)] mb-1.5">Pairs With</p>
+                    <p className="text-sm text-[var(--cream)] font-light">{selected.pairing}</p>
+                  </div>
+                )}
+
+                {/* Origin details */}
+                {(selected.region || selected.elevation) && (
+                  <div className="mt-4 flex gap-3">
+                    {selected.region && (
+                      <div className="flex-1 p-3 rounded-xl bg-[var(--bg2)] border border-[var(--line)]">
+                        <p className="text-[9px] tracking-[0.15em] uppercase text-[var(--dim)] mb-0.5">Region</p>
+                        <p className="text-xs text-[var(--cream)] font-light">{selected.region}</p>
+                      </div>
+                    )}
+                    {selected.elevation && (
+                      <div className="flex-1 p-3 rounded-xl bg-[var(--bg2)] border border-[var(--line)]">
+                        <p className="text-[9px] tracking-[0.15em] uppercase text-[var(--dim)] mb-0.5">Elevation</p>
+                        <p className="text-xs text-[var(--cream)] font-light">{selected.elevation}</p>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Description */}
+                {selected.description && (
+                  <div className="mt-4">
+                    <p className="text-[10px] tracking-[0.15em] uppercase text-[var(--dim)] mb-1.5">About This Blend</p>
+                    <p className="text-sm text-[var(--cream)]/80 font-light leading-relaxed">{selected.description}</p>
+                  </div>
+                )}
 
                 {/* Quantity + Add */}
                 <div className="flex items-center gap-4 mt-6 pt-5 border-t border-[var(--line)]">

@@ -37,10 +37,10 @@ interface Blend {
 const BLENDS: Blend[] = [
   { name: 'Simmer Down', roast: 'Decaf · Swiss Water', note: 'All the ritual, none of the caffeine.', image: '/products/simmer-down.webp' },
   { name: 'Get Up, Stand Up', roast: 'Light Roast', note: 'Bright, nutty, caramel. The gentle sunrise.', image: '/products/get-up-stand-up.webp' },
-  { name: 'One Love', roast: 'Medium · 100% Ethiopian', note: 'Smooth, balanced, exotic. The crowd-pleaser.' },
+  { name: 'One Love', roast: 'Medium · 100% Ethiopian', note: 'Smooth, balanced, exotic. The crowd-pleaser.', image: '/products/one-love.svg' },
   { name: 'Buffalo Soldier', roast: 'Medium-Dark', note: 'Rich and full-bodied with dark chocolate.', image: '/products/buffalo-soldier.webp' },
   { name: 'Lively Up', roast: 'Dark Roast', note: 'Bold, chocolate, subtle citrus. Full force.', image: '/products/lively-up.webp' },
-  { name: 'Jamaican Blue Mountain', roast: 'Premium Single Origin', note: 'The rarest cup in the house.' },
+  { name: 'Jamaican Blue Mountain', roast: 'Premium Single Origin', note: 'The rarest cup in the house.', image: '/products/jamaican-blue-mountain.svg' },
 ];
 
 function pickBlend(answers: number[]): Blend {
