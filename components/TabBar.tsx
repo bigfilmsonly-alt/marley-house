@@ -59,9 +59,9 @@ export default function TabBar() {
               <Image
                 src="/brand/lion-order-wordmark-gold.jpg"
                 alt="Lion Order"
-                width={280}
-                height={200}
-                className="brightness-110"
+                width={500}
+                height={360}
+                className="brightness-125 w-[85vw] max-w-[500px] h-auto"
                 priority
               />
             </motion.div>
