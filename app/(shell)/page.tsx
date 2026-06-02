@@ -34,17 +34,20 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#1a1508] via-[#0f0d06] to-[var(--bg)]" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[400px] rounded-full bg-[#FED100] blur-[180px] opacity-[0.08]" />
 
-        <div className="relative px-5 pt-6 pb-8">
+        <div className="relative px-5 pt-6 pb-8 text-center">
           {/* Lion Order badge */}
-          <div className="flex items-center gap-2 mb-5">
+          <div className="flex items-center justify-center gap-2 mb-5">
             <div className="w-8 h-8 rounded-lg bg-[#FED100]/15 flex items-center justify-center">
               <Crown size={16} className="text-[#FED100]" />
             </div>
-            <div>
+            <div className="text-left">
               <p className="text-[#FED100] text-[10px] tracking-[0.3em] uppercase font-bold">Lion Order</p>
               <p className="text-[var(--dim)] text-[9px]">by Rohan Marley</p>
             </div>
           </div>
+
+          {/* Site name */}
+          <p className="text-[var(--dim)] text-[10px] tracking-[0.3em] uppercase mb-2">rohanmarley.com</p>
 
           {/* Main headline */}
           <h1 className="text-4xl font-bold text-white leading-[1.1] tracking-tight mb-3">
@@ -53,12 +56,12 @@ export default function HomePage() {
             Legacy.
           </h1>
 
-          <p className="text-[var(--dim)] text-sm leading-relaxed mb-5 max-w-[300px]">
+          <p className="text-[var(--dim)] text-sm leading-relaxed mb-5 max-w-[300px] mx-auto">
             A roots-luxury movement rooted in Rastafari philosophy. Anime, culture, coffee, and community — all under one roof.
           </p>
 
           {/* CTA buttons */}
-          <div className="flex gap-3">
+          <div className="flex gap-3 justify-center">
             <AppLink
               href="https://lionorder.com/"
               title="Lion Order"
@@ -75,7 +78,7 @@ export default function HomePage() {
           </div>
 
           {/* Stats row */}
-          <div className="flex gap-6 mt-6 pt-5 border-t border-[#FED100]/10">
+          <div className="flex gap-6 mt-6 pt-5 border-t border-[#FED100]/10 justify-center">
             <div>
               <p className="text-[#FED100] text-lg font-bold">80+</p>
               <p className="text-[var(--dim)] text-[10px]">Videos</p>
