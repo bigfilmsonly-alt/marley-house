@@ -21,7 +21,7 @@ interface Tab {
 const tabs: Tab[] = [
   { href: '/', icon: Home, label: 'Home', splash: true },
   { href: '/coffee', icon: Coffee, label: 'Coffee', embed: { url: 'https://marleycoffee.com', title: 'Marley Coffee' }, splash: true },
-  { href: '/watch', icon: Play, label: 'Watch' },
+  { href: '/watch', icon: Play, label: 'Watch', splash: true },
   { href: '/lion-order', icon: Crown, label: 'Lion Order', embed: { url: 'https://lionorder.com', title: 'Lion Order' }, splash: true },
 ];
 
@@ -35,6 +35,7 @@ export default function TabBar() {
     'Lion Order': { src: '/brand/lion-order-wordmark-gold.jpg', alt: 'Lion Order' },
     'Coffee': { src: '/brand/marley-coffee-lion-gold.png', alt: 'Marley Coffee' },
     'Home': { src: '/brand/rhr-monogram-transparent.png', alt: 'R-M' },
+    'Watch': { src: '/brand/lion-crest-clean.png', alt: 'Lion Order' },
   };
 
   function handleSplashTab(tab: Tab) {
