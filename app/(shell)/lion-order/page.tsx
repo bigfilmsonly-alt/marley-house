@@ -31,13 +31,9 @@ const qualityFactors = [
   { name: 'Efficacy', accent: '#a9812f' },
 ];
 
-const characters = [
-  { name: 'King Clem', role: 'The warrior. Strength and justice.', image: '/lion-order/king-clem.jpg' },
-];
-
 const personality = ['Regal', 'Passionate', 'Wise', 'Aspirational', 'Courageous', 'Nurturing'];
 
-const fadeUp = {
+const fade = {
   initial: { opacity: 0, y: 16 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: '-40px' },
@@ -50,9 +46,9 @@ export default function LionOrderPage() {
       {/* Ambient glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-[#d8b15a] blur-[120px] opacity-[0.06] pointer-events-none" />
 
-      {/* Hero */}
-      <div className="relative px-6 pt-14 pb-8 text-center">
-        <motion.div {...fadeUp}>
+      {/* ═══ HERO ═══ */}
+      <div className="relative px-6 pt-14 pb-6 text-center">
+        <motion.div {...fade}>
           <Image
             src="/lion-order/crest-gold.jpg"
             alt="Lion Order Crest"
@@ -72,8 +68,15 @@ export default function LionOrderPage() {
         </motion.div>
       </div>
 
-      {/* Vision & Mission */}
-      <motion.div {...fadeUp} className="px-6 pb-8">
+      {/* ═══ LION EYES ═══ */}
+      <motion.div {...fade} className="px-4 pb-6">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/lion-order/lion-eyes.jpg" alt="The Lion" width={380} height={200} className="w-full h-44 object-cover" />
+        </div>
+      </motion.div>
+
+      {/* ═══ VISION & MISSION ═══ */}
+      <motion.div {...fade} className="px-6 pb-8">
         <div className="rounded-2xl border border-[#d8b15a]/20 bg-[#d8b15a]/[0.04] p-5">
           <div className="text-center mb-4">
             <Crown size={20} className="text-[#d8b15a] mx-auto mb-2" />
@@ -92,40 +95,33 @@ export default function LionOrderPage() {
         </div>
       </motion.div>
 
-      {/* Heritage photo */}
-      <motion.div {...fadeUp} className="px-4 pb-8">
+      {/* ═══ ROHAN — THE FOUNDER ═══ */}
+      <motion.div {...fade} className="px-4 pb-8">
+        <div className="rounded-2xl overflow-hidden bg-[var(--bg2)] border border-[var(--line)]">
+          <Image src="/lion-order/rohan-portrait.jpg" alt="Rohan Marley" width={380} height={480} className="w-full h-72 object-cover object-top" />
+          <div className="p-5">
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-1">The Founder</p>
+            <h2 className="font-display text-xl text-[var(--cream)] font-light mb-2">Rohan Marley</h2>
+            <p className="text-[var(--dim)] text-sm font-light leading-relaxed">
+              More than a brand. Rohan&apos;s taste acts like a stamp of approval. His association signals both authenticity and quality. The story is the order.
+            </p>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* ═══ HERITAGE COLLAGE ═══ */}
+      <motion.div {...fade} className="px-4 pb-8">
         <div className="rounded-2xl overflow-hidden">
-          <Image
-            src="/lion-order/heritage.jpg"
-            alt="Lion Order Heritage — Jamaican roots, music, culture"
-            width={380}
-            height={260}
-            className="w-full h-auto object-cover"
-          />
+          <Image src="/lion-order/heritage.jpg" alt="Heritage — Jamaican roots, music, culture" width={380} height={260} className="w-full h-auto object-cover" />
         </div>
         <p className="text-center text-[var(--dim)] text-[10px] font-light mt-2">
           Heritage + Roots &mdash; the landscape, the culture, the values
         </p>
       </motion.div>
 
-      {/* Rohan */}
-      <motion.div {...fadeUp} className="px-6 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">
-          The Founder
-        </p>
-        <h2 className="font-display text-xl text-[var(--cream)] font-light mb-2">
-          Rohan Marley
-        </h2>
-        <p className="text-[var(--dim)] text-sm font-light leading-relaxed">
-          More than a brand. Rohan&apos;s taste acts like a stamp of approval. His association signals both authenticity and quality. The story is the order.
-        </p>
-      </motion.div>
-
-      {/* Values */}
-      <motion.div {...fadeUp} className="px-6 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-4">
-          Our Values
-        </p>
+      {/* ═══ VALUES ═══ */}
+      <motion.div {...fade} className="px-6 pb-8">
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-4">Our Values</p>
         <div className="space-y-3">
           {values.map((v) => (
             <div key={v.label} className="flex items-start gap-3 rounded-xl bg-[var(--bg2)] border border-[var(--line)] p-3">
@@ -141,71 +137,76 @@ export default function LionOrderPage() {
         </div>
       </motion.div>
 
-      {/* Codes */}
-      <motion.div {...fadeUp} className="px-6 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">
-          Codes of Lion Order
-        </p>
+      {/* ═══ CODES ═══ */}
+      <motion.div {...fade} className="px-6 pb-8">
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">Codes of Lion Order</p>
         <div className="flex flex-wrap gap-2">
           {codes.map((code) => (
-            <span
-              key={code}
-              className="text-[11px] text-[#d8b15a] bg-[#d8b15a]/[0.08] border border-[#d8b15a]/15 px-3 py-1.5 rounded-full font-medium"
-            >
+            <span key={code} className="text-[11px] text-[#d8b15a] bg-[#d8b15a]/[0.08] border border-[#d8b15a]/15 px-3 py-1.5 rounded-full font-medium">
               {code}
             </span>
           ))}
         </div>
       </motion.div>
 
-      {/* Roots Luxury */}
-      <motion.div {...fadeUp} className="px-6 pb-8">
+      {/* ═══ ROOTS LUXURY ═══ */}
+      <motion.div {...fade} className="px-4 pb-8">
         <div className="rounded-2xl overflow-hidden relative">
-          <Image
-            src="/lion-order/culture.jpg"
-            alt="Rastafari culture"
-            width={380}
-            height={240}
-            className="w-full h-48 object-cover"
-          />
+          <Image src="/lion-order/culture.jpg" alt="Rastafari culture" width={380} height={240} className="w-full h-48 object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-5">
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-1">
-              Our Perspective
-            </p>
-            <h3 className="font-display text-2xl text-[var(--cream)] font-light">
-              &ldquo;Roots Luxury&rdquo;
-            </h3>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-1">Our Perspective</p>
+            <h3 className="font-display text-2xl text-[var(--cream)] font-light">&ldquo;Roots Luxury&rdquo;</h3>
           </div>
         </div>
       </motion.div>
 
-      {/* Five Quality Factors */}
-      <motion.div {...fadeUp} className="px-6 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">
-          Five Quality Factors
-        </p>
+      {/* ═══ THE FLOWER ═══ */}
+      <motion.div {...fade} className="px-4 pb-8">
         <div className="grid grid-cols-2 gap-2">
+          <div className="rounded-xl overflow-hidden">
+            <Image src="/lion-order/flower-closeup.jpg" alt="Cannabis flower close-up" width={180} height={260} className="w-full h-52 object-cover" />
+          </div>
+          <div className="rounded-xl overflow-hidden">
+            <Image src="/lion-order/field-sunset.jpg" alt="Cannabis field at sunset" width={180} height={260} className="w-full h-52 object-cover" />
+          </div>
+        </div>
+        <p className="text-center text-[var(--dim)] text-[10px] font-light mt-2">
+          Strain-hunted &middot; Small batch &middot; Beautiful forms
+        </p>
+      </motion.div>
+
+      {/* ═══ FIVE QUALITY FACTORS ═══ */}
+      <motion.div {...fade} className="px-6 pb-8">
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">Five Quality Factors</p>
+        <div className="grid grid-cols-3 gap-2">
           {qualityFactors.map((f) => (
-            <div
-              key={f.name}
-              className="rounded-xl bg-[var(--bg2)] border border-[var(--line)] p-3 text-center"
-            >
-              <div
-                className="w-2 h-2 rounded-full mx-auto mb-2"
-                style={{ background: f.accent }}
-              />
-              <p className="text-xs text-[var(--cream)] font-medium">{f.name}</p>
+            <div key={f.name} className="rounded-xl bg-[var(--bg2)] border border-[var(--line)] p-2.5 text-center">
+              <div className="w-2 h-2 rounded-full mx-auto mb-1.5" style={{ background: f.accent }} />
+              <p className="text-[10px] text-[var(--cream)] font-medium leading-tight">{f.name}</p>
             </div>
           ))}
         </div>
       </motion.div>
 
-      {/* How We Heal */}
-      <motion.div {...fadeUp} className="px-6 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">
-          How We Heal
+      {/* ═══ ART DIRECTION — LOUNGE ═══ */}
+      <motion.div {...fade} className="px-4 pb-8">
+        <div className="grid grid-cols-2 gap-2">
+          <div className="rounded-xl overflow-hidden">
+            <Image src="/lion-order/lounge-portrait.jpg" alt="Art direction" width={180} height={200} className="w-full h-44 object-cover" />
+          </div>
+          <div className="rounded-xl overflow-hidden">
+            <Image src="/lion-order/ashtray-floral.jpg" alt="Beautiful forms" width={180} height={200} className="w-full h-44 object-cover" />
+          </div>
+        </div>
+        <p className="text-center text-[var(--dim)] text-[10px] font-light mt-2">
+          Art direction &middot; Photo direction &middot; Roots luxury aesthetic
         </p>
+      </motion.div>
+
+      {/* ═══ HOW WE HEAL ═══ */}
+      <motion.div {...fade} className="px-6 pb-8">
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">How We Heal</p>
         <div className="grid grid-cols-3 gap-2">
           {['Physical', 'Mental', 'Nurture', 'Expression', 'Improvement', 'Education'].map((h) => (
             <div key={h} className="rounded-lg bg-[#d8b15a]/[0.05] border border-[#d8b15a]/10 py-2.5 px-2 text-center">
@@ -215,64 +216,57 @@ export default function LionOrderPage() {
         </div>
       </motion.div>
 
-      {/* Rainforest / Landscape */}
-      <motion.div {...fadeUp} className="px-4 pb-8">
+      {/* ═══ LANDSCAPE ═══ */}
+      <motion.div {...fade} className="px-4 pb-8">
         <div className="rounded-2xl overflow-hidden">
-          <Image
-            src="/lion-order/rainforest.jpg"
-            alt="The landscape — roots, nature, origin"
-            width={380}
-            height={220}
-            className="w-full h-auto object-cover"
-          />
+          <Image src="/lion-order/landscape-waterfall.jpg" alt="The landscape" width={380} height={250} className="w-full h-auto object-cover" />
         </div>
         <p className="text-center text-[var(--dim)] text-[10px] font-light mt-2">
           The landscape &mdash; where the story begins
         </p>
       </motion.div>
 
-      {/* Personality */}
-      <motion.div {...fadeUp} className="px-6 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">
-          Our Personality
-        </p>
+      {/* ═══ PERSONALITY ═══ */}
+      <motion.div {...fade} className="px-6 pb-8">
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">Our Personality</p>
         <div className="flex flex-wrap gap-2">
           {personality.map((p) => (
-            <span
-              key={p}
-              className="text-xs text-[var(--cream)] bg-[var(--bg2)] border border-[var(--line)] px-3 py-1.5 rounded-full"
-            >
+            <span key={p} className="text-xs text-[var(--cream)] bg-[var(--bg2)] border border-[var(--line)] px-3 py-1.5 rounded-full">
               {p}
             </span>
           ))}
         </div>
       </motion.div>
 
-      {/* Characters */}
-      <motion.div {...fadeUp} className="px-6 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">
-          Our Characters
-        </p>
+      {/* ═══ COMMUNITY ═══ */}
+      <motion.div {...fade} className="px-4 pb-8">
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3 px-2">Our Community</p>
+        <div className="grid grid-cols-3 gap-1.5">
+          <div className="rounded-lg overflow-hidden">
+            <Image src="/lion-order/community-vinyl.jpg" alt="Vinyl culture" width={120} height={160} className="w-full h-32 object-cover" />
+          </div>
+          <div className="rounded-lg overflow-hidden">
+            <Image src="/lion-order/community-bar.jpg" alt="Community gathering" width={120} height={160} className="w-full h-32 object-cover" />
+          </div>
+          <div className="rounded-lg overflow-hidden">
+            <Image src="/lion-order/community-table.jpg" alt="The table" width={120} height={160} className="w-full h-32 object-cover" />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* ═══ CHARACTERS ═══ */}
+      <motion.div {...fade} className="px-6 pb-8">
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">Our Characters</p>
         <p className="text-[var(--dim)] text-sm font-light mb-4 leading-relaxed">
           The animated world of Lion Order &mdash; manga storytelling meets Rastafari culture.
         </p>
-
-        {characters.map((c) => (
-          <div key={c.name} className="rounded-2xl overflow-hidden bg-[var(--bg2)] border border-[var(--line)]">
-            <Image
-              src={c.image}
-              alt={c.name}
-              width={380}
-              height={380}
-              className="w-full aspect-square object-cover"
-            />
-            <div className="p-4">
-              <p className="font-display text-lg text-[var(--cream)]">{c.name}</p>
-              <p className="text-[var(--dim)] text-xs font-light mt-0.5">{c.role}</p>
-            </div>
+        <div className="rounded-2xl overflow-hidden bg-[var(--bg2)] border border-[var(--line)]">
+          <Image src="/lion-order/king-clem.jpg" alt="King Clem" width={380} height={380} className="w-full aspect-square object-cover" />
+          <div className="p-4">
+            <p className="font-display text-lg text-[var(--cream)]">King Clem</p>
+            <p className="text-[var(--dim)] text-xs font-light mt-0.5">The warrior. Strength and justice.</p>
           </div>
-        ))}
-
+        </div>
         <div className="grid grid-cols-2 gap-2 mt-3">
           <div className="rounded-xl bg-[var(--bg2)] border border-[var(--line)] p-4 text-center">
             <p className="font-display text-sm text-[var(--cream)]">Kai Suna</p>
@@ -285,32 +279,27 @@ export default function LionOrderPage() {
         </div>
       </motion.div>
 
-      {/* Selassie / Heritage */}
-      <motion.div {...fadeUp} className="px-6 pb-8">
+      {/* ═══ SELASSIE / RASTAFARI HERITAGE ═══ */}
+      <motion.div {...fade} className="px-4 pb-8">
         <div className="rounded-2xl overflow-hidden bg-[var(--bg2)] border border-[var(--line)]">
-          <Image
-            src="/lion-order/selassie.jpg"
-            alt="Rastafari heritage"
-            width={380}
-            height={500}
-            className="w-full h-64 object-cover object-top"
-          />
+          <Image src="/lion-order/selassie.jpg" alt="Rastafari heritage" width={380} height={500} className="w-full h-64 object-cover object-top" />
           <div className="p-4 text-center">
-            <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-1">
-              Rastafari Legacy
-            </p>
-            <p className="text-[var(--dim)] text-xs font-light">
-              The deep roots binding Jamaica and Ethiopia. Heritage is the foundation.
-            </p>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-1">Rastafari Legacy</p>
+            <p className="text-[var(--dim)] text-xs font-light">The deep roots binding Jamaica and Ethiopia. Heritage is the foundation.</p>
           </div>
         </div>
       </motion.div>
 
-      {/* Products */}
-      <motion.div {...fadeUp} className="px-6 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">
-          The Ecosystem
-        </p>
+      {/* ═══ ROHAN B&W ═══ */}
+      <motion.div {...fade} className="px-4 pb-8">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/lion-order/rohan-bw.jpg" alt="Rohan Marley" width={380} height={480} className="w-full h-64 object-cover object-top" />
+        </div>
+      </motion.div>
+
+      {/* ═══ THE ECOSYSTEM ═══ */}
+      <motion.div {...fade} className="px-6 pb-8">
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">The Ecosystem</p>
         <div className="space-y-2">
           {[
             { name: 'Lion Order Flower', sub: 'Small batch, strain-hunted, high-quality cannabis' },
@@ -326,45 +315,52 @@ export default function LionOrderPage() {
         </div>
       </motion.div>
 
-      {/* Visual Identity */}
-      <motion.div {...fadeUp} className="px-6 pb-8">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3">
-          Visual Identity
-        </p>
+      {/* ═══ VISUAL IDENTITY ═══ */}
+      <motion.div {...fade} className="px-4 pb-8">
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[#d8b15a] font-medium mb-3 px-2">Visual Identity</p>
         <div className="rounded-2xl overflow-hidden bg-[var(--bg2)] border border-[var(--line)]">
-          <Image
-            src="/lion-order/wordmark.jpg"
-            alt="Lion Order wordmark in gold"
-            width={380}
-            height={200}
-            className="w-full h-40 object-cover"
-          />
+          <Image src="/lion-order/wordmark.jpg" alt="Lion Order wordmark" width={380} height={200} className="w-full h-40 object-cover" />
           <div className="p-4">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="flex gap-1.5">
-                <div className="w-6 h-6 rounded-full bg-[#d8b15a]" title="Royalty Yellow" />
-                <div className="w-6 h-6 rounded-full bg-[#a9812f]" title="Antique Gold AG01" />
-                <div className="w-6 h-6 rounded-full bg-[#c98a3c]" title="Antique Gold AG02" />
-                <div className="w-6 h-6 rounded-full bg-[#FFD700]" title="24K Gold" />
+            {/* Color swatches */}
+            <p className="text-[9px] tracking-[0.15em] uppercase text-[var(--dim)] mb-2">Color Palette</p>
+            <div className="flex gap-2 mb-3">
+              {[
+                { color: '#d8b15a', name: 'Royalty Yellow' },
+                { color: '#a9812f', name: 'AG01' },
+                { color: '#c98a3c', name: 'AG02' },
+                { color: '#FFD700', name: '24K Gold' },
+              ].map((c) => (
+                <div key={c.name} className="text-center">
+                  <div className="w-8 h-8 rounded-lg mx-auto mb-1" style={{ background: c.color }} />
+                  <p className="text-[8px] text-[var(--dim)]">{c.name}</p>
+                </div>
+              ))}
+            </div>
+            {/* Logo variants */}
+            <div className="flex gap-3 items-center pt-3 border-t border-[var(--line)]">
+              <Image src="/lion-order/crest-gold.jpg" alt="Gold crest" width={40} height={40} className="rounded-lg" />
+              <Image src="/lion-order/crest-white.jpg" alt="White crest" width={40} height={40} className="rounded-lg" />
+              <div className="flex-1">
+                <p className="text-[10px] text-[var(--cream)]">Logo Crest</p>
+                <p className="text-[8px] text-[var(--dim)]">Min: 100px &middot; Display: Salter Roman</p>
               </div>
             </div>
-            <p className="text-xs text-[var(--dim)] font-light">
-              Royalty Yellow &middot; Antique Golds &middot; 24K Gold
-            </p>
-            <p className="text-xs text-[var(--dim)] font-light mt-1">
-              Display: Salter Roman &middot; Pattern: Sacred Geometry + Lion Motif
-            </p>
           </div>
         </div>
       </motion.div>
 
-      {/* CTA */}
-      <motion.div {...fadeUp} className="px-6 pb-10">
+      {/* ═══ RAINFOREST ═══ */}
+      <motion.div {...fade} className="px-4 pb-8">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/lion-order/rainforest.jpg" alt="The landscape" width={380} height={220} className="w-full h-auto object-cover" />
+        </div>
+      </motion.div>
+
+      {/* ═══ CTA ═══ */}
+      <motion.div {...fade} className="px-6 pb-10">
         <div className="rounded-2xl border border-[#d8b15a]/25 bg-gradient-to-b from-[#d8b15a]/[0.08] to-transparent p-6 text-center">
           <Shield size={24} className="text-[#d8b15a] mx-auto mb-3" />
-          <h3 className="font-display text-xl text-[var(--cream)] font-light mb-2">
-            Enter the Order
-          </h3>
+          <h3 className="font-display text-xl text-[var(--cream)] font-light mb-2">Enter the Order</h3>
           <p className="text-[var(--dim)] text-sm font-light leading-relaxed mb-5">
             The story is the order. The order is the movement.
           </p>
