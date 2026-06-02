@@ -94,19 +94,19 @@ export default function HomePage() {
           />
         </div>
 
-        {/* R-M Monogram — underneath the lion */}
+        {/* R-M Monogram — hero statement */}
         <Image
           src="/brand/rhr-monogram.jpg"
           alt="R-M Monogram"
-          width={80}
-          height={80}
-          className="mx-auto mb-4 rounded-lg"
+          width={220}
+          height={220}
+          className="mx-auto mb-6 drop-shadow-[0_0_30px_rgba(185,133,36,0.25)]"
         />
 
-        <p className="text-[10px] text-[var(--dim)] font-light italic">Flower to the People</p>
+        <p className="font-display text-lg text-[var(--gold)] italic tracking-wide">Flower to the People</p>
 
         {/* Gold rule */}
-        <div className="gold-rule w-16 mx-auto my-4" />
+        <div className="gold-rule w-24 mx-auto my-5" />
 
         <p className="text-[var(--dim)] text-sm font-light leading-relaxed max-w-[280px] mx-auto">
           Heritage, craft, and legacy — a maison built on the philosophy that what you build should outlive you.
