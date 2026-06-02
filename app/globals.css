@@ -1,47 +1,53 @@
 @import "tailwindcss";
 
-/* ─── Design Tokens — DARK CONTENT-FIRST ─── */
+/* ─── Design Tokens — LUXURY MAISON ─── */
 :root {
-  --bg: #0A0A0A;
-  --bg2: #161616;
-  --bg3: #1E1E1E;
-  --panel: rgba(22, 22, 22, 0.92);
-  --cream: #FAFAFA;
-  --dim: #A1A1AA;
-  --gold: #FED100;
-  --gold-deep: #D4A800;
-  --ember: #E2622F;
-  --green: #009B3A;
-  --blue: #1B8ED4;
-  --line: rgba(255, 255, 255, 0.08);
+  --bg: #f7f3ea;
+  --bg2: #FFFFFF;
+  --bg3: #efe8d8;
+  --panel: rgba(247, 243, 234, 0.92);
+  --cream: #14110c;
+  --dim: #6B6358;
+  --gold: #c4a049;
+  --gold-deep: #9a7a2e;
+  --gold-hi: #d8b35a;
+  --ember: #c4a049;
+  --green: #14110c;
+  --blue: #14110c;
+  --line: rgba(20, 17, 12, 0.10);
 
-  /* Jamaican palette */
-  --ja-green: #009B3A;
-  --ja-gold: #FED100;
-  --ja-black: #0A0A0A;
+  /* Maison palette */
+  --ivory: #f7f3ea;
+  --bone: #efe8d8;
+  --ink: #14110c;
 
-  /* Rooms — vivid on dark */
-  --room-coffee: #D4A040;
-  --room-fire: #E2622F;
-  --room-wisdom: #FED100;
-  --room-music: #22C55E;
-  --room-legacy: #D4A040;
-  --room-family: #FED100;
-  --room-future: #38BDF8;
+  /* Rooms — muted luxury */
+  --room-coffee: #9a7a2e;
+  --room-fire: #c4a049;
+  --room-wisdom: #c4a049;
+  --room-music: #9a7a2e;
+  --room-legacy: #9a7a2e;
+  --room-family: #c4a049;
+  --room-future: #9a7a2e;
+
+  /* Jamaican accent — used sparingly */
+  --ja-green: #9a7a2e;
+  --ja-gold: #c4a049;
+  --ja-black: #14110c;
 }
 
 @theme inline {
-  --color-bg: #0A0A0A;
-  --color-bg2: #161616;
-  --color-cream: #FAFAFA;
-  --color-dim: #A1A1AA;
-  --color-gold: #FED100;
-  --color-gold-deep: #D4A800;
-  --color-ember: #E2622F;
-  --color-green: #009B3A;
-  --color-blue: #1B8ED4;
-  --color-line: rgba(255, 255, 255, 0.08);
-  --color-panel: rgba(22, 22, 22, 0.92);
+  --color-bg: #f7f3ea;
+  --color-bg2: #FFFFFF;
+  --color-cream: #14110c;
+  --color-dim: #6B6358;
+  --color-gold: #c4a049;
+  --color-gold-deep: #9a7a2e;
+  --color-ember: #c4a049;
+  --color-green: #9a7a2e;
+  --color-blue: #14110c;
+  --color-line: rgba(20, 17, 12, 0.10);
+  --color-panel: rgba(247, 243, 234, 0.92);
   --font-display: var(--font-fraunces);
   --font-body: var(--font-spline);
 }
@@ -59,42 +65,42 @@ body {
 ::-webkit-scrollbar { width: 0; height: 0; }
 * { scrollbar-width: none; }
 
-/* ─── Rasta Stripe ─── */
+/* ─── Maison Gold Line ─── */
 .rasta-stripe {
-  height: 3px;
-  background: linear-gradient(to right, var(--ja-green) 33.33%, var(--ja-gold) 33.33% 66.66%, var(--ember) 66.66%);
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.3;
 }
 
 .rasta-stripe-thick {
-  height: 4px;
-  background: linear-gradient(to right, var(--ja-green) 33.33%, var(--ja-gold) 33.33% 66.66%, var(--ember) 66.66%);
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.4;
 }
 
-/* ─── Film Grain ─── */
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0.4;
+}
+
+/* ─── Monogram Canvas Pattern ─── */
+.monogram-canvas {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='central' font-family='serif' font-size='11' fill='%23c4a049' opacity='0.04'%3EM%3C/text%3E%3C/svg%3E");
+  background-size: 60px 60px;
+}
+
+/* ─── Film Grain (very subtle on ivory) ─── */
 .film-grain::after {
   content: '';
   position: fixed;
   inset: 0;
   z-index: 999;
   pointer-events: none;
-  opacity: 0.025;
-  mix-blend-mode: overlay;
+  opacity: 0.012;
+  mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 256px 256px;
-  animation: grain 8s steps(10) infinite;
-}
-
-@keyframes grain {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-5%, -10%); }
-  20% { transform: translate(-15%, 5%); }
-  30% { transform: translate(7%, -25%); }
-  40% { transform: translate(-5%, 25%); }
-  50% { transform: translate(-15%, 10%); }
-  60% { transform: translate(15%, 0%); }
-  70% { transform: translate(0%, 15%); }
-  80% { transform: translate(3%, 35%); }
-  90% { transform: translate(-10%, 10%); }
 }
 
 /* ─── Device Frame ─── */
@@ -122,27 +128,27 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #000000;
+    background: #14110c;
     overflow: hidden;
   }
 
-  /* Rasta accent top bar on desktop */
   .device-wrapper::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(to right, var(--ja-green) 33.33%, var(--ja-gold) 33.33% 66.66%, var(--ember) 66.66%);
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    opacity: 0.3;
     z-index: 2;
   }
 
   .device-ambient {
     display: block;
     position: absolute;
-    width: 600px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
     border-radius: 50%;
-    opacity: 0.08;
+    opacity: 0.04;
     filter: blur(120px);
     pointer-events: none;
     transition: background 1s ease;
@@ -153,24 +159,20 @@ body {
     width: 396px;
     height: 856px;
     border-radius: 55px;
-    background: linear-gradient(165deg, #2A2A2A 0%, #1A1A1A 30%, #111111 60%, #0A0A0A 100%);
+    background: linear-gradient(165deg, #f0ece4 0%, #e8e2d8 30%, #ddd6c8 60%, #d4ccbc 100%);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.06),
-      0 0 0 1px rgba(255, 255, 255, 0.04),
-      0 30px 80px rgba(0, 0, 0, 0.8),
-      0 0 120px rgba(226, 98, 47, 0.04);
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      0 0 0 1px rgba(0, 0, 0, 0.06),
+      0 30px 80px rgba(0, 0, 0, 0.15),
+      0 0 100px rgba(196, 160, 73, 0.03);
     padding: 3px;
     flex-shrink: 0;
-  }
-
-  .device-notch {
-    display: none;
   }
 
   .device-btn {
     display: block;
     position: absolute;
-    background: linear-gradient(180deg, #2A2A2A, #1A1A1A);
+    background: linear-gradient(180deg, #e0dcd4, #ccc6ba);
   }
   .device-btn--silent { left: -3px; top: 160px; width: 4px; height: 30px; border-radius: 2px 0 0 2px; }
   .device-btn--vol-up { left: -3px; top: 210px; width: 4px; height: 54px; border-radius: 2px 0 0 2px; }
@@ -191,19 +193,19 @@ body {
 
 .stagger > * {
   opacity: 0;
-  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-.stagger > *:nth-child(1) { animation-delay: 0.08s; }
-.stagger > *:nth-child(2) { animation-delay: 0.16s; }
-.stagger > *:nth-child(3) { animation-delay: 0.24s; }
-.stagger > *:nth-child(4) { animation-delay: 0.32s; }
-.stagger > *:nth-child(5) { animation-delay: 0.4s; }
-.stagger > *:nth-child(6) { animation-delay: 0.48s; }
+.stagger > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger > *:nth-child(6) { animation-delay: 0.6s; }
 
 .section-glow {
   position: absolute;
   top: -120px; left: 50%; transform: translateX(-50%);
   width: 300px; height: 300px;
-  border-radius: 50%; filter: blur(90px); opacity: 0.1;
+  border-radius: 50%; filter: blur(90px); opacity: 0.06;
   pointer-events: none;
 }

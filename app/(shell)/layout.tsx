@@ -2,11 +2,6 @@ import DeviceFrame from '@/components/DeviceFrame';
 import TabBar from '@/components/TabBar';
 import MiniPlayer from '@/components/MiniPlayer';
 import Threshold from '@/components/Threshold';
-
-import ExitIntent from '@/components/ExitIntent';
-import SlideInCTA from '@/components/SlideInCTA';
-import StickyHeaderCTA from '@/components/StickyHeaderCTA';
-import FloatingContact from '@/components/FloatingContact';
 import { PlayerProvider } from '@/components/PlayerContext';
 import { InAppBrowserProvider } from '@/components/InAppBrowser';
 
@@ -20,9 +15,9 @@ export default function ShellLayout({
       <InAppBrowserProvider>
       <DeviceFrame>
         <div className="flex flex-col h-full">
-          {/* Rasta stripe */}
+          {/* Maison gold rule */}
           <div className="shrink-0">
-            <div className="rasta-stripe" />
+            <div className="gold-rule" />
           </div>
           <main className="flex-1 overflow-y-auto overflow-x-hidden">
             {children}
@@ -31,10 +26,6 @@ export default function ShellLayout({
           <TabBar />
         </div>
         <Threshold />
-        <StickyHeaderCTA />
-        <ExitIntent />
-        <SlideInCTA />
-        <FloatingContact />
       </DeviceFrame>
       </InAppBrowserProvider>
     </PlayerProvider>

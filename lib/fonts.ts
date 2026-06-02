@@ -1,16 +1,20 @@
-import { Fraunces, Spline_Sans } from 'next/font/google';
+import { Cormorant_Garamond, Jost } from 'next/font/google';
 
-export const fraunces = Fraunces({
+export const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
   variable: '--font-fraunces',
-  weight: ['300', '400', '500'],
+  weight: ['300', '400', '500', '600'],
   style: ['normal', 'italic'],
   display: 'swap',
 });
 
-export const splineSans = Spline_Sans({
+export const jost = Jost({
   subsets: ['latin'],
   variable: '--font-spline',
   weight: ['300', '400', '500'],
   display: 'swap',
 });
+
+// Re-export with original names for compatibility
+export const fraunces = cormorant;
+export const splineSans = jost;

@@ -8,26 +8,26 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://marley-house.verce
 
 export const metadata: Metadata = {
   title: {
-    default: 'Marley House — Coffee is the Invitation',
-    template: '%s | Marley House',
+    default: 'Rohan Marley — The Maison',
+    template: '%s | Rohan Marley',
   },
-  description: 'A digital home for the Marley legacy — coffee, music, story, and community under one roof. Coffee is the invitation. Belonging is the product.',
-  keywords: ['Marley Coffee', 'Rohan Marley', 'coffee', 'legacy', 'Marley House', 'Lion Order', 'Tuff Gong', 'Bob Marley'],
+  description: 'The maison of Rohan Marley — heritage, craft, and legacy. Marley House, Lion Order, and the houses that carry the name forward.',
+  keywords: ['Rohan Marley', 'Marley Coffee', 'Lion Order', 'Marley House', 'Tuff Gong', 'Bob Marley', 'RoMarley Beach House'],
   metadataBase: new URL(SITE_URL),
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: SITE_URL,
-    siteName: 'Marley House',
-    title: 'Marley House — Coffee is the Invitation',
-    description: 'A digital home for the Marley legacy — coffee, music, story, and community under one roof.',
+    siteName: 'Rohan Marley',
+    title: 'Rohan Marley — The Maison',
+    description: 'The maison of Rohan Marley — heritage, craft, and legacy.',
     images: [{ url: '/rhr-logo.png', width: 1200, height: 630, alt: 'Marley House' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Marley House — Coffee is the Invitation',
-    description: 'A digital home for the Marley legacy — coffee, music, story, and community.',
+    title: 'Rohan Marley — The Maison',
+    description: 'Heritage, craft, and legacy — the maison of Rohan Marley.',
     images: ['/rhr-logo.png'],
   },
   icons: {
@@ -42,7 +42,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   viewportFit: 'cover',
-  themeColor: '#0A0A0A',
+  themeColor: '#f7f3ea',
 };
 
 export default function RootLayout({
