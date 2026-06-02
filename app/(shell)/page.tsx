@@ -70,38 +70,27 @@ export default function HomePage() {
   ].filter(Boolean);
 
   return (
-    <div className="relative min-h-full bg-[var(--bg)] monogram-canvas">
+    <div className="relative min-h-full bg-[var(--bg)] lion-bg">
 
       {/* ═══════ MAISON HERO ═══════ */}
       <div className="relative px-6 pt-6 pb-10 text-center">
-        {/* Gold glow behind lion */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[350px] h-[350px] rounded-full bg-[var(--gold)] blur-[120px] opacity-[0.15] pointer-events-none" />
+        {/* Gold glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[350px] h-[350px] rounded-full bg-[var(--gold)] blur-[120px] opacity-[0.10] pointer-events-none" />
 
-        {/* ROHAN MARLEY — name above the lion, bright */}
-        <h1 className="relative font-display text-4xl text-[var(--gold)] font-light tracking-[0.08em] uppercase mb-4 drop-shadow-[0_0_20px_rgba(244,199,31,0.3)]">
+        {/* RHR Monogram — hero logo, 5x bigger */}
+        <Image
+          src="/rhr-logo-clean.png"
+          alt="Rohan Marley Monogram"
+          width={1000}
+          height={1000}
+          className="mx-auto mb-4 drop-shadow-[0_0_40px_rgba(185,133,36,0.3)] max-w-full"
+          priority
+        />
+
+        {/* ROHAN MARLEY — name, same gold as the RM logo */}
+        <h1 className="relative font-display text-4xl font-light tracking-[0.08em] uppercase mb-6" style={{ color: '#D4A017' }}>
           Rohan Marley
         </h1>
-
-        {/* Lion Head — hero crest, big and bright */}
-        <div className="relative">
-          <Image
-            src="/brand/lion-order-crest.png"
-            alt="Lion Order"
-            width={300}
-            height={300}
-            className="mx-auto mb-4 drop-shadow-[0_0_40px_rgba(244,199,31,0.35)] brightness-110 saturate-[1.2]"
-            priority
-          />
-        </div>
-
-        {/* R-M Monogram — hero statement */}
-        <Image
-          src="/brand/rhr-monogram.jpg"
-          alt="R-M Monogram"
-          width={220}
-          height={220}
-          className="mx-auto mb-6 drop-shadow-[0_0_30px_rgba(185,133,36,0.25)]"
-        />
 
         <p className="font-display text-lg text-[var(--gold)] italic tracking-wide">Flower to the People</p>
 
@@ -116,27 +105,6 @@ export default function HomePage() {
           rohanmarley.com
         </p>
       </div>
-
-      {/* Hero Video — Marley Coffee */}
-      <VideoPlayer
-        videoId="XE-uV_DsurA"
-        title="Marley House — Making Marley Coffee"
-        thumbnail="https://img.youtube.com/vi/XE-uV_DsurA/maxresdefault.jpg"
-        hero
-      />
-
-      <div className="gold-rule mx-6 my-4" />
-
-      {/* Second Video — Drink Champs */}
-      <div className="px-4 pb-6">
-        <VideoPlayer
-          videoId="X0SZf3r63ls"
-          title="Rohan Marley — Bob Marley, Rastafari, Family & Legacy | Drink Champs"
-          thumbnail="https://img.youtube.com/vi/X0SZf3r63ls/maxresdefault.jpg"
-        />
-      </div>
-
-      <div className="gold-rule mx-6" />
 
       {/* ═══════ THE HOUSES ═══════ */}
       <div className="px-6 pt-8 pb-6">
@@ -178,6 +146,29 @@ export default function HomePage() {
             );
           })}
         </div>
+      </div>
+
+      <div className="gold-rule mx-6" />
+
+      {/* ═══════ VIDEOS ═══════ */}
+      <div className="pt-6">
+        <p className="text-[var(--gold)] text-[9px] tracking-[0.4em] uppercase font-medium text-center mb-4">
+          Watch
+        </p>
+        <VideoPlayer
+          videoId="XE-uV_DsurA"
+          title="Marley House — Making Marley Coffee"
+          thumbnail="https://img.youtube.com/vi/XE-uV_DsurA/maxresdefault.jpg"
+          hero
+        />
+      </div>
+
+      <div className="px-4 py-4">
+        <VideoPlayer
+          videoId="X0SZf3r63ls"
+          title="Rohan Marley — Bob Marley, Rastafari, Family & Legacy | Drink Champs"
+          thumbnail="https://img.youtube.com/vi/X0SZf3r63ls/maxresdefault.jpg"
+        />
       </div>
 
       <div className="gold-rule mx-6" />

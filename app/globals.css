@@ -87,10 +87,27 @@ body {
   opacity: 0.35;
 }
 
-/* ─── Monogram Canvas ─── */
-.monogram-canvas {
-  background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='central' font-family='serif' font-weight='700' font-size='13' fill='%23825B0D' opacity='0.08'%3ERM%3C/text%3E%3C/svg%3E");
-  background-size: 64px 64px;
+/* ─── Lion Crest Background ─── */
+.lion-bg {
+  background-image: url('/brand/lion-tile.png');
+  background-size: 80px 80px;
+  background-repeat: repeat;
+  opacity: 1;
+}
+.lion-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('/brand/lion-tile.png');
+  background-size: 80px 80px;
+  background-repeat: repeat;
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 0;
+}
+.lion-bg > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* ─── Film Grain ─── */

@@ -32,39 +32,36 @@ export default function Threshold() {
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           onClick={enter}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center cursor-pointer"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center cursor-pointer lion-bg"
           style={{ background: 'var(--bg)' }}
         >
           {/* Gold rule top */}
           <div className="absolute top-0 left-0 right-0 rasta-stripe-thick" />
 
-          {/* Monogram + Lion Crest */}
           <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
             className="relative text-center flex flex-col items-center"
           >
-            {/* Lion Order Crest */}
+            {/* RHR Monogram — hero logo */}
             <Image
-              src="/brand/lion-order-crest.png"
-              alt="Lion Order"
-              width={100}
-              height={100}
-              className="mb-6 opacity-90"
+              src="/rhr-logo-clean.png"
+              alt="Rohan Marley"
+              width={160}
+              height={160}
+              className="mb-6 drop-shadow-[0_0_30px_rgba(185,133,36,0.2)]"
+              priority
             />
 
-            <p className="text-[#5C564C] text-[10px] font-light tracking-[0.2em] max-w-[280px] text-center leading-relaxed mb-3">
-              A movement led by Rohan Marley — the elevation of consciousness via plant medicine, coffee, music, and culture.
-            </p>
-            <h1 className="text-[#1B1916] text-3xl font-light tracking-[0.12em] uppercase" style={{ fontFamily: 'var(--font-display)' }}>
+            <h1 className="text-[var(--ink)] text-3xl font-light tracking-[0.12em] uppercase" style={{ fontFamily: 'var(--font-display)' }}>
               Rohan Marley
             </h1>
 
             {/* Gold rule */}
-            <div className="w-12 h-px bg-[#B98524] my-6 opacity-50" />
+            <div className="w-12 h-px bg-[var(--gold)] my-5 opacity-50" />
 
-            <p className="text-[#6B6358] text-[10px] font-light tracking-[0.2em]">
+            <p className="text-[var(--dim)] text-[10px] font-light tracking-[0.2em]">
               Find the Lion Within
             </p>
           </motion.div>
@@ -73,9 +70,9 @@ export default function Threshold() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.4 }}
             transition={{ delay: 2.5, duration: 1 }}
-            className="absolute bottom-20 text-[#6B6358] text-[10px] font-light tracking-[0.3em] uppercase"
+            className="absolute bottom-20 text-[var(--dim)] text-[10px] font-light tracking-[0.3em] uppercase"
           >
-            Enter the Maison
+            Enter
           </motion.p>
 
           {/* Gold rule bottom */}
