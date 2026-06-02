@@ -83,7 +83,7 @@ function BrowserOverlay({ state, onClose }: { state: BrowserState | null; onClos
             className="fixed inset-x-0 bottom-0 top-8 z-[81] bg-[var(--bg)] rounded-t-2xl flex flex-col overflow-hidden md:left-1/2 md:-translate-x-1/2 md:max-w-[390px]"
           >
             {/* Browser chrome */}
-            <div className="shrink-0 flex items-center gap-2 px-3 py-2.5 border-b border-[var(--line)] bg-[var(--bg2)]">
+            <div className="shrink-0 flex items-center gap-2 px-3 py-2.5 border-b border-[var(--line)] bg-[var(--panel)]">
               <button onClick={onClose} aria-label="Close browser" className="p-1.5 rounded-lg hover:bg-white/5 transition-colors">
                 <X size={16} className="text-[var(--dim)]" />
               </button>

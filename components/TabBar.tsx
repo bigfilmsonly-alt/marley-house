@@ -5,32 +5,33 @@ import { usePathname } from 'next/navigation';
 import { Home, Coffee, Play, Crown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { LucideIcon } from 'lucide-react';
-import { tabView, linkOut } from '@/lib/tracking';
+import { tabView } from '@/lib/tracking';
+import { useInAppBrowser } from '@/components/InAppBrowser';
 
 interface Tab {
   href: string;
   icon: LucideIcon;
   label: string;
-  external?: boolean;
+  embed?: { url: string; title: string };
 }
 
 const tabs: Tab[] = [
   { href: '/', icon: Home, label: 'Home' },
-  { href: '/coffee', icon: Coffee, label: 'Coffee' },
+  { href: '/coffee', icon: Coffee, label: 'Coffee', embed: { url: 'https://marleycoffee.com', title: 'Marley Coffee' } },
   { href: '/watch', icon: Play, label: 'Watch' },
-  { href: 'https://lionorder.com', icon: Crown, label: 'Lion Order', external: true },
+  { href: '/lion-order', icon: Crown, label: 'Lion Order', embed: { url: 'https://lionorder.com', title: 'Lion Order' } },
 ];
 
 export default function TabBar() {
   const pathname = usePathname();
+  const { openLink } = useInAppBrowser();
 
   return (
     <nav className="flex items-center justify-around border-t border-[var(--line)] bg-[var(--bg)]/95 backdrop-blur-xl">
       <div className="flex items-center justify-around w-full px-1 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
         {tabs.map((tab) => {
           const active =
-            !tab.external &&
-            (tab.href === '/' ? pathname === '/' : pathname.startsWith(tab.href));
+            tab.href === '/' ? pathname === '/' : pathname.startsWith(tab.href);
 
           const inner = (
             <>
@@ -68,18 +69,18 @@ export default function TabBar() {
             </>
           );
 
-          if (tab.external) {
+          if (tab.embed) {
             return (
-              <a
+              <button
                 key={tab.href}
-                href={tab.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => linkOut(tab.label, tab.href)}
+                onClick={() => {
+                  openLink(tab.embed!.url, tab.embed!.title);
+                  tabView(tab.label);
+                }}
                 className="flex flex-col items-center gap-0.5 px-2 py-1 relative"
               >
                 {inner}
-              </a>
+              </button>
             );
           }
 
