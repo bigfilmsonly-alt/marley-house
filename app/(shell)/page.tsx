@@ -1,287 +1,94 @@
 'use client';
 
 import { useState } from 'react';
-import ConnectedProperties from '@/components/ConnectedProperties';
-import JoinHouse from '@/components/JoinHouse';
-import VideoPlayer, { VideoCard } from '@/components/VideoPlayer';
-import FooterNewsletter from '@/components/FooterNewsletter';
-import { Flame, ChevronRight, ArrowUpRight, Sparkles, Play, Crown, Coffee, Music, Headphones, Palmtree } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { stories } from '@/content/stories';
 import { AppLink } from '@/components/InAppBrowser';
-import { podcastVideos, storyVideos, tasteVideos, musicVideos } from '@/content/videos';
-import { roomAccents } from '@/lib/theme';
+import JoinHouse from '@/components/JoinHouse';
+import { Play, Coffee, Crown, Headphones, Music, Sparkles, ShoppingBag } from 'lucide-react';
 
-const featuredStory = stories.find((s) => s.featured);
+const links = [
+  { label: 'Watch', href: '/watch', icon: Play },
+  { label: 'Coffee', href: '/coffee', icon: Coffee },
+  { label: 'Lion Order', href: '/lion-order', icon: Crown },
+  { label: 'Merch', href: '/merch', icon: ShoppingBag },
+  { label: 'Vault', href: '/vault', icon: Music },
+  { label: 'Ask the House', href: '/ask', icon: Sparkles },
+] as const;
 
-const houses = [
-  {
-    name: 'Marley House',
-    tagline: 'Coffee, legacy, and the daily ritual.',
-    href: '/coffee',
-    icon: Coffee,
-    accent: '#c4a049',
-  },
-  {
-    name: 'Lion Order',
-    tagline: 'The movement. Anime, culture, lifestyle.',
-    href: '/lion-order',
-    icon: Crown,
-    accent: '#c4a049',
-    crest: '/brand/lion-order-crest.png',
-  },
-  {
-    name: 'RoMarley Beach House',
-    tagline: 'Hospitality rooted in the island.',
-    href: 'https://www.romarleybeachhouse.com/',
-    icon: Palmtree,
-    accent: '#c4a049',
-    external: true,
-  },
-  {
-    name: 'House of Marley',
-    tagline: 'Sustainable audio. Family-licensed.',
-    href: 'https://thehouseofmarley.com/',
-    icon: Headphones,
-    accent: '#c4a049',
-    external: true,
-    licensed: true,
-  },
-  {
-    name: 'Music Legacy',
-    tagline: 'Tuff Gong, Bob Marley, and the frequency.',
-    href: '/vault',
-    icon: Music,
-    accent: '#c4a049',
-  },
-];
+const external = [
+  { label: 'RoMarley Beach House', href: 'https://www.romarleybeachhouse.com/' },
+  { label: 'House of Marley', href: 'https://thehouseofmarley.com/' },
+] as const;
 
 export default function HomePage() {
   const [joinOpen, setJoinOpen] = useState(false);
 
-  const trendingVideos = [
-    podcastVideos[0],
-    storyVideos[0],
-    tasteVideos[0],
-    musicVideos[0],
-    podcastVideos[1],
-    storyVideos[1],
-  ].filter(Boolean);
-
   return (
-    <div className="relative min-h-full bg-[var(--bg)]">
+    <div className="relative flex flex-col items-center justify-center min-h-full bg-[var(--bg)] px-6">
 
-      {/* ═══════ MAISON HERO ═══════ */}
-      <div className="relative px-6 pt-6 pb-10 text-center">
-        {/* R·M Hero Monogram */}
-        <div className="relative">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[var(--gold)] blur-[100px] opacity-[0.15] pointer-events-none" />
-          <Image
-            src="/brand/rhr-monogram-transparent.png"
-            alt="Rohan Marley Monogram"
-            width={340}
-            height={410}
-            className="relative mx-auto mb-6 drop-shadow-[0_0_60px_rgba(244,199,31,0.4)]"
-            priority
-          />
-        </div>
+      {/* Gold glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-[var(--gold)] blur-[120px] opacity-[0.1] pointer-events-none" />
 
-        {/* ROHAN MARLEY — name, same gold as the RM logo */}
-        <h1 className="relative font-display text-4xl font-light tracking-[0.08em] uppercase mb-6" style={{ color: '#D4A017' }}>
-          Rohan Marley
-        </h1>
+      {/* RM Monogram */}
+      <Image
+        src="/brand/rhr-monogram-transparent.png"
+        alt="Rohan Marley"
+        width={200}
+        height={240}
+        className="relative mb-3 drop-shadow-[0_0_40px_rgba(244,199,31,0.3)]"
+        priority
+      />
 
-        <p className="font-display text-lg text-[var(--gold)] italic tracking-wide">Flower to the People</p>
+      {/* Name */}
+      <h1 className="relative font-display text-2xl font-light tracking-[0.12em] uppercase mb-1" style={{ color: '#D4A017' }}>
+        Rohan Marley
+      </h1>
 
-        {/* Gold rule */}
-        <div className="gold-rule w-24 mx-auto my-5" />
+      <p className="font-display text-sm text-[var(--gold)] italic tracking-wide opacity-70 mb-6">
+        Flower to the People
+      </p>
 
-        <p className="text-[var(--dim)] text-sm font-light leading-relaxed max-w-[280px] mx-auto">
-          Heritage, craft, and legacy — a maison built on the philosophy that what you build should outlive you.
-        </p>
-
-        <p className="text-[var(--gold)] text-[10px] tracking-[0.2em] uppercase mt-4 opacity-60">
-          rohanmarley.com
-        </p>
-      </div>
-
-      {/* ═══════ THE HOUSES ═══════ */}
-      <div className="px-6 pt-8 pb-6">
-        <p className="text-[var(--gold)] text-[9px] tracking-[0.4em] uppercase font-medium text-center mb-6">
-          The Houses
-        </p>
-
-        <div className="space-y-3">
-          {houses.map((house) => {
-            const Icon = house.icon;
-            const inner = (
-              <div className="flex items-center gap-4 rounded-xl bg-[var(--bg2)] border border-[var(--line)] p-4 hover:border-[var(--gold)]/20 transition-colors">
-                <div className="w-11 h-11 rounded-xl bg-[var(--gold)]/8 flex items-center justify-center shrink-0 overflow-hidden">
-                  {house.crest ? (
-                    <Image src={house.crest} alt={house.name} width={36} height={36} className="object-contain" />
-                  ) : (
-                    <Icon size={20} className="text-[var(--gold)]" />
-                  )}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-[var(--cream)] tracking-wide">{house.name}</p>
-                  <p className="text-[var(--dim)] text-xs font-light mt-0.5">{house.tagline}</p>
-                  {house.licensed && (
-                    <span className="text-[8px] tracking-wider uppercase text-[var(--gold)] mt-1 inline-block">Family Licensed</span>
-                  )}
-                </div>
-                <ArrowUpRight size={16} className="text-[var(--gold)] opacity-40 shrink-0" />
-              </div>
-            );
-
-            return house.external ? (
-              <AppLink key={house.name} href={house.href} title={house.name} className="block w-full text-left">
-                {inner}
-              </AppLink>
-            ) : (
-              <Link key={house.name} href={house.href} className="block">
-                {inner}
-              </Link>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className="gold-rule mx-6" />
-
-      {/* ═══════ VIDEOS ═══════ */}
-      <div className="pt-6">
-        <p className="text-[var(--gold)] text-[9px] tracking-[0.4em] uppercase font-medium text-center mb-4">
-          Watch
-        </p>
-        <VideoPlayer
-          videoId="XE-uV_DsurA"
-          title="Marley House — Making Marley Coffee"
-          thumbnail="https://img.youtube.com/vi/XE-uV_DsurA/maxresdefault.jpg"
-          hero
-        />
-      </div>
-
-      <div className="px-4 py-4">
-        <VideoPlayer
-          videoId="X0SZf3r63ls"
-          title="Rohan Marley — Bob Marley, Rastafari, Family & Legacy | Drink Champs"
-          thumbnail="https://img.youtube.com/vi/X0SZf3r63ls/maxresdefault.jpg"
-        />
-      </div>
-
-      <div className="gold-rule mx-6" />
-
-      {/* ═══════ FEATURED VIDEO ═══════ */}
-      <div className="pt-6">
-        <p className="text-[var(--gold)] text-[9px] tracking-[0.4em] uppercase font-medium text-center mb-4">
-          House Sessions
-        </p>
-        <VideoPlayer
-          playlistId="PLC7UTUpH-pK182kGnMXGHcutFSDNYZrYP"
-          title="House Sessions — Marley Coffee"
-          thumbnail="https://img.youtube.com/vi/XE-uV_DsurA/maxresdefault.jpg"
-          hero
-        />
-      </div>
-
-      {/* Nav */}
-      <div className="px-5 py-5 flex gap-2 overflow-x-auto">
-        <Link href="/watch" className="shrink-0 flex items-center gap-1.5 bg-[var(--cream)] text-[var(--bg)] px-4 py-2 rounded-full text-xs font-medium">
-          <Play size={11} fill="currentColor" /> Watch All
-        </Link>
-        <Link href="/coffee" className="shrink-0 bg-[var(--bg2)] border border-[var(--line)] text-[var(--cream)] px-4 py-2 rounded-full text-xs">
-          Coffee
-        </Link>
-        <Link href="/merch" className="shrink-0 bg-[var(--bg2)] border border-[var(--line)] text-[var(--cream)] px-4 py-2 rounded-full text-xs">
-          Merch
-        </Link>
-        <Link href="/ask" className="shrink-0 flex items-center gap-1 bg-[var(--bg2)] border border-[var(--line)] text-[var(--cream)] px-4 py-2 rounded-full text-xs">
-          <Sparkles size={10} /> Ask
-        </Link>
-      </div>
-
-      {/* ═══════ JOURNAL / TRENDING ═══════ */}
-      <div className="px-5 pb-6">
-        <div className="flex items-center justify-between mb-4">
-          <p className="text-[var(--gold)] text-[9px] tracking-[0.4em] uppercase font-medium">From the Journal</p>
-          <Link href="/watch" className="text-[var(--dim)] text-xs flex items-center gap-1">
-            See all <ChevronRight size={12} />
+      {/* CTAs — the main navigation */}
+      <div className="relative w-full max-w-[300px] grid grid-cols-3 gap-2 mb-6">
+        {links.map(({ label, href, icon: Icon }) => (
+          <Link
+            key={label}
+            href={href}
+            className="flex flex-col items-center gap-1.5 py-3 rounded-xl border border-[var(--line)] bg-[var(--bg2)] hover:border-[var(--gold)]/30 transition-colors"
+          >
+            <Icon size={16} className="text-[var(--gold)]" />
+            <span className="text-[9px] tracking-[0.1em] uppercase text-[var(--cream)]">{label}</span>
           </Link>
-        </div>
-        <div className="space-y-4">
-          {trendingVideos.slice(0, 4).map((v) => (
-            <VideoCard
-              key={v.id}
-              videoId={v.videoId}
-              playlistId={v.playlistId}
-              title={v.title}
-              subtitle={v.channel}
-            />
-          ))}
-        </div>
+        ))}
       </div>
 
-      <div className="gold-rule mx-6" />
-
-      {/* Daily Drop */}
-      {featuredStory && (
-        <div className="px-5 py-8">
-          <div className="text-center">
-            <p className="text-[var(--gold)] text-[9px] tracking-[0.4em] uppercase font-medium mb-4">
-              Daily Drop
-            </p>
-            <p className="font-display text-xl text-[var(--cream)] font-light italic leading-relaxed">
-              &ldquo;{featuredStory.body}&rdquo;
-            </p>
-            <p className="text-[var(--dim)] text-[10px] font-light mt-4 capitalize tracking-wide">
-              {featuredStory.room} Room
-            </p>
-          </div>
-        </div>
-      )}
-
-      <div className="gold-rule mx-6" />
-
-      {/* The Private List CTA */}
-      <div className="px-5 py-8 text-center">
-        <p className="text-[var(--gold)] text-[9px] tracking-[0.4em] uppercase font-medium mb-3">
-          The Private List
-        </p>
-        <p className="font-display text-lg text-[var(--cream)] font-light mb-2">
-          Receive the maison&apos;s correspondence.
-        </p>
-        <p className="text-[var(--dim)] text-xs font-light mb-5">
-          Stories, sessions, and rare access — delivered with care.
-        </p>
-        <button
-          onClick={() => setJoinOpen(true)}
-          className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] border border-[var(--gold)]/30 px-6 py-2.5 rounded-full hover:bg-[var(--gold)]/5 transition-colors"
-        >
-          Request Access
-        </button>
+      {/* External links */}
+      <div className="relative flex items-center gap-4 mb-5">
+        {external.map(({ label, href }) => (
+          <AppLink
+            key={label}
+            href={href}
+            title={label}
+            className="text-[9px] tracking-[0.1em] uppercase text-[var(--dim)] hover:text-[var(--gold)] transition-colors"
+          >
+            {label}
+          </AppLink>
+        ))}
       </div>
 
-      <div className="gold-rule mx-6" />
+      {/* Join */}
+      <button
+        onClick={() => setJoinOpen(true)}
+        className="relative text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] border border-[var(--gold)]/25 px-5 py-2 rounded-full hover:bg-[var(--gold)]/5 transition-colors"
+      >
+        Join the Private List
+      </button>
 
-      {/* Signature footer area */}
-      <div className="px-5 pt-6">
-        <ConnectedProperties />
-      </div>
-
-      <FooterNewsletter />
-
-      {/* Lion Order mark */}
-      <div className="px-6 py-8 text-center">
-        <div className="gold-rule mb-6" />
-        <p className="font-display text-xs text-[var(--gold)] italic tracking-wide">
-          Lion Order &middot; Est. 2022
-        </p>
-        <p className="text-[8px] text-[var(--dim)] mt-1 tracking-[0.2em] uppercase">
-          Find the Lion Within
-        </p>
-      </div>
+      {/* Subtle footer */}
+      <p className="relative text-[7px] text-[var(--dim)] tracking-[0.15em] uppercase mt-6 opacity-50">
+        Lion Order &middot; Est. 2022
+      </p>
 
       <JoinHouse open={joinOpen} onClose={() => setJoinOpen(false)} />
     </div>
