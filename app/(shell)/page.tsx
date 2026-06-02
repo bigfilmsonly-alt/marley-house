@@ -70,20 +70,17 @@ export default function HomePage() {
   ].filter(Boolean);
 
   return (
-    <div className="relative min-h-full bg-[var(--bg)] lion-bg">
+    <div className="relative min-h-full bg-[var(--bg)]">
 
       {/* ═══════ MAISON HERO ═══════ */}
       <div className="relative px-6 pt-6 pb-10 text-center">
-        {/* Gold glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[350px] h-[350px] rounded-full bg-[var(--gold)] blur-[120px] opacity-[0.10] pointer-events-none" />
-
-        {/* RHR Monogram — hero logo, 5x bigger */}
+        {/* Gold RM monogram at top */}
         <Image
-          src="/rhr-logo-clean.png"
-          alt="Rohan Marley Monogram"
-          width={1000}
-          height={1000}
-          className="mx-auto mb-4 drop-shadow-[0_0_40px_rgba(185,133,36,0.3)] max-w-full"
+          src="/brand/rhr-monogram.jpg"
+          alt="R-M Monogram"
+          width={100}
+          height={100}
+          className="mx-auto mb-6 rounded-lg drop-shadow-[0_0_30px_rgba(244,199,31,0.25)]"
           priority
         />
 

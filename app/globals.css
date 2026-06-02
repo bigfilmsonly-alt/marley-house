@@ -2,19 +2,19 @@
 
 /* ─── Design Tokens — LION ORDER BRAND SYSTEM ─── */
 :root {
-  --bg: #F0F0E3;
-  --bg2: #FFFFFF;
-  --bg3: #E8E4D6;
-  --panel: rgba(240, 240, 227, 0.92);
-  --cream: #14110C;
-  --dim: #6B6358;
-  --gold: #B98524;
+  --bg: #000000;
+  --bg2: #111111;
+  --bg3: #1A1A1A;
+  --panel: rgba(0, 0, 0, 0.92);
+  --cream: #FAFAFA;
+  --dim: #8A8A8A;
+  --gold: #F4C71F;
   --gold-deep: #825B0D;
   --gold-hi: #F4C71F;
-  --ember: #B98524;
-  --green: #14110C;
-  --blue: #14110C;
-  --line: rgba(20, 17, 12, 0.10);
+  --ember: #F4C71F;
+  --green: #F4C71F;
+  --blue: #F4C71F;
+  --line: rgba(255, 255, 255, 0.08);
 
   /* Lion Order Brand Colors — BRAND DECK 2026 pp.56-57 */
   --antique-gold-1: #B98524;   /* AG01 · Pantone 10129 C */
@@ -42,17 +42,17 @@
 }
 
 @theme inline {
-  --color-bg: #F0F0E3;
-  --color-bg2: #FFFFFF;
-  --color-cream: #14110C;
-  --color-dim: #6B6358;
-  --color-gold: #B98524;
-  --color-gold-deep: #825B0D;
-  --color-ember: #B98524;
-  --color-green: #14110C;
-  --color-blue: #14110C;
-  --color-line: rgba(20, 17, 12, 0.10);
-  --color-panel: rgba(240, 240, 227, 0.92);
+  --color-bg: #000000;
+  --color-bg2: #111111;
+  --color-cream: #FAFAFA;
+  --color-dim: #8A8A8A;
+  --color-gold: #F4C71F;
+  --color-gold-deep: #B98524;
+  --color-ember: #F4C71F;
+  --color-green: #F4C71F;
+  --color-blue: #F4C71F;
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-panel: rgba(0, 0, 0, 0.92);
   --font-display: var(--font-fraunces), 'Playfair Display', Georgia, serif;
   --font-body: var(--font-spline), 'Cormorant Garamond', 'Times New Roman', serif;
 }
