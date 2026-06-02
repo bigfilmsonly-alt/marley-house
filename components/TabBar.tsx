@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Home, Coffee, Play, Crown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { LucideIcon } from 'lucide-react';
@@ -19,7 +19,7 @@ interface Tab {
 }
 
 const tabs: Tab[] = [
-  { href: '/', icon: Home, label: 'Home' },
+  { href: '/', icon: Home, label: 'Home', splash: true },
   { href: '/coffee', icon: Coffee, label: 'Coffee', embed: { url: 'https://marleycoffee.com', title: 'Marley Coffee' }, splash: true },
   { href: '/watch', icon: Play, label: 'Watch' },
   { href: '/lion-order', icon: Crown, label: 'Lion Order', embed: { url: 'https://lionorder.com', title: 'Lion Order' }, splash: true },
@@ -27,12 +27,14 @@ const tabs: Tab[] = [
 
 export default function TabBar() {
   const pathname = usePathname();
+  const router = useRouter();
   const { openLink } = useInAppBrowser();
   const [splashTab, setSplashTab] = useState<string | null>(null);
 
   const splashImages: Record<string, { src: string; alt: string }> = {
     'Lion Order': { src: '/brand/lion-order-wordmark-gold.jpg', alt: 'Lion Order' },
     'Coffee': { src: '/brand/marley-coffee-lion-gold.png', alt: 'Marley Coffee' },
+    'Home': { src: '/brand/rhr-monogram-transparent.png', alt: 'R-M' },
   };
 
   function handleSplashTab(tab: Tab) {
@@ -40,7 +42,11 @@ export default function TabBar() {
     tabView(tab.label);
     setTimeout(() => {
       setSplashTab(null);
-      openLink(tab.embed!.url, tab.embed!.title);
+      if (tab.embed) {
+        openLink(tab.embed.url, tab.embed.title);
+      } else {
+        router.push(tab.href);
+      }
     }, 2000);
   }
 
@@ -116,7 +122,7 @@ export default function TabBar() {
               </>
             );
 
-            if (tab.splash && tab.embed) {
+            if (tab.splash) {
               return (
                 <button
                   key={tab.href}
