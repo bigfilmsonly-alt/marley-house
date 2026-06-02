@@ -20,7 +20,7 @@ interface Tab {
 
 const tabs: Tab[] = [
   { href: '/', icon: Home, label: 'Home' },
-  { href: '/coffee', icon: Coffee, label: 'Coffee', embed: { url: 'https://marleycoffee.com', title: 'Marley Coffee' } },
+  { href: '/coffee', icon: Coffee, label: 'Coffee', embed: { url: 'https://marleycoffee.com', title: 'Marley Coffee' }, splash: true },
   { href: '/watch', icon: Play, label: 'Watch' },
   { href: '/lion-order', icon: Crown, label: 'Lion Order', embed: { url: 'https://lionorder.com', title: 'Lion Order' }, splash: true },
 ];
@@ -28,22 +28,27 @@ const tabs: Tab[] = [
 export default function TabBar() {
   const pathname = usePathname();
   const { openLink } = useInAppBrowser();
-  const [showSplash, setShowSplash] = useState(false);
+  const [splashTab, setSplashTab] = useState<string | null>(null);
 
-  function handleLionOrder(tab: Tab) {
-    setShowSplash(true);
+  const splashImages: Record<string, { src: string; alt: string }> = {
+    'Lion Order': { src: '/brand/lion-order-wordmark-gold.jpg', alt: 'Lion Order' },
+    'Coffee': { src: '/brand/marley-coffee-lion-gold.png', alt: 'Marley Coffee' },
+  };
+
+  function handleSplashTab(tab: Tab) {
+    setSplashTab(tab.label);
     tabView(tab.label);
     setTimeout(() => {
-      setShowSplash(false);
+      setSplashTab(null);
       openLink(tab.embed!.url, tab.embed!.title);
     }, 2000);
   }
 
   return (
     <>
-      {/* Lion Order splash overlay */}
+      {/* Brand splash overlay */}
       <AnimatePresence>
-        {showSplash && (
+        {splashTab && splashImages[splashTab] && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -57,10 +62,10 @@ export default function TabBar() {
               transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               <Image
-                src="/brand/lion-order-wordmark-gold.jpg"
-                alt="Lion Order"
+                src={splashImages[splashTab].src}
+                alt={splashImages[splashTab].alt}
                 width={500}
-                height={360}
+                height={500}
                 className="brightness-125 w-[85vw] max-w-[500px] h-auto"
                 priority
               />
@@ -115,7 +120,7 @@ export default function TabBar() {
               return (
                 <button
                   key={tab.href}
-                  onClick={() => handleLionOrder(tab)}
+                  onClick={() => handleSplashTab(tab)}
                   className="flex flex-col items-center gap-0.5 px-2 py-1 relative"
                 >
                   {inner}
