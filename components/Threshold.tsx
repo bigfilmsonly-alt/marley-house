@@ -8,8 +8,8 @@ import { enterApp } from '@/lib/tracking';
 type Stage = 'welcome' | 'monogram' | 'done';
 
 /* Jony Ive ease — slow start, gentle deceleration, feels like gravity */
-const iveEase = [0.25, 0.1, 0.25, 1.0];
-const iveSlow = [0.16, 0.6, 0.3, 1.0];
+const iveEase: [number, number, number, number] = [0.25, 0.1, 0.25, 1.0];
+const iveSlow: [number, number, number, number] = [0.16, 0.6, 0.3, 1.0];
 
 export default function Threshold() {
   const [stage, setStage] = useState<Stage>('done');
