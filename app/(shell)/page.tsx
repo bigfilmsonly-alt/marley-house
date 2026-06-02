@@ -608,30 +608,36 @@ export default function HomePage() {
       ═══════════════════════════════════════════════════════════ */}
       <div className="gold-rule mx-8 mt-2" />
 
-      <footer className="px-6 py-16 text-center bg-black">
-        {/* Three logos side by side */}
-        <div className="flex items-center justify-center gap-6 mb-10">
-          <Image
-            src="/brand/lion-of-judah.png"
-            alt="Lion of Judah"
-            width={120}
-            height={120}
-            className="brightness-110 opacity-90"
-          />
-          <Image
-            src="/brand/lion-order-crest.png"
-            alt="Lion Order"
-            width={160}
-            height={160}
-            className="brightness-110"
-          />
-          <Image
-            src="/brand/marley-enterprise.png"
-            alt="Marley Enterprise"
-            width={120}
-            height={120}
-            className="brightness-110 opacity-90"
-          />
+      <footer className="px-4 py-16 text-center bg-black">
+        {/* Three logos side by side — fitted to screen */}
+        <div className="flex items-center justify-center gap-2 mb-10 max-w-full overflow-hidden">
+          <div className="w-[28%] flex items-center justify-center shrink-0">
+            <Image
+              src="/brand/lion-of-judah.png"
+              alt="Lion of Judah"
+              width={100}
+              height={100}
+              className="brightness-125 w-full h-auto max-w-[100px]"
+            />
+          </div>
+          <div className="w-[38%] flex items-center justify-center shrink-0">
+            <Image
+              src="/brand/lion-order-crest.png"
+              alt="Lion Order"
+              width={140}
+              height={140}
+              className="brightness-110 w-full h-auto max-w-[140px]"
+            />
+          </div>
+          <div className="w-[28%] flex items-center justify-center shrink-0">
+            <Image
+              src="/brand/marley-enterprise.png"
+              alt="Marley Enterprise"
+              width={100}
+              height={100}
+              className="brightness-125 w-full h-auto max-w-[100px]"
+            />
+          </div>
         </div>
         <p className="text-[var(--cream)] text-[10px] tracking-[0.4em] uppercase mb-3 font-medium">
           Lion Order &middot; Est. 2022
