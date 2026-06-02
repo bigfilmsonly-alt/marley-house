@@ -1,58 +1,58 @@
 @import "tailwindcss";
 
-/* ─── Design Tokens — ROYALTY YELLOW ─── */
+/* ─── Design Tokens — LION ORDER BRAND SYSTEM ─── */
 :root {
-  --bg: #F4C71F;
-  --bg2: #E8BC18;
-  --bg3: #DBA815;
-  --panel: rgba(244, 199, 31, 0.92);
-  --cream: #14110c;
-  --dim: #6B5A2E;
-  --gold: #825B0D;
-  --gold-deep: #5C3D08;
-  --gold-hi: #B98524;
-  --ember: #825B0D;
-  --green: #5C3D08;
-  --blue: #825B0D;
-  --line: rgba(20, 17, 12, 0.12);
+  --bg: #F0F0E3;
+  --bg2: #FFFFFF;
+  --bg3: #E8E4D6;
+  --panel: rgba(240, 240, 227, 0.92);
+  --cream: #14110C;
+  --dim: #6B6358;
+  --gold: #B98524;
+  --gold-deep: #825B0D;
+  --gold-hi: #F4C71F;
+  --ember: #B98524;
+  --green: #14110C;
+  --blue: #14110C;
+  --line: rgba(20, 17, 12, 0.10);
 
-  /* Lion Order Brand Colors — BRAND DECK 2026 pp.55-56 */
-  --antique-gold-1: #B98524;
-  --antique-gold-2: #825B0D;
-  --gold-24k: #E8C23A;
-  --cover-gold: #EFC11F;
+  /* Lion Order Brand Colors — BRAND DECK 2026 pp.56-57 */
+  --antique-gold-1: #B98524;   /* AG01 · Pantone 10129 C */
+  --antique-gold-2: #825B0D;   /* AG02 */
+  --gold-24k: #E8C23A;         /* 24K foil flat stand-in */
+  --cover-gold: #EFC11F;       /* saturated full-bleed ground */
   --royalty-yellow: #F4C71F;
-  --ivory: #F4C71F;
-  --bone: #E8BC18;
-  --ink: #14110c;
+  --ivory: #F0F0E3;
+  --bone: #E8E4D6;
+  --ink: #14110C;
 
-  /* Rooms — darker gold on yellow bg */
-  --room-coffee: #825B0D;
-  --room-fire: #825B0D;
-  --room-wisdom: #825B0D;
-  --room-music: #825B0D;
-  --room-legacy: #5C3D08;
-  --room-family: #825B0D;
-  --room-future: #825B0D;
+  /* Rooms — brand-aligned */
+  --room-coffee: #B98524;
+  --room-fire: #B98524;
+  --room-wisdom: #B98524;
+  --room-music: #B98524;
+  --room-legacy: #825B0D;
+  --room-family: #B98524;
+  --room-future: #B98524;
 
   /* Compat */
   --ja-green: #825B0D;
-  --ja-gold: #B98524;
-  --ja-black: #14110c;
+  --ja-gold: #F4C71F;
+  --ja-black: #14110C;
 }
 
 @theme inline {
-  --color-bg: #F4C71F;
-  --color-bg2: #E8BC18;
-  --color-cream: #14110c;
-  --color-dim: #6B5A2E;
-  --color-gold: #825B0D;
-  --color-gold-deep: #5C3D08;
-  --color-ember: #825B0D;
-  --color-green: #5C3D08;
-  --color-blue: #825B0D;
-  --color-line: rgba(20, 17, 12, 0.12);
-  --color-panel: rgba(244, 199, 31, 0.92);
+  --color-bg: #F0F0E3;
+  --color-bg2: #FFFFFF;
+  --color-cream: #14110C;
+  --color-dim: #6B6358;
+  --color-gold: #B98524;
+  --color-gold-deep: #825B0D;
+  --color-ember: #B98524;
+  --color-green: #14110C;
+  --color-blue: #14110C;
+  --color-line: rgba(20, 17, 12, 0.10);
+  --color-panel: rgba(240, 240, 227, 0.92);
   --font-display: var(--font-fraunces), 'Playfair Display', Georgia, serif;
   --font-body: var(--font-spline), 'Cormorant Garamond', 'Times New Roman', serif;
 }
