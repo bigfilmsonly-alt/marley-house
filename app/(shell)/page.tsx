@@ -201,6 +201,32 @@ export default function HomePage() {
                     </span>
                   </div>
                 </div>
+              {/* King Clementine Strain Guide — scrollable pages */}
+              <div className="bg-[var(--bg)] px-4 py-8">
+                <p className="text-[10px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 text-center font-medium">
+                  Strain Reference Guide
+                </p>
+                <p className="text-white text-[16px] font-semibold text-center mb-1">
+                  King Clementine
+                </p>
+                <p className="text-white/50 text-[11px] text-center mb-6">
+                  6 Pages — Scroll to explore
+                </p>
+                <div className="space-y-2">
+                  {[1, 2, 3, 4, 5, 6].map((n) => (
+                    <div key={n} className="border border-[var(--gold)]/20 overflow-hidden">
+                      <Image
+                        src={`/brand/strain-guide/page-${n}.jpg`}
+                        alt={`King Clementine Strain Guide — Page ${n}`}
+                        width={800}
+                        height={1035}
+                        className="w-full h-auto"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
               </div>
             ) : (
               /* Standard image pillar */
