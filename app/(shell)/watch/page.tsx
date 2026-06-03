@@ -1,49 +1,51 @@
 'use client';
 
-import { useState, useMemo, useRef, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import Image from 'next/image';
-import { Play, Search, X } from 'lucide-react';
+import { Play, X } from 'lucide-react';
 import { watchVideo } from '@/lib/tracking';
 import {
   sessionsPlaylist,
   storyVideos,
   podcastVideos,
   interviewVideos,
-  coffeeVideos,
   tasteVideos,
   footballVideos,
   musicVideos,
   lifestyleVideos,
-  channels,
+  coffeeVideos,
 } from '@/content/videos';
 import type { VideoRef } from '@/lib/types';
 
-/* ── category definitions with counts ─────────────────────── */
+/* ── curated collections ──────────────────────────────────────── */
 
-const categoryVideos: Record<string, VideoRef[]> = {
-  podcast: podcastVideos,
-  interview: interviewVideos,
-  coffee: coffeeVideos,
-  taste: tasteVideos,
-  football: footballVideos,
-  music: musicVideos,
-  lifestyle: lifestyleVideos,
-  story: storyVideos,
-};
-
-const categories = [
-  { id: 'all', label: 'All' },
-  { id: 'podcast', label: 'Podcasts', count: podcastVideos.length },
-  { id: 'interview', label: 'Interviews', count: interviewVideos.length },
-  { id: 'coffee', label: 'Coffee', count: coffeeVideos.length },
-  { id: 'taste', label: 'Taste of Marley', count: tasteVideos.length },
-  { id: 'football', label: 'Football', count: footballVideos.length },
-  { id: 'music', label: 'Music', count: musicVideos.length },
-  { id: 'lifestyle', label: 'Ventures', count: lifestyleVideos.length },
-  { id: 'story', label: 'Story', count: storyVideos.length },
+const conversations: VideoRef[] = [
+  podcastVideos.find((v) => v.videoId === 'X0SZf3r63ls')!,   // Drink Champs
+  podcastVideos.find((v) => v.videoId === 'hBd-JIpdc50')!,   // I AM ATHLETE
+  podcastVideos.find((v) => v.videoId === 'rhgStTzkeUo')!,   // The Pivot
+  podcastVideos.find((v) => v.videoId === 'WY1tP2qy7Vg')!,   // We In Miami
+  podcastVideos.find((v) => v.videoId === 'XLaevehZqqQ')!,   // More Than A Title
 ];
 
-/* ── filter out videos without a videoId ────────────────────── */
+const theStory: VideoRef[] = [
+  storyVideos.find((v) => v.videoId === 'XE-uV_DsurA')!,    // Marley Coffee Brand Film
+  storyVideos.find((v) => v.videoId === '112LQ_4P9rI')!,     // Rooted in Legacy
+  storyVideos.find((v) => v.videoId === 'vkkJycAr45E')!,     // The Marley Coffee Story
+  storyVideos.find((v) => v.videoId === 'OwNLYwn15V4')!,     // Bob Marley Inspires
+];
+
+const tasteOfJamaica: VideoRef[] = tasteVideos.slice(0, 5);
+
+const theLegacy: VideoRef[] = [
+  footballVideos.find((v) => v.videoId === 'ogZDby-8cOo')!,  // Stories of The U
+  musicVideos.find((v) => v.videoId === 'cDpEzmYx0qs')!,     // YG Marley Praise Jah
+  musicVideos.find((v) => v.videoId === 'XJ8FmHoaEcI')!,     // Africa Road Trip
+  footballVideos.find((v) => v.videoId === 'CEg7qD5Cpuw')!,   // Beast at Miami
+  interviewVideos.find((v) => v.videoId === '1vjUHbZ0tu8')!,  // One Love Film
+  lifestyleVideos.find((v) => v.videoId === 'WoJrJQZEysg')!,  // Lion Order Movement
+];
+
+/* ── all videos flat (for the "All Videos" vertical feed) ────── */
 
 const allVideos: VideoRef[] = [
   ...podcastVideos,
@@ -56,61 +58,27 @@ const allVideos: VideoRef[] = [
   ...lifestyleVideos,
 ].filter((v) => v.videoId);
 
-/* ── up-next pool (varied mix for horizontal discovery row) */
-const upNextPool = [
-  ...tasteVideos.slice(0, 3),
-  ...coffeeVideos.slice(0, 3),
-  ...musicVideos.slice(0, 3),
-  ...footballVideos.slice(0, 2),
-  ...lifestyleVideos.slice(0, 2),
-].filter((v) => v.videoId);
-
-/* ── types for now-playing state ─────────────────────────────── */
+/* ── types ─────────────────────────────────────────────────────── */
 
 type NowPlaying =
   | { kind: 'video'; video: VideoRef }
   | { kind: 'playlist'; playlist: VideoRef };
 
-/* ── component ────────────────────────────────────────────────── */
+/* ── component ─────────────────────────────────────────────────── */
 
 export default function WatchPage() {
-  const [activeCategory, setActiveCategory] = useState('all');
-  const [query, setQuery] = useState('');
   const [nowPlaying, setNowPlaying] = useState<NowPlaying | null>(null);
   const topRef = useRef<HTMLDivElement>(null);
 
-  const filtered = useMemo(() => {
-    const pool =
-      activeCategory === 'all'
-        ? allVideos
-        : (categoryVideos[activeCategory] ?? []).filter((v) => v.videoId);
-    return pool;
-  }, [activeCategory]);
-
-  const videos = useMemo(() => {
-    if (!query.trim()) return filtered;
-    const q = query.toLowerCase();
-    return filtered.filter(
-      (v) =>
-        v.title.toLowerCase().includes(q) ||
-        v.channel?.toLowerCase().includes(q),
-    );
-  }, [filtered, query]);
-
-  /* ── unified play handler ──────────────────────────────────── */
-
-  const playVideo = useCallback(
-    (v: VideoRef) => {
-      if (v.videoId) {
-        setNowPlaying({ kind: 'video', video: v });
-        watchVideo(v.videoId, v.title);
-      } else if (v.playlistId) {
-        setNowPlaying({ kind: 'playlist', playlist: v });
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    },
-    [],
-  );
+  const playVideo = useCallback((v: VideoRef) => {
+    if (v.videoId) {
+      setNowPlaying({ kind: 'video', video: v });
+      watchVideo(v.videoId, v.title);
+    } else if (v.playlistId) {
+      setNowPlaying({ kind: 'playlist', playlist: v });
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const playPlaylist = useCallback(() => {
     setNowPlaying({ kind: 'playlist', playlist: sessionsPlaylist });
@@ -121,59 +89,22 @@ export default function WatchPage() {
     setNowPlaying(null);
   }, []);
 
-  /* ── render ──────────────────────────────────────────────────── */
+  /* ── render ───────────────────────────────────────────────────── */
 
   return (
     <div ref={topRef} className="relative min-h-full bg-[var(--bg)]">
 
-      {/* ── MasterClass-style header ─────────────────────────────── */}
-      <div className="px-4 pt-4 pb-2">
-        <div className="flex items-center justify-between mb-4">
-          <div>
-            <h1 className="text-2xl font-semibold text-white">Watch</h1>
-            <p className="text-[var(--dim)] text-xs mt-0.5">
-              {videos.length} of {allVideos.length} videos
-            </p>
-          </div>
-          <Image
-            src="/brand/lion-crest-icon.png"
-            alt=""
-            width={28}
-            height={28}
-            className="opacity-60"
-          />
-        </div>
-
-        {/* search bar */}
-        <div className="flex items-center gap-2.5 border border-[var(--line)] bg-[var(--panel)] px-4 py-2.5 focus-within:border-[var(--gold)] transition-colors">
-          <Search size={16} className="text-[var(--dim)] shrink-0" />
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search videos & channels..."
-            className="flex-1 bg-transparent text-sm text-[var(--cream)] placeholder:text-[var(--dim)]/40 outline-none font-light"
-          />
-          {query && (
-            <button
-              onClick={() => setQuery('')}
-              aria-label="Clear search"
-              className="p-1"
-            >
-              <X size={14} className="text-[var(--dim)]" />
-            </button>
-          )}
-        </div>
+      {/* ── Header ─────────────────────────────────────────────── */}
+      <div className="px-4 pt-5 pb-3">
+        <h1 className="text-2xl font-bold text-white tracking-tight">Watch</h1>
       </div>
 
-      {/* ── Hero Player (when a video is active) ────────────────── */}
+      {/* ── Now Playing (when active) ──────────────────────────── */}
       {nowPlaying && (
-        <div className="px-4 pt-2 pb-4">
-          {/* NOW PLAYING label */}
+        <div className="px-4 pt-1 pb-6">
           <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-2 font-semibold">
             Now Playing
           </p>
-
           <div className="relative bg-black border-2 border-[var(--gold)]/30 shadow-[0_0_30px_rgba(212,175,55,0.08)]">
             <div className="relative w-full aspect-video">
               <iframe
@@ -213,17 +144,16 @@ export default function WatchPage() {
               </button>
             </div>
           </div>
-
         </div>
       )}
 
-      {/* ── Featured / Hero -- Sessions Playlist (only when not playing) */}
-      {!nowPlaying && activeCategory === 'all' && !query && (
-        <div className="px-4 pt-2 pb-4">
+      {/* ── Hero — House Sessions (only when nothing is playing) ─ */}
+      {!nowPlaying && (
+        <div className="px-4 pt-1 pb-6">
           <div className="relative overflow-hidden bg-[var(--panel)] border border-[var(--line)]">
             <button
               onClick={playPlaylist}
-              className="relative w-full aspect-video group"
+              className="relative w-full aspect-[16/10] group"
             >
               <Image
                 src="https://img.youtube.com/vi/XE-uV_DsurA/maxresdefault.jpg"
@@ -232,22 +162,21 @@ export default function WatchPage() {
                 unoptimized
                 className="object-cover"
               />
-              {/* dark gradient overlay at bottom */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-              {/* play button center */}
+              {/* play button */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-[var(--gold)]/90 flex items-center justify-center group-hover:bg-[var(--gold)] group-hover:scale-105 transition-all shadow-lg shadow-black/40">
-                  <Play size={28} className="text-[var(--bg)] ml-1" fill="var(--bg)" />
+                <div className="w-[72px] h-[72px] rounded-full bg-[var(--gold)]/90 flex items-center justify-center group-hover:bg-[var(--gold)] group-hover:scale-105 transition-all shadow-lg shadow-black/40">
+                  <Play size={32} className="text-[var(--bg)] ml-1" fill="var(--bg)" />
                 </div>
               </div>
 
-              {/* title overlay at bottom */}
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h2 className="font-display text-lg text-[var(--cream)] tracking-wide">
+              {/* title overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <h2 className="font-display text-xl text-[var(--cream)] tracking-wide">
                   House Sessions — Preparaciones
                 </h2>
-                <p className="text-[var(--dim)] text-xs mt-1">
+                <p className="text-[var(--dim)] text-xs mt-1.5">
                   House Sessions &middot; Playlist
                 </p>
               </div>
@@ -256,161 +185,145 @@ export default function WatchPage() {
         </div>
       )}
 
-      {/* ── Category chips ──────────────────────────────────────── */}
-      <div className="px-4 pb-4">
-        <div className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-hide">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`shrink-0 px-4 py-1.5 text-[11px] tracking-[0.08em] transition-colors rounded-full whitespace-nowrap ${
-                activeCategory === cat.id
-                  ? 'bg-[var(--gold)] text-[var(--bg)] font-medium'
-                  : 'border border-[var(--line)] text-[var(--dim)] hover:text-[var(--cream)] hover:border-[var(--dim)]'
-              }`}
-            >
-              {cat.label}
-              {cat.count !== undefined && (
-                <span className={`ml-1.5 ${activeCategory === cat.id ? 'opacity-70' : 'opacity-50'}`}>
-                  {cat.count}
-                </span>
-              )}
-            </button>
-          ))}
-        </div>
+      {/* ── The Conversations ──────────────────────────────────── */}
+      <CuratedSection
+        title="The Conversations"
+        videos={conversations}
+        onPlay={playVideo}
+        nowPlayingId={nowPlaying?.kind === 'video' ? nowPlaying.video.id : null}
+      />
+
+      {/* ── The Story ──────────────────────────────────────────── */}
+      <CuratedSection
+        title="The Story"
+        videos={theStory}
+        onPlay={playVideo}
+        nowPlayingId={nowPlaying?.kind === 'video' ? nowPlaying.video.id : null}
+      />
+
+      {/* ── Taste of Jamaica ───────────────────────────────────── */}
+      <CuratedSection
+        title="Taste of Jamaica"
+        videos={tasteOfJamaica}
+        onPlay={playVideo}
+        nowPlayingId={nowPlaying?.kind === 'video' ? nowPlaying.video.id : null}
+      />
+
+      {/* ── The Legacy ─────────────────────────────────────────── */}
+      <CuratedSection
+        title="The Legacy"
+        videos={theLegacy}
+        onPlay={playVideo}
+        nowPlayingId={nowPlaying?.kind === 'video' ? nowPlaying.video.id : null}
+      />
+
+      {/* ── Divider ────────────────────────────────────────────── */}
+      <div className="px-4 pt-4 pb-2">
+        <div className="h-px bg-[var(--gold)]/20" />
       </div>
 
-      {/* ── Search result count ──────────────────────────────────── */}
-      {query && (
-        <div className="px-4 pb-3 flex items-center justify-between">
-          <p className="text-[var(--dim)] text-xs">
-            {videos.length} result{videos.length !== 1 ? 's' : ''}
-          </p>
-          <button
-            onClick={() => {
-              setQuery('');
-              setActiveCategory('all');
-            }}
-            className="text-[var(--gold)] text-xs"
-          >
-            Clear
-          </button>
-        </div>
-      )}
-
-      {/* ── Video feed with interleaved sections ─────────────────── */}
-      <div className="px-4 pb-6">
-        {videos.length === 0 ? (
-          <div className="text-center py-16">
-            <p className="text-[var(--dim)] text-sm font-light mb-3">
-              No videos found
-            </p>
-            <button
-              onClick={() => {
-                setQuery('');
-                setActiveCategory('all');
-              }}
-              className="text-[var(--gold)] text-xs tracking-wide uppercase"
-            >
-              Clear filters
-            </button>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {videos.map((v, i) => (
-              <div key={v.id}>
-                {/* ── Video card ─── */}
-                <VideoCard
-                  video={v}
-                  isActive={
-                    nowPlaying?.kind === 'video' &&
-                    nowPlaying.video.id === v.id
-                  }
-                  onPlay={() => playVideo(v)}
-                />
-
-                {/* ── "Up Next" row after 3rd video ─── */}
-                {i === 2 && activeCategory === 'all' && !query && (
-                  <div className="mt-6 mb-2">
-                    <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-3 px-0.5">
-                      Up Next
-                    </p>
-                    <div className="flex gap-3 overflow-x-auto -mx-4 px-4 pb-2 scrollbar-hide">
-                      {upNextPool.map((uv) => (
-                        <button
-                          key={uv.id}
-                          onClick={() => playVideo(uv)}
-                          className="shrink-0 w-[180px] group text-left"
-                        >
-                          <div className="relative w-[180px] aspect-video bg-[var(--panel)] border border-[var(--line)] overflow-hidden">
-                            <Image
-                              src={`https://img.youtube.com/vi/${uv.videoId}/hqdefault.jpg`}
-                              alt={uv.title}
-                              fill
-                              unoptimized
-                              className="object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
-                            {/* play button */}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="w-9 h-9 rounded-full bg-[var(--gold)]/80 flex items-center justify-center shadow-md shadow-black/30">
-                                <Play size={14} className="text-[var(--bg)] ml-0.5" fill="var(--bg)" />
-                              </div>
-                            </div>
-                          </div>
-                          <p className="text-[var(--cream)] text-[11px] mt-1.5 line-clamp-2 leading-tight group-hover:text-[var(--gold)] transition-colors">
-                            {uv.title}
-                          </p>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-
-      {/* ── Channels section ──────────────────────────────────────── */}
-      <div className="px-4 pb-10">
-        <div className="h-px bg-[var(--line)] mb-8" />
-        <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-4">
-          Channels
+      {/* ── All Videos ─────────────────────────────────────────── */}
+      <div className="px-4 pt-4 pb-6">
+        <p className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)] font-medium mb-5">
+          All Videos
         </p>
-        <div className="grid grid-cols-2 gap-3">
-          {channels.map((ch) => (
-            <a
-              key={ch.name}
-              href={ch.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-col items-center gap-2.5 border border-[var(--line)] bg-[var(--panel)] p-5 hover:border-[var(--gold)]/30 transition-colors text-center group"
-            >
-              <div className="w-12 h-12 rounded-full bg-[var(--bg)] border border-[var(--gold)]/20 flex items-center justify-center group-hover:border-[var(--gold)]/50 transition-colors">
-                <Play size={18} className="text-[var(--gold)] ml-0.5" fill="var(--gold)" />
-              </div>
-              <span className="text-[12px] text-[var(--cream)] font-light leading-tight block">
-                {ch.name}
-              </span>
-            </a>
+        <div className="space-y-4">
+          {allVideos.map((v) => (
+            <VideoCard
+              key={v.id}
+              video={v}
+              isActive={
+                nowPlaying?.kind === 'video' && nowPlaying.video.id === v.id
+              }
+              onPlay={() => playVideo(v)}
+            />
           ))}
         </div>
       </div>
 
-      {/* ── Footer ──────────────────────────────────────────────── */}
+      {/* ── Footer ─────────────────────────────────────────────── */}
       <footer className="px-8 pb-12 text-center">
         <div className="h-px bg-[var(--line)] mb-8" />
         <p className="text-[var(--dim)] text-[8px] tracking-[0.3em] uppercase">
           Lion Order &middot; Watch
         </p>
       </footer>
-
     </div>
   );
 }
 
-/* ── VideoCard component ──────────────────────────────────────── */
+/* ── CuratedSection ────────────────────────────────────────────── */
+
+function CuratedSection({
+  title,
+  videos,
+  onPlay,
+  nowPlayingId,
+}: {
+  title: string;
+  videos: VideoRef[];
+  onPlay: (v: VideoRef) => void;
+  nowPlayingId: string | null;
+}) {
+  return (
+    <section className="mb-8">
+      <p className="text-[11px] tracking-[0.3em] uppercase text-[#E8C23A] font-medium mb-4 px-4">
+        {title}
+      </p>
+      <div className="flex gap-3 overflow-x-auto px-4 pb-2 scrollbar-hide">
+        {videos.map((v) => (
+          <button
+            key={v.id}
+            onClick={() => onPlay(v)}
+            className="shrink-0 w-[200px] group text-left"
+          >
+            <div className="relative w-[200px] aspect-video bg-[var(--panel)] border border-[var(--line)] overflow-hidden">
+              {v.videoId && (
+                <Image
+                  src={`https://img.youtube.com/vi/${v.videoId}/hqdefault.jpg`}
+                  alt={v.title}
+                  fill
+                  unoptimized
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              )}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div
+                  className={`w-10 h-10 rounded-full flex items-center justify-center shadow-md shadow-black/30 transition-all group-hover:scale-110 ${
+                    nowPlayingId === v.id
+                      ? 'bg-white/90'
+                      : 'bg-[var(--gold)]/80 group-hover:bg-[var(--gold)]'
+                  }`}
+                >
+                  <Play
+                    size={16}
+                    className={`ml-0.5 ${nowPlayingId === v.id ? 'text-black' : 'text-[var(--bg)]'}`}
+                    fill={nowPlayingId === v.id ? 'black' : 'var(--bg)'}
+                  />
+                </div>
+              </div>
+              {nowPlayingId === v.id && (
+                <div className="absolute top-1.5 left-1.5 px-1.5 py-0.5 bg-[var(--gold)] text-[var(--bg)] text-[8px] tracking-[0.12em] uppercase font-medium">
+                  Now Playing
+                </div>
+              )}
+            </div>
+            <p className={`text-[12px] mt-2 line-clamp-2 leading-snug font-medium transition-colors ${
+              nowPlayingId === v.id ? 'text-[var(--gold)]' : 'text-[var(--cream)] group-hover:text-[var(--gold)]'
+            }`}>
+              {v.title}
+            </p>
+            {v.channel && (
+              <p className="text-[var(--dim)] text-[10px] mt-0.5">{v.channel}</p>
+            )}
+          </button>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ── VideoCard ──────────────────────────────────────────────────── */
 
 function VideoCard({
   video,
@@ -423,10 +336,7 @@ function VideoCard({
 }) {
   return (
     <div className="overflow-hidden">
-      <button
-        onClick={onPlay}
-        className="w-full text-left group"
-      >
+      <button onClick={onPlay} className="w-full text-left group">
         {/* Thumbnail */}
         <div className="relative w-full aspect-[16/9] bg-[var(--panel)] border border-[var(--line)] overflow-hidden">
           {video.videoId && (
@@ -438,7 +348,6 @@ function VideoCard({
               className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
             />
           )}
-          {/* play button -- always visible for mobile, highlight on active */}
           <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors flex items-center justify-center">
             <div
               className={`w-12 h-12 rounded-full flex items-center justify-center shadow-lg shadow-black/30 transition-all group-hover:scale-110 ${
@@ -455,23 +364,22 @@ function VideoCard({
             </div>
           </div>
 
-          {/* "Now Playing" badge */}
+          {/* Now Playing badge */}
           {isActive && (
             <div className="absolute top-2 left-2 px-2 py-0.5 bg-[var(--gold)] text-[var(--bg)] text-[9px] tracking-[0.15em] uppercase font-medium">
               Now Playing
             </div>
           )}
 
-
-          {/* Gold progress bar for Now Playing card */}
+          {/* Gold progress bar for Now Playing */}
           {isActive && (
             <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[var(--gold)]/20">
-              <div className="h-full w-1/3 bg-[var(--gold)] animate-[progress-shimmer_3s_ease-in-out_infinite]" />
+              <div className="h-full w-1/3 bg-[var(--gold)]" />
             </div>
           )}
         </div>
 
-        {/* Meta below thumbnail */}
+        {/* Meta */}
         <div className="pt-2.5 pb-1">
           <p className={`text-[14px] font-light leading-snug line-clamp-2 ${isActive ? 'text-[var(--gold)]' : 'text-[var(--cream)]'}`}>
             {video.title}
