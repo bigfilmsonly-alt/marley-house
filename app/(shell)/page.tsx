@@ -112,6 +112,7 @@ const sections = [
   { id: 'empire', title: 'The Empire' },
   { id: 'wisdom', title: 'How We Heal' },
   { id: 'links', title: 'Connect' },
+  { id: 'brandbook', title: 'The Brand Book' },
 ] as const;
 
 type SectionId = (typeof sections)[number]['id'];
@@ -740,6 +741,41 @@ export default function HomePage() {
                             </div>
                           </a>
                         ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                      09 — THE BRAND BOOK — all 65 pages scrollable
+                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+                  {section.id === 'brandbook' && (
+                    <div>
+                      <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-3 text-center font-medium">
+                        The Brand Book
+                      </p>
+                      <p className="text-white text-[16px] font-semibold text-center mb-2">
+                        65 Pages
+                      </p>
+                      <p className="text-[var(--dim)] text-[12px] text-center mb-6 font-normal">
+                        The complete Lion Order visual identity, guidelines, and creative direction.
+                      </p>
+
+                      <div className="space-y-2">
+                        {Array.from({ length: 65 }, (_, i) => {
+                          const num = String(i + 1).padStart(2, '0');
+                          return (
+                            <div key={i} className="border border-[var(--line)] bg-[var(--bg)] overflow-hidden">
+                              <Image
+                                src={`/brandbook/p${num}.jpg`}
+                                alt={`Brand Book — Page ${i + 1}`}
+                                width={800}
+                                height={618}
+                                className="w-full h-auto"
+                                loading="lazy"
+                              />
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   )}
