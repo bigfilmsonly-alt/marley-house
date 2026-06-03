@@ -30,16 +30,16 @@ export default function ShellLayout({
           <MiniPlayer />
 
           {/* Brand logos — right above tabs */}
-          <div className="flex-shrink-0 bg-black pt-4 pb-2">
+          <div className="flex-shrink-0 pt-4 pb-2">
             <div className="flex items-center justify-center gap-3 mb-3 px-4">
               <img src="/brand/marley-enterprise.png" alt="Marley Enterprise" width="110" height="110" className="brightness-125" />
               <SplashReturn />
               <img src="/brand/lion-crest-clean.png" alt="Lion Order Crest" width="110" height="110" className="brightness-125" />
             </div>
-            <p style={{ color: '#F3E9D8', fontSize: '9px', letterSpacing: '0.4em', textTransform: 'uppercase', textAlign: 'center', fontWeight: 500, marginBottom: '2px' }}>
+            <p style={{ color: '#825B0D', fontSize: '9px', letterSpacing: '0.4em', textTransform: 'uppercase', textAlign: 'center', fontWeight: 500, marginBottom: '2px' }}>
               Lion Order · Est. 2022
             </p>
-            <p style={{ color: '#b8a87f', fontSize: '8px', letterSpacing: '0.25em', textTransform: 'uppercase', textAlign: 'center', fontWeight: 500 }}>
+            <p style={{ color: '#5C4A0E', fontSize: '8px', letterSpacing: '0.25em', textTransform: 'uppercase', textAlign: 'center', fontWeight: 500 }}>
               One Love. One House. One Order.
             </p>
           </div>

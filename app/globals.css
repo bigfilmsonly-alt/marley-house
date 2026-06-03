@@ -2,8 +2,8 @@
 
 /* ─── LION ORDER · R-M — Black & Gold Brand System ─── */
 :root {
-  --bg: #0b0805;
-  --panel: #120d07;
+  --bg: #EFC11F;
+  --panel: #E0B41A;
   --line: rgba(216, 177, 90, 0.18);
 
   --gold: #B98524;
@@ -11,8 +11,8 @@
   --bright: #E8C23A;
   --royal: #EFC11F;
 
-  --cream: #F3E9D8;
-  --dim: #b8a87f;
+  --cream: #1c1810;
+  --dim: #5C4A0E;
   --ink: #1c1810;
 
   /* Rooms */
@@ -26,10 +26,10 @@
 }
 
 @theme inline {
-  --color-bg: #0b0805;
-  --color-panel: #120d07;
-  --color-cream: #F3E9D8;
-  --color-dim: #b8a87f;
+  --color-bg: #EFC11F;
+  --color-panel: #E0B41A;
+  --color-cream: #1c1810;
+  --color-dim: #5C4A0E;
   --color-gold: #B98524;
   --color-gold-deep: #825B0D;
   --color-bright: #E8C23A;
@@ -101,7 +101,7 @@ body {
 @media (min-width: 768px) {
   .device-wrapper {
     position: fixed; inset: 0;
-    background: var(--bg);
+    background: #EFC11F;
     overflow: hidden;
   }
   .device-wrapper::before { display: none; }
@@ -110,7 +110,7 @@ body {
     width: 100%; height: 100%;
     max-width: 800px;
     margin: 0 auto;
-    background: var(--bg);
+    background: #EFC11F;
     border-radius: 0;
     box-shadow: none;
     padding: 0;

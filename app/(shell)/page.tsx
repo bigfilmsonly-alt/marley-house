@@ -43,7 +43,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════
           1. HERO — R-M Monogram + Taglines — fits one screen
       ═══════════════════════════════════════════════════════════ */}
-      <section className="w-full bg-black pt-8 pb-4 flex-shrink-0">
+      <section className="w-full pt-8 pb-4 flex-shrink-0">
         <div className="flex flex-col items-center justify-center px-8">
           <div className="relative w-[260px] h-[260px] mb-4">
             <Image
@@ -56,11 +56,11 @@ export default function HomePage() {
             />
           </div>
 
-          <h1 className="text-2xl font-semibold text-white tracking-wide text-center leading-[1.3] mb-2">
+          <h1 className="text-2xl font-semibold text-[#1c1810] tracking-wide text-center leading-[1.3] mb-2">
             Awaken the Lion<br />in Everyone
           </h1>
 
-          <p className="text-[10px] tracking-[0.45em] uppercase text-[#E8C23A] font-medium">
+          <p className="text-[10px] tracking-[0.45em] uppercase text-[#825B0D] font-medium">
             The Legacy of Rohan Marley
           </p>
         </div>
@@ -76,25 +76,25 @@ export default function HomePage() {
           className="w-full border-b border-[var(--line)] px-6 py-4 flex items-center justify-between cursor-pointer hover:bg-[var(--panel)] transition-colors"
         >
           <div className="flex items-center gap-3">
-            <span className="w-2 h-2 bg-[#E8C23A] rotate-45 shrink-0" />
-            <span className="text-white font-semibold text-[16px]">
+            <span className="w-2 h-2 bg-[#825B0D] rotate-45 shrink-0" />
+            <span className="text-[#1c1810] font-semibold text-[16px]">
               Join the Inner Circle
             </span>
           </div>
           {menuOpen ? (
-            <ChevronUp className="w-5 h-5 text-[#E8C23A]" />
+            <ChevronUp className="w-5 h-5 text-[#825B0D]" />
           ) : (
-            <ChevronDown className="w-5 h-5 text-[#E8C23A]" />
+            <ChevronDown className="w-5 h-5 text-[#825B0D]" />
           )}
         </button>
 
         {menuOpen && (
           <div className="bg-[var(--panel)] border-b border-[var(--line)]">
             <div className="px-6 py-8">
-              <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-3 text-center font-medium">
+              <p className="text-[11px] tracking-[0.4em] uppercase text-[#825B0D] mb-3 text-center font-medium">
                 Enter the House
               </p>
-              <p className="text-white text-[18px] font-semibold text-center mb-2">
+              <p className="text-[#1c1810] text-[18px] font-semibold text-center mb-2">
                 Join the Inner Circle
               </p>
               <p className="text-[var(--dim)] text-[13px] text-center mb-6 font-normal">
@@ -103,7 +103,7 @@ export default function HomePage() {
 
               {submitted ? (
                 <div className="text-center py-4">
-                  <p className="text-[#E8C23A] text-lg font-semibold mb-2">Welcome to the House.</p>
+                  <p className="text-[#825B0D] text-lg font-semibold mb-2">Welcome to the House.</p>
                   <p className="text-[var(--dim)] text-[13px]">Check your inbox.</p>
                 </div>
               ) : (
@@ -134,7 +134,7 @@ export default function HomePage() {
                   <button
                     type="submit"
                     disabled={formLoading}
-                    className="w-full bg-[#E8C23A] text-[var(--bg)] text-[13px] tracking-[0.2em] uppercase font-semibold py-3.5 hover:bg-[#E8C23A]/90 transition-colors disabled:opacity-50"
+                    className="w-full bg-[#1c1810] text-[var(--bg)] text-[13px] tracking-[0.2em] uppercase font-semibold py-3.5 hover:bg-[#1c1810]/90 transition-colors disabled:opacity-50"
                   >
                     {formLoading ? '...' : 'Enter'}
                   </button>
@@ -154,10 +154,10 @@ export default function HomePage() {
       <div className="gold-rule mx-6 mt-2" />
 
       <div className="px-4 py-8">
-        <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 text-center font-medium">
+        <p className="text-[11px] tracking-[0.4em] uppercase text-[#825B0D] mb-2 text-center font-medium">
           The Brand Book
         </p>
-        <p className="text-white text-[15px] font-semibold text-center mb-1">
+        <p className="text-[#1c1810] text-[15px] font-semibold text-center mb-1">
           Lion Order
         </p>
         <p className="text-[var(--dim)] text-[11px] text-center mb-6">
