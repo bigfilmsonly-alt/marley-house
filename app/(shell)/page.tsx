@@ -171,28 +171,26 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════
           1. HERO — R-M Monogram + Taglines — fits one screen
       ═══════════════════════════════════════════════════════════ */}
-      <section className="w-full bg-black pt-10 pb-6 flex-shrink-0">
+      <section className="w-full bg-black pt-8 pb-4 flex-shrink-0">
         <div className="flex flex-col items-center justify-center px-8">
-          <div className="relative w-[140px] h-[140px] mb-5">
+          <div className="relative w-[200px] h-[200px] mb-4">
             <Image
               src="/brand/rhr-monogram-transparent.png"
               alt="R-M Monogram"
               fill
               className="object-contain"
               priority
-              sizes="140px"
+              sizes="200px"
             />
           </div>
 
-          <h1 className="text-2xl font-semibold text-white tracking-wide text-center leading-[1.3] mb-3">
+          <h1 className="text-2xl font-semibold text-white tracking-wide text-center leading-[1.3] mb-2">
             Awaken the Lion<br />in Everyone
           </h1>
 
-          <p className="text-[10px] tracking-[0.45em] uppercase text-[#E8C23A] font-medium mb-4">
+          <p className="text-[10px] tracking-[0.45em] uppercase text-[#E8C23A] font-medium">
             The Legacy of Rohan Marley
           </p>
-
-          <div className="gold-rule w-full max-w-[160px]" />
         </div>
       </section>
 
@@ -858,39 +856,35 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════
           3. FOOTER — Lion Order crest, proud and centered
       ═══════════════════════════════════════════════════════════ */}
-      <div className="gold-rule mx-8 mt-1" />
-
-      <footer className="px-4 py-6 text-center bg-black flex-shrink-0">
-        <div className="flex items-center justify-center gap-1 mb-4 px-2">
+      {/* Logos + tagline — sits right above tab bar */}
+      <div className="mt-auto flex-shrink-0 bg-black pt-3 pb-2">
+        <div className="flex items-center justify-center gap-1 mb-2 px-2">
           <Image
             src="/brand/marley-enterprise.png"
             alt="Marley Enterprise"
-            width={90}
-            height={90}
+            width={70}
+            height={70}
             className="brightness-125 flex-shrink-0"
           />
           <Image
             src="/brand/lion-order-crest.png"
             alt="Lion Order"
-            width={90}
-            height={90}
+            width={70}
+            height={70}
             className="brightness-110 flex-shrink-0"
           />
           <Image
             src="/brand/lion-crest-clean.png"
             alt="Lion Order Crest"
-            width={90}
-            height={90}
+            width={70}
+            height={70}
             className="brightness-125 flex-shrink-0"
           />
         </div>
-        <p className="text-[var(--cream)] text-[9px] tracking-[0.4em] uppercase mb-1 font-medium">
-          Lion Order &middot; Est. 2022
-        </p>
-        <p className="text-[var(--dim)] text-[8px] tracking-[0.25em] uppercase font-medium">
+        <p className="text-[var(--dim)] text-[7px] tracking-[0.3em] uppercase text-center font-medium">
           One Love. One House. One Order.
         </p>
-      </footer>
+      </div>
     </div>
   );
 }
