@@ -103,14 +103,14 @@ const communityPages = [
 /* ── dropdown section definitions ────────────────────────────── */
 
 const sections = [
-  { id: 'daily-drop', number: '01', title: 'Flower to the People' },
-  { id: 'movement', number: '02', title: 'Our Reasons to Believe' },
-  { id: 'truth', number: '03', title: 'Our Brand Truth' },
-  { id: 'code', number: '04', title: 'Codes of Lion Order' },
-  { id: 'founder', number: '05', title: 'The Founder' },
-  { id: 'empire', number: '06', title: 'The Empire' },
-  { id: 'wisdom', number: '07', title: 'How We Heal' },
-  { id: 'links', number: '08', title: 'Connect' },
+  { id: 'daily-drop', title: 'Flower to the People' },
+  { id: 'movement', title: 'Our Reasons to Believe' },
+  { id: 'truth', title: 'Our Brand Truth' },
+  { id: 'code', title: 'Codes of Lion Order' },
+  { id: 'founder', title: 'The Founder' },
+  { id: 'empire', title: 'The Empire' },
+  { id: 'wisdom', title: 'How We Heal' },
+  { id: 'links', title: 'Connect' },
 ] as const;
 
 type SectionId = (typeof sections)[number]['id'];
@@ -118,6 +118,7 @@ type SectionId = (typeof sections)[number]['id'];
 /* ── page ─────────────────────────────────────────────────────── */
 
 export default function HomePage() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [openSection, setOpenSection] = useState<SectionId | null>(null);
   const [expandedWisdom, setExpandedWisdom] = useState<string | null>(null);
 
@@ -169,41 +170,64 @@ export default function HomePage() {
           2. DROPDOWN MENU SYSTEM — 7 sections, one open at a time
       ═══════════════════════════════════════════════════════════ */}
       <nav className="w-full">
-        {sections.map((section) => {
-          const isOpen = openSection === section.id;
+        {/* ── Main "Explore the Maison" dropdown bar ── */}
+        <button
+          onClick={() => {
+            setMenuOpen(!menuOpen);
+            if (menuOpen) setOpenSection(null);
+          }}
+          aria-expanded={menuOpen}
+          className="w-full border-b border-[var(--line)] px-6 py-5 flex items-center justify-between cursor-pointer hover:bg-[var(--panel)] transition-colors"
+        >
+          <div className="flex items-center gap-3">
+            <span className="w-2 h-2 bg-[#E8C23A] rotate-45 shrink-0" />
+            <span className="text-white font-semibold text-[16px]">
+              Explore the Maison
+            </span>
+          </div>
+          {menuOpen ? (
+            <ChevronUp className="w-5 h-5 text-[#E8C23A]" />
+          ) : (
+            <ChevronDown className="w-5 h-5 text-[#E8C23A]" />
+          )}
+        </button>
 
-          return (
-            <div key={section.id}>
-              {/* ── Dropdown bar ── */}
-              <button
-                onClick={() => toggle(section.id)}
-                aria-expanded={isOpen}
-                className="w-full border-b border-[var(--line)] px-6 py-5 flex items-center justify-between cursor-pointer transition-colors hover:bg-[var(--panel)]"
-              >
-                <div className="flex items-center gap-4">
-                  <span className="text-[#E8C23A] font-semibold text-[15px] tracking-wide font-body">
-                    {section.number}
-                  </span>
-                  <span className="text-white font-semibold text-[16px] tracking-wide">
-                    {section.title}
-                  </span>
-                </div>
-                {isOpen ? (
-                  <ChevronUp className="w-5 h-5 text-[#E8C23A]" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-[#E8C23A]" />
-                )}
-              </button>
+        {/* ── Sections list (visible when menu is open) ── */}
+        {menuOpen && (
+          <div className="bg-[var(--panel)] border-b border-[var(--line)]">
+            {sections.map((section) => {
+              const isOpen = openSection === section.id;
 
-              {/* ── Expanded panel ── */}
-              <div
-                className="overflow-hidden transition-all duration-500 ease-in-out"
-                style={{
-                  maxHeight: isOpen ? '5000px' : '0px',
-                  opacity: isOpen ? 1 : 0,
-                }}
-              >
-                <div className="bg-[var(--panel)] px-6 py-8 border-b border-[var(--line)]">
+              return (
+                <div key={section.id}>
+                  {/* ── Section title row ── */}
+                  <button
+                    onClick={() => toggle(section.id)}
+                    aria-expanded={isOpen}
+                    className="w-full px-8 py-4 flex items-center justify-between border-b border-[var(--line)]/50 hover:bg-[var(--bg)] transition-colors"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#E8C23A] shrink-0" />
+                      <span className="text-[var(--cream)] text-[14px] font-medium">
+                        {section.title}
+                      </span>
+                    </div>
+                    {isOpen ? (
+                      <ChevronUp className="w-4 h-4 text-[#E8C23A]/70" />
+                    ) : (
+                      <ChevronDown className="w-4 h-4 text-[var(--dim)]" />
+                    )}
+                  </button>
+
+                  {/* ── Expanded content panel ── */}
+                  <div
+                    className="overflow-hidden transition-all duration-500 ease-in-out"
+                    style={{
+                      maxHeight: isOpen ? '5000px' : '0px',
+                      opacity: isOpen ? 1 : 0,
+                    }}
+                  >
+                    <div className="bg-[var(--panel)] px-6 py-8 border-b border-[var(--line)]">
 
                   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                       01 — FLOWER TO THE PEOPLE
@@ -721,11 +745,13 @@ export default function HomePage() {
                     </div>
                   )}
 
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          );
-        })}
+              );
+            })}
+          </div>
+        )}
       </nav>
 
       {/* ═══════════════════════════════════════════════════════════
