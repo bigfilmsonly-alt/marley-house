@@ -38,7 +38,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="relative min-h-full bg-[var(--bg)] flex flex-col">
+    <div className="relative min-h-full bg-transparent flex flex-col">
 
       {/* ═══════════════════════════════════════════════════════════
           1. HERO — R-M Monogram + Taglines — fits one screen

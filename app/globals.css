@@ -42,7 +42,7 @@
 
 /* ─── Base ─── */
 body {
-  background: var(--bg);
+  background: var(--bg) url('/brand/gold-pattern-bg.jpg') center / cover fixed;
   color: var(--cream);
   font-family: var(--font-body), 'EB Garamond', Georgia, serif;
   -webkit-font-smoothing: antialiased;
@@ -68,8 +68,8 @@ body {
 /* ─── Gold Rules ─── */
 .gold-rule {
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--gold), transparent);
-  opacity: 0.25;
+  background: linear-gradient(to right, transparent, #1c1810, transparent);
+  opacity: 0.18;
 }
 .gold-rule-solid {
   height: 1px;
@@ -96,12 +96,12 @@ body {
 .device-shell { width: 100%; height: 100%; position: relative; }
 .device-notch { display: none; }
 .device-btn { display: none; }
-.device-viewport { width: 100%; height: 100%; overflow: hidden; position: relative; background: var(--bg); }
+.device-viewport { width: 100%; height: 100%; overflow: hidden; position: relative; background: transparent; }
 
 @media (min-width: 768px) {
   .device-wrapper {
     position: fixed; inset: 0;
-    background: #EFC11F;
+    background: transparent;
     overflow: hidden;
   }
   .device-wrapper::before { display: none; }
@@ -110,13 +110,13 @@ body {
     width: 100%; height: 100%;
     max-width: 800px;
     margin: 0 auto;
-    background: #EFC11F;
+    background: transparent;
     border-radius: 0;
     box-shadow: none;
     padding: 0;
   }
   .device-btn { display: none; }
-  .device-viewport { border-radius: 0; background: var(--bg); }
+  .device-viewport { border-radius: 0; background: transparent; }
 }
 
 /* ─── Animations ─── */
