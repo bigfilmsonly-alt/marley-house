@@ -42,11 +42,11 @@ export default function TabBar() {
 
   const coffeeSlides = [
     { src: '/brand/marley-coffee-lion-gold.png', alt: 'Marley Coffee' },
-    { src: '/brand/coffee-slide-1.jpg', alt: 'Marley Coffee Collection' },
-    { src: '/brand/coffee-slide-2.webp', alt: 'One Love Blend' },
-    { src: '/brand/coffee-slide-3.webp', alt: 'Lively Up Blend' },
-    { src: '/brand/coffee-slide-4.webp', alt: 'Get Up Stand Up Blend' },
-    { src: '/brand/coffee-slide-5.webp', alt: 'Buffalo Soldier Blend' },
+    { src: '/brand/coffee-slide-1.png', alt: 'Marley Coffee Collection' },
+    { src: '/brand/coffee-slide-2.png', alt: 'One Love Blend' },
+    { src: '/brand/coffee-slide-3.png', alt: 'Lively Up Blend' },
+    { src: '/brand/coffee-slide-4.png', alt: 'Get Up Stand Up Blend' },
+    { src: '/brand/coffee-slide-5.png', alt: 'Buffalo Soldier Blend' },
   ];
 
   function handleSplashTab(tab: Tab) {

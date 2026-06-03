@@ -19,7 +19,7 @@ const slides: { id: Stage; src: string; alt: string; hold: number; size: string 
   { id: 'kingclem2', src: '/brand/welcome-slide-4.png', alt: 'King Clementine V2', hold: 3000, size: 'w-[70vw] max-w-[340px]' },
   { id: 'sketch', src: '/brand/welcome-slide-3.png', alt: 'The Movement', hold: 3000, size: 'w-[80vw] max-w-[380px]' },
   { id: 'product', src: '/brand/welcome-slide-5.jpg', alt: 'Lion Order — Flower to the People', hold: 3000, size: 'w-[65vw] max-w-[300px]' },
-  { id: 'crest', src: '/brand/welcome-slide-1.jpg', alt: 'Royal Crest', hold: 3000, size: 'w-[65vw] max-w-[300px]' },
+  { id: 'crest', src: '/brand/welcome-slide-1.png', alt: 'Royal Crest', hold: 3000, size: 'w-[65vw] max-w-[300px]' },
   { id: 'monogram', src: '/brand/rhr-monogram-transparent.png', alt: 'R-M', hold: 4000, size: 'w-[70vw] max-w-[280px]' },
 ];
 
