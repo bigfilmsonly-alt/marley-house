@@ -228,6 +228,45 @@ export default function HomePage() {
                 </div>
               </div>
               </div>
+            ) : pillar.name === 'Marley Coffee' ? (
+              /* Marley Coffee — Vimeo hero video */
+              <div className="relative w-full overflow-hidden">
+                <div className="relative w-full" style={{ paddingTop: '177.8%' }}>
+                  <iframe
+                    src="https://player.vimeo.com/video/1198236151?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                    className="absolute inset-0 w-full h-full"
+                    style={{ border: 'none' }}
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10 pointer-events-none" />
+                <div
+                  className="absolute inset-0 flex flex-col justify-end p-8 pb-12 cursor-pointer"
+                  onClick={() => handlePillarClick(pillar)}
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-[9px] tracking-[0.3em] uppercase font-light" style={{ color: pillar.accent }}>
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span className="w-6 h-px" style={{ backgroundColor: pillar.accent, opacity: 0.4 }} />
+                  </div>
+                  <h2 className="font-display text-3xl text-white font-semibold leading-[1.1] mb-3">
+                    {pillar.name}
+                  </h2>
+                  <p className="text-[var(--cream)] text-[14px] font-light leading-[1.7] mb-6 max-w-[300px]">
+                    {pillar.line}
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <span className="border border-white/30 text-white text-[10px] tracking-[0.2em] uppercase px-6 py-2.5 hover:bg-white/10 transition-colors">
+                      {pillar.cta}
+                    </span>
+                    <span className="text-white/60 text-[10px] tracking-[0.15em] uppercase">
+                      {pillar.ctaSecondary}
+                    </span>
+                  </div>
+                </div>
+              </div>
             ) : (
               /* Standard image pillar */
               <button
