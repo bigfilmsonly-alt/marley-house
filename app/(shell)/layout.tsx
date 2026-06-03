@@ -30,7 +30,7 @@ export default function ShellLayout({
           <MiniPlayer />
 
           {/* Brand logos — right above tabs */}
-          <div className="flex-shrink-0 pt-4 pb-2">
+          <div className="flex-shrink-0 pt-4 pb-2 bg-black">
             <div className="flex items-center justify-center gap-3 mb-3 px-4">
               <img src="/brand/marley-enterprise.png" alt="Marley Enterprise" width="110" height="110" className="brightness-125" />
               <SplashReturn />
