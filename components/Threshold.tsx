@@ -5,58 +5,43 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { enterApp } from '@/lib/tracking';
 
-type Stage = 'lion' | 'kingclem' | 'kingclem2' | 'sketch' | 'product' | 'crest' | 'monogram' | 'done';
+type Stage = 'lion' | 'crests' | 'monogram' | 'done';
 
 const iveEase: [number, number, number, number] = [0.25, 0.1, 0.25, 1.0];
-const iveSlow: [number, number, number, number] = [0.16, 0.6, 0.3, 1.0];
 const springSettle: [number, number, number, number] = [0.22, 0.68, 0.36, 1.0];
 const matDecel: [number, number, number, number] = [0.4, 0.0, 0.2, 1.0];
 
-/* ── The cinematic sequence ── */
-const slides: { id: Stage; src: string; alt: string; hold: number; size: string }[] = [
-  { id: 'lion', src: '/brand/lion-head-new.jpg', alt: 'Lion Order', hold: 5000, size: 'w-[90vw] max-w-[420px]' },
-  { id: 'kingclem', src: '/brand/king-clem-welcome.png', alt: 'King Clementine', hold: 3000, size: 'w-[70vw] max-w-[340px]' },
-  { id: 'kingclem2', src: '/brand/welcome-slide-4.png', alt: 'King Clementine V2', hold: 3000, size: 'w-[70vw] max-w-[340px]' },
-  { id: 'sketch', src: '/brand/welcome-slide-3.png', alt: 'The Movement', hold: 3000, size: 'w-[80vw] max-w-[380px]' },
-  { id: 'product', src: '/brand/welcome-slide-5.jpg', alt: 'Lion Order — Flower to the People', hold: 3000, size: 'w-[65vw] max-w-[300px]' },
-  { id: 'crest', src: '/brand/welcome-slide-1.png', alt: 'Royal Crest', hold: 3000, size: 'w-[65vw] max-w-[300px]' },
-  { id: 'monogram', src: '/brand/rhr-monogram-transparent.png', alt: 'R-M', hold: 4000, size: 'w-[70vw] max-w-[280px]' },
-];
-
 export default function Threshold() {
-  const [slideIndex, setSlideIndex] = useState(0);
-  const [started, setStarted] = useState(true);
+  const [stage, setStage] = useState<Stage>('lion');
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const seen = sessionStorage.getItem('marley-threshold');
-    if (seen) {
-      setStarted(false);
-    }
+    if (seen) setStage('done');
   }, []);
 
-  const currentSlide = slides[slideIndex];
-  const isFirstSlide = slideIndex === 0;
-  const isLastSlide = slideIndex === slides.length - 1;
-
   const advance = useCallback(() => {
-    if (slideIndex < slides.length - 1) {
-      setSlideIndex((i) => i + 1);
-    } else {
-      setStarted(false);
-      sessionStorage.setItem('marley-threshold', '1');
-      enterApp();
-    }
-  }, [slideIndex]);
+    setStage((s) => {
+      if (s === 'lion') return 'crests';
+      if (s === 'crests') return 'monogram';
+      if (s === 'monogram') {
+        sessionStorage.setItem('marley-threshold', '1');
+        enterApp();
+        return 'done';
+      }
+      return 'done';
+    });
+  }, []);
 
-  // Auto-advance timer for current slide
+  // Auto-advance timers
   useEffect(() => {
-    if (!started) return;
-    const timer = setTimeout(advance, currentSlide.hold);
+    if (stage === 'done') return;
+    const hold = stage === 'lion' ? 5000 : stage === 'crests' ? 3500 : 4000;
+    const timer = setTimeout(advance, hold);
     return () => clearTimeout(timer);
-  }, [started, slideIndex, advance, currentSlide.hold]);
+  }, [stage, advance]);
 
-  if (!started) return null;
+  if (stage === 'done') return null;
 
   return (
     <motion.div
@@ -67,71 +52,125 @@ export default function Threshold() {
       transition={{ duration: 1.5, ease: iveEase }}
     >
       <AnimatePresence mode="sync">
-        <motion.div
-          key={currentSlide.id}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.5, ease: iveEase }}
-          onClick={advance}
-          className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer"
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 2.5, ease: springSettle }}
-          >
-            <Image
-              src={currentSlide.src}
-              alt={currentSlide.alt}
-              width={500}
-              height={500}
-              className={`${currentSlide.size} h-auto`}
-              priority
-            />
-          </motion.div>
 
-          {/* Rohan signature — only on the first slide (lion) */}
-          {isFirstSlide && (
+        {/* STAGE 1: Gold lion head + Rohan signature */}
+        {stage === 'lion' && (
+          <motion.div
+            key="lion"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: iveEase }}
+            onClick={advance}
+            className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, duration: 2.5, ease: springSettle }}
+            >
+              <Image
+                src="/brand/lion-head-new.jpg"
+                alt="Lion Order"
+                width={500}
+                height={500}
+                className="w-[85vw] max-w-[400px] h-auto"
+                priority
+              />
+            </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 1.5, ease: iveEase }}
+              transition={{ delay: 1, duration: 1.5, ease: iveEase }}
             >
               <Image
                 src="/brand/rohan-signature.png"
-                alt="Rohan Marley Signature"
-                width={140}
-                height={50}
-                className="mt-10 w-[220px] h-auto opacity-90 mx-auto brightness-125"
+                alt="Rohan Marley"
+                width={180}
+                height={60}
+                className="mt-8 opacity-80 brightness-125"
               />
             </motion.div>
-          )}
-
-          {/* "Enter" — only on the first slide */}
-          {isFirstSlide && (
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.4 }}
-              transition={{ delay: 2.5, duration: 2 }}
-              className="absolute bottom-16 text-[var(--dim)] text-[10px] font-light tracking-[0.5em] uppercase"
+              transition={{ delay: 2.5, duration: 1.5 }}
+              className="absolute bottom-16 text-white/40 text-[10px] font-light tracking-[0.5em] uppercase"
             >
               Enter
             </motion.p>
-          )}
+          </motion.div>
+        )}
 
-          {/* Slide indicator dots */}
-          <div className="absolute bottom-8 flex gap-1.5">
-            {slides.map((_, i) => (
-              <div
-                key={i}
-                className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${
-                  i === slideIndex ? 'bg-[#E8C23A] w-3' : 'bg-[#b8a87f]/30'
-                }`}
+        {/* STAGE 2: The three footer crests side by side */}
+        {stage === 'crests' && (
+          <motion.div
+            key="crests"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: iveEase }}
+            onClick={advance}
+            className="absolute inset-0 flex items-center justify-center cursor-pointer"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, duration: 2, ease: springSettle }}
+              className="flex items-center justify-center gap-4"
+            >
+              <Image
+                src="/brand/marley-enterprise.png"
+                alt="Marley Enterprise"
+                width={100}
+                height={100}
+                className="brightness-125"
               />
-            ))}
-          </div>
-        </motion.div>
+              <Image
+                src="/brand/lion-head-gold.png"
+                alt="Lion Order"
+                width={120}
+                height={120}
+                className="brightness-125"
+              />
+              <Image
+                src="/brand/lion-crest-clean.png"
+                alt="Lion Order Crest"
+                width={100}
+                height={100}
+                className="brightness-125"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+
+        {/* STAGE 3: R-M monogram */}
+        {stage === 'monogram' && (
+          <motion.div
+            key="monogram"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: 1.04 }}
+            transition={{ duration: 1.5, ease: matDecel }}
+            className="absolute inset-0 flex items-center justify-center"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.88 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5, duration: 2.5, ease: springSettle }}
+            >
+              <Image
+                src="/brand/rhr-monogram-transparent.png"
+                alt="R-M"
+                width={240}
+                height={240}
+                className="w-[70vw] max-w-[280px] h-auto"
+                priority
+              />
+            </motion.div>
+          </motion.div>
+        )}
+
       </AnimatePresence>
     </motion.div>
   );
