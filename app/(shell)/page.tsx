@@ -147,168 +147,107 @@ export default function HomePage() {
 
       <div className="gold-rule mx-8" />
 
-      {/* ═══ THREE PILLARS ═══ */}
+      {/* ═══ THREE VIDEOS — stacked, CTAs below each ═══ */}
       <section id="pillars" className="w-full">
-        {pillars.map((pillar, i) => (
-          <motion.div
-            key={pillar.name}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.15 }}
-            className="border-t border-[var(--gold)]/20"
-          >
-            {/* Lion Order — Vimeo hero video */}
-            {pillar.name === 'Lion Order' ? (
-              <div className="relative w-full overflow-hidden">
-                {/* Video background — full width, no black bars */}
-                <div className="relative w-full" style={{ paddingTop: '168.7%' }}>
-                  <iframe
-                    src="https://player.vimeo.com/video/1198233695?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-                    className="absolute inset-0 w-full h-full"
-                    style={{ border: 'none' }}
-                    allow="autoplay; fullscreen; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
 
-                {/* Dark overlay for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10 pointer-events-none" />
+        {/* 01 — Marley Coffee */}
+        <motion.div {...fadeIn} className="border-t border-[var(--gold)]/20">
+          <div className="relative w-full" style={{ paddingTop: '177.8%' }}>
+            <iframe
+              src="https://player.vimeo.com/video/1198236151?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 w-full h-full"
+              style={{ border: 'none' }}
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+          <div className="bg-[var(--bg)] px-6 py-6 text-center">
+            <p className="text-[9px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 font-medium">01</p>
+            <h2 className="font-display text-2xl text-white font-semibold mb-2">Marley Coffee</h2>
+            <p className="text-white/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
+              The original. Coffee from the Blue Mountains of Jamaica — legacy in every cup.
+            </p>
+            <button onClick={() => handlePillarClick(pillars[0])} className="border border-[#E8C23A]/40 text-[#E8C23A] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#E8C23A]/5 transition-colors">
+              Shop the Coffee
+            </button>
+          </div>
+        </motion.div>
 
-                {/* Content overlay */}
-                <div
-                  className="absolute inset-0 flex flex-col justify-end p-8 pb-12 cursor-pointer"
-                  onClick={() => handlePillarClick(pillar)}
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="text-[9px] tracking-[0.3em] uppercase font-light" style={{ color: pillar.accent }}>
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <span className="w-6 h-px" style={{ backgroundColor: pillar.accent, opacity: 0.4 }} />
-                  </div>
-                  <h2 className="font-display text-3xl text-white font-semibold leading-[1.1] mb-3">
-                    {pillar.name}
-                  </h2>
-                  <p className="text-[var(--cream)] text-[14px] font-light leading-[1.7] mb-6 max-w-[300px]">
-                    {pillar.line}
-                  </p>
-                  <div className="flex items-center gap-4">
-                    <span className="border border-white/30 text-white text-[10px] tracking-[0.2em] uppercase px-6 py-2.5 hover:bg-white/10 transition-colors">
-                      {pillar.cta}
-                    </span>
-                    <span className="text-white/60 text-[10px] tracking-[0.15em] uppercase">
-                      {pillar.ctaSecondary}
-                    </span>
-                  </div>
-                </div>
-              {/* King Clementine Strain Guide — scrollable pages */}
-              <div className="bg-[var(--bg)] px-4 py-8">
-                <p className="text-[10px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 text-center font-medium">
-                  Strain Reference Guide
-                </p>
-                <p className="text-white text-[16px] font-semibold text-center mb-1">
-                  King Clementine
-                </p>
-                <p className="text-white/50 text-[11px] text-center mb-6">
-                  6 Pages — Scroll to explore
-                </p>
-                <div className="space-y-2">
-                  {[1, 2, 3, 4, 5, 6].map((n) => (
-                    <div key={n} className="border border-[var(--gold)]/20 overflow-hidden">
-                      <Image
-                        src={`/brand/strain-guide/page-${n}.jpg`}
-                        alt={`King Clementine Strain Guide — Page ${n}`}
-                        width={800}
-                        height={1035}
-                        className="w-full h-auto"
-                        loading="lazy"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-              </div>
-            ) : pillar.name === 'Marley Coffee' ? (
-              /* Marley Coffee — Vimeo hero video */
-              <div className="relative w-full overflow-hidden">
-                <div className="relative w-full" style={{ paddingTop: '177.8%' }}>
-                  <iframe
-                    src="https://player.vimeo.com/video/1198236151?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-                    className="absolute inset-0 w-full h-full"
-                    style={{ border: 'none' }}
-                    allow="autoplay; fullscreen; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10 pointer-events-none" />
-                <div
-                  className="absolute inset-0 flex flex-col justify-end p-8 pb-12 cursor-pointer"
-                  onClick={() => handlePillarClick(pillar)}
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="text-[9px] tracking-[0.3em] uppercase font-light" style={{ color: pillar.accent }}>
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <span className="w-6 h-px" style={{ backgroundColor: pillar.accent, opacity: 0.4 }} />
-                  </div>
-                  <h2 className="font-display text-3xl text-white font-semibold leading-[1.1] mb-3">
-                    {pillar.name}
-                  </h2>
-                  <p className="text-[var(--cream)] text-[14px] font-light leading-[1.7] mb-6 max-w-[300px]">
-                    {pillar.line}
-                  </p>
-                  <div className="flex items-center gap-4">
-                    <span className="border border-white/30 text-white text-[10px] tracking-[0.2em] uppercase px-6 py-2.5 hover:bg-white/10 transition-colors">
-                      {pillar.cta}
-                    </span>
-                    <span className="text-white/60 text-[10px] tracking-[0.15em] uppercase">
-                      {pillar.ctaSecondary}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              /* RoMarley Beach House — Vimeo hero video */
-              <div className="relative w-full overflow-hidden">
-                <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
-                  <iframe
-                    src="https://player.vimeo.com/video/1198237050?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-                    className="absolute inset-0 w-full h-full"
-                    style={{ border: 'none' }}
-                    allow="autoplay; fullscreen; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10 pointer-events-none" />
-                <div
-                  className="absolute inset-0 flex flex-col justify-end p-8 pb-12 cursor-pointer"
-                  onClick={() => handlePillarClick(pillar)}
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="text-[9px] tracking-[0.3em] uppercase font-light" style={{ color: pillar.accent }}>
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <span className="w-6 h-px" style={{ backgroundColor: pillar.accent, opacity: 0.4 }} />
-                  </div>
-                  <h2 className="font-display text-3xl text-white font-semibold leading-[1.1] mb-3">
-                    {pillar.name}
-                  </h2>
-                  <p className="text-[var(--cream)] text-[14px] font-light leading-[1.7] mb-6 max-w-[300px]">
-                    {pillar.line}
-                  </p>
-                  <div className="flex items-center gap-4">
-                    <span className="border border-white/30 text-white text-[10px] tracking-[0.2em] uppercase px-6 py-2.5 hover:bg-white/10 transition-colors">
-                      {pillar.cta}
-                    </span>
-                    <span className="text-white/60 text-[10px] tracking-[0.15em] uppercase">
-                      {pillar.ctaSecondary}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            )}
-          </motion.div>
-        ))}
+        {/* 02 — Lion Order */}
+        <motion.div {...fadeIn} className="border-t border-[var(--gold)]/20">
+          <div className="relative w-full" style={{ paddingTop: '168.7%' }}>
+            <iframe
+              src="https://player.vimeo.com/video/1198233695?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 w-full h-full"
+              style={{ border: 'none' }}
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+          <div className="bg-[var(--bg)] px-6 py-6 text-center">
+            <p className="text-[9px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 font-medium">02</p>
+            <h2 className="font-display text-2xl text-white font-semibold mb-2">Lion Order</h2>
+            <p className="text-white/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
+              Flower to the people. Roots-luxury cannabis that elevates consciousness.
+            </p>
+            <button onClick={() => handlePillarClick(pillars[1])} className="border border-[#E8C23A]/40 text-[#E8C23A] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#E8C23A]/5 transition-colors">
+              Explore Lion Order
+            </button>
+          </div>
+        </motion.div>
+
+        {/* 03 — RoMarley Beach House */}
+        <motion.div {...fadeIn} className="border-t border-[var(--gold)]/20">
+          <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
+            <iframe
+              src="https://player.vimeo.com/video/1198237050?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 w-full h-full"
+              style={{ border: 'none' }}
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+          <div className="bg-[var(--bg)] px-6 py-6 text-center">
+            <p className="text-[9px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 font-medium">03</p>
+            <h2 className="font-display text-2xl text-white font-semibold mb-2">RoMarley Beach House</h2>
+            <p className="text-white/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
+              Where the Caribbean meets luxury — Puerto Morelos, Riviera Maya.
+            </p>
+            <button onClick={() => handlePillarClick(pillars[2])} className="border border-[#E8C23A]/40 text-[#E8C23A] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#E8C23A]/5 transition-colors">
+              Book Your Stay
+            </button>
+          </div>
+        </motion.div>
+
+      </section>
+
+      <div className="gold-rule mx-8" />
+
+      {/* ═══ KING CLEMENTINE STRAIN GUIDE ═══ */}
+      <section className="px-4 py-8">
+        <p className="text-[10px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 text-center font-medium">
+          Strain Reference Guide
+        </p>
+        <p className="text-white text-[16px] font-semibold text-center mb-1">
+          King Clementine
+        </p>
+        <p className="text-white/50 text-[11px] text-center mb-6">
+          6 Pages — Scroll to explore
+        </p>
+        <div className="space-y-2">
+          {[1, 2, 3, 4, 5, 6].map((n) => (
+            <div key={n} className="border border-[var(--gold)]/20 overflow-hidden">
+              <Image
+                src={`/brand/strain-guide/page-${n}.jpg`}
+                alt={`King Clementine Strain Guide — Page ${n}`}
+                width={800}
+                height={1035}
+                className="w-full h-auto"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
       </section>
 
       <div className="gold-rule mx-8" />
