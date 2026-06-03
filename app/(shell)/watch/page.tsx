@@ -37,8 +37,6 @@ const theStory: VideoRef[] = [
 const tasteOfJamaica: VideoRef[] = tasteVideos.slice(0, 5);
 
 const theLegacy: VideoRef[] = [
-  footballVideos.find((v) => v.videoId === 'ogZDby-8cOo')!,  // Stories of The U
-  musicVideos.find((v) => v.videoId === 'cDpEzmYx0qs')!,     // YG Marley Praise Jah
   musicVideos.find((v) => v.videoId === 'XJ8FmHoaEcI')!,     // Africa Road Trip
   footballVideos.find((v) => v.videoId === 'CEg7qD5Cpuw')!,   // Beast at Miami
   interviewVideos.find((v) => v.videoId === '1vjUHbZ0tu8')!,  // One Love Film
@@ -56,7 +54,7 @@ const allVideos: VideoRef[] = [
   ...footballVideos,
   ...musicVideos,
   ...lifestyleVideos,
-].filter((v) => v.videoId);
+].filter((v) => v.videoId && v.videoId !== 'ogZDby-8cOo' && v.videoId !== 'cDpEzmYx0qs');
 
 /* ── types ─────────────────────────────────────────────────────── */
 
