@@ -6,7 +6,6 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 import { wisdomCards } from '@/content/wisdom';
 import { ArrowUpRight } from 'lucide-react';
 import { useInAppBrowser } from '@/components/InAppBrowser';
-import SplashReturn from '@/components/SplashReturn';
 import { joinHouse } from '@/lib/tracking';
 
 /* ── static data ─────────────────────────────────────────────── */
@@ -151,13 +150,6 @@ export default function HomePage() {
       setFormLoading(false);
     }
   }
-
-  const handleBackToSplash = () => {
-    if (typeof window !== 'undefined') {
-      sessionStorage.removeItem('marley-threshold');
-      window.location.reload();
-    }
-  };
 
   const toggle = (id: SectionId) => {
     setOpenSection(openSection === id ? null : id);
