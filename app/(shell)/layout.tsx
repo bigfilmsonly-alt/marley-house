@@ -36,10 +36,10 @@ export default function ShellLayout({
               <SplashReturn />
               <img src="/brand/lion-crest-clean.png" alt="Lion Order Crest" width="110" height="110" className="brightness-125" />
             </div>
-            <p style={{ color: '#825B0D', fontSize: '9px', letterSpacing: '0.4em', textTransform: 'uppercase', textAlign: 'center', fontWeight: 500, marginBottom: '2px' }}>
+            <p style={{ color: '#E8C23A', fontSize: '9px', letterSpacing: '0.4em', textTransform: 'uppercase', textAlign: 'center', fontWeight: 500, marginBottom: '2px' }}>
               Lion Order · Est. 2022
             </p>
-            <p style={{ color: '#5C4A0E', fontSize: '8px', letterSpacing: '0.25em', textTransform: 'uppercase', textAlign: 'center', fontWeight: 500 }}>
+            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '8px', letterSpacing: '0.25em', textTransform: 'uppercase', textAlign: 'center', fontWeight: 500 }}>
               One Love. One House. One Order.
             </p>
           </div>

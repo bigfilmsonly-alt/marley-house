@@ -22,7 +22,7 @@ const pillars = [
     ctaSecondary: 'Start a Subscription',
     url: 'https://marleycoffee.com',
     image: '/lion-order/community-table.jpg',
-    accent: '#825B0D',
+    accent: '#E8C23A',
   },
   {
     name: 'Lion Order',
@@ -41,7 +41,7 @@ const pillars = [
     ctaSecondary: 'View the House',
     url: 'https://www.romarleybeachhouse.com/en',
     image: '/lion-order/rainforest.jpg',
-    accent: '#B98524',
+    accent: '#E8C23A',
   },
 ];
 
@@ -131,7 +131,7 @@ export default function HomePage() {
 
           <button
             onClick={() => { trackEvent('enter'); document.getElementById('pillars')?.scrollIntoView({ behavior: 'smooth' }); }}
-            className="border border-[var(--gold)]/40 text-[var(--gold)] text-[11px] tracking-[0.3em] uppercase px-10 py-3 hover:bg-[var(--gold)]/5 transition-colors"
+            className="border border-[#E8C23A]/50 text-[#E8C23A] text-[11px] tracking-[0.3em] uppercase px-10 py-3 hover:bg-[var(--gold)]/5 transition-colors"
           >
             Enter
           </button>
@@ -191,7 +191,7 @@ export default function HomePage() {
                   <span className="border border-white/30 text-white text-[10px] tracking-[0.2em] uppercase px-6 py-2.5 group-hover:bg-white/10 transition-colors">
                     {pillar.cta}
                   </span>
-                  <span className="text-[var(--dim)] text-[10px] tracking-[0.15em] uppercase">
+                  <span className="text-white/60 text-[10px] tracking-[0.15em] uppercase">
                     {pillar.ctaSecondary}
                   </span>
                 </div>
@@ -215,13 +215,13 @@ export default function HomePage() {
               sizes="60px"
             />
           </div>
-          <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-3 font-medium">
+          <p className="text-[10px] tracking-[0.4em] uppercase text-[#E8C23A] mb-3 font-medium">
             The Inner Circle
           </p>
           <p className="text-white text-[16px] font-semibold mb-2">
             Join the Movement
           </p>
-          <p className="text-[var(--dim)] text-[12px]">
+          <p className="text-white/60 text-[12px]">
             Be the first to know. No noise. Just the order.
           </p>
         </div>
@@ -230,18 +230,18 @@ export default function HomePage() {
           {submitted ? (
             <div className="text-center py-6">
               <p className="text-[var(--gold)] text-lg font-semibold mb-2">Welcome to the House.</p>
-              <p className="text-[var(--dim)] text-[13px]">Check your inbox.</p>
+              <p className="text-white/60 text-[13px]">Check your inbox.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-3">
-              <input name="name" placeholder="Your Name" className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-[var(--dim)]/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
-              <input name="email" type="email" placeholder="Email" required className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-[var(--dim)]/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
-              <input name="phone" type="tel" placeholder="Phone Number" className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-[var(--dim)]/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
-              <input name="social" placeholder="Instagram @handle" className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-[var(--dim)]/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
+              <input name="name" placeholder="Your Name" className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-white/60/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
+              <input name="email" type="email" placeholder="Email" required className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-white/60/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
+              <input name="phone" type="tel" placeholder="Phone Number" className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-white/60/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
+              <input name="social" placeholder="Instagram @handle" className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-white/60/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
               <button type="submit" disabled={formLoading} className="w-full bg-[#E8C23A] text-[var(--bg)] text-[12px] tracking-[0.2em] uppercase font-semibold py-3.5 hover:bg-[#E8C23A]/90 transition-colors disabled:opacity-50">
                 {formLoading ? '...' : 'Join'}
               </button>
-              <p className="text-[var(--dim)] text-[8px] text-center mt-2 opacity-50">We respect your privacy.</p>
+              <p className="text-white/60 text-[8px] text-center mt-2 opacity-50">We respect your privacy.</p>
             </form>
           )}
         </div>
@@ -267,7 +267,7 @@ export default function HomePage() {
         />
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6">
           {['marleycoffee.com', 'lionorder.com', 'romarleybeachhouse.com', 'rohanmarley.com'].map((site) => (
-            <span key={site} className="text-[var(--dim)] text-[9px] tracking-[0.1em]">{site}</span>
+            <span key={site} className="text-white/60 text-[9px] tracking-[0.1em]">{site}</span>
           ))}
         </div>
         <div className="flex justify-center gap-6 mb-6">
@@ -281,16 +281,16 @@ export default function HomePage() {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--dim)] text-[10px] tracking-[0.15em] uppercase hover:text-[var(--gold)] transition-colors"
+              className="text-white/60 text-[10px] tracking-[0.15em] uppercase hover:text-[var(--gold)] transition-colors"
             >
               {link.label}
             </a>
           ))}
         </div>
-        <p className="text-[var(--dim)] text-[8px] tracking-[0.3em] uppercase mb-2">
+        <p className="text-white/60 text-[8px] tracking-[0.3em] uppercase mb-2">
           Lion Order · Est. 2022
         </p>
-        <p className="text-[var(--dim)]/40 text-[7px] tracking-[0.2em]">
+        <p className="text-white/60/40 text-[7px] tracking-[0.2em]">
           &copy; 2026 Lion Order. All rights reserved.
         </p>
       </motion.footer>
@@ -302,11 +302,11 @@ export default function HomePage() {
             <Image src="/brand/lion-crest-icon.png" alt="Lion Order" width={48} height={48} className="mx-auto mb-8 opacity-60" />
             <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-4">Age Verification</p>
             <p className="text-[var(--cream)] font-display text-lg italic mb-6">This content involves plant medicine.</p>
-            <p className="text-[var(--dim)] text-xs font-light leading-[1.8] mb-8">You must be of legal age in your jurisdiction to view this content.</p>
+            <p className="text-white/60 text-xs font-light leading-[1.8] mb-8">You must be of legal age in your jurisdiction to view this content.</p>
             <button onClick={handleAgeConfirm} className="w-full border border-[var(--gold)]/30 text-[var(--gold)] text-[11px] tracking-[0.25em] uppercase px-6 py-3 hover:bg-[var(--gold)]/5 transition-colors mb-3">
               I am of legal age
             </button>
-            <button onClick={() => { setAgeGateOpen(false); setPendingPillar(null); }} className="text-[var(--dim)] text-[10px]">Cancel</button>
+            <button onClick={() => { setAgeGateOpen(false); setPendingPillar(null); }} className="text-white/60 text-[10px]">Cancel</button>
           </div>
         </div>
       )}
