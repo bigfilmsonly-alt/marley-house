@@ -27,6 +27,16 @@ export default function ShellLayout({
             {children}
           </ScrollRestoreMain>
           <MiniPlayer />
+
+          {/* Brand logos — right above tabs */}
+          <div className="flex-shrink-0 bg-[var(--bg)] pt-2 pb-1">
+            <div className="flex items-center justify-center gap-1">
+              <img src="/brand/marley-enterprise.png" alt="Marley Enterprise" width="60" height="60" className="brightness-125" />
+              <img src="/brand/lion-order-crest.png" alt="Lion Order" width="60" height="60" className="brightness-110" />
+              <img src="/brand/lion-crest-clean.png" alt="Lion Order Crest" width="60" height="60" className="brightness-125" />
+            </div>
+          </div>
+
           <TabBar />
         </div>
         <Threshold />

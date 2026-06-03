@@ -173,14 +173,14 @@ export default function HomePage() {
       ═══════════════════════════════════════════════════════════ */}
       <section className="w-full bg-black pt-8 pb-4 flex-shrink-0">
         <div className="flex flex-col items-center justify-center px-8">
-          <div className="relative w-[200px] h-[200px] mb-4">
+          <div className="relative w-[260px] h-[260px] mb-4">
             <Image
               src="/brand/rhr-monogram-transparent.png"
               alt="R-M Monogram"
               fill
               className="object-contain"
               priority
-              sizes="200px"
+              sizes="260px"
             />
           </div>
 
@@ -853,38 +853,6 @@ export default function HomePage() {
         )}
       </nav>
 
-      {/* ═══════════════════════════════════════════════════════════
-          3. FOOTER — Lion Order crest, proud and centered
-      ═══════════════════════════════════════════════════════════ */}
-      {/* Logos + tagline — sits right above tab bar */}
-      <div className="mt-auto flex-shrink-0 bg-black pt-3 pb-2">
-        <div className="flex items-center justify-center gap-1 mb-2 px-2">
-          <Image
-            src="/brand/marley-enterprise.png"
-            alt="Marley Enterprise"
-            width={70}
-            height={70}
-            className="brightness-125 flex-shrink-0"
-          />
-          <Image
-            src="/brand/lion-order-crest.png"
-            alt="Lion Order"
-            width={70}
-            height={70}
-            className="brightness-110 flex-shrink-0"
-          />
-          <Image
-            src="/brand/lion-crest-clean.png"
-            alt="Lion Order Crest"
-            width={70}
-            height={70}
-            className="brightness-125 flex-shrink-0"
-          />
-        </div>
-        <p className="text-[var(--dim)] text-[7px] tracking-[0.3em] uppercase text-center font-medium">
-          One Love. One House. One Order.
-        </p>
-      </div>
     </div>
   );
 }
