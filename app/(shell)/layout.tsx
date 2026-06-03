@@ -29,12 +29,15 @@ export default function ShellLayout({
           <MiniPlayer />
 
           {/* Brand logos — right above tabs */}
-          <div className="flex-shrink-0 bg-[var(--bg)] pt-2 pb-1">
-            <div className="flex items-center justify-center gap-1">
-              <img src="/brand/marley-enterprise.png" alt="Marley Enterprise" width="60" height="60" className="brightness-125" />
-              <img src="/brand/lion-order-crest.png" alt="Lion Order" width="60" height="60" className="brightness-110" />
-              <img src="/brand/lion-crest-clean.png" alt="Lion Order Crest" width="60" height="60" className="brightness-125" />
+          <div className="flex-shrink-0 bg-[var(--bg)] pt-3 pb-1">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <img src="/brand/marley-enterprise.png" alt="Marley Enterprise" width="90" height="90" className="brightness-125" />
+              <img src="/brand/lion-order-crest.png" alt="Lion Order" width="90" height="90" className="brightness-110" />
+              <img src="/brand/lion-crest-clean.png" alt="Lion Order Crest" width="90" height="90" className="brightness-125" />
             </div>
+            <p style={{ color: '#b8a87f', fontSize: '7px', letterSpacing: '0.3em', textTransform: 'uppercase', textAlign: 'center', fontWeight: 500 }}>
+              One Love. One House. One Order.
+            </p>
           </div>
 
           <TabBar />
