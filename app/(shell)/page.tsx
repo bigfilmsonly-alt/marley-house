@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { wisdomCards } from '@/content/wisdom';
+import { ArrowUpRight } from 'lucide-react';
 import SplashReturn from '@/components/SplashReturn';
 
 /* ── static data ─────────────────────────────────────────────── */
@@ -109,6 +110,7 @@ const sections = [
   { id: 'founder', number: '05', title: 'The Founder' },
   { id: 'empire', number: '06', title: 'The Empire' },
   { id: 'wisdom', number: '07', title: 'How We Heal' },
+  { id: 'links', number: '08', title: 'Connect' },
 ] as const;
 
 type SectionId = (typeof sections)[number]['id'];
@@ -509,6 +511,126 @@ export default function HomePage() {
                   {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                       07 — HOW WE HEAL
                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+                  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                      08 — CONNECT — Social & Links
+                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+                  {section.id === 'links' && (
+                    <div>
+                      <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-8 text-center font-medium">
+                        Social Media & Links
+                      </p>
+
+                      {/* Rohan Marley */}
+                      <p className="text-[10px] tracking-[0.3em] uppercase text-[#E8C23A] mb-4 font-medium">Rohan Marley</p>
+                      <div className="space-y-0 mb-8">
+                        {[
+                          { name: 'Instagram', handle: '@romarley', url: 'https://www.instagram.com/romarley/', metric: '663K followers' },
+                          { name: 'YouTube', handle: '@MrRohanmarley', url: 'https://www.youtube.com/@MrRohanmarley' },
+                          { name: 'LinkedIn', url: 'https://www.linkedin.com/in/rohanmarley' },
+                          { name: 'Website', url: 'https://rohananthonymarley.com/' },
+                        ].map((link) => (
+                          <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between py-3 border-b border-[var(--line)] group">
+                            <div>
+                              <span className="text-white text-[14px] font-medium group-hover:text-[#E8C23A] transition-colors">{link.name}</span>
+                              {link.handle && <span className="text-[var(--dim)] text-[12px] ml-2">{link.handle}</span>}
+                            </div>
+                            <div className="flex items-center gap-2">
+                              {link.metric && <span className="text-[var(--dim)] text-[10px]">{link.metric}</span>}
+                              <ArrowUpRight size={14} className="text-[var(--dim)] group-hover:text-[#E8C23A] transition-colors" />
+                            </div>
+                          </a>
+                        ))}
+                      </div>
+
+                      {/* Lion Order */}
+                      <p className="text-[10px] tracking-[0.3em] uppercase text-[#E8C23A] mb-4 font-medium">Lion Order</p>
+                      <div className="space-y-0 mb-8">
+                        {[
+                          { name: 'Website', url: 'https://lionorder.com/' },
+                          { name: 'Instagram', handle: '@lionorder', url: 'https://www.instagram.com/lionorder/' },
+                          { name: 'X (Twitter)', handle: '@LionOrder__', url: 'https://x.com/LionOrder__' },
+                        ].map((link) => (
+                          <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between py-3 border-b border-[var(--line)] group">
+                            <div>
+                              <span className="text-white text-[14px] font-medium group-hover:text-[#E8C23A] transition-colors">{link.name}</span>
+                              {link.handle && <span className="text-[var(--dim)] text-[12px] ml-2">{link.handle}</span>}
+                            </div>
+                            <ArrowUpRight size={14} className="text-[var(--dim)] group-hover:text-[#E8C23A] transition-colors" />
+                          </a>
+                        ))}
+                      </div>
+
+                      {/* Marley Coffee */}
+                      <p className="text-[10px] tracking-[0.3em] uppercase text-[#E8C23A] mb-4 font-medium">Marley Coffee</p>
+                      <div className="space-y-0 mb-8">
+                        {[
+                          { name: 'Website', url: 'https://marleycoffee.com/' },
+                          { name: 'Instagram', handle: '@marleycoffee', url: 'https://www.instagram.com/marleycoffee/' },
+                          { name: 'Facebook', url: 'https://www.facebook.com/MarleyCoffee/' },
+                          { name: 'YouTube', url: 'https://www.youtube.com/@MarleyCoffeeLatam' },
+                          { name: 'Instagram Chile', handle: '@marleycoffee.chile', url: 'https://www.instagram.com/marleycoffee.chile/', metric: '412K' },
+                        ].map((link) => (
+                          <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between py-3 border-b border-[var(--line)] group">
+                            <div>
+                              <span className="text-white text-[14px] font-medium group-hover:text-[#E8C23A] transition-colors">{link.name}</span>
+                              {link.handle && <span className="text-[var(--dim)] text-[12px] ml-2">{link.handle}</span>}
+                            </div>
+                            <div className="flex items-center gap-2">
+                              {link.metric && <span className="text-[var(--dim)] text-[10px]">{link.metric}</span>}
+                              <ArrowUpRight size={14} className="text-[var(--dim)] group-hover:text-[#E8C23A] transition-colors" />
+                            </div>
+                          </a>
+                        ))}
+                      </div>
+
+                      {/* Ventures & Lifestyle */}
+                      <p className="text-[10px] tracking-[0.3em] uppercase text-[#E8C23A] mb-4 font-medium">Ventures & Lifestyle</p>
+                      <div className="space-y-0 mb-8">
+                        {[
+                          { name: 'RoMarley Beach House', url: 'https://www.romarleybeachhouse.com/' },
+                          { name: 'RoMarley Beach House IG', handle: '@romarleybeachhouse', url: 'https://www.instagram.com/romarleybeachhouse/' },
+                          { name: 'House of Marley', url: 'https://thehouseofmarley.com/' },
+                          { name: 'House of Marley IG', handle: '@houseofmarley', url: 'https://www.instagram.com/houseofmarley/' },
+                          { name: 'House of Marley TikTok', handle: '@thehouseofmarley', url: 'https://www.tiktok.com/@thehouseofmarley' },
+                          { name: 'House of Marley Facebook', url: 'https://www.facebook.com/HouseofMarley/' },
+                          { name: 'House of Marley YouTube', url: 'https://www.youtube.com/user/TheHouseofMarley' },
+                        ].map((link) => (
+                          <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between py-3 border-b border-[var(--line)] group">
+                            <div>
+                              <span className="text-white text-[14px] font-medium group-hover:text-[#E8C23A] transition-colors">{link.name}</span>
+                              {link.handle && <span className="text-[var(--dim)] text-[12px] ml-2">{link.handle}</span>}
+                            </div>
+                            <ArrowUpRight size={14} className="text-[var(--dim)] group-hover:text-[#E8C23A] transition-colors" />
+                          </a>
+                        ))}
+                      </div>
+
+                      {/* Music & Heritage */}
+                      <p className="text-[10px] tracking-[0.3em] uppercase text-[#E8C23A] mb-4 font-medium">Music & Heritage</p>
+                      <div className="space-y-0">
+                        {[
+                          { name: 'YG Marley IG', handle: '@ygmarley', url: 'https://www.instagram.com/ygmarley/', metric: '753K' },
+                          { name: 'YG Marley Official', url: 'https://www.ygmarley.com/' },
+                          { name: 'Bob Marley Official', url: 'https://www.bobmarley.com/' },
+                          { name: 'Tuff Gong', url: 'https://www.tuffgong.com/' },
+                          { name: 'Tuff Gong Television', url: 'https://www.youtube.com/user/TuffGongTelevision' },
+                          { name: 'Tuff Gong Radio IG', handle: '@tuffgongradio', url: 'https://www.instagram.com/tuffgongradio/' },
+                        ].map((link) => (
+                          <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between py-3 border-b border-[var(--line)] group">
+                            <div>
+                              <span className="text-white text-[14px] font-medium group-hover:text-[#E8C23A] transition-colors">{link.name}</span>
+                              {link.handle && <span className="text-[var(--dim)] text-[12px] ml-2">{link.handle}</span>}
+                            </div>
+                            <div className="flex items-center gap-2">
+                              {link.metric && <span className="text-[var(--dim)] text-[10px]">{link.metric}</span>}
+                              <ArrowUpRight size={14} className="text-[var(--dim)] group-hover:text-[#E8C23A] transition-colors" />
+                            </div>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
                   {section.id === 'wisdom' && (
                     <div>
                       <div className="relative w-full aspect-[16/11] mb-8" style={{ width: '100%' }}>
