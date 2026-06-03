@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { enterApp } from '@/lib/tracking';
 
-type Stage = 'lion' | 'kingclem' | 'kingclem2' | 'sketch' | 'crest' | 'monogram' | 'done';
+type Stage = 'lion' | 'kingclem' | 'kingclem2' | 'sketch' | 'product' | 'crest' | 'monogram' | 'done';
 
 const iveEase: [number, number, number, number] = [0.25, 0.1, 0.25, 1.0];
 const iveSlow: [number, number, number, number] = [0.16, 0.6, 0.3, 1.0];
