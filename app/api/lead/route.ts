@@ -4,7 +4,7 @@ import { getResend, fromEmail } from '@/lib/resend';
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, source } = await req.json();
+    const { name, email, phone, social, source } = await req.json();
 
     if (!email || !source) {
       return NextResponse.json({ error: 'Email and source required' }, { status: 400 });
@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     if (supabase) {
       const { error } = await supabase
         .from('house_signups')
-        .insert({ email, source });
+        .insert({ name, email, phone, social, source });
       if (error) console.error('Supabase insert error:', error);
     }
 
@@ -25,14 +25,14 @@ export async function POST(req: NextRequest) {
       await resend.emails.send({
         from: fromEmail,
         to: email,
-        subject: 'Welcome to the House',
+        subject: name ? `Welcome, ${name}` : 'Welcome to the House',
         html: `
           <div style="font-family: Georgia, 'Cormorant Garamond', serif; max-width: 520px; margin: 0 auto; background: #0b0805; padding: 48px 32px; color: #F3E9D8;">
             <div style="text-align: center; margin-bottom: 32px;">
               <img src="https://marley-house.vercel.app/brand/lion-crest-icon.png" alt="Lion Order" width="48" height="48" style="opacity: 0.7;" />
             </div>
             <h1 style="font-weight: 300; font-size: 28px; margin-bottom: 8px; text-align: center; letter-spacing: 0.04em; color: #F3E9D8;">
-              Welcome to the House.
+              ${name ? `Welcome, ${name}.` : 'Welcome to the House.'}
             </h1>
             <div style="width: 40px; height: 1px; background: #B98524; margin: 24px auto; opacity: 0.4;"></div>
             <p style="color: #b8a87f; font-size: 15px; line-height: 1.8; text-align: center;">
@@ -58,7 +58,16 @@ export async function POST(req: NextRequest) {
         from: fromEmail,
         to: fromEmail,
         subject: `New House signup: ${source}`,
-        html: `<p><strong>${email}</strong> joined via <strong>${source}</strong> at ${new Date().toISOString()}</p>`,
+        html: `
+          <p><strong>New signup</strong> at ${new Date().toISOString()}</p>
+          <ul>
+            ${name ? `<li><strong>Name:</strong> ${name}</li>` : ''}
+            <li><strong>Email:</strong> ${email}</li>
+            ${phone ? `<li><strong>Phone:</strong> ${phone}</li>` : ''}
+            ${social ? `<li><strong>Instagram:</strong> ${social}</li>` : ''}
+            <li><strong>Source:</strong> ${source}</li>
+          </ul>
+        `,
       });
     }
 

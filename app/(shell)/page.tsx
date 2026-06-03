@@ -6,6 +6,7 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 import { wisdomCards } from '@/content/wisdom';
 import { ArrowUpRight } from 'lucide-react';
 import SplashReturn from '@/components/SplashReturn';
+import { joinHouse } from '@/lib/tracking';
 
 /* ── static data ─────────────────────────────────────────────── */
 
@@ -121,6 +122,33 @@ export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openSection, setOpenSection] = useState<SectionId | null>(null);
   const [expandedWisdom, setExpandedWisdom] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false);
+  const [formLoading, setFormLoading] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    setFormLoading(true);
+    try {
+      const res = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.get('name') || '',
+          email: form.get('email'),
+          phone: form.get('phone') || '',
+          social: form.get('social') || '',
+          source: 'inner-circle',
+        }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+        joinHouse('inner-circle');
+      }
+    } finally {
+      setFormLoading(false);
+    }
+  }
 
   const handleBackToSplash = () => {
     if (typeof window !== 'undefined') {
@@ -182,7 +210,7 @@ export default function HomePage() {
           <div className="flex items-center gap-3">
             <span className="w-2 h-2 bg-[#E8C23A] rotate-45 shrink-0" />
             <span className="text-white font-semibold text-[16px]">
-              Explore the Maison
+              Join the Inner Circle
             </span>
           </div>
           {menuOpen ? (
@@ -195,6 +223,64 @@ export default function HomePage() {
         {/* ── Sections list (visible when menu is open) ── */}
         {menuOpen && (
           <div className="bg-[var(--panel)] border-b border-[var(--line)]">
+            {/* ── Lead capture form ── */}
+            <div className="px-6 py-8 border-b border-[var(--line)]">
+              <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-3 text-center font-medium">
+                Enter the House
+              </p>
+              <p className="text-white text-[18px] font-semibold text-center mb-2">
+                Join the Inner Circle
+              </p>
+              <p className="text-[var(--dim)] text-[13px] text-center mb-6 font-normal">
+                Be the first to know. No noise. Just the movement.
+              </p>
+
+              {submitted ? (
+                <div className="text-center py-4">
+                  <p className="text-[#E8C23A] text-lg font-semibold mb-2">Welcome to the House.</p>
+                  <p className="text-[var(--dim)] text-[13px]">Check your inbox.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-3">
+                  <input
+                    name="name"
+                    placeholder="Your Name"
+                    className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] font-normal placeholder:text-[var(--dim)]/40 focus:outline-none focus:border-[#E8C23A]/50 transition-colors"
+                  />
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                    required
+                    className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] font-normal placeholder:text-[var(--dim)]/40 focus:outline-none focus:border-[#E8C23A]/50 transition-colors"
+                  />
+                  <input
+                    name="phone"
+                    type="tel"
+                    placeholder="Phone Number"
+                    className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] font-normal placeholder:text-[var(--dim)]/40 focus:outline-none focus:border-[#E8C23A]/50 transition-colors"
+                  />
+                  <input
+                    name="social"
+                    placeholder="Instagram @handle"
+                    className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] font-normal placeholder:text-[var(--dim)]/40 focus:outline-none focus:border-[#E8C23A]/50 transition-colors"
+                  />
+                  <button
+                    type="submit"
+                    disabled={formLoading}
+                    className="w-full bg-[#E8C23A] text-[var(--bg)] text-[13px] tracking-[0.2em] uppercase font-semibold py-3.5 hover:bg-[#E8C23A]/90 transition-colors disabled:opacity-50"
+                  >
+                    {formLoading ? '...' : 'Enter'}
+                  </button>
+                  <p className="text-[var(--dim)] text-[9px] text-center mt-3 opacity-50">
+                    We respect your privacy. Unsubscribe anytime.
+                  </p>
+                </form>
+              )}
+
+              <div className="gold-rule mt-6" />
+            </div>
+
             {sections.map((section) => {
               const isOpen = openSection === section.id;
 
