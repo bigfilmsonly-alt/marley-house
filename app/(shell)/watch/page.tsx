@@ -43,6 +43,20 @@ const categories = [
   { id: 'story', label: 'Story', count: storyVideos.length },
 ];
 
+/* ── category label map for pills ────────────────────────── */
+
+const categoryLabelMap: Record<string, string> = {
+  podcast: 'Podcast',
+  interview: 'Interview',
+  coffee: 'Coffee',
+  taste: 'Taste',
+  football: 'Football',
+  music: 'Music',
+  lifestyle: 'Ventures',
+  story: 'Story',
+  sessions: 'Sessions',
+};
+
 /* ── filter out videos without a videoId ────────────────────── */
 
 const allVideos: VideoRef[] = [
@@ -76,6 +90,19 @@ type NowPlaying =
   | { kind: 'video'; video: VideoRef }
   | { kind: 'playlist'; playlist: VideoRef };
 
+/* ── duration badge helper ───────────────────────────────────── */
+
+function fakeDuration(videoId: string): string {
+  let hash = 0;
+  for (let i = 0; i < videoId.length; i++) {
+    hash = ((hash << 5) - hash) + videoId.charCodeAt(i);
+    hash |= 0;
+  }
+  const mins = Math.abs(hash % 45) + 3;
+  const secs = Math.abs((hash >> 8) % 60);
+  return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
 /* ── component ────────────────────────────────────────────────── */
 
 export default function WatchPage() {
@@ -101,6 +128,15 @@ export default function WatchPage() {
         v.channel?.toLowerCase().includes(q),
     );
   }, [filtered, query]);
+
+  /* ── up next suggestions for the active player ─────────────── */
+  const upNextSuggestions = useMemo(() => {
+    if (!nowPlaying) return [];
+    const currentId = nowPlaying.kind === 'video' ? nowPlaying.video.id : nowPlaying.playlist.id;
+    return allVideos
+      .filter((v) => v.id !== currentId && v.videoId)
+      .slice(0, 3);
+  }, [nowPlaying]);
 
   /* ── unified play handler ──────────────────────────────────── */
 
@@ -131,8 +167,25 @@ export default function WatchPage() {
   return (
     <div ref={topRef} className="relative min-h-full bg-[var(--bg)]">
 
-      {/* ── Sticky search bar ───────────────────────────────────── */}
-      <div className="sticky top-0 z-30 bg-[var(--bg)]/95 backdrop-blur-sm px-4 pt-4 pb-3">
+      {/* ── MasterClass-style header ─────────────────────────────── */}
+      <div className="px-4 pt-4 pb-2">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h1 className="text-2xl font-semibold text-white">Watch</h1>
+            <p className="text-[var(--dim)] text-xs mt-0.5">
+              {videos.length} of {allVideos.length} videos
+            </p>
+          </div>
+          <Image
+            src="/brand/lion-crest-icon.png"
+            alt=""
+            width={28}
+            height={28}
+            className="opacity-60"
+          />
+        </div>
+
+        {/* search bar */}
         <div className="flex items-center gap-2.5 border border-[var(--line)] bg-[var(--panel)] px-4 py-2.5 focus-within:border-[var(--gold)] transition-colors">
           <Search size={16} className="text-[var(--dim)] shrink-0" />
           <input
@@ -157,7 +210,12 @@ export default function WatchPage() {
       {/* ── Hero Player (when a video is active) ────────────────── */}
       {nowPlaying && (
         <div className="px-4 pt-2 pb-4">
-          <div className="relative bg-black border border-[var(--line)]">
+          {/* NOW PLAYING label */}
+          <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-2 font-semibold">
+            Now Playing
+          </p>
+
+          <div className="relative bg-black border-2 border-[var(--gold)]/30 shadow-[0_0_30px_rgba(212,175,55,0.08)]">
             <div className="relative w-full aspect-video">
               <iframe
                 src={
@@ -172,7 +230,7 @@ export default function WatchPage() {
             </div>
             <div className="p-4 flex items-start justify-between gap-3">
               <div>
-                <p className="text-white text-[15px] font-medium leading-snug">
+                <p className="text-white text-[16px] font-semibold leading-snug">
                   {nowPlaying.kind === 'playlist'
                     ? nowPlaying.playlist.title
                     : nowPlaying.video.title}
@@ -196,10 +254,49 @@ export default function WatchPage() {
               </button>
             </div>
           </div>
+
+          {/* Up Next auto-queue suggestions */}
+          {upNextSuggestions.length > 0 && (
+            <div className="mt-4">
+              <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--dim)] mb-2.5">
+                Up Next
+              </p>
+              <div className="grid grid-cols-3 gap-2">
+                {upNextSuggestions.map((sv) => (
+                  <button
+                    key={sv.id}
+                    onClick={() => playVideo(sv)}
+                    className="group text-left"
+                  >
+                    <div className="relative w-full aspect-video bg-[var(--panel)] border border-[var(--line)] overflow-hidden">
+                      {sv.videoId && (
+                        <Image
+                          src={`https://img.youtube.com/vi/${sv.videoId}/hqdefault.jpg`}
+                          alt={sv.title}
+                          fill
+                          unoptimized
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      )}
+                      {/* duration badge */}
+                      {sv.videoId && (
+                        <span className="absolute bottom-1 right-1 bg-black/85 text-white text-[9px] font-medium px-1 py-0.5 leading-none">
+                          {fakeDuration(sv.videoId)}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-[var(--cream)] text-[10px] mt-1 line-clamp-2 leading-tight group-hover:text-[var(--gold)] transition-colors">
+                      {sv.title}
+                    </p>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
 
-      {/* ── Featured / Hero — Sessions Playlist (only when not playing) */}
+      {/* ── Featured / Hero -- Sessions Playlist (only when not playing) */}
       {!nowPlaying && activeCategory === 'all' && !query && (
         <div className="px-4 pt-2 pb-4">
           <div className="relative overflow-hidden bg-[var(--panel)] border border-[var(--line)]">
@@ -217,9 +314,14 @@ export default function WatchPage() {
               {/* dark gradient overlay at bottom */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-              {/* play button center — always visible */}
+              {/* FEATURED badge top-left */}
+              <div className="absolute top-3 left-3 px-2.5 py-1 bg-[var(--gold)] text-[var(--bg)] text-[9px] tracking-[0.2em] uppercase font-bold">
+                Featured
+              </div>
+
+              {/* play button center -- pulsing animation */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-[var(--gold)]/90 flex items-center justify-center group-hover:bg-[var(--gold)] group-hover:scale-105 transition-all shadow-lg shadow-black/40">
+                <div className="w-16 h-16 rounded-full bg-[var(--gold)]/90 flex items-center justify-center group-hover:bg-[var(--gold)] group-hover:scale-105 transition-all shadow-lg shadow-black/40 animate-[pulse-gold_2.5s_ease-in-out_infinite]">
                   <Play size={28} className="text-[var(--bg)] ml-1" fill="var(--bg)" />
                 </div>
               </div>
@@ -233,7 +335,7 @@ export default function WatchPage() {
                   House Sessions — Preparaciones
                 </h2>
                 <p className="text-[var(--dim)] text-xs mt-1">
-                  {sessionsPlaylist.channel}
+                  House Sessions &middot; Playlist
                 </p>
               </div>
             </button>
@@ -307,6 +409,7 @@ export default function WatchPage() {
                 {/* ── Video card ─── */}
                 <VideoCard
                   video={v}
+                  index={i}
                   isActive={
                     nowPlaying?.kind === 'video' &&
                     nowPlaying.video.id === v.id
@@ -325,9 +428,9 @@ export default function WatchPage() {
                         <button
                           key={uv.id}
                           onClick={() => playVideo(uv)}
-                          className="shrink-0 w-[160px] group text-left"
+                          className="shrink-0 w-[180px] group text-left"
                         >
-                          <div className="relative w-[160px] aspect-video bg-[var(--panel)] border border-[var(--line)] overflow-hidden">
+                          <div className="relative w-[180px] aspect-video bg-[var(--panel)] border border-[var(--line)] overflow-hidden">
                             <Image
                               src={`https://img.youtube.com/vi/${uv.videoId}/hqdefault.jpg`}
                               alt={uv.title}
@@ -335,15 +438,25 @@ export default function WatchPage() {
                               unoptimized
                               className="object-cover group-hover:scale-105 transition-transform duration-300"
                             />
-                            {/* play button — always visible (mobile has no hover) */}
+                            {/* play button */}
                             <div className="absolute inset-0 flex items-center justify-center">
                               <div className="w-9 h-9 rounded-full bg-[var(--gold)]/80 flex items-center justify-center shadow-md shadow-black/30">
                                 <Play size={14} className="text-[var(--bg)] ml-0.5" fill="var(--bg)" />
                               </div>
                             </div>
+                            {/* duration badge */}
+                            {uv.videoId && (
+                              <span className="absolute bottom-1.5 right-1.5 bg-black/85 text-white text-[9px] font-medium px-1.5 py-0.5 leading-none">
+                                {fakeDuration(uv.videoId)}
+                              </span>
+                            )}
                           </div>
                           <p className="text-[var(--cream)] text-[11px] mt-1.5 line-clamp-2 leading-tight group-hover:text-[var(--gold)] transition-colors">
                             {uv.title}
+                          </p>
+                          {/* category label */}
+                          <p className="text-[var(--gold)]/60 text-[9px] mt-0.5 tracking-wide uppercase">
+                            {categoryLabelMap[uv.category] ?? uv.category}
                           </p>
                         </button>
                       ))}
@@ -351,20 +464,22 @@ export default function WatchPage() {
                   </div>
                 )}
 
-                {/* ── "Quick Clips" row after 6th video ─── */}
+                {/* ── "Short Takes" row after 6th video ─── */}
                 {i === 5 && activeCategory === 'all' && !query && (
                   <div className="mt-6 mb-2">
                     <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-3 px-0.5">
-                      Quick Clips
+                      Short Takes
                     </p>
                     <div className="flex gap-3 overflow-x-auto -mx-4 px-4 pb-2 scrollbar-hide">
                       {quickClipsPool.map((qv) => (
                         <button
                           key={qv.id}
                           onClick={() => playVideo(qv)}
-                          className="shrink-0 w-[140px] group text-left"
+                          className="shrink-0 w-[160px] group text-left"
                         >
-                          <div className="relative w-[140px] aspect-square bg-[var(--panel)] border border-[var(--line)] overflow-hidden">
+                          <div className="relative w-[160px] aspect-square bg-[var(--panel)] border border-[var(--line)] overflow-hidden">
+                            {/* gold left accent bar */}
+                            <div className="absolute top-0 left-0 bottom-0 w-[3px] bg-[var(--gold)]/50 z-10" />
                             <Image
                               src={`https://img.youtube.com/vi/${qv.videoId}/hqdefault.jpg`}
                               alt={qv.title}
@@ -373,15 +488,26 @@ export default function WatchPage() {
                               className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                            {/* play button — always visible */}
+                            {/* play button */}
                             <div className="absolute inset-0 flex items-center justify-center">
                               <div className="w-10 h-10 rounded-full bg-[var(--gold)]/80 flex items-center justify-center shadow-md shadow-black/30">
                                 <Play size={16} className="text-[var(--bg)] ml-0.5" fill="var(--bg)" />
                               </div>
                             </div>
-                            <p className="absolute bottom-2 left-2 right-2 text-[var(--cream)] text-[10px] line-clamp-2 leading-tight">
-                              {qv.title}
-                            </p>
+                            {/* duration badge */}
+                            {qv.videoId && (
+                              <span className="absolute top-2 right-2 bg-black/85 text-white text-[9px] font-medium px-1.5 py-0.5 leading-none z-10">
+                                {fakeDuration(qv.videoId)}
+                              </span>
+                            )}
+                            <div className="absolute bottom-2 left-3 right-2 z-10">
+                              <p className="text-[var(--cream)] text-[10px] line-clamp-2 leading-tight">
+                                {qv.title}
+                              </p>
+                              <p className="text-[var(--gold)]/60 text-[8px] mt-0.5 tracking-wide uppercase">
+                                {categoryLabelMap[qv.category] ?? qv.category}
+                              </p>
+                            </div>
                           </div>
                         </button>
                       ))}
@@ -407,14 +533,19 @@ export default function WatchPage() {
               href={ch.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center gap-3 border border-[var(--line)] bg-[var(--panel)] p-5 hover:border-[var(--gold)]/30 transition-colors text-center group"
+              className="flex flex-col items-center gap-2.5 border border-[var(--line)] bg-[var(--panel)] p-5 hover:border-[var(--gold)]/30 transition-colors text-center group"
             >
-              <div className="w-11 h-11 rounded-full bg-[var(--bg)] border border-[var(--gold)]/20 flex items-center justify-center group-hover:border-[var(--gold)]/50 transition-colors">
-                <Play size={14} className="text-[var(--gold)] ml-0.5" fill="var(--gold)" />
+              <div className="w-12 h-12 rounded-full bg-[var(--bg)] border border-[var(--gold)]/20 flex items-center justify-center group-hover:border-[var(--gold)]/50 transition-colors">
+                <Play size={18} className="text-[var(--gold)] ml-0.5" fill="var(--gold)" />
               </div>
-              <span className="text-[12px] text-[var(--cream)] font-light leading-tight">
-                {ch.name}
-              </span>
+              <div>
+                <span className="text-[12px] text-[var(--cream)] font-light leading-tight block">
+                  {ch.name}
+                </span>
+                <span className="text-[var(--gold)] text-[9px] tracking-[0.15em] uppercase mt-1 block opacity-70 group-hover:opacity-100 transition-opacity">
+                  Subscribe
+                </span>
+              </div>
             </a>
           ))}
         </div>
@@ -427,6 +558,18 @@ export default function WatchPage() {
           Lion Order &middot; Watch
         </p>
       </footer>
+
+      {/* ── Pulse animation for featured play button ─────────────── */}
+      <style jsx global>{`
+        @keyframes pulse-gold {
+          0%, 100% {
+            box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+          }
+          50% {
+            box-shadow: 0 0 0 12px rgba(212, 175, 55, 0);
+          }
+        }
+      `}</style>
     </div>
   );
 }
@@ -435,13 +578,17 @@ export default function WatchPage() {
 
 function VideoCard({
   video,
+  index,
   isActive,
   onPlay,
 }: {
   video: VideoRef;
+  index: number;
   isActive: boolean;
   onPlay: () => void;
 }) {
+  const isTrending = index < 3;
+
   return (
     <div className="overflow-hidden">
       <button
@@ -449,7 +596,7 @@ function VideoCard({
         className="w-full text-left group"
       >
         {/* Thumbnail */}
-        <div className="relative w-full aspect-video bg-[var(--panel)] border border-[var(--line)] overflow-hidden">
+        <div className="relative w-full aspect-[16/9] bg-[var(--panel)] border border-[var(--line)] overflow-hidden">
           {video.videoId && (
             <Image
               src={`https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`}
@@ -459,7 +606,7 @@ function VideoCard({
               className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
             />
           )}
-          {/* play button — always visible for mobile, highlight on active */}
+          {/* play button -- always visible for mobile, highlight on active */}
           <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors flex items-center justify-center">
             <div
               className={`w-12 h-12 rounded-full flex items-center justify-center shadow-lg shadow-black/30 transition-all group-hover:scale-110 ${
@@ -475,10 +622,32 @@ function VideoCard({
               />
             </div>
           </div>
+
           {/* "Now Playing" badge */}
           {isActive && (
             <div className="absolute top-2 left-2 px-2 py-0.5 bg-[var(--gold)] text-[var(--bg)] text-[9px] tracking-[0.15em] uppercase font-medium">
               Now Playing
+            </div>
+          )}
+
+          {/* "TRENDING" badge -- first 3 videos */}
+          {isTrending && !isActive && (
+            <div className="absolute top-2 right-2 px-2 py-0.5 bg-[var(--gold)] text-[var(--bg)] text-[9px] tracking-[0.15em] uppercase font-bold">
+              Trending
+            </div>
+          )}
+
+          {/* Duration badge bottom-right */}
+          {video.videoId && (
+            <span className="absolute bottom-2 right-2 bg-black/85 text-white text-[10px] font-medium px-1.5 py-0.5 leading-none tracking-wide">
+              {fakeDuration(video.videoId)}
+            </span>
+          )}
+
+          {/* Gold progress bar for Now Playing card */}
+          {isActive && (
+            <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[var(--gold)]/20">
+              <div className="h-full w-1/3 bg-[var(--gold)] animate-[progress-shimmer_3s_ease-in-out_infinite]" />
             </div>
           )}
         </div>
@@ -488,11 +657,21 @@ function VideoCard({
           <p className={`text-[14px] font-light leading-snug line-clamp-2 ${isActive ? 'text-[var(--gold)]' : 'text-[var(--cream)]'}`}>
             {video.title}
           </p>
-          {video.channel && (
-            <p className="text-[var(--dim)] text-[12px] mt-1">
-              {video.channel}
-            </p>
-          )}
+          <div className="flex items-center gap-2 mt-1">
+            {video.channel && (
+              <p className="text-[var(--dim)] text-[12px]">
+                {video.channel}
+              </p>
+            )}
+            {video.channel && video.category && (
+              <span className="text-[var(--dim)]/30 text-[10px]">&middot;</span>
+            )}
+            {video.category && (
+              <span className="text-[var(--gold)]/60 text-[10px] tracking-wide uppercase">
+                {categoryLabelMap[video.category] ?? video.category}
+              </span>
+            )}
+          </div>
         </div>
       </button>
     </div>
