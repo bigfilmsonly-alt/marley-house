@@ -2,9 +2,17 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { joinHouse, shopCoffee, exploreLionOrder, bookStay, trackEvent } from '@/lib/tracking';
 import { useInAppBrowser } from '@/components/InAppBrowser';
 import AgeGate from '@/components/AgeGate';
+
+const fadeIn = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-50px' },
+  transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const },
+} as const;
 
 const pillars = [
   {
@@ -13,7 +21,7 @@ const pillars = [
     cta: 'Shop the Coffee',
     ctaSecondary: 'Start a Subscription',
     url: 'https://marleycoffee.com',
-    image: '/lion-order/roots.jpg',
+    image: '/lion-order/community-table.jpg',
     accent: '#825B0D',
   },
   {
@@ -22,7 +30,7 @@ const pillars = [
     cta: 'Explore Lion Order',
     ctaSecondary: 'Join the Movement',
     url: 'https://lionorder.com',
-    image: '/lion-order/flower-closeup.jpg',
+    image: '/lion-order/lion-eyes.jpg',
     accent: '#E8C23A',
     ageGate: true,
   },
@@ -32,7 +40,7 @@ const pillars = [
     cta: 'Book Your Stay',
     ctaSecondary: 'View the House',
     url: 'https://www.romarleybeachhouse.com/en',
-    image: '/lion-order/landscape-waterfall.jpg',
+    image: '/lion-order/rainforest.jpg',
     accent: '#B98524',
   },
 ];
@@ -131,21 +139,28 @@ export default function HomePage() {
       </section>
 
       {/* ═══ LEGACY LINE ═══ */}
-      <section className="px-8 py-10 text-center">
+      <motion.section {...fadeIn} className="px-8 py-10 text-center">
         <p className="font-display text-base text-[var(--cream)] italic leading-[1.7] max-w-[340px] mx-auto">
           From Bob to Rohan — a legacy carried forward through coffee, culture, and craft.
         </p>
-      </section>
+      </motion.section>
 
       <div className="gold-rule mx-8" />
 
       {/* ═══ THREE PILLARS ═══ */}
       <section id="pillars" className="w-full">
         {pillars.map((pillar, i) => (
-          <div key={pillar.name}>
+          <motion.div
+            key={pillar.name}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.15 }}
+            className="border-t border-[var(--gold)]/20"
+          >
             <button
               onClick={() => handlePillarClick(pillar)}
-              className="relative w-full aspect-[4/3] overflow-hidden block text-left group"
+              className="relative w-full aspect-[3/4] overflow-hidden block text-left group"
             >
               <Image
                 src={pillar.image}
@@ -159,14 +174,17 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20" />
 
               {/* Content */}
-              <div className="absolute inset-0 flex flex-col justify-end p-8">
-                <p className="text-[10px] tracking-[0.4em] uppercase font-medium mb-2" style={{ color: pillar.accent }}>
-                  {String(i + 1).padStart(2, '0')}
-                </p>
+              <div className="absolute inset-0 flex flex-col justify-end p-8 pb-12">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-[9px] tracking-[0.3em] uppercase font-light" style={{ color: pillar.accent }}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="w-6 h-px" style={{ backgroundColor: pillar.accent, opacity: 0.4 }} />
+                </div>
                 <h2 className="font-display text-3xl text-white font-semibold leading-[1.1] mb-3">
                   {pillar.name}
                 </h2>
-                <p className="text-[var(--cream)] text-[14px] font-light leading-[1.7] mb-5 max-w-[300px]">
+                <p className="text-[var(--cream)] text-[14px] font-light leading-[1.7] mb-6 max-w-[300px]">
                   {pillar.line}
                 </p>
                 <div className="flex items-center gap-4">
@@ -179,15 +197,24 @@ export default function HomePage() {
                 </div>
               </div>
             </button>
-          </div>
+          </motion.div>
         ))}
       </section>
 
       <div className="gold-rule mx-8" />
 
       {/* ═══ INNER CIRCLE ═══ */}
-      <section className="px-6 py-12">
+      <motion.section {...fadeIn} className="px-6 py-12">
         <div className="text-center mb-6">
+          <div className="relative w-[60px] h-[60px] mx-auto mb-4">
+            <Image
+              src="/brand/rhr-monogram-transparent.png"
+              alt="R-M Monogram"
+              fill
+              className="object-contain opacity-50"
+              sizes="60px"
+            />
+          </div>
           <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-3 font-medium">
             The Inner Circle
           </p>
@@ -199,29 +226,38 @@ export default function HomePage() {
           </p>
         </div>
 
-        {submitted ? (
-          <div className="text-center py-6">
-            <p className="text-[var(--gold)] text-lg font-semibold mb-2">Welcome to the House.</p>
-            <p className="text-[var(--dim)] text-[13px]">Check your inbox.</p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-3 max-w-[360px] mx-auto">
-            <input name="name" placeholder="Your Name" className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-[var(--dim)]/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
-            <input name="email" type="email" placeholder="Email" required className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-[var(--dim)]/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
-            <input name="phone" type="tel" placeholder="Phone Number" className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-[var(--dim)]/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
-            <input name="social" placeholder="Instagram @handle" className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-[var(--dim)]/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
-            <button type="submit" disabled={formLoading} className="w-full bg-[var(--gold)] text-[var(--bg)] text-[12px] tracking-[0.2em] uppercase font-semibold py-3.5 hover:bg-[var(--gold)]/90 transition-colors disabled:opacity-50">
-              {formLoading ? '...' : 'Join'}
-            </button>
-            <p className="text-[var(--dim)] text-[8px] text-center mt-2 opacity-50">We respect your privacy.</p>
-          </form>
-        )}
-      </section>
+        <div className="border border-[var(--line)] bg-[var(--panel)] p-8 max-w-[400px] mx-auto">
+          {submitted ? (
+            <div className="text-center py-6">
+              <p className="text-[var(--gold)] text-lg font-semibold mb-2">Welcome to the House.</p>
+              <p className="text-[var(--dim)] text-[13px]">Check your inbox.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <input name="name" placeholder="Your Name" className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-[var(--dim)]/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
+              <input name="email" type="email" placeholder="Email" required className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-[var(--dim)]/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
+              <input name="phone" type="tel" placeholder="Phone Number" className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-[var(--dim)]/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
+              <input name="social" placeholder="Instagram @handle" className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-[var(--dim)]/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
+              <button type="submit" disabled={formLoading} className="w-full bg-[#E8C23A] text-[var(--bg)] text-[12px] tracking-[0.2em] uppercase font-semibold py-3.5 hover:bg-[#E8C23A]/90 transition-colors disabled:opacity-50">
+                {formLoading ? '...' : 'Join'}
+              </button>
+              <p className="text-[var(--dim)] text-[8px] text-center mt-2 opacity-50">We respect your privacy.</p>
+            </form>
+          )}
+        </div>
+      </motion.section>
 
       <div className="gold-rule mx-8" />
 
       {/* ═══ FOOTER ═══ */}
-      <footer className="px-8 py-12 text-center">
+      <motion.footer {...fadeIn} className="px-8 py-12 text-center">
+        <Image
+          src="/brand/lion-crest-icon.png"
+          alt="Lion Order Crest"
+          width={40}
+          height={40}
+          className="mx-auto mb-4 opacity-40"
+        />
         <Image
           src="/brand/rohan-signature.png"
           alt="Rohan Marley"
@@ -234,10 +270,30 @@ export default function HomePage() {
             <span key={site} className="text-[var(--dim)] text-[9px] tracking-[0.1em]">{site}</span>
           ))}
         </div>
-        <p className="text-[var(--dim)] text-[8px] tracking-[0.3em] uppercase">
+        <div className="flex justify-center gap-6 mb-6">
+          {[
+            { label: 'Instagram', url: 'https://instagram.com/roloaded' },
+            { label: 'YouTube', url: 'https://youtube.com/@rohanmarley' },
+            { label: 'LinkedIn', url: 'https://linkedin.com/in/rohanmarley' },
+          ].map((link) => (
+            <a
+              key={link.label}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--dim)] text-[10px] tracking-[0.15em] uppercase hover:text-[var(--gold)] transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+        <p className="text-[var(--dim)] text-[8px] tracking-[0.3em] uppercase mb-2">
           Lion Order · Est. 2022
         </p>
-      </footer>
+        <p className="text-[var(--dim)]/40 text-[7px] tracking-[0.2em]">
+          &copy; 2026 Lion Order. All rights reserved.
+        </p>
+      </motion.footer>
 
       {/* ═══ AGE GATE OVERLAY ═══ */}
       {ageGateOpen && (
