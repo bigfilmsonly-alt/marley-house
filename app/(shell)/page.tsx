@@ -235,6 +235,20 @@ export default function HomePage() {
                 Be the first to know. No noise. Just the movement.
               </p>
 
+              {/* Featured press */}
+              <a
+                href="https://people.com/rohan-marley-reveals-smoked-herb-white-house-lawn-exclusive-8364789"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 border border-[var(--line)] bg-[var(--bg)] px-4 py-3 mb-6 group hover:border-[#E8C23A]/30 transition-colors"
+              >
+                <span className="text-[#E8C23A] text-[10px] tracking-[0.2em] uppercase font-semibold shrink-0">People</span>
+                <span className="text-[var(--cream)] text-[13px] font-medium leading-snug line-clamp-2 group-hover:text-[#E8C23A] transition-colors">
+                  Rohan Marley Reveals He Smoked Herb on the White House Lawn
+                </span>
+                <ArrowUpRight size={14} className="text-[var(--dim)] shrink-0 group-hover:text-[#E8C23A] transition-colors" />
+              </a>
+
               {submitted ? (
                 <div className="text-center py-4">
                   <p className="text-[#E8C23A] text-lg font-semibold mb-2">Welcome to the House.</p>
