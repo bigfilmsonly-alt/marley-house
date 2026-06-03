@@ -31,6 +31,7 @@ export default function TabBar() {
   const { openLink } = useInAppBrowser();
   const [splashTab, setSplashTab] = useState<string | null>(null);
   const [isFading, setIsFading] = useState(false);
+  const [coffeeSlide, setCoffeeSlide] = useState(0);
 
   const splashImages: Record<string, { src: string; alt: string }> = {
     'Lion Order': { src: '/brand/lion-order-wordmark-gold.jpg', alt: 'Lion Order' },
@@ -39,22 +40,51 @@ export default function TabBar() {
     'Watch': { src: '/brand/lion-crest-clean.png', alt: 'Lion Order' },
   };
 
+  const coffeeSlides = [
+    { src: '/brand/marley-coffee-lion-gold.png', alt: 'Marley Coffee' },
+    { src: '/brand/coffee-slide-1.jpg', alt: 'Marley Coffee Collection' },
+    { src: '/brand/coffee-slide-2.webp', alt: 'One Love Blend' },
+    { src: '/brand/coffee-slide-3.webp', alt: 'Lively Up Blend' },
+    { src: '/brand/coffee-slide-4.webp', alt: 'Get Up Stand Up Blend' },
+    { src: '/brand/coffee-slide-5.webp', alt: 'Buffalo Soldier Blend' },
+  ];
+
   function handleSplashTab(tab: Tab) {
     setSplashTab(tab.label);
     setIsFading(false);
+    setCoffeeSlide(0);
     tabView(tab.label);
-    // Start logo fade out after 3s hold (3500ms total hold = 500ms fade overlap)
-    setTimeout(() => setIsFading(true), 3000);
-    // Remove overlay and navigate after logo fade (1.2s) + bg fade (0.8s) buffer
-    setTimeout(() => {
-      setSplashTab(null);
-      setIsFading(false);
-      if (tab.embed) {
-        openLink(tab.embed.url, tab.embed.title);
-      } else {
-        router.push(tab.href);
-      }
-    }, 4200);
+
+    if (tab.label === 'Coffee') {
+      // Coffee slideshow: cycle through 6 slides (2s each = 12s), then navigate
+      let slide = 0;
+      const interval = setInterval(() => {
+        slide++;
+        if (slide < 6) {
+          setCoffeeSlide(slide);
+        } else {
+          clearInterval(interval);
+          setIsFading(true);
+          setTimeout(() => {
+            setSplashTab(null);
+            setIsFading(false);
+            if (tab.embed) openLink(tab.embed.url, tab.embed.title);
+          }, 1200);
+        }
+      }, 2000);
+    } else {
+      // Standard splash: hold 3s, fade, navigate
+      setTimeout(() => setIsFading(true), 3000);
+      setTimeout(() => {
+        setSplashTab(null);
+        setIsFading(false);
+        if (tab.embed) {
+          openLink(tab.embed.url, tab.embed.title);
+        } else {
+          router.push(tab.href);
+        }
+      }, 4200);
+    }
   }
 
   return (
@@ -81,8 +111,8 @@ export default function TabBar() {
                 : { delay: 0.4, duration: 2.5, ease: [0.22, 0.68, 0.36, 1.0] }}
             >
               <Image
-                src={splashImages[splashTab].src}
-                alt={splashImages[splashTab].alt}
+                src={splashTab === 'Coffee' ? coffeeSlides[coffeeSlide].src : splashImages[splashTab].src}
+                alt={splashTab === 'Coffee' ? coffeeSlides[coffeeSlide].alt : splashImages[splashTab].alt}
                 width={500}
                 height={500}
                 className={`brightness-125 h-auto ${splashTab === 'Home' ? 'w-[70vw] max-w-[280px]' : 'w-[85vw] max-w-[500px]'}`}
