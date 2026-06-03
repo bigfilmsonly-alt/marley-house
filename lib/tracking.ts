@@ -73,5 +73,23 @@ export function buttonClick(name: string, location: string) {
   trackEvent('buttonClick', { name, location });
 }
 
+// ── Pillar Events ──
+
+export function shopCoffee() {
+  trackEvent('shop_coffee');
+}
+
+export function exploreLionOrder() {
+  trackEvent('explore_lionorder');
+}
+
+export function bookStay() {
+  trackEvent('book_stay');
+}
+
+export function joinInnerCircle(source: string) {
+  trackEvent('join_inner_circle', { source });
+}
+
 // Re-export for direct use
 export { fbq };

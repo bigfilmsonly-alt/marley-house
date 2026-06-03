@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { joinHouse } from '@/lib/tracking';
+import { joinHouse, shopCoffee, exploreLionOrder, bookStay, trackEvent } from '@/lib/tracking';
 import { useInAppBrowser } from '@/components/InAppBrowser';
 import AgeGate from '@/components/AgeGate';
 
@@ -41,6 +41,8 @@ export default function HomePage() {
   const [formOpen, setFormOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
+  const [ageGateOpen, setAgeGateOpen] = useState(false);
+  const [pendingPillar, setPendingPillar] = useState<typeof pillars[0] | null>(null);
   const { openLink } = useInAppBrowser();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -69,7 +71,29 @@ export default function HomePage() {
   }
 
   function handlePillarClick(pillar: typeof pillars[0]) {
+    if (pillar.ageGate) {
+      const confirmed = sessionStorage.getItem('lion-order-age');
+      if (!confirmed) {
+        setPendingPillar(pillar);
+        setAgeGateOpen(true);
+        return;
+      }
+    }
+    // Track + open
+    if (pillar.name === 'Marley Coffee') shopCoffee();
+    else if (pillar.name === 'Lion Order') exploreLionOrder();
+    else if (pillar.name === 'RoMarley Beach House') bookStay();
     openLink(pillar.url, pillar.name);
+  }
+
+  function handleAgeConfirm() {
+    sessionStorage.setItem('lion-order-age', '1');
+    setAgeGateOpen(false);
+    if (pendingPillar) {
+      exploreLionOrder();
+      openLink(pendingPillar.url, pendingPillar.name);
+      setPendingPillar(null);
+    }
   }
 
   return (
@@ -98,7 +122,7 @@ export default function HomePage() {
           </p>
 
           <button
-            onClick={() => document.getElementById('pillars')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => { trackEvent('enter'); document.getElementById('pillars')?.scrollIntoView({ behavior: 'smooth' }); }}
             className="border border-[var(--gold)]/40 text-[var(--gold)] text-[11px] tracking-[0.3em] uppercase px-10 py-3 hover:bg-[var(--gold)]/5 transition-colors"
           >
             Enter
@@ -214,6 +238,22 @@ export default function HomePage() {
           Lion Order · Est. 2022
         </p>
       </footer>
+
+      {/* ═══ AGE GATE OVERLAY ═══ */}
+      {ageGateOpen && (
+        <div className="fixed inset-0 z-[90] flex items-center justify-center bg-[#0b0805]/98 backdrop-blur-sm">
+          <div className="text-center px-8 max-w-[320px]">
+            <Image src="/brand/lion-crest-icon.png" alt="Lion Order" width={48} height={48} className="mx-auto mb-8 opacity-60" />
+            <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-4">Age Verification</p>
+            <p className="text-[var(--cream)] font-display text-lg italic mb-6">This content involves plant medicine.</p>
+            <p className="text-[var(--dim)] text-xs font-light leading-[1.8] mb-8">You must be of legal age in your jurisdiction to view this content.</p>
+            <button onClick={handleAgeConfirm} className="w-full border border-[var(--gold)]/30 text-[var(--gold)] text-[11px] tracking-[0.25em] uppercase px-6 py-3 hover:bg-[var(--gold)]/5 transition-colors mb-3">
+              I am of legal age
+            </button>
+            <button onClick={() => { setAgeGateOpen(false); setPendingPillar(null); }} className="text-[var(--dim)] text-[10px]">Cancel</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
