@@ -76,11 +76,11 @@ export default function Threshold() {
                 transition={{ delay: 0.3, duration: 3, ease: iveSlow }}
               >
                 <Image
-                  src="/brand/lion-head-gold.png"
+                  src="/brand/lion-head-new.jpg"
                   alt="Lion Order"
-                  width={320}
-                  height={320}
-                  className="w-[100vw] max-w-[500px] h-auto"
+                  width={500}
+                  height={500}
+                  className="w-[90vw] max-w-[420px] h-auto"
                   priority
                 />
               </motion.div>
