@@ -164,35 +164,35 @@ export default function HomePage() {
   };
 
   return (
-    <div className="relative min-h-full bg-[var(--bg)]">
+    <div className="relative min-h-full bg-[var(--bg)] flex flex-col">
 
       <SplashReturn />
 
       {/* ═══════════════════════════════════════════════════════════
-          1. HERO — R-M Monogram + Taglines (always on home page)
+          1. HERO — R-M Monogram + Taglines — fits one screen
       ═══════════════════════════════════════════════════════════ */}
-      <section className="w-full bg-black pt-16 pb-10">
+      <section className="w-full bg-black pt-10 pb-6 flex-shrink-0">
         <div className="flex flex-col items-center justify-center px-8">
-          <div className="relative w-[200px] h-[200px] mb-8">
+          <div className="relative w-[140px] h-[140px] mb-5">
             <Image
               src="/brand/rhr-monogram-transparent.png"
               alt="R-M Monogram"
               fill
               className="object-contain"
               priority
-              sizes="200px"
+              sizes="140px"
             />
           </div>
 
-          <h1 className="text-3xl font-semibold text-white tracking-wide text-center leading-[1.3] mb-4">
+          <h1 className="text-2xl font-semibold text-white tracking-wide text-center leading-[1.3] mb-3">
             Awaken the Lion<br />in Everyone
           </h1>
 
-          <p className="text-[11px] tracking-[0.45em] uppercase text-[#E8C23A] font-medium mb-6">
+          <p className="text-[10px] tracking-[0.45em] uppercase text-[#E8C23A] font-medium mb-4">
             The Legacy of Rohan Marley
           </p>
 
-          <div className="gold-rule w-full max-w-[200px]" />
+          <div className="gold-rule w-full max-w-[160px]" />
         </div>
       </section>
 
@@ -207,7 +207,7 @@ export default function HomePage() {
             if (menuOpen) setOpenSection(null);
           }}
           aria-expanded={menuOpen}
-          className="w-full border-b border-[var(--line)] px-6 py-5 flex items-center justify-between cursor-pointer hover:bg-[var(--panel)] transition-colors"
+          className="w-full border-b border-[var(--line)] px-6 py-4 flex items-center justify-between cursor-pointer hover:bg-[var(--panel)] transition-colors"
         >
           <div className="flex items-center gap-3">
             <span className="w-2 h-2 bg-[#E8C23A] rotate-45 shrink-0" />
@@ -858,37 +858,36 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════
           3. FOOTER — Lion Order crest, proud and centered
       ═══════════════════════════════════════════════════════════ */}
-      <div className="gold-rule mx-8 mt-2" />
+      <div className="gold-rule mx-8 mt-1" />
 
-      <footer className="px-4 py-16 text-center bg-black">
-        {/* Three logos side by side — fitted to screen */}
-        <div className="flex items-center justify-center gap-2 mb-10 px-2">
+      <footer className="px-4 py-6 text-center bg-black flex-shrink-0">
+        <div className="flex items-center justify-center gap-1 mb-4 px-2">
           <Image
             src="/brand/marley-enterprise.png"
             alt="Marley Enterprise"
-            width={130}
-            height={130}
+            width={90}
+            height={90}
             className="brightness-125 flex-shrink-0"
           />
           <Image
             src="/brand/lion-order-crest.png"
             alt="Lion Order"
-            width={130}
-            height={130}
+            width={90}
+            height={90}
             className="brightness-110 flex-shrink-0"
           />
           <Image
             src="/brand/lion-crest-clean.png"
             alt="Lion Order Crest"
-            width={130}
-            height={130}
+            width={90}
+            height={90}
             className="brightness-125 flex-shrink-0"
           />
         </div>
-        <p className="text-[var(--cream)] text-[10px] tracking-[0.4em] uppercase mb-3 font-medium">
+        <p className="text-[var(--cream)] text-[9px] tracking-[0.4em] uppercase mb-1 font-medium">
           Lion Order &middot; Est. 2022
         </p>
-        <p className="text-[var(--dim)] text-[9px] tracking-[0.25em] uppercase font-medium">
+        <p className="text-[var(--dim)] text-[8px] tracking-[0.25em] uppercase font-medium">
           One Love. One House. One Order.
         </p>
       </footer>
