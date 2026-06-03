@@ -237,18 +237,6 @@ export default function HomePage() {
                 Be the first to know. No noise. Just the movement.
               </p>
 
-              {/* Featured press — opens in-app */}
-              <button
-                onClick={() => openLink('https://people.com/rohan-marley-reveals-smoked-herb-white-house-lawn-exclusive-8364789', 'People Magazine')}
-                className="w-full flex items-center gap-3 border border-[var(--line)] bg-[var(--bg)] px-4 py-3 mb-6 group hover:border-[#E8C23A]/30 transition-colors text-left"
-              >
-                <span className="text-[#E8C23A] text-[10px] tracking-[0.2em] uppercase font-semibold shrink-0">People</span>
-                <span className="text-[var(--cream)] text-[13px] font-medium leading-snug line-clamp-2 group-hover:text-[#E8C23A] transition-colors">
-                  Rohan Marley Reveals He Smoked Herb on the White House Lawn
-                </span>
-                <ArrowUpRight size={14} className="text-[var(--dim)] shrink-0 group-hover:text-[#E8C23A] transition-colors" />
-              </button>
-
               {submitted ? (
                 <div className="text-center py-4">
                   <p className="text-[#E8C23A] text-lg font-semibold mb-2">Welcome to the House.</p>
@@ -640,9 +628,22 @@ export default function HomePage() {
                   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
                   {section.id === 'links' && (
                     <div>
-                      <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-8 text-center font-medium">
+                      <p className="text-[11px] tracking-[0.4em] uppercase text-[#E8C23A] mb-6 text-center font-medium">
                         Social Media & Links
                       </p>
+
+                      {/* Featured press — opens in-app */}
+                      <p className="text-[10px] tracking-[0.3em] uppercase text-[#E8C23A] mb-4 font-medium">Press</p>
+                      <button
+                        onClick={() => openLink('https://people.com/rohan-marley-reveals-smoked-herb-white-house-lawn-exclusive-8364789', 'People Magazine')}
+                        className="w-full flex items-center justify-between py-3 border-b border-[var(--line)] group mb-8 text-left"
+                      >
+                        <div>
+                          <span className="text-white text-[14px] font-medium group-hover:text-[#E8C23A] transition-colors">People Magazine</span>
+                          <span className="text-[var(--dim)] text-[12px] block mt-0.5">Rohan Marley Reveals He Smoked Herb on the White House Lawn</span>
+                        </div>
+                        <ArrowUpRight size={14} className="text-[var(--dim)] shrink-0 group-hover:text-[#E8C23A] transition-colors ml-3" />
+                      </button>
 
                       {/* Rohan Marley */}
                       <p className="text-[10px] tracking-[0.3em] uppercase text-[#E8C23A] mb-4 font-medium">Rohan Marley</p>
