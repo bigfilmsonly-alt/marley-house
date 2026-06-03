@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { enterApp } from '@/lib/tracking';
 
-type Stage = 'welcome' | 'monogram' | 'done';
+type Stage = 'welcome' | 'kingclem' | 'monogram' | 'done';
 
 const iveEase: [number, number, number, number] = [0.25, 0.1, 0.25, 1.0];
 const iveSlow: [number, number, number, number] = [0.16, 0.6, 0.3, 1.0];
@@ -13,18 +13,21 @@ const springSettle: [number, number, number, number] = [0.22, 0.68, 0.36, 1.0];
 const matDecel: [number, number, number, number] = [0.4, 0.0, 0.2, 1.0];
 
 export default function Threshold() {
-  // Start with 'welcome' so the overlay renders instantly — no flash of home page
   const [stage, setStage] = useState<Stage>('welcome');
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const seen = sessionStorage.getItem('marley-threshold');
-    // Only skip welcome if they've already seen it in this session
     if (seen) setStage('done');
   }, []);
 
-  const goToMonogram = useCallback(() => {
+  const goToKingClem = useCallback(() => {
     if (stage !== 'welcome') return;
+    setStage('kingclem');
+  }, [stage]);
+
+  const goToMonogram = useCallback(() => {
+    if (stage !== 'kingclem') return;
     setStage('monogram');
   }, [stage]);
 
@@ -34,10 +37,17 @@ export default function Threshold() {
     enterApp();
   }, []);
 
-  // Auto-advance welcome → monogram after 7s
+  // Auto-advance welcome → kingclem after 7s
   useEffect(() => {
     if (stage !== 'welcome') return;
-    const timer = setTimeout(goToMonogram, 7000);
+    const timer = setTimeout(goToKingClem, 7000);
+    return () => clearTimeout(timer);
+  }, [stage, goToKingClem]);
+
+  // Auto-advance kingclem → monogram after 3.5s
+  useEffect(() => {
+    if (stage !== 'kingclem') return;
+    const timer = setTimeout(goToMonogram, 3500);
     return () => clearTimeout(timer);
   }, [stage, goToMonogram]);
 
@@ -59,6 +69,8 @@ export default function Threshold() {
       transition={{ duration: 1.5, ease: iveEase }}
     >
       <AnimatePresence mode="sync">
+
+        {/* STAGE 1: Lion head + Rohan signature */}
         {stage === 'welcome' && (
           <motion.div
             key="welcome"
@@ -66,7 +78,7 @@ export default function Threshold() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.8, ease: iveEase }}
-            onClick={goToMonogram}
+            onClick={goToKingClem}
             className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer"
           >
             <div className="flex flex-col items-center">
@@ -110,6 +122,35 @@ export default function Threshold() {
           </motion.div>
         )}
 
+        {/* STAGE 2: King Clementine */}
+        {stage === 'kingclem' && (
+          <motion.div
+            key="kingclem"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: iveEase }}
+            onClick={goToMonogram}
+            className="absolute inset-0 flex items-center justify-center cursor-pointer"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, duration: 2, ease: springSettle }}
+            >
+              <Image
+                src="/brand/king-clem-welcome.png"
+                alt="King Clementine"
+                width={400}
+                height={400}
+                className="w-[75vw] max-w-[360px] h-auto"
+                priority
+              />
+            </motion.div>
+          </motion.div>
+        )}
+
+        {/* STAGE 3: R-M monogram */}
         {stage === 'monogram' && (
           <motion.div
             key="monogram"
@@ -135,6 +176,7 @@ export default function Threshold() {
             </motion.div>
           </motion.div>
         )}
+
       </AnimatePresence>
     </motion.div>
   );
