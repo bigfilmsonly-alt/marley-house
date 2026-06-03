@@ -166,8 +166,6 @@ export default function HomePage() {
   return (
     <div className="relative min-h-full bg-[var(--bg)] flex flex-col">
 
-      <SplashReturn />
-
       {/* ═══════════════════════════════════════════════════════════
           1. HERO — R-M Monogram + Taglines — fits one screen
       ═══════════════════════════════════════════════════════════ */}

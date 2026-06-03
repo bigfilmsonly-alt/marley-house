@@ -5,6 +5,7 @@ import Threshold from '@/components/Threshold';
 import ScrollRestoreMain from '@/components/ScrollRestoreMain';
 import { PlayerProvider } from '@/components/PlayerContext';
 import { InAppBrowserProvider } from '@/components/InAppBrowser';
+import SplashReturn from '@/components/SplashReturn';
 
 export default function ShellLayout({
   children,
@@ -30,10 +31,10 @@ export default function ShellLayout({
 
           {/* Brand logos — right above tabs */}
           <div className="flex-shrink-0 bg-black pt-4 pb-2">
-            <div className="flex items-center justify-center gap-4 mb-3 px-4">
-              <img src="/brand/marley-enterprise.png" alt="Marley Enterprise" width="130" height="130" className="brightness-125" />
-              <img src="/brand/lion-order-crest.png" alt="Lion Order" width="130" height="130" className="brightness-110" />
-              <img src="/brand/lion-crest-clean.png" alt="Lion Order Crest" width="130" height="130" className="brightness-125" />
+            <div className="flex items-center justify-center gap-3 mb-3 px-4">
+              <img src="/brand/marley-enterprise.png" alt="Marley Enterprise" width="110" height="110" className="brightness-125" />
+              <SplashReturn />
+              <img src="/brand/lion-crest-clean.png" alt="Lion Order Crest" width="110" height="110" className="brightness-125" />
             </div>
             <p style={{ color: '#F3E9D8', fontSize: '9px', letterSpacing: '0.4em', textTransform: 'uppercase', textAlign: 'center', fontWeight: 500, marginBottom: '2px' }}>
               Lion Order · Est. 2022
