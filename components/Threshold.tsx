@@ -7,21 +7,20 @@ import { enterApp } from '@/lib/tracking';
 
 type Stage = 'welcome' | 'monogram' | 'done';
 
-/* Jony Ive ease — slow start, gentle deceleration, feels like gravity */
 const iveEase: [number, number, number, number] = [0.25, 0.1, 0.25, 1.0];
 const iveSlow: [number, number, number, number] = [0.16, 0.6, 0.3, 1.0];
-/* Slow overshoot that settles — spring-like cubic bezier */
 const springSettle: [number, number, number, number] = [0.22, 0.68, 0.36, 1.0];
-/* Material Design decelerate — for dignified exits */
 const matDecel: [number, number, number, number] = [0.4, 0.0, 0.2, 1.0];
 
 export default function Threshold() {
-  const [stage, setStage] = useState<Stage>('done');
+  // Start with 'welcome' so the overlay renders instantly — no flash of home page
+  const [stage, setStage] = useState<Stage>('welcome');
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const seen = sessionStorage.getItem('marley-threshold');
-    if (!seen) setStage('welcome');
+    // Only skip welcome if they've already seen it in this session
+    if (seen) setStage('done');
   }, []);
 
   const goToMonogram = useCallback(() => {
@@ -35,12 +34,14 @@ export default function Threshold() {
     enterApp();
   }, []);
 
+  // Auto-advance welcome → monogram after 7s
   useEffect(() => {
     if (stage !== 'welcome') return;
     const timer = setTimeout(goToMonogram, 7000);
     return () => clearTimeout(timer);
   }, [stage, goToMonogram]);
 
+  // Auto-advance monogram → done after 4s
   useEffect(() => {
     if (stage !== 'monogram') return;
     const timer = setTimeout(finish, 4000);
