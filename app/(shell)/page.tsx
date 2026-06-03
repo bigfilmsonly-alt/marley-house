@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { wisdomCards } from '@/content/wisdom';
 import { ArrowUpRight } from 'lucide-react';
+import { useInAppBrowser } from '@/components/InAppBrowser';
 import SplashReturn from '@/components/SplashReturn';
 import { joinHouse } from '@/lib/tracking';
 
@@ -122,6 +123,7 @@ export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openSection, setOpenSection] = useState<SectionId | null>(null);
   const [expandedWisdom, setExpandedWisdom] = useState<string | null>(null);
+  const { openLink } = useInAppBrowser();
   const [submitted, setSubmitted] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
 
@@ -235,19 +237,17 @@ export default function HomePage() {
                 Be the first to know. No noise. Just the movement.
               </p>
 
-              {/* Featured press */}
-              <a
-                href="https://people.com/rohan-marley-reveals-smoked-herb-white-house-lawn-exclusive-8364789"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 border border-[var(--line)] bg-[var(--bg)] px-4 py-3 mb-6 group hover:border-[#E8C23A]/30 transition-colors"
+              {/* Featured press — opens in-app */}
+              <button
+                onClick={() => openLink('https://people.com/rohan-marley-reveals-smoked-herb-white-house-lawn-exclusive-8364789', 'People Magazine')}
+                className="w-full flex items-center gap-3 border border-[var(--line)] bg-[var(--bg)] px-4 py-3 mb-6 group hover:border-[#E8C23A]/30 transition-colors text-left"
               >
                 <span className="text-[#E8C23A] text-[10px] tracking-[0.2em] uppercase font-semibold shrink-0">People</span>
                 <span className="text-[var(--cream)] text-[13px] font-medium leading-snug line-clamp-2 group-hover:text-[#E8C23A] transition-colors">
                   Rohan Marley Reveals He Smoked Herb on the White House Lawn
                 </span>
                 <ArrowUpRight size={14} className="text-[var(--dim)] shrink-0 group-hover:text-[#E8C23A] transition-colors" />
-              </a>
+              </button>
 
               {submitted ? (
                 <div className="text-center py-4">
