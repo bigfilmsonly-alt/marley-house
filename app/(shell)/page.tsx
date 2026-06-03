@@ -268,22 +268,22 @@ export default function HomePage() {
                 </div>
               </div>
             ) : (
-              /* Standard image pillar */
-              <button
-                onClick={() => handlePillarClick(pillar)}
-                className="relative w-full aspect-[3/4] overflow-hidden block text-left group"
-              >
-                <Image
-                  src={pillar.image}
-                  alt={pillar.name}
-                  fill
-                  className="object-cover object-center group-hover:scale-[1.03] transition-transform duration-700"
-                  sizes="100vw"
-                  loading={i === 0 ? 'eager' : 'lazy'}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20" />
-
-                <div className="absolute inset-0 flex flex-col justify-end p-8 pb-12">
+              /* RoMarley Beach House — Vimeo hero video */
+              <div className="relative w-full overflow-hidden">
+                <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
+                  <iframe
+                    src="https://player.vimeo.com/video/1198237050?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                    className="absolute inset-0 w-full h-full"
+                    style={{ border: 'none' }}
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10 pointer-events-none" />
+                <div
+                  className="absolute inset-0 flex flex-col justify-end p-8 pb-12 cursor-pointer"
+                  onClick={() => handlePillarClick(pillar)}
+                >
                   <div className="flex items-center gap-3 mb-3">
                     <span className="text-[9px] tracking-[0.3em] uppercase font-light" style={{ color: pillar.accent }}>
                       {String(i + 1).padStart(2, '0')}
@@ -297,7 +297,7 @@ export default function HomePage() {
                     {pillar.line}
                   </p>
                   <div className="flex items-center gap-4">
-                    <span className="border border-white/30 text-white text-[10px] tracking-[0.2em] uppercase px-6 py-2.5 group-hover:bg-white/10 transition-colors">
+                    <span className="border border-white/30 text-white text-[10px] tracking-[0.2em] uppercase px-6 py-2.5 hover:bg-white/10 transition-colors">
                       {pillar.cta}
                     </span>
                     <span className="text-white/60 text-[10px] tracking-[0.15em] uppercase">
@@ -305,7 +305,7 @@ export default function HomePage() {
                     </span>
                   </div>
                 </div>
-              </button>
+              </div>
             )}
           </motion.div>
         ))}
