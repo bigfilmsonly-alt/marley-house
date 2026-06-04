@@ -127,7 +127,7 @@ export default function HomePage() {
 
       {/* ═══ LEGACY LINE ═══ */}
       <motion.section {...fadeIn} className="px-8 py-10 text-center">
-        <p className="font-display text-base text-[var(--cream)] italic leading-[1.7] max-w-[340px] mx-auto">
+        <p className="font-display text-base text-black italic leading-[1.7] max-w-[340px] mx-auto">
           From Bob to Rohan — a legacy carried forward through coffee, culture, and craft.
         </p>
       </motion.section>
@@ -150,8 +150,8 @@ export default function HomePage() {
           </div>
           <div className="px-6 py-6 text-center">
             <p className="text-[9px] tracking-[0.4em] uppercase text-[#EEC11E] mb-2 font-medium">01</p>
-            <h2 className="font-display text-2xl text-white font-semibold mb-2">Marley Coffee</h2>
-            <p className="text-white/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
+            <h2 className="font-display text-2xl text-black font-semibold mb-2">Marley Coffee</h2>
+            <p className="text-black/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
               The original. Coffee from the Blue Mountains of Jamaica — legacy in every cup.
             </p>
             <a href="https://marleycoffee.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#EEC11E]/40 text-[#EEC11E] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#EEC11E]/5 transition-colors">
@@ -173,8 +173,8 @@ export default function HomePage() {
           </div>
           <div className="px-6 py-6 text-center">
             <p className="text-[9px] tracking-[0.4em] uppercase text-[#EEC11E] mb-2 font-medium">02</p>
-            <h2 className="font-display text-2xl text-white font-semibold mb-2">Lion Order</h2>
-            <p className="text-white/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
+            <h2 className="font-display text-2xl text-black font-semibold mb-2">Lion Order</h2>
+            <p className="text-black/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
               Flower to the people. Roots-luxury cannabis that elevates consciousness.
             </p>
             <a href="https://lionorder.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#EEC11E]/40 text-[#EEC11E] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#EEC11E]/5 transition-colors">
@@ -196,8 +196,8 @@ export default function HomePage() {
           </div>
           <div className="px-6 py-6 text-center">
             <p className="text-[9px] tracking-[0.4em] uppercase text-[#EEC11E] mb-2 font-medium">03</p>
-            <h2 className="font-display text-2xl text-white font-semibold mb-2">RoMarley Beach House</h2>
-            <p className="text-white/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
+            <h2 className="font-display text-2xl text-black font-semibold mb-2">RoMarley Beach House</h2>
+            <p className="text-black/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
               Where the Caribbean meets luxury — Puerto Morelos, Riviera Maya.
             </p>
             <a href="https://www.romarleybeachhouse.com/en" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#EEC11E]/40 text-[#EEC11E] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#EEC11E]/5 transition-colors">
@@ -246,10 +246,10 @@ export default function HomePage() {
           <p className="text-[9px] tracking-[0.5em] uppercase text-[#EEC11E] mb-3 font-medium">
             The Inner Circle
           </p>
-          <h2 className="text-white text-xl font-semibold mb-2">
+          <h2 className="text-black text-xl font-semibold mb-2">
             The Rohan Marley<br />Business Masterclass
           </h2>
-          <p className="text-white/50 text-[12px] max-w-[300px] mx-auto">
+          <p className="text-black/50 text-[12px] max-w-[300px] mx-auto">
             8 episodes. Build a legacy brand. From the man who turned heritage into an empire.
           </p>
         </div>
@@ -274,8 +274,8 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="py-3 pr-3">
-                <p className="text-white text-[13px] font-medium leading-snug mb-1">{ep.title}</p>
-                <p className="text-white/40 text-[10px] leading-[1.5]">{ep.desc}</p>
+                <p className="text-black text-[13px] font-medium leading-snug mb-1">{ep.title}</p>
+                <p className="text-black/50 text-[10px] leading-[1.5]">{ep.desc}</p>
               </div>
             </div>
           ))}
@@ -286,10 +286,10 @@ export default function HomePage() {
           <p className="text-[9px] tracking-[0.4em] uppercase text-[#EEC11E] mb-2 text-center font-medium">
             Subscribe Now
           </p>
-          <p className="text-white text-[15px] font-semibold text-center mb-1">
+          <p className="text-black text-[15px] font-semibold text-center mb-1">
             Join the Inner Circle
           </p>
-          <p className="text-white/40 text-[11px] text-center mb-5">
+          <p className="text-black/50 text-[11px] text-center mb-5">
             Get all 8 episodes + exclusive drops + early access to everything.
           </p>
 
@@ -316,15 +316,15 @@ export default function HomePage() {
         <div className="flex justify-center gap-6 mt-8">
           <div className="text-center">
             <p className="text-[#EEC11E] text-lg font-semibold">663K</p>
-            <p className="text-white/40 text-[9px] tracking-[0.1em] uppercase">Followers</p>
+            <p className="text-black/40 text-[9px] tracking-[0.1em] uppercase">Followers</p>
           </div>
           <div className="text-center">
             <p className="text-[#EEC11E] text-lg font-semibold">8</p>
-            <p className="text-white/40 text-[9px] tracking-[0.1em] uppercase">Episodes</p>
+            <p className="text-black/40 text-[9px] tracking-[0.1em] uppercase">Episodes</p>
           </div>
           <div className="text-center">
             <p className="text-[#EEC11E] text-lg font-semibold">5+</p>
-            <p className="text-white/40 text-[9px] tracking-[0.1em] uppercase">Brands Built</p>
+            <p className="text-black/40 text-[9px] tracking-[0.1em] uppercase">Brands Built</p>
           </div>
         </div>
       </motion.section>
@@ -349,7 +349,7 @@ export default function HomePage() {
         />
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6">
           {['marleycoffee.com', 'lionorder.com', 'romarleybeachhouse.com', 'rohanmarley.com'].map((site) => (
-            <span key={site} className="text-white/60 text-[9px] tracking-[0.1em]">{site}</span>
+            <span key={site} className="text-black/60 text-[9px] tracking-[0.1em]">{site}</span>
           ))}
         </div>
         <div className="flex justify-center gap-6 mb-6">
@@ -363,16 +363,16 @@ export default function HomePage() {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/60 text-[10px] tracking-[0.15em] uppercase hover:text-[var(--gold)] transition-colors"
+              className="text-black/60 text-[10px] tracking-[0.15em] uppercase hover:text-black transition-colors"
             >
               {link.label}
             </a>
           ))}
         </div>
-        <p className="text-white/60 text-[8px] tracking-[0.3em] uppercase mb-2">
+        <p className="text-black/60 text-[8px] tracking-[0.3em] uppercase mb-2">
           Lion Order · Est. 2022
         </p>
-        <p className="text-white/60/40 text-[7px] tracking-[0.2em]">
+        <p className="text-black/40 text-[7px] tracking-[0.2em]">
           &copy; 2026 Lion Order. All rights reserved.
         </p>
       </motion.footer>
