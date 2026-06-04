@@ -54,16 +54,16 @@ export default function TabBar() {
                   className={
                     active
                       ? 'text-[#EEC11E] relative z-10'
-                      : 'text-white/50 relative z-10'
+                      : 'text-white/70 relative z-10'
                   }
-                  strokeWidth={active ? 2 : 1.4}
+                  strokeWidth={active ? 2.5 : 2}
                 />
               </motion.div>
               <span
-                className={`font-display text-[8px] tracking-[0.12em] uppercase ${
+                className={`font-display text-[9px] tracking-[0.1em] uppercase ${
                   active
-                    ? 'text-[#EEC11E] font-medium'
-                    : 'text-white/50 font-light'
+                    ? 'text-[#EEC11E] font-bold'
+                    : 'text-white/70 font-bold'
                 }`}
               >
                 {tab.label}

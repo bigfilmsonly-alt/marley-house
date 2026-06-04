@@ -232,9 +232,9 @@ export default function HomePage() {
             <a href="https://marleycoffee.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#EEC11E]/40 text-[#EEC11E] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#EEC11E]/5 transition-colors mb-4">
               Shop the Coffee
             </a>
-            <div className="flex flex-wrap justify-center gap-x-4 gap-y-1">
-              <a href="https://marleycoffee.com" target="_blank" rel="noopener noreferrer" className="text-black text-[11px] font-bold hover:text-black/60 transition-colors">marleycoffee.com</a>
-              <a href="https://instagram.com/marleycoffee" target="_blank" rel="noopener noreferrer" className="text-black text-[11px] font-bold hover:text-black/60 transition-colors">Instagram</a>
+            <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 mt-2">
+              <a href="https://marleycoffee.com" target="_blank" rel="noopener noreferrer" className="text-black text-[14px] font-black hover:text-black/60 transition-colors">marleycoffee.com</a>
+              <a href="https://instagram.com/marleycoffee" target="_blank" rel="noopener noreferrer" className="text-black text-[14px] font-black hover:text-black/60 transition-colors">@marleycoffee</a>
             </div>
           </div>
         </motion.div>
@@ -259,9 +259,9 @@ export default function HomePage() {
             <a href="https://lionorder.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#EEC11E]/40 text-[#EEC11E] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#EEC11E]/5 transition-colors mb-4">
               Explore Lion Order
             </a>
-            <div className="flex flex-wrap justify-center gap-x-4 gap-y-1">
-              <a href="https://lionorder.com" target="_blank" rel="noopener noreferrer" className="text-black text-[11px] font-bold hover:text-black/60 transition-colors">lionorder.com</a>
-              <a href="https://instagram.com/lionorder" target="_blank" rel="noopener noreferrer" className="text-black text-[11px] font-bold hover:text-black/60 transition-colors">Instagram</a>
+            <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 mt-2">
+              <a href="https://lionorder.com" target="_blank" rel="noopener noreferrer" className="text-black text-[14px] font-black hover:text-black/60 transition-colors">lionorder.com</a>
+              <a href="https://instagram.com/lionorder" target="_blank" rel="noopener noreferrer" className="text-black text-[14px] font-black hover:text-black/60 transition-colors">@lionorder</a>
             </div>
           </div>
         </motion.div>
@@ -286,9 +286,9 @@ export default function HomePage() {
             <a href="https://www.romarleybeachhouse.com/en" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#EEC11E]/40 text-[#EEC11E] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#EEC11E]/5 transition-colors mb-4">
               Book Your Stay
             </a>
-            <div className="flex flex-wrap justify-center gap-x-4 gap-y-1">
-              <a href="https://www.romarleybeachhouse.com/en" target="_blank" rel="noopener noreferrer" className="text-black text-[11px] font-bold hover:text-black/60 transition-colors">romarleybeachhouse.com</a>
-              <a href="https://instagram.com/romarleybeachhouse" target="_blank" rel="noopener noreferrer" className="text-black text-[11px] font-bold hover:text-black/60 transition-colors">Instagram</a>
+            <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 mt-2">
+              <a href="https://www.romarleybeachhouse.com/en" target="_blank" rel="noopener noreferrer" className="text-black text-[14px] font-black hover:text-black/60 transition-colors">romarleybeachhouse.com</a>
+              <a href="https://instagram.com/romarleybeachhouse" target="_blank" rel="noopener noreferrer" className="text-black text-[14px] font-black hover:text-black/60 transition-colors">@romarleybeachhouse</a>
             </div>
           </div>
         </motion.div>
