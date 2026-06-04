@@ -210,6 +210,29 @@ export default function HomePage() {
 
       <div className="gold-rule mx-8" />
 
+      {/* ═══ PHOTO GALLERY ═══ */}
+      <motion.section {...fadeIn} className="py-10">
+        <p className="text-[9px] tracking-[0.5em] uppercase text-[#EEC11E] mb-6 text-center font-medium">
+          The Legacy
+        </p>
+        <div className="space-y-2 px-4">
+          {[1, 2, 3, 4, 5, 6].map((n) => (
+            <div key={n} className="overflow-hidden">
+              <Image
+                src={`/brand/gallery/${String(n).padStart(2, '0')}.jpg`}
+                alt={`Rohan Marley — ${n}`}
+                width={800}
+                height={600}
+                className="w-full h-auto"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      <div className="gold-rule mx-8" />
+
       {/* ═══ THE MASTERCLASS — Inner Circle ═══ */}
       <motion.section {...fadeIn} id="inner-circle" className="px-4 py-12">
         <div className="text-center mb-8">
