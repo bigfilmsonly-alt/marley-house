@@ -229,9 +229,13 @@ export default function HomePage() {
             <p className="text-black/70 text-[13px] font-medium mb-5 max-w-[300px] mx-auto">
               The original. Coffee from the Blue Mountains of Jamaica — legacy in every cup.
             </p>
-            <a href="https://marleycoffee.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#EEC11E]/40 text-[#EEC11E] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#EEC11E]/5 transition-colors">
+            <a href="https://marleycoffee.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#EEC11E]/40 text-[#EEC11E] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#EEC11E]/5 transition-colors mb-4">
               Shop the Coffee
             </a>
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-1">
+              <a href="https://marleycoffee.com" target="_blank" rel="noopener noreferrer" className="text-black text-[11px] font-bold hover:text-black/60 transition-colors">marleycoffee.com</a>
+              <a href="https://instagram.com/marleycoffee" target="_blank" rel="noopener noreferrer" className="text-black text-[11px] font-bold hover:text-black/60 transition-colors">Instagram</a>
+            </div>
           </div>
         </motion.div>
 
@@ -252,9 +256,13 @@ export default function HomePage() {
             <p className="text-black/70 text-[13px] font-medium mb-5 max-w-[300px] mx-auto">
               Flower to the people. Roots-luxury cannabis that elevates consciousness.
             </p>
-            <a href="https://lionorder.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#EEC11E]/40 text-[#EEC11E] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#EEC11E]/5 transition-colors">
+            <a href="https://lionorder.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#EEC11E]/40 text-[#EEC11E] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#EEC11E]/5 transition-colors mb-4">
               Explore Lion Order
             </a>
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-1">
+              <a href="https://lionorder.com" target="_blank" rel="noopener noreferrer" className="text-black text-[11px] font-bold hover:text-black/60 transition-colors">lionorder.com</a>
+              <a href="https://instagram.com/lionorder" target="_blank" rel="noopener noreferrer" className="text-black text-[11px] font-bold hover:text-black/60 transition-colors">Instagram</a>
+            </div>
           </div>
         </motion.div>
 
@@ -275,9 +283,13 @@ export default function HomePage() {
             <p className="text-black/70 text-[13px] font-medium mb-5 max-w-[300px] mx-auto">
               Where the Caribbean meets luxury — Puerto Morelos, Riviera Maya.
             </p>
-            <a href="https://www.romarleybeachhouse.com/en" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#EEC11E]/40 text-[#EEC11E] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#EEC11E]/5 transition-colors">
+            <a href="https://www.romarleybeachhouse.com/en" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#EEC11E]/40 text-[#EEC11E] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#EEC11E]/5 transition-colors mb-4">
               Book Your Stay
             </a>
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-1">
+              <a href="https://www.romarleybeachhouse.com/en" target="_blank" rel="noopener noreferrer" className="text-black text-[11px] font-bold hover:text-black/60 transition-colors">romarleybeachhouse.com</a>
+              <a href="https://instagram.com/romarleybeachhouse" target="_blank" rel="noopener noreferrer" className="text-black text-[11px] font-bold hover:text-black/60 transition-colors">Instagram</a>
+            </div>
           </div>
         </motion.div>
 
@@ -327,15 +339,22 @@ export default function HomePage() {
           height={100}
           className="mx-auto mb-8 brightness-150 drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]"
         />
-        <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6">
-          {['marleycoffee.com', 'lionorder.com', 'romarleybeachhouse.com', 'rohanmarley.com'].map((site) => (
-            <span key={site} className="text-black text-[9px] tracking-[0.1em] font-semibold">{site}</span>
+        <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 mb-8">
+          {[
+            { label: 'marleycoffee.com', url: 'https://marleycoffee.com' },
+            { label: 'lionorder.com', url: 'https://lionorder.com' },
+            { label: 'romarleybeachhouse.com', url: 'https://www.romarleybeachhouse.com/en' },
+            { label: 'rohanmarley.com', url: 'https://rohananthonymarley.com' },
+          ].map((site) => (
+            <a key={site.label} href={site.url} target="_blank" rel="noopener noreferrer" className="text-black text-[12px] tracking-[0.05em] font-bold hover:text-black/60 transition-colors">
+              {site.label}
+            </a>
           ))}
         </div>
-        <div className="flex justify-center gap-6 mb-6">
+        <div className="flex justify-center gap-8 mb-8">
           {[
-            { label: 'Instagram', url: 'https://instagram.com/roloaded' },
-            { label: 'YouTube', url: 'https://youtube.com/@rohanmarley' },
+            { label: 'Instagram', url: 'https://instagram.com/romarley' },
+            { label: 'YouTube', url: 'https://youtube.com/@MrRohanmarley' },
             { label: 'LinkedIn', url: 'https://linkedin.com/in/rohanmarley' },
           ].map((link) => (
             <a
@@ -343,16 +362,16 @@ export default function HomePage() {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-black text-[10px] tracking-[0.15em] uppercase font-semibold hover:text-black/70 transition-colors"
+              className="text-black text-[13px] tracking-[0.1em] uppercase font-bold hover:text-black/60 transition-colors"
             >
               {link.label}
             </a>
           ))}
         </div>
-        <p className="text-black text-[8px] tracking-[0.3em] uppercase font-bold mb-2">
+        <p className="text-black text-[11px] tracking-[0.3em] uppercase font-bold mb-3">
           Lion Order · Est. 2022
         </p>
-        <p className="text-black/70 text-[7px] tracking-[0.2em] font-semibold">
+        <p className="text-black/80 text-[9px] tracking-[0.15em] font-bold">
           &copy; 2026 Lion Order. All rights reserved.
         </p>
       </motion.footer>
