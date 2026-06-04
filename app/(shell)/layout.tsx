@@ -31,9 +31,9 @@ export default function ShellLayout({
           {/* Brand logos — right above tabs */}
           <div className="flex-shrink-0 pt-3 pb-1 bg-black">
             <div className="flex items-center justify-center gap-3 mb-2 px-4">
-              <img src="/brand/lion-head-gold.png" alt="Lion Order" width="90" height="90" className="brightness-125" />
+              <img src="/brand/lion-head-gold.png" alt="Lion Order" width="100" height="100" className="brightness-125" />
               <img src="/brand/rastafari-lion-university.png" alt="Rastafari Lion Order University" width="100" height="100" className="brightness-125" />
-              <img src="/brand/lion-crest-clean.png" alt="Lion Order Crest" width="90" height="90" className="brightness-125" />
+              <img src="/brand/lion-crest-clean.png" alt="Lion Order Crest" width="100" height="100" className="brightness-125" />
             </div>
             <p style={{ color: '#E8C23A', fontSize: '9px', letterSpacing: '0.4em', textTransform: 'uppercase', textAlign: 'center', fontWeight: 500, marginBottom: '2px' }}>
               Lion Order · Est. 2022
