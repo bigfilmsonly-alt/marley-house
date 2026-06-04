@@ -42,7 +42,7 @@
 
 /* ─── Base ─── */
 body {
-  background: var(--bg);
+  background: var(--bg) url('/brand/gold-pattern-bg.jpg') center / cover fixed;
   color: var(--cream);
   font-family: var(--font-body), 'EB Garamond', Georgia, serif;
   -webkit-font-smoothing: antialiased;
