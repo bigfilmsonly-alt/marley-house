@@ -81,46 +81,121 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ FORM MODAL — full screen overlay ═══ */}
-      {showForm && !submitted && (
-        <div className="fixed inset-0 z-[85] flex items-center justify-center bg-black/95 backdrop-blur-sm px-6">
-          <div className="w-full max-w-[360px]">
-            <div className="text-center mb-6">
-              <Image
-                src="/brand/rhr-monogram-transparent.png"
-                alt="R-M"
-                width={60}
-                height={60}
-                className="mx-auto mb-4 opacity-60"
-              />
-              <p className="text-[9px] tracking-[0.5em] uppercase text-[#EEC11E] mb-2 font-medium">
-                The Inner Circle
-              </p>
-              <p className="text-white text-[17px] font-semibold mb-1">
-                Join the Movement
-              </p>
-              <p className="text-white/40 text-[11px]">
-                8 masterclass episodes + exclusive access.
-              </p>
+      {/* ═══ FORM / MASTERCLASS MODAL ═══ */}
+      {showForm && (
+        <div className="fixed inset-0 z-[85] bg-black/95 backdrop-blur-sm overflow-y-auto">
+          <div className="min-h-full flex flex-col items-center px-6 py-10">
+            <div className="w-full max-w-[380px]">
+
+              {!submitted ? (
+                <>
+                  <div className="text-center mb-6">
+                    <Image
+                      src="/brand/rhr-monogram-transparent.png"
+                      alt="R-M"
+                      width={60}
+                      height={60}
+                      className="mx-auto mb-4 opacity-60"
+                    />
+                    <p className="text-[9px] tracking-[0.5em] uppercase text-[#EEC11E] mb-2 font-medium">
+                      The Inner Circle
+                    </p>
+                    <p className="text-white text-[17px] font-semibold mb-1">
+                      Join the Movement
+                    </p>
+                    <p className="text-white/40 text-[11px]">
+                      8 masterclass episodes + exclusive access.
+                    </p>
+                  </div>
+
+                  <form onSubmit={handleSubmit} className="space-y-3">
+                    <input name="name" placeholder="Your Name" autoFocus className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
+                    <input name="email" type="email" placeholder="Email" required className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
+                    <input name="phone" type="tel" placeholder="Phone Number" className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
+                    <input name="social" placeholder="Instagram @handle" className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
+                    <button type="submit" disabled={formLoading} className="w-full bg-[#EEC11E] text-black text-[12px] tracking-[0.25em] uppercase font-semibold py-4 hover:bg-[#EEC11E]/90 transition-colors disabled:opacity-50">
+                      {formLoading ? '...' : 'Subscribe — Free Access'}
+                    </button>
+                    <p className="text-white/25 text-[8px] text-center">Cancel anytime. We respect your privacy.</p>
+                  </form>
+
+                  <button
+                    onClick={() => setShowForm(false)}
+                    className="w-full text-white/30 text-[10px] tracking-[0.15em] uppercase mt-4 py-2 hover:text-white/50 transition-colors"
+                  >
+                    Maybe Later
+                  </button>
+                </>
+              ) : (
+                <>
+                  {/* MASTERCLASS — shown after joining */}
+                  <div className="text-center mb-8">
+                    <Image
+                      src="/brand/rhr-monogram-transparent.png"
+                      alt="R-M"
+                      width={70}
+                      height={70}
+                      className="mx-auto mb-4 opacity-70"
+                    />
+                    <p className="text-[9px] tracking-[0.5em] uppercase text-[#EEC11E] mb-3 font-medium">
+                      Welcome to the Inner Circle
+                    </p>
+                    <h2 className="text-white text-xl font-bold mb-2">
+                      The Rohan Marley<br />Business Masterclass
+                    </h2>
+                    <p className="text-white/50 text-[12px] max-w-[300px] mx-auto">
+                      8 episodes. Build a legacy brand. From the man who turned heritage into an empire.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3 mb-8">
+                    {[
+                      { title: 'From Blue Mountain to Global Impact', desc: 'Building a legacy brand that honors heritage while scaling internationally.', image: '/lion-order/field-sunset.jpg' },
+                      { title: 'The Cannabis Entrepreneur\'s Playbook', desc: 'Navigating Lion Order — from regulatory challenges to luxury positioning.', image: '/lion-order/crest-gold.jpg' },
+                      { title: 'Multi-Generational Family Business', desc: 'Keeping the table at the center — making decisions where hierarchy disappears.', image: '/lion-order/community-table.jpg' },
+                      { title: 'Hospitality as Heritage', desc: 'Creating luxury experiences that feel like home — the Beach House blueprint.', image: '/lion-order/rainforest.jpg' },
+                      { title: 'Storytelling as Business Strategy', desc: 'Craft a brand narrative that transcends products and creates cultural movement.', image: '/lion-order/heritage.jpg' },
+                      { title: 'From Athlete to Entrepreneur', desc: 'Building a second act that\'s bigger and more meaningful than the first.', image: '/lion-order/rohan-portrait.jpg' },
+                      { title: 'Rastafari Business Principles', desc: 'Blending spirituality with commerce — One Love Economics.', image: '/lion-order/selassie.jpg' },
+                      { title: 'Building Revenue Streams', desc: 'The portfolio playbook — creating synergy across an empire.', image: '/lion-order/culture.jpg' },
+                    ].map((ep) => (
+                      <div key={ep.title} className="flex gap-3 border border-white/10 bg-white/5 overflow-hidden">
+                        <div className="relative w-24 shrink-0">
+                          <Image src={ep.image} alt={ep.title} fill className="object-cover object-top" sizes="96px" />
+                        </div>
+                        <div className="py-3 pr-3">
+                          <p className="text-white text-[13px] font-bold leading-snug mb-1">{ep.title}</p>
+                          <p className="text-white/40 text-[10px] leading-[1.5]">{ep.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex justify-center gap-6 mb-8">
+                    <div className="text-center">
+                      <p className="text-[#EEC11E] text-lg font-bold">663K</p>
+                      <p className="text-white/40 text-[9px] uppercase font-semibold">Followers</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-[#EEC11E] text-lg font-bold">8</p>
+                      <p className="text-white/40 text-[9px] uppercase font-semibold">Episodes</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-[#EEC11E] text-lg font-bold">5+</p>
+                      <p className="text-white/40 text-[9px] uppercase font-semibold">Brands Built</p>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => setShowForm(false)}
+                    className="w-full bg-[#EEC11E] text-black text-[12px] tracking-[0.25em] uppercase font-semibold py-4 hover:bg-[#EEC11E]/90 transition-colors"
+                  >
+                    Start Watching
+                  </button>
+                </>
+              )}
+
             </div>
-
-            <form onSubmit={(e) => { handleSubmit(e); setShowForm(false); }} className="space-y-3">
-              <input name="name" placeholder="Your Name" autoFocus className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
-              <input name="email" type="email" placeholder="Email" required className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
-              <input name="phone" type="tel" placeholder="Phone Number" className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
-              <input name="social" placeholder="Instagram @handle" className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
-              <button type="submit" disabled={formLoading} className="w-full bg-[#EEC11E] text-black text-[12px] tracking-[0.25em] uppercase font-semibold py-4 hover:bg-[#EEC11E]/90 transition-colors disabled:opacity-50">
-                {formLoading ? '...' : 'Subscribe — Free Access'}
-              </button>
-              <p className="text-white/25 text-[8px] text-center">Cancel anytime. We respect your privacy.</p>
-            </form>
-
-            <button
-              onClick={() => setShowForm(false)}
-              className="w-full text-white/30 text-[10px] tracking-[0.15em] uppercase mt-4 py-2 hover:text-white/50 transition-colors"
-            >
-              Maybe Later
-            </button>
           </div>
         </div>
       )}
@@ -233,98 +308,6 @@ export default function HomePage() {
 
       <div className="gold-rule mx-8" />
 
-      {/* ═══ THE MASTERCLASS — Inner Circle ═══ */}
-      <motion.section {...fadeIn} id="inner-circle" className="px-4 py-12">
-        <div className="text-center mb-8">
-          <Image
-            src="/brand/rhr-monogram-transparent.png"
-            alt="R-M"
-            width={50}
-            height={50}
-            className="mx-auto mb-4 opacity-50"
-          />
-          <p className="text-[9px] tracking-[0.5em] uppercase text-[#EEC11E] mb-3 font-medium">
-            The Inner Circle
-          </p>
-          <h2 className="text-black text-xl font-semibold mb-2">
-            The Rohan Marley<br />Business Masterclass
-          </h2>
-          <p className="text-black/60 text-[12px] font-medium max-w-[300px] mx-auto">
-            8 episodes. Build a legacy brand. From the man who turned heritage into an empire.
-          </p>
-        </div>
-
-        {/* Masterclass episodes grid */}
-        <div className="space-y-3 mb-10">
-          {[
-            { title: 'From Blue Mountain to Global Impact', desc: 'Building a legacy brand that honors heritage while scaling internationally.', image: '/lion-order/field-sunset.jpg' },
-            { title: 'The Cannabis Entrepreneur\'s Playbook', desc: 'Navigating Lion Order — from regulatory challenges to luxury positioning.', image: '/lion-order/crest-gold.jpg' },
-            { title: 'Multi-Generational Family Business', desc: 'Keeping the table at the center — making decisions where hierarchy disappears.', image: '/lion-order/community-table.jpg' },
-            { title: 'Hospitality as Heritage', desc: 'Creating luxury experiences that feel like home — the Beach House blueprint.', image: '/lion-order/rainforest.jpg' },
-            { title: 'Storytelling as Business Strategy', desc: 'Craft a brand narrative that transcends products and creates cultural movement.', image: '/lion-order/heritage.jpg' },
-            { title: 'From Athlete to Entrepreneur', desc: 'Building a second act that\'s bigger and more meaningful than the first.', image: '/lion-order/rohan-portrait.jpg' },
-            { title: 'Rastafari Business Principles', desc: 'Blending spirituality with commerce — One Love Economics.', image: '/lion-order/selassie.jpg' },
-            { title: 'Building Revenue Streams', desc: 'The portfolio playbook — creating synergy across an empire.', image: '/lion-order/culture.jpg' },
-          ].map((ep) => (
-            <div key={ep.title} className="flex gap-3 border border-[var(--gold)]/15 bg-[var(--panel)] overflow-hidden">
-              <div className="relative w-24 shrink-0">
-                <Image src={ep.image} alt={ep.title} fill className="object-cover object-top" sizes="96px" />
-              </div>
-              <div className="py-3 pr-3">
-                <p className="text-black text-[13px] font-bold leading-snug mb-1">{ep.title}</p>
-                <p className="text-black/50 text-[10px] leading-[1.5]">{ep.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Subscription form */}
-        <div className="border border-[#EEC11E]/20 bg-[var(--panel)] p-6 max-w-[380px] mx-auto">
-          <p className="text-[9px] tracking-[0.4em] uppercase text-[#EEC11E] mb-2 text-center font-medium">
-            Subscribe Now
-          </p>
-          <p className="text-black text-[15px] font-bold text-center mb-1">
-            Join the Inner Circle
-          </p>
-          <p className="text-black/60 text-[11px] font-medium text-center mb-5">
-            Get all 8 episodes + exclusive drops + early access to everything.
-          </p>
-
-          {submitted ? (
-            <div className="text-center py-4">
-              <p className="text-[#EEC11E] text-base font-semibold mb-1">Welcome to the Inner Circle.</p>
-              <p className="text-white/50 text-[11px]">Episode 1 is on its way.</p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-2.5">
-              <input name="name" placeholder="Your Name" className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
-              <input name="email" type="email" placeholder="Email" required className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
-              <input name="phone" type="tel" placeholder="Phone Number" className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
-              <input name="social" placeholder="Instagram @handle" className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
-              <button type="submit" disabled={formLoading} className="w-full bg-[#EEC11E] text-black text-[11px] tracking-[0.25em] uppercase font-semibold py-3.5 hover:bg-[#EEC11E]/90 transition-colors disabled:opacity-50">
-                {formLoading ? '...' : 'Subscribe — Free Access'}
-              </button>
-              <p className="text-white/25 text-[7px] text-center">Cancel anytime. We respect your privacy.</p>
-            </form>
-          )}
-        </div>
-
-        {/* Social proof */}
-        <div className="flex justify-center gap-6 mt-8">
-          <div className="text-center">
-            <p className="text-black text-lg font-bold">663K</p>
-            <p className="text-black text-[9px] tracking-[0.1em] uppercase font-semibold">Followers</p>
-          </div>
-          <div className="text-center">
-            <p className="text-black text-lg font-bold">8</p>
-            <p className="text-black text-[9px] tracking-[0.1em] uppercase font-semibold">Episodes</p>
-          </div>
-          <div className="text-center">
-            <p className="text-black text-lg font-bold">5+</p>
-            <p className="text-black text-[9px] tracking-[0.1em] uppercase font-semibold">Brands Built</p>
-          </div>
-        </div>
-      </motion.section>
 
       <div className="gold-rule mx-8" />
 
