@@ -310,9 +310,9 @@ export default function HomePage() {
         <Image
           src="/brand/rohan-signature.png"
           alt="Rohan Marley"
-          width={140}
-          height={45}
-          className="mx-auto mb-6 opacity-60"
+          width={260}
+          height={85}
+          className="mx-auto mb-6 opacity-95 brightness-150"
         />
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6">
           {['marleycoffee.com', 'lionorder.com', 'romarleybeachhouse.com', 'rohanmarley.com'].map((site) => (
