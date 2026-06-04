@@ -141,7 +141,7 @@ export default function HomePage() {
         <motion.div {...fadeIn} className="border-t border-[var(--gold)]/20">
           <div className="relative w-full" style={{ paddingTop: '177.8%' }}>
             <iframe
-              src="https://player.vimeo.com/video/1198570907?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              src="https://player.vimeo.com/video/1198572971?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 w-full h-full"
               style={{ border: 'none' }}
               allow="autoplay; fullscreen; picture-in-picture"
