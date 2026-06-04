@@ -42,7 +42,7 @@
 
 /* ─── Base ─── */
 body {
-  background: var(--bg) url('/brand/black-paper-bg.jpg') center / 200px auto repeat fixed;
+  background: #f4d30b url('/brand/black-paper-bg.jpg') center / 200px auto repeat fixed;
   color: var(--cream);
   font-family: var(--font-body), 'EB Garamond', Georgia, serif;
   -webkit-font-smoothing: antialiased;
