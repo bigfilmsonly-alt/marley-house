@@ -29,7 +29,7 @@ export default function TabBar() {
   const { openLink } = useInAppBrowser();
 
   return (
-    <nav className="flex items-center justify-around border-t border-[var(--line)] bg-[var(--bg)]/95 backdrop-blur-xl">
+    <nav className="flex items-center justify-around border-t border-[var(--line)] bg-black/90 backdrop-blur-xl">
       <div className="flex items-center justify-around w-full px-1 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
         {tabs.map((tab) => {
           const active =
