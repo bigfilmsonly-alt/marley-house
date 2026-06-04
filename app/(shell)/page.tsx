@@ -68,7 +68,7 @@ export default function HomePage() {
           />
 
           <button
-            onClick={() => { trackEvent('enter'); document.getElementById('inner-circle')?.scrollIntoView({ behavior: 'smooth' }); }}
+            onClick={() => { trackEvent('enter'); document.getElementById('pillars')?.scrollIntoView({ behavior: 'smooth' }); }}
             className="border border-[#E8C23A]/50 text-[#E8C23A] text-[11px] tracking-[0.3em] uppercase px-10 py-3 hover:bg-[var(--gold)]/5 transition-colors"
           >
             Enter
@@ -82,6 +82,82 @@ export default function HomePage() {
           From Bob to Rohan — a legacy carried forward through coffee, culture, and craft.
         </p>
       </motion.section>
+
+      <div className="gold-rule mx-8" />
+
+      {/* ═══ THREE PILLARS — video + CTA ═══ */}
+      <section id="pillars" className="w-full">
+
+        {/* 01 — Marley Coffee */}
+        <motion.div {...fadeIn} className="border-t border-[var(--gold)]/20">
+          <div className="relative w-full" style={{ paddingTop: '177.8%' }}>
+            <iframe
+              src="https://player.vimeo.com/video/1198236151?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 w-full h-full"
+              style={{ border: 'none' }}
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+          <div className="bg-[var(--bg)] px-6 py-6 text-center">
+            <p className="text-[9px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 font-medium">01</p>
+            <h2 className="font-display text-2xl text-white font-semibold mb-2">Marley Coffee</h2>
+            <p className="text-white/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
+              The original. Coffee from the Blue Mountains of Jamaica — legacy in every cup.
+            </p>
+            <a href="https://marleycoffee.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#E8C23A]/40 text-[#E8C23A] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#E8C23A]/5 transition-colors">
+              Shop the Coffee
+            </a>
+          </div>
+        </motion.div>
+
+        {/* 02 — Lion Order */}
+        <motion.div {...fadeIn} className="border-t border-[var(--gold)]/20">
+          <div className="relative w-full" style={{ paddingTop: '168.7%' }}>
+            <iframe
+              src="https://player.vimeo.com/video/1198233695?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 w-full h-full"
+              style={{ border: 'none' }}
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+          <div className="bg-[var(--bg)] px-6 py-6 text-center">
+            <p className="text-[9px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 font-medium">02</p>
+            <h2 className="font-display text-2xl text-white font-semibold mb-2">Lion Order</h2>
+            <p className="text-white/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
+              Flower to the people. Roots-luxury cannabis that elevates consciousness.
+            </p>
+            <a href="https://lionorder.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#E8C23A]/40 text-[#E8C23A] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#E8C23A]/5 transition-colors">
+              Explore Lion Order
+            </a>
+          </div>
+        </motion.div>
+
+        {/* 03 — RoMarley Beach House */}
+        <motion.div {...fadeIn} className="border-t border-[var(--gold)]/20">
+          <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
+            <iframe
+              src="https://player.vimeo.com/video/1198237050?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+              className="absolute inset-0 w-full h-full"
+              style={{ border: 'none' }}
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+          <div className="bg-[var(--bg)] px-6 py-6 text-center">
+            <p className="text-[9px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 font-medium">03</p>
+            <h2 className="font-display text-2xl text-white font-semibold mb-2">RoMarley Beach House</h2>
+            <p className="text-white/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
+              Where the Caribbean meets luxury — Puerto Morelos, Riviera Maya.
+            </p>
+            <a href="https://www.romarleybeachhouse.com/en" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#E8C23A]/40 text-[#E8C23A] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#E8C23A]/5 transition-colors">
+              Book Your Stay
+            </a>
+          </div>
+        </motion.div>
+
+      </section>
 
       <div className="gold-rule mx-8" />
 

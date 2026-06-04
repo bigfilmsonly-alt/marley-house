@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Coffee, Play, Crown } from 'lucide-react';
+import { Home, Coffee, Play, Crown, Flame } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { LucideIcon } from 'lucide-react';
 import { tabView } from '@/lib/tracking';
@@ -20,6 +20,7 @@ const tabs: Tab[] = [
   { href: '/coffee', icon: Coffee, label: 'Coffee', embed: { url: 'https://marleycoffee.com', title: 'Marley Coffee' } },
   { href: '/watch', icon: Play, label: 'Watch' },
   { href: '/king-clem', icon: Crown, label: 'King Clem' },
+  { href: '/lion-order', icon: Flame, label: 'Lion Order', embed: { url: 'https://lionorder.com', title: 'Lion Order' } },
 ];
 
 export default function TabBar() {
@@ -48,7 +49,7 @@ export default function TabBar() {
                   />
                 )}
                 <tab.icon
-                  size={20}
+                  size={18}
                   className={
                     active
                       ? 'text-[var(--gold)] relative z-10'
@@ -58,7 +59,7 @@ export default function TabBar() {
                 />
               </motion.div>
               <span
-                className={`font-display text-[9px] tracking-[0.12em] uppercase ${
+                className={`font-display text-[8px] tracking-[0.12em] uppercase ${
                   active
                     ? 'text-[var(--gold)] font-medium'
                     : 'text-[var(--dim)] font-light'
