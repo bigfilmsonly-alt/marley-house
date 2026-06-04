@@ -67,12 +67,29 @@ export default function HomePage() {
             className="mb-8 opacity-95 brightness-150"
           />
 
-          <button
-            onClick={() => { trackEvent('enter'); document.getElementById('pillars')?.scrollIntoView({ behavior: 'smooth' }); }}
-            className="border border-[#E8C23A]/50 text-[#E8C23A] text-[11px] tracking-[0.3em] uppercase px-10 py-3 hover:bg-[var(--gold)]/5 transition-colors"
-          >
-            Enter
-          </button>
+          {/* Inner Circle capture — right in the hero */}
+          <div className="w-full max-w-[320px]">
+            <p className="text-[9px] tracking-[0.4em] uppercase text-[#E8C23A] mb-4 text-center font-medium">
+              Join the Inner Circle
+            </p>
+            {submitted ? (
+              <div className="text-center py-4">
+                <p className="text-[#E8C23A] text-base font-semibold mb-1">Welcome to the House.</p>
+                <p className="text-white/50 text-[11px]">Check your inbox.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-2.5">
+                <input name="name" placeholder="Your Name" className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
+                <input name="email" type="email" placeholder="Email" required className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
+                <input name="phone" type="tel" placeholder="Phone Number" className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
+                <input name="social" placeholder="Instagram @handle" className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
+                <button type="submit" disabled={formLoading} className="w-full bg-[#E8C23A] text-black text-[11px] tracking-[0.25em] uppercase font-semibold py-3 hover:bg-[#E8C23A]/90 transition-colors disabled:opacity-50">
+                  {formLoading ? '...' : 'Enter'}
+                </button>
+                <p className="text-white/30 text-[7px] text-center">We respect your privacy.</p>
+              </form>
+            )}
+          </div>
         </div>
       </section>
 

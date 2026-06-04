@@ -50,20 +50,20 @@ export default function TabBar() {
                   />
                 )}
                 <tab.icon
-                  size={16}
+                  size={20}
                   className={
                     active
-                      ? 'text-[var(--gold)] relative z-10'
-                      : 'text-[var(--dim)] relative z-10'
+                      ? 'text-[#E8C23A] relative z-10'
+                      : 'text-white/50 relative z-10'
                   }
                   strokeWidth={active ? 2 : 1.4}
                 />
               </motion.div>
               <span
-                className={`font-display text-[7px] tracking-[0.12em] uppercase ${
+                className={`font-display text-[8px] tracking-[0.12em] uppercase ${
                   active
-                    ? 'text-[var(--gold)] font-medium'
-                    : 'text-[var(--dim)] font-light'
+                    ? 'text-[#E8C23A] font-medium'
+                    : 'text-white/50 font-light'
                 }`}
               >
                 {tab.label}
