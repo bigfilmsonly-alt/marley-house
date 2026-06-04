@@ -43,10 +43,10 @@ export default function HomePage() {
   }
 
   return (
-    <div className="relative min-h-full bg-[var(--bg)]">
+    <div className="relative min-h-full">
 
       {/* ═══ HERO ═══ */}
-      <section className="w-full bg-black pt-12 pb-8">
+      <section className="w-full pt-12 pb-8">
         <div className="flex flex-col items-center justify-center px-8">
           <div className="relative w-[220px] h-[220px] mb-4">
             <Image
@@ -148,7 +148,7 @@ export default function HomePage() {
               allowFullScreen
             />
           </div>
-          <div className="bg-[var(--bg)] px-6 py-6 text-center">
+          <div className="px-6 py-6 text-center">
             <p className="text-[9px] tracking-[0.4em] uppercase text-[#EEC11E] mb-2 font-medium">01</p>
             <h2 className="font-display text-2xl text-white font-semibold mb-2">Marley Coffee</h2>
             <p className="text-white/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
@@ -171,7 +171,7 @@ export default function HomePage() {
               allowFullScreen
             />
           </div>
-          <div className="bg-[var(--bg)] px-6 py-6 text-center">
+          <div className="px-6 py-6 text-center">
             <p className="text-[9px] tracking-[0.4em] uppercase text-[#EEC11E] mb-2 font-medium">02</p>
             <h2 className="font-display text-2xl text-white font-semibold mb-2">Lion Order</h2>
             <p className="text-white/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
@@ -194,7 +194,7 @@ export default function HomePage() {
               allowFullScreen
             />
           </div>
-          <div className="bg-[var(--bg)] px-6 py-6 text-center">
+          <div className="px-6 py-6 text-center">
             <p className="text-[9px] tracking-[0.4em] uppercase text-[#EEC11E] mb-2 font-medium">03</p>
             <h2 className="font-display text-2xl text-white font-semibold mb-2">RoMarley Beach House</h2>
             <p className="text-white/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">

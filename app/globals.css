@@ -96,7 +96,7 @@ body {
 .device-shell { width: 100%; height: 100%; position: relative; }
 .device-notch { display: none; }
 .device-btn { display: none; }
-.device-viewport { width: 100%; height: 100%; overflow: hidden; position: relative; background: var(--bg); }
+.device-viewport { width: 100%; height: 100%; overflow: hidden; position: relative; background: transparent; }
 
 @media (min-width: 768px) {
   .device-wrapper {
@@ -136,7 +136,7 @@ body {
   .device-btn--vol-up { left: -3px; top: 210px; width: 4px; height: 54px; border-radius: 2px 0 0 2px; }
   .device-btn--vol-down { left: -3px; top: 274px; width: 4px; height: 54px; border-radius: 2px 0 0 2px; }
   .device-btn--power { right: -3px; top: 232px; width: 4px; height: 82px; border-radius: 0 2px 2px 0; }
-  .device-viewport { border-radius: 52px; background: var(--bg); }
+  .device-viewport { border-radius: 52px; background: transparent; }
 }
 
 /* ─── Animations ─── */
