@@ -69,11 +69,11 @@ export default function HomePage() {
 
           {/* Single CTA — opens form modal */}
           {submitted ? (
-            <p className="text-[#E8C23A] text-sm font-semibold">Welcome to the Inner Circle.</p>
+            <p className="text-[#B5851E] text-sm font-semibold">Welcome to the Inner Circle.</p>
           ) : (
             <button
               onClick={() => setShowForm(true)}
-              className="bg-[#E8C23A] text-black text-[11px] tracking-[0.3em] uppercase font-semibold px-12 py-3.5 hover:bg-[#E8C23A]/90 transition-colors"
+              className="bg-[#B5851E] text-black text-[11px] tracking-[0.3em] uppercase font-semibold px-12 py-3.5 hover:bg-[#B5851E]/90 transition-colors"
             >
               Join the Inner Circle
             </button>
