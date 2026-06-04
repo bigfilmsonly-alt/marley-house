@@ -336,16 +336,16 @@ export default function HomePage() {
         <Image
           src="/brand/rhr-monogram-transparent.png"
           alt="R-M Monogram"
-          width={80}
-          height={80}
-          className="mx-auto mb-4 opacity-70"
+          width={160}
+          height={160}
+          className="mx-auto mb-5 drop-shadow-[0_0_6px_rgba(0,0,0,0.6)]"
         />
         <Image
           src="/brand/rohan-signature.png"
           alt="Rohan Marley"
-          width={260}
-          height={85}
-          className="mx-auto mb-6 opacity-95 brightness-150"
+          width={300}
+          height={100}
+          className="mx-auto mb-8 brightness-150 drop-shadow-[0_0_4px_rgba(0,0,0,0.6)]"
         />
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6">
           {['marleycoffee.com', 'lionorder.com', 'romarleybeachhouse.com', 'rohanmarley.com'].map((site) => (

@@ -30,10 +30,10 @@ export default function ShellLayout({
 
           {/* Brand logos — right above tabs */}
           <div className="flex-shrink-0 pt-3 pb-1 bg-black">
-            <div className="flex items-center justify-center gap-3 mb-2 px-4">
-              <img src="/brand/lion-gold-footer.png" alt="Lion Order" width="120" height="120" className="brightness-125" />
-              <img src="/brand/rastafari-lion-university.png" alt="Rastafari Lion Order University" width="130" height="130" className="brightness-125" />
-              <img src="/brand/lion-crest-clean.png" alt="Lion Order Crest" width="100" height="100" className="brightness-125" />
+            <div className="flex items-center justify-center gap-4 mb-2 px-4">
+              <img src="/brand/lion-gold-footer.png" alt="Lion Order" width="120" height="120" style={{ filter: 'brightness(1.4) drop-shadow(0 0 5px rgba(238,193,30,0.4))' }} />
+              <img src="/brand/rastafari-lion-university.png" alt="Rastafari Lion Order University" width="130" height="130" style={{ filter: 'brightness(1.3) drop-shadow(0 0 5px rgba(238,193,30,0.4))' }} />
+              <img src="/brand/lion-crest-clean.png" alt="Lion Order Crest" width="120" height="120" style={{ filter: 'brightness(1.4) drop-shadow(0 0 5px rgba(238,193,30,0.4))' }} />
             </div>
             <p style={{ color: '#EEC11E', fontSize: '9px', letterSpacing: '0.4em', textTransform: 'uppercase', textAlign: 'center', fontWeight: 500, marginBottom: '2px' }}>
               Lion Order · Est. 2022
