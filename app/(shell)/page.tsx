@@ -13,7 +13,7 @@ const fadeIn = {
 } as const;
 
 export default function HomePage() {
-  const [formOpen, setFormOpen] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
 
@@ -67,31 +67,63 @@ export default function HomePage() {
             className="mb-8 opacity-95 brightness-150"
           />
 
-          {/* Inner Circle capture — right in the hero */}
-          <div className="w-full max-w-[320px]">
-            <p className="text-[9px] tracking-[0.4em] uppercase text-[#E8C23A] mb-4 text-center font-medium">
+          {/* Single CTA — opens form modal */}
+          {submitted ? (
+            <p className="text-[#E8C23A] text-sm font-semibold">Welcome to the Inner Circle.</p>
+          ) : (
+            <button
+              onClick={() => setShowForm(true)}
+              className="bg-[#E8C23A] text-black text-[11px] tracking-[0.3em] uppercase font-semibold px-12 py-3.5 hover:bg-[#E8C23A]/90 transition-colors"
+            >
               Join the Inner Circle
-            </p>
-            {submitted ? (
-              <div className="text-center py-4">
-                <p className="text-[#E8C23A] text-base font-semibold mb-1">Welcome to the House.</p>
-                <p className="text-white/50 text-[11px]">Check your inbox.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-2.5">
-                <input name="name" placeholder="Your Name" className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
-                <input name="email" type="email" placeholder="Email" required className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
-                <input name="phone" type="tel" placeholder="Phone Number" className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
-                <input name="social" placeholder="Instagram @handle" className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
-                <button type="submit" disabled={formLoading} className="w-full bg-[#E8C23A] text-black text-[11px] tracking-[0.25em] uppercase font-semibold py-3 hover:bg-[#E8C23A]/90 transition-colors disabled:opacity-50">
-                  {formLoading ? '...' : 'Enter'}
-                </button>
-                <p className="text-white/30 text-[7px] text-center">We respect your privacy.</p>
-              </form>
-            )}
-          </div>
+            </button>
+          )}
         </div>
       </section>
+
+      {/* ═══ FORM MODAL — full screen overlay ═══ */}
+      {showForm && !submitted && (
+        <div className="fixed inset-0 z-[85] flex items-center justify-center bg-black/95 backdrop-blur-sm px-6">
+          <div className="w-full max-w-[360px]">
+            <div className="text-center mb-6">
+              <Image
+                src="/brand/rhr-monogram-transparent.png"
+                alt="R-M"
+                width={60}
+                height={60}
+                className="mx-auto mb-4 opacity-60"
+              />
+              <p className="text-[9px] tracking-[0.5em] uppercase text-[#E8C23A] mb-2 font-medium">
+                The Inner Circle
+              </p>
+              <p className="text-white text-[17px] font-semibold mb-1">
+                Join the Movement
+              </p>
+              <p className="text-white/40 text-[11px]">
+                8 masterclass episodes + exclusive access.
+              </p>
+            </div>
+
+            <form onSubmit={(e) => { handleSubmit(e); setShowForm(false); }} className="space-y-3">
+              <input name="name" placeholder="Your Name" autoFocus className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
+              <input name="email" type="email" placeholder="Email" required className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
+              <input name="phone" type="tel" placeholder="Phone Number" className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
+              <input name="social" placeholder="Instagram @handle" className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
+              <button type="submit" disabled={formLoading} className="w-full bg-[#E8C23A] text-black text-[12px] tracking-[0.25em] uppercase font-semibold py-4 hover:bg-[#E8C23A]/90 transition-colors disabled:opacity-50">
+                {formLoading ? '...' : 'Subscribe — Free Access'}
+              </button>
+              <p className="text-white/25 text-[8px] text-center">Cancel anytime. We respect your privacy.</p>
+            </form>
+
+            <button
+              onClick={() => setShowForm(false)}
+              className="w-full text-white/30 text-[10px] tracking-[0.15em] uppercase mt-4 py-2 hover:text-white/50 transition-colors"
+            >
+              Maybe Later
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* ═══ LEGACY LINE ═══ */}
       <motion.section {...fadeIn} className="px-8 py-10 text-center">
