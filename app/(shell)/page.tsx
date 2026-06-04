@@ -110,7 +110,7 @@ export default function HomePage() {
       {/* ═══ HERO ═══ */}
       <section className="w-full bg-black pt-12 pb-8">
         <div className="flex flex-col items-center justify-center px-8">
-          <div className="relative w-[220px] h-[220px] mb-6">
+          <div className="relative w-[220px] h-[220px] mb-4">
             <Image
               src="/brand/rhr-monogram-transparent.png"
               alt="R-M Monogram"
@@ -121,13 +121,13 @@ export default function HomePage() {
             />
           </div>
 
-          <h1 className="text-2xl font-semibold text-white tracking-wide text-center leading-[1.3] mb-3">
-            Awaken the Lion<br />in Everyone
-          </h1>
-
-          <p className="text-[10px] tracking-[0.45em] uppercase text-[#E8C23A] font-medium mb-8">
-            The Legacy of Rohan Marley
-          </p>
+          <Image
+            src="/brand/rohan-signature.png"
+            alt="Rohan Marley"
+            width={180}
+            height={60}
+            className="mb-8 opacity-80 brightness-125"
+          />
 
           <button
             onClick={() => { trackEvent('enter'); document.getElementById('pillars')?.scrollIntoView({ behavior: 'smooth' }); }}
