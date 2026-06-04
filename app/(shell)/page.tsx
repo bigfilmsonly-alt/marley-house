@@ -216,7 +216,7 @@ export default function HomePage() {
           The Legacy
         </p>
         <div className="space-y-2 px-4">
-          {[1, 2, 3, 4, 5, 6].map((n) => (
+          {[1, 2, 3].map((n) => (
             <div key={n} className="overflow-hidden">
               <Image
                 src={`/brand/gallery/${String(n).padStart(2, '0')}.jpg`}
