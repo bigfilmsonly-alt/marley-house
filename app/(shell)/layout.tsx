@@ -5,7 +5,6 @@ import Threshold from '@/components/Threshold';
 import ScrollRestoreMain from '@/components/ScrollRestoreMain';
 import { PlayerProvider } from '@/components/PlayerContext';
 import { InAppBrowserProvider } from '@/components/InAppBrowser';
-import SplashReturn from '@/components/SplashReturn';
 
 export default function ShellLayout({
   children,
@@ -28,22 +27,6 @@ export default function ShellLayout({
             {children}
           </ScrollRestoreMain>
           <MiniPlayer />
-
-          {/* Brand logos — right above tabs */}
-          <div className="flex-shrink-0 pt-4 pb-2 bg-black">
-            <div className="flex items-center justify-center gap-3 mb-3 px-4">
-              <img src="/brand/lion-head-gold.png" alt="Lion Order" width="110" height="110" className="brightness-125" />
-              <SplashReturn />
-              <img src="/brand/lion-crest-clean.png" alt="Lion Order Crest" width="110" height="110" className="brightness-125" />
-            </div>
-            <p style={{ color: '#E8C23A', fontSize: '9px', letterSpacing: '0.4em', textTransform: 'uppercase', textAlign: 'center', fontWeight: 500, marginBottom: '2px' }}>
-              Lion Order · Est. 2022
-            </p>
-            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '8px', letterSpacing: '0.25em', textTransform: 'uppercase', textAlign: 'center', fontWeight: 500 }}>
-              One Love. One House. One Order.
-            </p>
-          </div>
-
           <TabBar />
         </div>
         <Threshold />

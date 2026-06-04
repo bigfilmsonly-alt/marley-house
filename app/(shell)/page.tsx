@@ -3,9 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { joinHouse, shopCoffee, exploreLionOrder, bookStay, trackEvent } from '@/lib/tracking';
-import { useInAppBrowser } from '@/components/InAppBrowser';
-import AgeGate from '@/components/AgeGate';
+import { joinHouse, trackEvent } from '@/lib/tracking';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -14,44 +12,10 @@ const fadeIn = {
   transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const },
 } as const;
 
-const pillars = [
-  {
-    name: 'Marley Coffee',
-    line: 'The original. Coffee from the Blue Mountains of Jamaica — legacy in every cup.',
-    cta: 'Shop the Coffee',
-    ctaSecondary: 'Start a Subscription',
-    url: 'https://marleycoffee.com',
-    image: '/lion-order/community-table.jpg',
-    accent: '#E8C23A',
-  },
-  {
-    name: 'Lion Order',
-    line: 'Flower to the people. Roots-luxury cannabis that elevates consciousness.',
-    cta: 'Explore Lion Order',
-    ctaSecondary: 'Join the Movement',
-    url: 'https://lionorder.com',
-    image: '/lion-order/lion-eyes.jpg',
-    accent: '#E8C23A',
-    ageGate: true,
-  },
-  {
-    name: 'RoMarley Beach House',
-    line: 'Where the Caribbean meets luxury — Puerto Morelos, Riviera Maya.',
-    cta: 'Book Your Stay',
-    ctaSecondary: 'View the House',
-    url: 'https://www.romarleybeachhouse.com/en',
-    image: '/lion-order/rainforest.jpg',
-    accent: '#E8C23A',
-  },
-];
-
 export default function HomePage() {
   const [formOpen, setFormOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
-  const [ageGateOpen, setAgeGateOpen] = useState(false);
-  const [pendingPillar, setPendingPillar] = useState<typeof pillars[0] | null>(null);
-  const { openLink } = useInAppBrowser();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -75,32 +39,6 @@ export default function HomePage() {
       }
     } finally {
       setFormLoading(false);
-    }
-  }
-
-  function handlePillarClick(pillar: typeof pillars[0]) {
-    if (pillar.ageGate) {
-      const confirmed = sessionStorage.getItem('lion-order-age');
-      if (!confirmed) {
-        setPendingPillar(pillar);
-        setAgeGateOpen(true);
-        return;
-      }
-    }
-    // Track + open
-    if (pillar.name === 'Marley Coffee') shopCoffee();
-    else if (pillar.name === 'Lion Order') exploreLionOrder();
-    else if (pillar.name === 'RoMarley Beach House') bookStay();
-    openLink(pillar.url, pillar.name);
-  }
-
-  function handleAgeConfirm() {
-    sessionStorage.setItem('lion-order-age', '1');
-    setAgeGateOpen(false);
-    if (pendingPillar) {
-      exploreLionOrder();
-      openLink(pendingPillar.url, pendingPillar.name);
-      setPendingPillar(null);
     }
   }
 
@@ -130,7 +68,7 @@ export default function HomePage() {
           />
 
           <button
-            onClick={() => { trackEvent('enter'); document.getElementById('pillars')?.scrollIntoView({ behavior: 'smooth' }); }}
+            onClick={() => { trackEvent('enter'); document.getElementById('inner-circle')?.scrollIntoView({ behavior: 'smooth' }); }}
             className="border border-[#E8C23A]/50 text-[#E8C23A] text-[11px] tracking-[0.3em] uppercase px-10 py-3 hover:bg-[var(--gold)]/5 transition-colors"
           >
             Enter
@@ -147,113 +85,8 @@ export default function HomePage() {
 
       <div className="gold-rule mx-8" />
 
-      {/* ═══ THREE VIDEOS — stacked, CTAs below each ═══ */}
-      <section id="pillars" className="w-full">
-
-        {/* 01 — Marley Coffee */}
-        <motion.div {...fadeIn} className="border-t border-[var(--gold)]/20">
-          <div className="relative w-full" style={{ paddingTop: '177.8%' }}>
-            <iframe
-              src="https://player.vimeo.com/video/1198236151?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 w-full h-full"
-              style={{ border: 'none' }}
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-          <div className="bg-[var(--bg)] px-6 py-6 text-center">
-            <p className="text-[9px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 font-medium">01</p>
-            <h2 className="font-display text-2xl text-white font-semibold mb-2">Marley Coffee</h2>
-            <p className="text-white/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
-              The original. Coffee from the Blue Mountains of Jamaica — legacy in every cup.
-            </p>
-            <button onClick={() => handlePillarClick(pillars[0])} className="border border-[#E8C23A]/40 text-[#E8C23A] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#E8C23A]/5 transition-colors">
-              Shop the Coffee
-            </button>
-          </div>
-        </motion.div>
-
-        {/* 02 — Lion Order */}
-        <motion.div {...fadeIn} className="border-t border-[var(--gold)]/20">
-          <div className="relative w-full" style={{ paddingTop: '168.7%' }}>
-            <iframe
-              src="https://player.vimeo.com/video/1198233695?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 w-full h-full"
-              style={{ border: 'none' }}
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-          <div className="bg-[var(--bg)] px-6 py-6 text-center">
-            <p className="text-[9px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 font-medium">02</p>
-            <h2 className="font-display text-2xl text-white font-semibold mb-2">Lion Order</h2>
-            <p className="text-white/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
-              Flower to the people. Roots-luxury cannabis that elevates consciousness.
-            </p>
-            <button onClick={() => handlePillarClick(pillars[1])} className="border border-[#E8C23A]/40 text-[#E8C23A] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#E8C23A]/5 transition-colors">
-              Explore Lion Order
-            </button>
-          </div>
-        </motion.div>
-
-        {/* 03 — RoMarley Beach House */}
-        <motion.div {...fadeIn} className="border-t border-[var(--gold)]/20">
-          <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
-            <iframe
-              src="https://player.vimeo.com/video/1198237050?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 w-full h-full"
-              style={{ border: 'none' }}
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-          <div className="bg-[var(--bg)] px-6 py-6 text-center">
-            <p className="text-[9px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 font-medium">03</p>
-            <h2 className="font-display text-2xl text-white font-semibold mb-2">RoMarley Beach House</h2>
-            <p className="text-white/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
-              Where the Caribbean meets luxury — Puerto Morelos, Riviera Maya.
-            </p>
-            <button onClick={() => handlePillarClick(pillars[2])} className="border border-[#E8C23A]/40 text-[#E8C23A] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#E8C23A]/5 transition-colors">
-              Book Your Stay
-            </button>
-          </div>
-        </motion.div>
-
-      </section>
-
-      <div className="gold-rule mx-8" />
-
-      {/* ═══ KING CLEMENTINE STRAIN GUIDE ═══ */}
-      <section className="px-4 py-8">
-        <p className="text-[10px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 text-center font-medium">
-          Strain Reference Guide
-        </p>
-        <p className="text-white text-[16px] font-semibold text-center mb-1">
-          King Clementine
-        </p>
-        <p className="text-white/50 text-[11px] text-center mb-6">
-          6 Pages — Scroll to explore
-        </p>
-        <div className="space-y-2">
-          {[1, 2, 3, 4, 5, 6].map((n) => (
-            <div key={n} className="border border-[var(--gold)]/20 overflow-hidden">
-              <Image
-                src={`/brand/strain-guide/page-${n}.jpg`}
-                alt={`King Clementine Strain Guide — Page ${n}`}
-                width={800}
-                height={1035}
-                className="w-full h-auto"
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <div className="gold-rule mx-8" />
-
       {/* ═══ INNER CIRCLE ═══ */}
-      <motion.section {...fadeIn} className="px-6 py-12">
+      <motion.section {...fadeIn} id="inner-circle" className="px-6 py-12">
         <div className="text-center mb-6">
           <div className="relative w-[60px] h-[60px] mx-auto mb-4">
             <Image
@@ -343,22 +176,6 @@ export default function HomePage() {
           &copy; 2026 Lion Order. All rights reserved.
         </p>
       </motion.footer>
-
-      {/* ═══ AGE GATE OVERLAY ═══ */}
-      {ageGateOpen && (
-        <div className="fixed inset-0 z-[90] flex items-center justify-center bg-[#0b0805]/98 backdrop-blur-sm">
-          <div className="text-center px-8 max-w-[320px]">
-            <Image src="/brand/lion-crest-icon.png" alt="Lion Order" width={48} height={48} className="mx-auto mb-8 opacity-60" />
-            <p className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-4">Age Verification</p>
-            <p className="text-[var(--cream)] font-display text-lg italic mb-6">This content involves plant medicine.</p>
-            <p className="text-white/60 text-xs font-light leading-[1.8] mb-8">You must be of legal age in your jurisdiction to view this content.</p>
-            <button onClick={handleAgeConfirm} className="w-full border border-[var(--gold)]/30 text-[var(--gold)] text-[11px] tracking-[0.25em] uppercase px-6 py-3 hover:bg-[var(--gold)]/5 transition-colors mb-3">
-              I am of legal age
-            </button>
-            <button onClick={() => { setAgeGateOpen(false); setPendingPillar(null); }} className="text-white/60 text-[10px]">Cancel</button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
