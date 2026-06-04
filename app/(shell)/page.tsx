@@ -312,16 +312,16 @@ export default function HomePage() {
         {/* Social proof */}
         <div className="flex justify-center gap-6 mt-8">
           <div className="text-center">
-            <p className="text-[#EEC11E] text-lg font-semibold">663K</p>
-            <p className="text-black/40 text-[9px] tracking-[0.1em] uppercase">Followers</p>
+            <p className="text-black text-lg font-bold">663K</p>
+            <p className="text-black text-[9px] tracking-[0.1em] uppercase font-semibold">Followers</p>
           </div>
           <div className="text-center">
-            <p className="text-[#EEC11E] text-lg font-semibold">8</p>
-            <p className="text-black/40 text-[9px] tracking-[0.1em] uppercase">Episodes</p>
+            <p className="text-black text-lg font-bold">8</p>
+            <p className="text-black text-[9px] tracking-[0.1em] uppercase font-semibold">Episodes</p>
           </div>
           <div className="text-center">
-            <p className="text-[#EEC11E] text-lg font-semibold">5+</p>
-            <p className="text-black/40 text-[9px] tracking-[0.1em] uppercase">Brands Built</p>
+            <p className="text-black text-lg font-bold">5+</p>
+            <p className="text-black text-[9px] tracking-[0.1em] uppercase font-semibold">Brands Built</p>
           </div>
         </div>
       </motion.section>
@@ -333,20 +333,20 @@ export default function HomePage() {
         <Image
           src="/brand/rhr-monogram-transparent.png"
           alt="R-M Monogram"
-          width={160}
-          height={160}
-          className="mx-auto mb-5 drop-shadow-[0_0_6px_rgba(0,0,0,0.6)]"
+          width={200}
+          height={200}
+          className="mx-auto mb-5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]"
         />
         <Image
           src="/brand/rohan-signature.png"
           alt="Rohan Marley"
           width={300}
           height={100}
-          className="mx-auto mb-8 brightness-150 drop-shadow-[0_0_4px_rgba(0,0,0,0.6)]"
+          className="mx-auto mb-8 brightness-150 drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]"
         />
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6">
           {['marleycoffee.com', 'lionorder.com', 'romarleybeachhouse.com', 'rohanmarley.com'].map((site) => (
-            <span key={site} className="text-black/60 text-[9px] tracking-[0.1em]">{site}</span>
+            <span key={site} className="text-black text-[9px] tracking-[0.1em] font-semibold">{site}</span>
           ))}
         </div>
         <div className="flex justify-center gap-6 mb-6">
@@ -360,16 +360,16 @@ export default function HomePage() {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-black/60 text-[10px] tracking-[0.15em] uppercase hover:text-black transition-colors"
+              className="text-black text-[10px] tracking-[0.15em] uppercase font-semibold hover:text-black/70 transition-colors"
             >
               {link.label}
             </a>
           ))}
         </div>
-        <p className="text-black/60 text-[8px] tracking-[0.3em] uppercase mb-2">
+        <p className="text-black text-[8px] tracking-[0.3em] uppercase font-bold mb-2">
           Lion Order · Est. 2022
         </p>
-        <p className="text-black/40 text-[7px] tracking-[0.2em]">
+        <p className="text-black/70 text-[7px] tracking-[0.2em] font-semibold">
           &copy; 2026 Lion Order. All rights reserved.
         </p>
       </motion.footer>
