@@ -257,21 +257,18 @@ export default function HomePage() {
         {/* Masterclass episodes grid */}
         <div className="space-y-3 mb-10">
           {[
-            { ep: '01', title: 'From Blue Mountain to Global Impact', desc: 'Building a legacy brand that honors heritage while scaling internationally.', image: '/lion-order/field-sunset.jpg' },
-            { ep: '02', title: 'The Cannabis Entrepreneur\'s Playbook', desc: 'Navigating Lion Order — from regulatory challenges to luxury positioning.', image: '/lion-order/crest-gold.jpg' },
-            { ep: '03', title: 'Multi-Generational Family Business', desc: 'Keeping the table at the center — making decisions where hierarchy disappears.', image: '/lion-order/community-table.jpg' },
-            { ep: '04', title: 'Hospitality as Heritage', desc: 'Creating luxury experiences that feel like home — the Beach House blueprint.', image: '/lion-order/rainforest.jpg' },
-            { ep: '05', title: 'Storytelling as Business Strategy', desc: 'Craft a brand narrative that transcends products and creates cultural movement.', image: '/lion-order/heritage.jpg' },
-            { ep: '06', title: 'From Athlete to Entrepreneur', desc: 'Building a second act that\'s bigger and more meaningful than the first.', image: '/lion-order/rohan-portrait.jpg' },
-            { ep: '07', title: 'Rastafari Business Principles', desc: 'Blending spirituality with commerce — One Love Economics.', image: '/lion-order/selassie.jpg' },
-            { ep: '08', title: 'Building Revenue Streams', desc: 'The portfolio playbook — creating synergy across an empire.', image: '/lion-order/culture.jpg' },
+            { title: 'From Blue Mountain to Global Impact', desc: 'Building a legacy brand that honors heritage while scaling internationally.', image: '/lion-order/field-sunset.jpg' },
+            { title: 'The Cannabis Entrepreneur\'s Playbook', desc: 'Navigating Lion Order — from regulatory challenges to luxury positioning.', image: '/lion-order/crest-gold.jpg' },
+            { title: 'Multi-Generational Family Business', desc: 'Keeping the table at the center — making decisions where hierarchy disappears.', image: '/lion-order/community-table.jpg' },
+            { title: 'Hospitality as Heritage', desc: 'Creating luxury experiences that feel like home — the Beach House blueprint.', image: '/lion-order/rainforest.jpg' },
+            { title: 'Storytelling as Business Strategy', desc: 'Craft a brand narrative that transcends products and creates cultural movement.', image: '/lion-order/heritage.jpg' },
+            { title: 'From Athlete to Entrepreneur', desc: 'Building a second act that\'s bigger and more meaningful than the first.', image: '/lion-order/rohan-portrait.jpg' },
+            { title: 'Rastafari Business Principles', desc: 'Blending spirituality with commerce — One Love Economics.', image: '/lion-order/selassie.jpg' },
+            { title: 'Building Revenue Streams', desc: 'The portfolio playbook — creating synergy across an empire.', image: '/lion-order/culture.jpg' },
           ].map((ep) => (
-            <div key={ep.ep} className="flex gap-3 border border-[var(--gold)]/15 bg-[var(--panel)] overflow-hidden">
+            <div key={ep.title} className="flex gap-3 border border-[var(--gold)]/15 bg-[var(--panel)] overflow-hidden">
               <div className="relative w-24 shrink-0">
-                <Image src={ep.image} alt={ep.title} fill className="object-cover" sizes="96px" />
-                <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                  <span className="text-[#EEC11E] text-[10px] font-semibold">{ep.ep}</span>
-                </div>
+                <Image src={ep.image} alt={ep.title} fill className="object-cover object-top" sizes="96px" />
               </div>
               <div className="py-3 pr-3">
                 <p className="text-black text-[13px] font-bold leading-snug mb-1">{ep.title}</p>
