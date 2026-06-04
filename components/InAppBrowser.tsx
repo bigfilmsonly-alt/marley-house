@@ -64,7 +64,8 @@ function BrowserOverlay({ state, onClose }: { state: BrowserState | null; onClos
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/70 z-[80] backdrop-blur-sm"
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            className="fixed inset-0 bg-black/80 z-[80] backdrop-blur-md"
             onClick={onClose}
           />
           <motion.div
@@ -72,14 +73,14 @@ function BrowserOverlay({ state, onClose }: { state: BrowserState | null; onClos
             role="dialog"
             aria-modal="true"
             aria-label={state.title || 'External link'}
-            initial={{ y: '100%' }}
-            animate={{ y: 0 }}
-            exit={{ y: '100%' }}
+            initial={{ y: '100%', opacity: 0.5 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: '100%', opacity: 0 }}
             drag="y"
             dragConstraints={{ top: 0 }}
-            dragElastic={0.2}
+            dragElastic={0.1}
             onDragEnd={(_, info) => { if (info.offset.y > 120) onClose(); }}
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            transition={{ duration: 0.7, ease: [0.16, 0.6, 0.3, 1] }}
             className="fixed inset-0 z-[81] bg-[var(--bg)] flex flex-col overflow-hidden md:left-1/2 md:-translate-x-1/2 md:max-w-[390px]"
           >
             {/* Browser chrome */}
