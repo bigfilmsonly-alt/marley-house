@@ -15,7 +15,7 @@ export default function SplashReturn() {
       aria-label="Return to welcome"
     >
       <Image
-        src="/brand/lion-head-new.jpg"
+        src="/brand/rastafari-lion-university.png"
         alt="Lion Order"
         width={130}
         height={130}
