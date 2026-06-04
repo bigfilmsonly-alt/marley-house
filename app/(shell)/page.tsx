@@ -301,11 +301,11 @@ export default function HomePage() {
       {/* ═══ FOOTER ═══ */}
       <motion.footer {...fadeIn} className="px-8 py-12 text-center">
         <Image
-          src="/brand/lion-crest-icon.png"
-          alt="Lion Order Crest"
-          width={40}
-          height={40}
-          className="mx-auto mb-4 opacity-40"
+          src="/brand/rhr-monogram-transparent.png"
+          alt="R-M Monogram"
+          width={80}
+          height={80}
+          className="mx-auto mb-4 opacity-70"
         />
         <Image
           src="/brand/rohan-signature.png"
