@@ -124,9 +124,9 @@ export default function HomePage() {
           <Image
             src="/brand/rohan-signature.png"
             alt="Rohan Marley"
-            width={180}
-            height={60}
-            className="mb-8 opacity-80 brightness-125"
+            width={260}
+            height={85}
+            className="mb-8 opacity-95 brightness-150"
           />
 
           <button
