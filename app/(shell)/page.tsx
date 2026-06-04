@@ -93,7 +93,7 @@ export default function HomePage() {
                 height={60}
                 className="mx-auto mb-4 opacity-60"
               />
-              <p className="text-[9px] tracking-[0.5em] uppercase text-[#E8C23A] mb-2 font-medium">
+              <p className="text-[9px] tracking-[0.5em] uppercase text-[#EEC11E] mb-2 font-medium">
                 The Inner Circle
               </p>
               <p className="text-white text-[17px] font-semibold mb-1">
@@ -105,11 +105,11 @@ export default function HomePage() {
             </div>
 
             <form onSubmit={(e) => { handleSubmit(e); setShowForm(false); }} className="space-y-3">
-              <input name="name" placeholder="Your Name" autoFocus className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
-              <input name="email" type="email" placeholder="Email" required className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
-              <input name="phone" type="tel" placeholder="Phone Number" className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
-              <input name="social" placeholder="Instagram @handle" className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
-              <button type="submit" disabled={formLoading} className="w-full bg-[#E8C23A] text-black text-[12px] tracking-[0.25em] uppercase font-semibold py-4 hover:bg-[#E8C23A]/90 transition-colors disabled:opacity-50">
+              <input name="name" placeholder="Your Name" autoFocus className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
+              <input name="email" type="email" placeholder="Email" required className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
+              <input name="phone" type="tel" placeholder="Phone Number" className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
+              <input name="social" placeholder="Instagram @handle" className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
+              <button type="submit" disabled={formLoading} className="w-full bg-[#EEC11E] text-black text-[12px] tracking-[0.25em] uppercase font-semibold py-4 hover:bg-[#EEC11E]/90 transition-colors disabled:opacity-50">
                 {formLoading ? '...' : 'Subscribe — Free Access'}
               </button>
               <p className="text-white/25 text-[8px] text-center">Cancel anytime. We respect your privacy.</p>
@@ -149,12 +149,12 @@ export default function HomePage() {
             />
           </div>
           <div className="bg-[var(--bg)] px-6 py-6 text-center">
-            <p className="text-[9px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 font-medium">01</p>
+            <p className="text-[9px] tracking-[0.4em] uppercase text-[#EEC11E] mb-2 font-medium">01</p>
             <h2 className="font-display text-2xl text-white font-semibold mb-2">Marley Coffee</h2>
             <p className="text-white/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
               The original. Coffee from the Blue Mountains of Jamaica — legacy in every cup.
             </p>
-            <a href="https://marleycoffee.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#E8C23A]/40 text-[#E8C23A] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#E8C23A]/5 transition-colors">
+            <a href="https://marleycoffee.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#EEC11E]/40 text-[#EEC11E] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#EEC11E]/5 transition-colors">
               Shop the Coffee
             </a>
           </div>
@@ -172,12 +172,12 @@ export default function HomePage() {
             />
           </div>
           <div className="bg-[var(--bg)] px-6 py-6 text-center">
-            <p className="text-[9px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 font-medium">02</p>
+            <p className="text-[9px] tracking-[0.4em] uppercase text-[#EEC11E] mb-2 font-medium">02</p>
             <h2 className="font-display text-2xl text-white font-semibold mb-2">Lion Order</h2>
             <p className="text-white/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
               Flower to the people. Roots-luxury cannabis that elevates consciousness.
             </p>
-            <a href="https://lionorder.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#E8C23A]/40 text-[#E8C23A] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#E8C23A]/5 transition-colors">
+            <a href="https://lionorder.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#EEC11E]/40 text-[#EEC11E] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#EEC11E]/5 transition-colors">
               Explore Lion Order
             </a>
           </div>
@@ -195,12 +195,12 @@ export default function HomePage() {
             />
           </div>
           <div className="bg-[var(--bg)] px-6 py-6 text-center">
-            <p className="text-[9px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 font-medium">03</p>
+            <p className="text-[9px] tracking-[0.4em] uppercase text-[#EEC11E] mb-2 font-medium">03</p>
             <h2 className="font-display text-2xl text-white font-semibold mb-2">RoMarley Beach House</h2>
             <p className="text-white/60 text-[13px] font-light mb-5 max-w-[300px] mx-auto">
               Where the Caribbean meets luxury — Puerto Morelos, Riviera Maya.
             </p>
-            <a href="https://www.romarleybeachhouse.com/en" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#E8C23A]/40 text-[#E8C23A] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#E8C23A]/5 transition-colors">
+            <a href="https://www.romarleybeachhouse.com/en" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#EEC11E]/40 text-[#EEC11E] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#EEC11E]/5 transition-colors">
               Book Your Stay
             </a>
           </div>
@@ -220,7 +220,7 @@ export default function HomePage() {
             height={50}
             className="mx-auto mb-4 opacity-50"
           />
-          <p className="text-[9px] tracking-[0.5em] uppercase text-[#E8C23A] mb-3 font-medium">
+          <p className="text-[9px] tracking-[0.5em] uppercase text-[#EEC11E] mb-3 font-medium">
             The Inner Circle
           </p>
           <h2 className="text-white text-xl font-semibold mb-2">
@@ -247,7 +247,7 @@ export default function HomePage() {
               <div className="relative w-24 shrink-0">
                 <Image src={ep.image} alt={ep.title} fill className="object-cover" sizes="96px" />
                 <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                  <span className="text-[#E8C23A] text-[10px] font-semibold">{ep.ep}</span>
+                  <span className="text-[#EEC11E] text-[10px] font-semibold">{ep.ep}</span>
                 </div>
               </div>
               <div className="py-3 pr-3">
@@ -259,8 +259,8 @@ export default function HomePage() {
         </div>
 
         {/* Subscription form */}
-        <div className="border border-[#E8C23A]/20 bg-[var(--panel)] p-6 max-w-[380px] mx-auto">
-          <p className="text-[9px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 text-center font-medium">
+        <div className="border border-[#EEC11E]/20 bg-[var(--panel)] p-6 max-w-[380px] mx-auto">
+          <p className="text-[9px] tracking-[0.4em] uppercase text-[#EEC11E] mb-2 text-center font-medium">
             Subscribe Now
           </p>
           <p className="text-white text-[15px] font-semibold text-center mb-1">
@@ -272,16 +272,16 @@ export default function HomePage() {
 
           {submitted ? (
             <div className="text-center py-4">
-              <p className="text-[#E8C23A] text-base font-semibold mb-1">Welcome to the Inner Circle.</p>
+              <p className="text-[#EEC11E] text-base font-semibold mb-1">Welcome to the Inner Circle.</p>
               <p className="text-white/50 text-[11px]">Episode 1 is on its way.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-2.5">
-              <input name="name" placeholder="Your Name" className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
-              <input name="email" type="email" placeholder="Email" required className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
-              <input name="phone" type="tel" placeholder="Phone Number" className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
-              <input name="social" placeholder="Instagram @handle" className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
-              <button type="submit" disabled={formLoading} className="w-full bg-[#E8C23A] text-black text-[11px] tracking-[0.25em] uppercase font-semibold py-3.5 hover:bg-[#E8C23A]/90 transition-colors disabled:opacity-50">
+              <input name="name" placeholder="Your Name" className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
+              <input name="email" type="email" placeholder="Email" required className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
+              <input name="phone" type="tel" placeholder="Phone Number" className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
+              <input name="social" placeholder="Instagram @handle" className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
+              <button type="submit" disabled={formLoading} className="w-full bg-[#EEC11E] text-black text-[11px] tracking-[0.25em] uppercase font-semibold py-3.5 hover:bg-[#EEC11E]/90 transition-colors disabled:opacity-50">
                 {formLoading ? '...' : 'Subscribe — Free Access'}
               </button>
               <p className="text-white/25 text-[7px] text-center">Cancel anytime. We respect your privacy.</p>
@@ -292,15 +292,15 @@ export default function HomePage() {
         {/* Social proof */}
         <div className="flex justify-center gap-6 mt-8">
           <div className="text-center">
-            <p className="text-[#E8C23A] text-lg font-semibold">663K</p>
+            <p className="text-[#EEC11E] text-lg font-semibold">663K</p>
             <p className="text-white/40 text-[9px] tracking-[0.1em] uppercase">Followers</p>
           </div>
           <div className="text-center">
-            <p className="text-[#E8C23A] text-lg font-semibold">8</p>
+            <p className="text-[#EEC11E] text-lg font-semibold">8</p>
             <p className="text-white/40 text-[9px] tracking-[0.1em] uppercase">Episodes</p>
           </div>
           <div className="text-center">
-            <p className="text-[#E8C23A] text-lg font-semibold">5+</p>
+            <p className="text-[#EEC11E] text-lg font-semibold">5+</p>
             <p className="text-white/40 text-[9px] tracking-[0.1em] uppercase">Brands Built</p>
           </div>
         </div>

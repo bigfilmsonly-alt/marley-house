@@ -35,7 +35,7 @@ export default function ShellLayout({
               <img src="/brand/rastafari-lion-university.png" alt="Rastafari Lion Order University" width="130" height="130" className="brightness-125" />
               <img src="/brand/lion-crest-clean.png" alt="Lion Order Crest" width="100" height="100" className="brightness-125" />
             </div>
-            <p style={{ color: '#E8C23A', fontSize: '9px', letterSpacing: '0.4em', textTransform: 'uppercase', textAlign: 'center', fontWeight: 500, marginBottom: '2px' }}>
+            <p style={{ color: '#EEC11E', fontSize: '9px', letterSpacing: '0.4em', textTransform: 'uppercase', textAlign: 'center', fontWeight: 500, marginBottom: '2px' }}>
               Lion Order · Est. 2022
             </p>
             <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '8px', letterSpacing: '0.25em', textTransform: 'uppercase', textAlign: 'center', fontWeight: 500 }}>

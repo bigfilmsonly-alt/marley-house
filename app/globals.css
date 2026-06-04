@@ -4,11 +4,11 @@
 :root {
   --bg: #0b0805;
   --panel: #120d07;
-  --line: rgba(216, 177, 90, 0.18);
+  --line: rgba(238, 193, 30, 0.18);
 
-  --gold: #B98524;
-  --gold-deep: #825B0D;
-  --bright: #E8C23A;
+  --gold: #EEC11E;
+  --gold-deep: #B98524;
+  --bright: #EEC11E;
   --royal: #EFC11F;
 
   --cream: #F3E9D8;
@@ -30,12 +30,12 @@
   --color-panel: #120d07;
   --color-cream: #F3E9D8;
   --color-dim: #b8a87f;
-  --color-gold: #B98524;
-  --color-gold-deep: #825B0D;
-  --color-bright: #E8C23A;
+  --color-gold: #EEC11E;
+  --color-gold-deep: #B98524;
+  --color-bright: #EEC11E;
   --color-royal: #EFC11F;
   --color-ink: #1c1810;
-  --color-line: rgba(216, 177, 90, 0.18);
+  --color-line: rgba(238, 193, 30, 0.18);
   --font-display: var(--font-fraunces), 'Cormorant Garamond', Georgia, serif;
   --font-body: var(--font-spline), 'EB Garamond', 'Times New Roman', serif;
 }
