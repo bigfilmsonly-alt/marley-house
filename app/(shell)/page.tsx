@@ -178,47 +178,99 @@ export default function HomePage() {
 
       <div className="gold-rule mx-8" />
 
-      {/* ═══ INNER CIRCLE ═══ */}
-      <motion.section {...fadeIn} id="inner-circle" className="px-6 py-12">
-        <div className="text-center mb-6">
-          <div className="relative w-[60px] h-[60px] mx-auto mb-4">
-            <Image
-              src="/brand/rhr-monogram-transparent.png"
-              alt="R-M Monogram"
-              fill
-              className="object-contain opacity-50"
-              sizes="60px"
-            />
-          </div>
-          <p className="text-[10px] tracking-[0.4em] uppercase text-[#E8C23A] mb-3 font-medium">
+      {/* ═══ THE MASTERCLASS — Inner Circle ═══ */}
+      <motion.section {...fadeIn} id="inner-circle" className="px-4 py-12">
+        <div className="text-center mb-8">
+          <Image
+            src="/brand/rhr-monogram-transparent.png"
+            alt="R-M"
+            width={50}
+            height={50}
+            className="mx-auto mb-4 opacity-50"
+          />
+          <p className="text-[9px] tracking-[0.5em] uppercase text-[#E8C23A] mb-3 font-medium">
             The Inner Circle
           </p>
-          <p className="text-white text-[16px] font-semibold mb-2">
-            Join the Movement
-          </p>
-          <p className="text-white/60 text-[12px]">
-            Be the first to know. No noise. Just the order.
+          <h2 className="text-white text-xl font-semibold mb-2">
+            The Rohan Marley<br />Business Masterclass
+          </h2>
+          <p className="text-white/50 text-[12px] max-w-[300px] mx-auto">
+            8 episodes. Build a legacy brand. From the man who turned heritage into an empire.
           </p>
         </div>
 
-        <div className="border border-[var(--line)] bg-[var(--panel)] p-8 max-w-[400px] mx-auto">
+        {/* Masterclass episodes grid */}
+        <div className="space-y-3 mb-10">
+          {[
+            { ep: '01', title: 'From Blue Mountain to Global Impact', desc: 'Building a legacy brand that honors heritage while scaling internationally.', image: '/lion-order/field-sunset.jpg' },
+            { ep: '02', title: 'The Cannabis Entrepreneur\'s Playbook', desc: 'Navigating Lion Order — from regulatory challenges to luxury positioning.', image: '/lion-order/crest-gold.jpg' },
+            { ep: '03', title: 'Multi-Generational Family Business', desc: 'Keeping the table at the center — making decisions where hierarchy disappears.', image: '/lion-order/community-table.jpg' },
+            { ep: '04', title: 'Hospitality as Heritage', desc: 'Creating luxury experiences that feel like home — the Beach House blueprint.', image: '/lion-order/rainforest.jpg' },
+            { ep: '05', title: 'Storytelling as Business Strategy', desc: 'Craft a brand narrative that transcends products and creates cultural movement.', image: '/lion-order/heritage.jpg' },
+            { ep: '06', title: 'From Athlete to Entrepreneur', desc: 'Building a second act that\'s bigger and more meaningful than the first.', image: '/lion-order/rohan-portrait.jpg' },
+            { ep: '07', title: 'Rastafari Business Principles', desc: 'Blending spirituality with commerce — One Love Economics.', image: '/lion-order/selassie.jpg' },
+            { ep: '08', title: 'Building Revenue Streams', desc: 'The portfolio playbook — creating synergy across an empire.', image: '/lion-order/culture.jpg' },
+          ].map((ep) => (
+            <div key={ep.ep} className="flex gap-3 border border-[var(--gold)]/15 bg-[var(--panel)] overflow-hidden">
+              <div className="relative w-24 shrink-0">
+                <Image src={ep.image} alt={ep.title} fill className="object-cover" sizes="96px" />
+                <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                  <span className="text-[#E8C23A] text-[10px] font-semibold">{ep.ep}</span>
+                </div>
+              </div>
+              <div className="py-3 pr-3">
+                <p className="text-white text-[13px] font-medium leading-snug mb-1">{ep.title}</p>
+                <p className="text-white/40 text-[10px] leading-[1.5]">{ep.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Subscription form */}
+        <div className="border border-[#E8C23A]/20 bg-[var(--panel)] p-6 max-w-[380px] mx-auto">
+          <p className="text-[9px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 text-center font-medium">
+            Subscribe Now
+          </p>
+          <p className="text-white text-[15px] font-semibold text-center mb-1">
+            Join the Inner Circle
+          </p>
+          <p className="text-white/40 text-[11px] text-center mb-5">
+            Get all 8 episodes + exclusive drops + early access to everything.
+          </p>
+
           {submitted ? (
-            <div className="text-center py-6">
-              <p className="text-[var(--gold)] text-lg font-semibold mb-2">Welcome to the House.</p>
-              <p className="text-white/60 text-[13px]">Check your inbox.</p>
+            <div className="text-center py-4">
+              <p className="text-[#E8C23A] text-base font-semibold mb-1">Welcome to the Inner Circle.</p>
+              <p className="text-white/50 text-[11px]">Episode 1 is on its way.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-3">
-              <input name="name" placeholder="Your Name" className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-white/60/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
-              <input name="email" type="email" placeholder="Email" required className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-white/60/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
-              <input name="phone" type="tel" placeholder="Phone Number" className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-white/60/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
-              <input name="social" placeholder="Instagram @handle" className="w-full bg-transparent border border-[var(--line)] px-4 py-3 text-[var(--cream)] text-[14px] placeholder:text-white/60/40 focus:outline-none focus:border-[var(--gold)]/50 transition-colors" />
-              <button type="submit" disabled={formLoading} className="w-full bg-[#E8C23A] text-[var(--bg)] text-[12px] tracking-[0.2em] uppercase font-semibold py-3.5 hover:bg-[#E8C23A]/90 transition-colors disabled:opacity-50">
-                {formLoading ? '...' : 'Join'}
+            <form onSubmit={handleSubmit} className="space-y-2.5">
+              <input name="name" placeholder="Your Name" className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
+              <input name="email" type="email" placeholder="Email" required className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
+              <input name="phone" type="tel" placeholder="Phone Number" className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
+              <input name="social" placeholder="Instagram @handle" className="w-full bg-transparent border border-white/15 px-4 py-2.5 text-white text-[13px] placeholder:text-white/30 focus:outline-none focus:border-[#E8C23A]/50 transition-colors" />
+              <button type="submit" disabled={formLoading} className="w-full bg-[#E8C23A] text-black text-[11px] tracking-[0.25em] uppercase font-semibold py-3.5 hover:bg-[#E8C23A]/90 transition-colors disabled:opacity-50">
+                {formLoading ? '...' : 'Subscribe — Free Access'}
               </button>
-              <p className="text-white/60 text-[8px] text-center mt-2 opacity-50">We respect your privacy.</p>
+              <p className="text-white/25 text-[7px] text-center">Cancel anytime. We respect your privacy.</p>
             </form>
           )}
+        </div>
+
+        {/* Social proof */}
+        <div className="flex justify-center gap-6 mt-8">
+          <div className="text-center">
+            <p className="text-[#E8C23A] text-lg font-semibold">663K</p>
+            <p className="text-white/40 text-[9px] tracking-[0.1em] uppercase">Followers</p>
+          </div>
+          <div className="text-center">
+            <p className="text-[#E8C23A] text-lg font-semibold">8</p>
+            <p className="text-white/40 text-[9px] tracking-[0.1em] uppercase">Episodes</p>
+          </div>
+          <div className="text-center">
+            <p className="text-[#E8C23A] text-lg font-semibold">5+</p>
+            <p className="text-white/40 text-[9px] tracking-[0.1em] uppercase">Brands Built</p>
+          </div>
         </div>
       </motion.section>
 
