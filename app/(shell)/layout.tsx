@@ -28,8 +28,8 @@ export default function ShellLayout({
           </ScrollRestoreMain>
           <MiniPlayer />
 
-          {/* Brand logos — right above tabs */}
-          <div className="flex-shrink-0 pt-3 pb-1 bg-black">
+          {/* Brand logos — right above tabs — always on top */}
+          <div className="flex-shrink-0 pt-3 pb-1 bg-black relative z-[90]">
             <div className="flex items-center justify-center gap-4 mb-2 px-4">
               <img src="/brand/lion-gold-footer.png" alt="Lion Order" width="120" height="120" style={{ filter: 'brightness(1.4) drop-shadow(0 0 5px rgba(238,193,30,0.4))' }} />
               <img src="/brand/rastafari-lion-university.png" alt="Rastafari Lion Order University" width="130" height="130" style={{ filter: 'brightness(1.3) drop-shadow(0 0 5px rgba(238,193,30,0.4))' }} />
