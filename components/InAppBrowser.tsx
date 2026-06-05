@@ -65,7 +65,7 @@ function BrowserOverlay({ state, onClose }: { state: BrowserState | null; onClos
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="fixed inset-0 bg-black/80 z-[80] backdrop-blur-md"
+            className="fixed inset-0 bg-black/80 z-[75] backdrop-blur-md"
             onClick={onClose}
           />
           <motion.div
@@ -81,7 +81,7 @@ function BrowserOverlay({ state, onClose }: { state: BrowserState | null; onClos
             dragElastic={0.1}
             onDragEnd={(_, info) => { if (info.offset.y > 120) onClose(); }}
             transition={{ duration: 0.7, ease: [0.16, 0.6, 0.3, 1] }}
-            className="fixed inset-0 z-[81] bg-[var(--bg)] flex flex-col overflow-hidden md:left-1/2 md:-translate-x-1/2 md:max-w-[390px]"
+            className="fixed inset-0 z-[76] bg-[var(--bg)] flex flex-col overflow-hidden md:left-1/2 md:-translate-x-1/2 md:max-w-[390px]"
           >
             {/* Browser chrome */}
             <div className="shrink-0 flex items-center gap-2 px-3 py-2.5 border-b border-[var(--line)] bg-[var(--panel)]">
