@@ -9,7 +9,7 @@ export default function ScrollRestoreMain({ children }: { children: React.ReactN
     <main
       ref={ref}
       id="main-content"
-      className="flex-1 overflow-y-auto overflow-x-hidden"
+      className="absolute inset-0 overflow-y-auto overflow-x-hidden"
     >
       {children}
     </main>

@@ -5,7 +5,7 @@ import Threshold from '@/components/Threshold';
 import ScrollRestoreMain from '@/components/ScrollRestoreMain';
 import FooterLogos from '@/components/FooterLogos';
 import { PlayerProvider } from '@/components/PlayerContext';
-import { InAppBrowserProvider } from '@/components/InAppBrowser';
+import { InAppBrowserProvider, BrowserPanel } from '@/components/InAppBrowser';
 
 export default function ShellLayout({
   children,
@@ -24,14 +24,21 @@ export default function ShellLayout({
           <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-2 focus:left-2 focus:bg-[var(--gold)] focus:text-[var(--bg)] focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm">
             Skip to content
           </a>
-          <ScrollRestoreMain>
-            {children}
-          </ScrollRestoreMain>
+
+          {/* Content area — browser overlay renders on top of this */}
+          <div className="flex-1 relative overflow-hidden">
+            <ScrollRestoreMain>
+              {children}
+            </ScrollRestoreMain>
+            <BrowserPanel />
+          </div>
+
           <MiniPlayer />
 
           {/* Brand logos — homepage only */}
           <FooterLogos />
 
+          {/* Tab bar — ALWAYS visible, even when browser is open */}
           <TabBar />
         </div>
         <Threshold />
