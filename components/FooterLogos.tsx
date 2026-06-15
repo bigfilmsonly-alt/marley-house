@@ -1,12 +1,14 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import { useInAppBrowser } from '@/components/InAppBrowser';
 
 export default function FooterLogos() {
   const pathname = usePathname();
+  const { isOpen } = useInAppBrowser();
 
-  // Only show logos on the homepage
-  if (pathname !== '/') return null;
+  // Only show logos on homepage AND when in-app browser is closed
+  if (pathname !== '/' || isOpen) return null;
 
   return (
     <div className="flex-shrink-0 pt-3 pb-1 bg-black relative z-[90]">
