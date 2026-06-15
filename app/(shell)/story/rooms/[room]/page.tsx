@@ -8,18 +8,18 @@ import { stories } from '@/content/stories';
 import { wisdomCards } from '@/content/wisdom';
 
 const roomMeta: Record<string, { name: string; color: string; desc: string; mappedRooms: string[] }> = {
-  legacy: { name: 'Legacy', color: '#B98524', desc: 'Building what outlives us. The root system that holds everything up.', mappedRooms: ['legacy'] },
+  legacy: { name: 'Legacy', color: '#B5851E', desc: 'Building what outlives us. The root system that holds everything up.', mappedRooms: ['legacy'] },
   fire: { name: 'Fire', color: '#F6C800', desc: 'The fire does not ask permission. Every failure was fuel.', mappedRooms: ['fire'] },
-  healing: { name: 'Healing', color: '#825B0D', desc: 'Reconnecting mind, body, and spirit. The ritual of presence.', mappedRooms: ['coffee', 'wisdom'] },
-  music: { name: 'Music', color: '#B98524', desc: 'The frequency carries. The house holds the sound.', mappedRooms: ['music'] },
+  healing: { name: 'Healing', color: '#946312', desc: 'Reconnecting mind, body, and spirit. The ritual of presence.', mappedRooms: ['coffee', 'wisdom'] },
+  music: { name: 'Music', color: '#B5851E', desc: 'The frequency carries. The house holds the sound.', mappedRooms: ['music'] },
   movement: { name: 'Movement', color: '#F6C800', desc: 'Speed as prayer. The kinetic force of the maison.', mappedRooms: ['movement'] },
-  story: { name: 'Story', color: '#b8a87f', desc: 'The table is the truest meeting room. Family is the foundation.', mappedRooms: ['family'] },
-  future: { name: 'Future', color: '#F3E9D8', desc: 'The next generation does not carry the legacy — they remix it.', mappedRooms: ['future'] },
+  story: { name: 'Story', color: '#946312', desc: 'The table is the truest meeting room. Family is the foundation.', mappedRooms: ['family'] },
+  future: { name: 'Future', color: '#F6F1E6', desc: 'The next generation does not carry the legacy — they remix it.', mappedRooms: ['future'] },
 };
 
 export default function RoomPage() {
   const { room } = useParams<{ room: string }>();
-  const meta = roomMeta[room] || { name: room, color: '#B98524', desc: '', mappedRooms: [room] };
+  const meta = roomMeta[room] || { name: room, color: '#B5851E', desc: '', mappedRooms: [room] };
   const [playingVideo, setPlayingVideo] = useState<string | null>(null);
 
   const roomStories = stories.filter((s) => meta.mappedRooms.includes(s.room));

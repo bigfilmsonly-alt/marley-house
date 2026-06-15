@@ -34,7 +34,7 @@ export default function AgeGate({ children }: { children: React.ReactNode }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-[90] flex flex-col items-center justify-center bg-[#0b0805]/98 backdrop-blur-sm"
+            className="fixed inset-0 z-[90] flex flex-col items-center justify-center bg-[#0B0805]/98 backdrop-blur-sm"
           >
             <div className="text-center px-8 max-w-[320px]">
               <Image

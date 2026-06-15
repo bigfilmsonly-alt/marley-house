@@ -22,13 +22,13 @@ const feedEntries = stories.map((s, i) => ({
 
 /* ── Room definitions ── */
 const rooms = [
-  { slug: 'legacy', name: 'Legacy', color: '#B98524', count: stories.filter(s => s.room === 'legacy').length + wisdomCards.filter(w => w.room === 'legacy').length },
+  { slug: 'legacy', name: 'Legacy', color: '#B5851E', count: stories.filter(s => s.room === 'legacy').length + wisdomCards.filter(w => w.room === 'legacy').length },
   { slug: 'fire', name: 'Fire', color: '#F6C800', count: stories.filter(s => s.room === 'fire').length + wisdomCards.filter(w => w.room === 'fire').length },
-  { slug: 'healing', name: 'Healing', color: '#825B0D', count: wisdomCards.filter(w => w.room === 'coffee').length },
-  { slug: 'music', name: 'Music', color: '#B98524', count: stories.filter(s => s.room === 'music').length + wisdomCards.filter(w => w.room === 'music').length },
+  { slug: 'healing', name: 'Healing', color: '#946312', count: wisdomCards.filter(w => w.room === 'coffee').length },
+  { slug: 'music', name: 'Music', color: '#B5851E', count: stories.filter(s => s.room === 'music').length + wisdomCards.filter(w => w.room === 'music').length },
   { slug: 'movement', name: 'Movement', color: '#F6C800', count: 0 },
-  { slug: 'story', name: 'Story', color: '#b8a87f', count: stories.filter(s => s.room === 'family').length },
-  { slug: 'future', name: 'Future', color: '#F3E9D8', count: stories.filter(s => s.room === 'future').length + wisdomCards.filter(w => w.room === 'future').length },
+  { slug: 'story', name: 'Story', color: '#946312', count: stories.filter(s => s.room === 'family').length },
+  { slug: 'future', name: 'Future', color: '#F6F1E6', count: stories.filter(s => s.room === 'future').length + wisdomCards.filter(w => w.room === 'future').length },
 ];
 
 /* ── Characters ── */

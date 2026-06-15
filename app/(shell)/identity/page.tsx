@@ -5,15 +5,15 @@ import Image from 'next/image';
 /* ── Color system ── */
 const primaryGolds = [
   { name: 'Royalty Yellow', hex: '#EFC11F', css: '--royal', note: 'Splash screen only — the single bright moment.' },
-  { name: 'Antique Gold', hex: '#B98524', css: '--gold', note: 'Primary brand gold. Crests, rules, accents.' },
-  { name: 'Deep Gold', hex: '#825B0D', css: '--gold-deep', note: 'Secondary accent. Depth and warmth.' },
+  { name: 'Antique Gold', hex: '#B5851E', css: '--gold', note: 'Primary brand gold. Crests, rules, accents.' },
+  { name: 'Deep Gold', hex: '#946312', css: '--gold-deep', note: 'Secondary accent. Depth and warmth.' },
   { name: '24K Bright', hex: '#F6C800', css: '--bright', note: 'Highlights, active states, emphasis.' },
 ];
 
 const neutrals = [
-  { name: 'Cream', hex: '#F3E9D8', css: '--cream', note: 'Primary body text on dark.' },
-  { name: 'Dim Gold', hex: '#b8a87f', css: '--dim', note: 'Secondary text, captions.' },
-  { name: 'Espresso', hex: '#0b0805', css: '--bg', note: 'Canvas — the black ground.' },
+  { name: 'Cream', hex: '#F6F1E6', css: '--cream', note: 'Primary body text on dark.' },
+  { name: 'Dim Gold', hex: '#946312', css: '--dim', note: 'Secondary text, captions.' },
+  { name: 'Espresso', hex: '#0B0805', css: '--bg', note: 'Canvas — the black ground.' },
   { name: 'Panel', hex: '#120d07', css: '--panel', note: 'Raised cards and surfaces.' },
   { name: 'Ink', hex: '#1c1810', css: '--ink', note: 'Deep elements, device frame.' },
 ];
@@ -135,7 +135,7 @@ export default function IdentityPage() {
           ].map((img) => (
             <div key={img.label} className="relative aspect-square overflow-hidden border border-[var(--line)]">
               <Image src={img.src} alt={img.label} fill className="object-cover" sizes="(max-width: 768px) 50vw, 200px" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0b0805]/70 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B0805]/70 to-transparent" />
               <p className="absolute bottom-2.5 left-2.5 text-[8px] tracking-[0.2em] uppercase text-[var(--cream)]">{img.label}</p>
             </div>
           ))}

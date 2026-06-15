@@ -8,9 +8,9 @@ import { joinHouse, trackEvent } from '@/lib/tracking';
 
 const statusColors: Record<string, string> = {
   active: '#F6C800',
-  licensed: '#B98524',
-  dormant: '#b8a87f',
-  verify: '#825B0D',
+  licensed: '#B5851E',
+  dormant: '#946312',
+  verify: '#946312',
 };
 
 const statusLabels: Record<string, string> = {

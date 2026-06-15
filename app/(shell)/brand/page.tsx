@@ -59,9 +59,9 @@ const groups: { label: string; category: string }[] = [
 
 const statusColors: Record<string, string> = {
   active: '#F6C800',
-  licensed: '#B98524',
-  dormant: '#b8a87f',
-  verify: '#825B0D',
+  licensed: '#B5851E',
+  dormant: '#946312',
+  verify: '#946312',
 };
 
 const statusLabels: Record<string, string> = {
@@ -174,7 +174,7 @@ export default function BrandPage() {
           ].map((img) => (
             <div key={img.label} className="relative aspect-[3/4] overflow-hidden border border-[var(--line)]">
               <Image src={img.src} alt={img.label} fill className="object-cover" sizes="(max-width: 768px) 50vw, 200px" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0b0805]/80 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B0805]/80 to-transparent" />
               <p className="absolute bottom-3 left-3 text-[9px] tracking-[0.2em] uppercase text-[var(--cream)]">{img.label}</p>
             </div>
           ))}
