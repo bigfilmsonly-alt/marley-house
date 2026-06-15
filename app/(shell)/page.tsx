@@ -6,10 +6,10 @@ import { motion } from 'framer-motion';
 import { joinHouse, trackEvent } from '@/lib/tracking';
 
 const fadeIn = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 12 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-50px' },
-  transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const },
+  viewport: { once: true, margin: '-30px' },
+  transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const },
 } as const;
 
 export default function HomePage() {
@@ -54,7 +54,7 @@ export default function HomePage() {
               src="/brand/rhr-monogram-transparent.png"
               alt="R-M Monogram"
               fill
-              className="object-contain drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]"
+              className="object-contain drop-shadow-[0_0_6px_rgba(0,0,0,0.9)]"
               priority
               sizes="220px"
             />
@@ -65,7 +65,7 @@ export default function HomePage() {
             alt="Rohan Marley"
             width={260}
             height={85}
-            className="mb-8 opacity-95 brightness-150 drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]"
+            className="mb-8 opacity-95 brightness-[1.8] drop-shadow-[0_0_6px_rgba(0,0,0,0.9)]"
           />
 
           {/* Single CTA — opens form modal */}
@@ -74,7 +74,7 @@ export default function HomePage() {
           ) : (
             <button
               onClick={() => setShowForm(true)}
-              className="bg-black text-[#F6C800] text-[11px] tracking-[0.3em] uppercase font-semibold px-12 py-3.5 hover:bg-black/80 transition-colors"
+              className="bg-black text-[#F6C800] text-[11px] tracking-[0.3em] uppercase font-semibold px-12 py-3.5 hover:bg-black/80 transition-colors shadow-[0_0_20px_rgba(246,200,0,0.3)]"
             >
               Join the Inner Circle
             </button>
@@ -222,6 +222,7 @@ export default function HomePage() {
               style={{ border: 'none' }}
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
+              loading="lazy"
             />
           </div>
           <div className="px-6 py-6 text-center">
@@ -249,6 +250,7 @@ export default function HomePage() {
               style={{ border: 'none' }}
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
+              loading="lazy"
             />
           </div>
           <div className="px-6 py-6 text-center">
@@ -276,6 +278,7 @@ export default function HomePage() {
               style={{ border: 'none' }}
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
+              loading="lazy"
             />
           </div>
           <div className="px-6 py-6 text-center">
@@ -374,7 +377,7 @@ export default function HomePage() {
         <details className="mb-8 group">
           <summary className="flex items-center justify-center gap-2 cursor-pointer list-none py-3">
             <span className="text-[10px] tracking-[0.3em] uppercase text-black font-bold">Sitemap</span>
-            <svg className="w-3 h-3 text-black/60 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+            <svg className="w-3 h-3 text-black/60 transition-transform duration-300 ease-in-out group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
           </summary>
 
           <div className="pt-4 pb-2">

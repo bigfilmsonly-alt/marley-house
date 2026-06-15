@@ -10,11 +10,11 @@ const springSettle: [number, number, number, number] = [0.22, 0.68, 0.36, 1.0];
 const matDecel: [number, number, number, number] = [0.4, 0.0, 0.2, 1.0];
 
 const slides = [
-  { src: '/brand/lion-head-new.jpg', alt: 'Lion Order', size: 'w-[95vw] max-w-[460px]', hold: 5000, signature: true },
-  { src: '/brand/marley-enterprise.png', alt: 'Marley Enterprise', size: 'w-[80vw] max-w-[360px]', hold: 3000, signature: false },
-  { src: '/brand/lion-head-gold.png', alt: 'Lion Order', size: 'w-[85vw] max-w-[380px]', hold: 3000, signature: false },
-  { src: '/brand/lion-crest-clean.png', alt: 'Lion Order Crest', size: 'w-[80vw] max-w-[360px]', hold: 3000, signature: false },
-  { src: '/brand/rhr-monogram-transparent.png', alt: 'R-M', size: 'w-[85vw] max-w-[380px]', hold: 4000, signature: false },
+  { src: '/brand/lion-head-new.jpg', alt: 'Lion Order', size: 'w-[95vw] max-w-[460px]', hold: 4000, signature: true },
+  { src: '/brand/marley-enterprise.png', alt: 'Marley Enterprise', size: 'w-[80vw] max-w-[360px]', hold: 2500, signature: false },
+  { src: '/brand/lion-head-gold.png', alt: 'Lion Order', size: 'w-[85vw] max-w-[380px]', hold: 2500, signature: false },
+  { src: '/brand/lion-crest-clean.png', alt: 'Lion Order Crest', size: 'w-[80vw] max-w-[360px]', hold: 2500, signature: false },
+  { src: '/brand/rhr-monogram-transparent.png', alt: 'R-M', size: 'w-[85vw] max-w-[380px]', hold: 3000, signature: false },
 ];
 
 export default function Threshold() {
@@ -101,7 +101,8 @@ export default function Threshold() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.4 }}
               transition={{ delay: 2.5, duration: 1.5 }}
-              className="absolute bottom-16 text-white/40 text-[10px] font-light tracking-[0.5em] uppercase"
+              className="absolute bottom-16 text-[var(--gold)]/40 text-[10px] font-light tracking-[0.5em] uppercase"
+              style={{ textShadow: '0 0 12px rgba(246, 200, 0, 0.4), 0 0 24px rgba(246, 200, 0, 0.2)' }}
             >
               Enter
             </motion.p>

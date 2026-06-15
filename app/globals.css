@@ -160,3 +160,11 @@ body {
 .stagger > *:nth-child(4) { animation-delay: 0.6s; }
 .stagger > *:nth-child(5) { animation-delay: 0.75s; }
 .stagger > *:nth-child(6) { animation-delay: 0.9s; }
+
+/* ─── Gold Glow ─── */
+.gold-glow {
+  box-shadow: 0 0 20px rgba(246, 200, 0, 0.2), 0 0 40px rgba(246, 200, 0, 0.1);
+}
+
+/* ─── Interactive Polish ─── */
+a, button { transition: all 0.2s ease; }

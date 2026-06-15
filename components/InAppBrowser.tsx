@@ -62,19 +62,20 @@ function BrowserOverlay({ state, onClose }: { state: BrowserState | null; onClos
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 bg-black/60 z-[75]"
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[75]"
             onClick={onClose}
           />
           <motion.div
             role="dialog"
             aria-modal="true"
             aria-label={state.title || 'External site'}
-            initial={{ y: '100%' }}
-            animate={{ y: 0 }}
-            exit={{ y: '100%' }}
-            transition={{ duration: 0.5, ease: [0.16, 0.6, 0.3, 1] }}
+            initial={{ y: '100%', scale: 0.98 }}
+            animate={{ y: 0, scale: 1 }}
+            exit={{ y: '100%', scale: 0.98, opacity: 0 }}
+            transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
             className="fixed top-0 left-0 right-0 bottom-[calc(env(safe-area-inset-bottom,0px)+3.5rem)] z-[76] bg-white flex flex-col overflow-hidden md:left-1/2 md:-translate-x-1/2 md:max-w-[390px]"
           >
+            <div className="h-[1px] bg-gradient-to-r from-transparent via-[var(--gold)]/30 to-transparent" />
             <div className="shrink-0 flex items-center gap-2 px-2 py-1.5 bg-[var(--bg)] border-b border-[var(--line)]">
               <button
                 onClick={onClose}
@@ -85,7 +86,7 @@ function BrowserOverlay({ state, onClose }: { state: BrowserState | null; onClos
                 <span className="text-[10px] text-white/50 tracking-wider uppercase">Close</span>
               </button>
               <div className="flex-1 flex items-center justify-center min-w-0">
-                <span className="text-[11px] text-[var(--gold)] font-medium truncate">
+                <span className="text-[11px] text-[var(--gold)] font-semibold truncate brightness-110">
                   {state.title || extractDomain(state.url)}
                 </span>
               </div>
@@ -100,6 +101,9 @@ function BrowserOverlay({ state, onClose }: { state: BrowserState | null; onClos
               </a>
             </div>
             <div className="flex-1 relative bg-white">
+              <div className="absolute inset-0 flex items-center justify-center bg-[var(--bg)]">
+                <div className="w-8 h-8 border-2 border-[var(--gold)]/30 border-t-[var(--gold)] rounded-full animate-spin" />
+              </div>
               <iframe
                 src={state.url}
                 title={state.title || extractDomain(state.url)}
