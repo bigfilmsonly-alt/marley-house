@@ -369,11 +369,102 @@ export default function HomePage() {
             </a>
           ))}
         </div>
+
+        <div className="gold-rule mx-4 mb-8" />
+
+        {/* ═══ SITEMAP ═══ */}
+        <div className="text-left mb-10">
+          <p className="text-[9px] tracking-[0.4em] uppercase text-[var(--gold)] mb-4 text-center font-medium">
+            Sitemap
+          </p>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-4 text-[11px]">
+            {/* Column 1 */}
+            <div className="space-y-3">
+              <div>
+                <p className="text-black font-bold text-[10px] tracking-[0.15em] uppercase mb-1">The Group</p>
+                <div className="space-y-1">
+                  <a href="/about" className="block text-black/70 hover:text-black transition-colors">About</a>
+                  <a href="/rohan-marley" className="block text-black/70 hover:text-black transition-colors">Rohan Marley</a>
+                  <a href="/family" className="block text-black/70 hover:text-black transition-colors">The Family</a>
+                  <a href="/yg-marley" className="block text-black/70 hover:text-black transition-colors">YG Marley</a>
+                  <a href="/legacy" className="block text-black/70 hover:text-black transition-colors">Legacy</a>
+                  <a href="/timeline" className="block text-black/70 hover:text-black transition-colors">Timeline</a>
+                </div>
+              </div>
+              <div>
+                <p className="text-black font-bold text-[10px] tracking-[0.15em] uppercase mb-1">Coffee</p>
+                <div className="space-y-1">
+                  <a href="/marley-coffee" className="block text-black/70 hover:text-black transition-colors">Marley Coffee</a>
+                  <a href="/marley-coffee/blue-mountain" className="block text-black/70 hover:text-black transition-colors">Blue Mountain</a>
+                  <a href="/marley-coffee/one-love" className="block text-black/70 hover:text-black transition-colors">One Love</a>
+                  <a href="/marley-coffee/buffalo-soldier" className="block text-black/70 hover:text-black transition-colors">Buffalo Soldier</a>
+                  <a href="/marley-coffee/brewing-guide" className="block text-black/70 hover:text-black transition-colors">Brewing Guide</a>
+                  <a href="/marley-coffee/subscribe" className="block text-black/70 hover:text-black transition-colors">Subscribe</a>
+                  <a href="/marley-coffee/wholesale" className="block text-black/70 hover:text-black transition-colors">Wholesale</a>
+                </div>
+              </div>
+              <div>
+                <p className="text-black font-bold text-[10px] tracking-[0.15em] uppercase mb-1">Lion Order</p>
+                <div className="space-y-1">
+                  <a href="/lion-order/story" className="block text-black/70 hover:text-black transition-colors">Story</a>
+                  <a href="/lion-order/philosophy" className="block text-black/70 hover:text-black transition-colors">Philosophy</a>
+                  <a href="/lion-order/codes" className="block text-black/70 hover:text-black transition-colors">The Codes</a>
+                  <a href="/lion-order/strains/king-clementine" className="block text-black/70 hover:text-black transition-colors">King Clementine</a>
+                  <a href="/lion-order/characters" className="block text-black/70 hover:text-black transition-colors">Characters</a>
+                  <a href="/lion-order/the-flower" className="block text-black/70 hover:text-black transition-colors">The Flower</a>
+                </div>
+              </div>
+            </div>
+            {/* Column 2 */}
+            <div className="space-y-3">
+              <div>
+                <p className="text-black font-bold text-[10px] tracking-[0.15em] uppercase mb-1">Music</p>
+                <div className="space-y-1">
+                  <a href="/music" className="block text-black/70 hover:text-black transition-colors">Music Hub</a>
+                  <a href="/music/yg-marley" className="block text-black/70 hover:text-black transition-colors">YG Marley</a>
+                  <a href="/music/playlists" className="block text-black/70 hover:text-black transition-colors">Playlists</a>
+                  <a href="/roots" className="block text-black/70 hover:text-black transition-colors">ROOTS</a>
+                  <a href="/podcast" className="block text-black/70 hover:text-black transition-colors">Podcast</a>
+                </div>
+              </div>
+              <div>
+                <p className="text-black font-bold text-[10px] tracking-[0.15em] uppercase mb-1">Hospitality</p>
+                <div className="space-y-1">
+                  <a href="/romarley-beach-house" className="block text-black/70 hover:text-black transition-colors">Beach House</a>
+                  <a href="/experiences" className="block text-black/70 hover:text-black transition-colors">Experiences</a>
+                  <a href="/retreats" className="block text-black/70 hover:text-black transition-colors">Retreats</a>
+                  <a href="/real-estate" className="block text-black/70 hover:text-black transition-colors">Real Estate</a>
+                </div>
+              </div>
+              <div>
+                <p className="text-black font-bold text-[10px] tracking-[0.15em] uppercase mb-1">Business</p>
+                <div className="space-y-1">
+                  <a href="/masterclass" className="block text-black/70 hover:text-black transition-colors">Masterclass</a>
+                  <a href="/education" className="block text-black/70 hover:text-black transition-colors">Education</a>
+                  <a href="/capital" className="block text-black/70 hover:text-black transition-colors">Capital</a>
+                  <a href="/membership" className="block text-black/70 hover:text-black transition-colors">Membership</a>
+                  <a href="/investor" className="block text-black/70 hover:text-black transition-colors">Investor</a>
+                  <a href="/community" className="block text-black/70 hover:text-black transition-colors">Community</a>
+                </div>
+              </div>
+              <div>
+                <p className="text-black font-bold text-[10px] tracking-[0.15em] uppercase mb-1">Legal</p>
+                <div className="space-y-1">
+                  <a href="/faq" className="block text-black/70 hover:text-black transition-colors">FAQ</a>
+                  <a href="/privacy-policy" className="block text-black/70 hover:text-black transition-colors">Privacy</a>
+                  <a href="/terms" className="block text-black/70 hover:text-black transition-colors">Terms</a>
+                  <a href="/cannabis-compliance" className="block text-black/70 hover:text-black transition-colors">Compliance</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <p className="text-black text-[11px] tracking-[0.3em] uppercase font-bold mb-3">
-          Lion Order · Est. 2022
+          The Marley Group · Est. 2022
         </p>
         <p className="text-black/80 text-[9px] tracking-[0.15em] font-bold">
-          &copy; 2026 Lion Order. All rights reserved.
+          &copy; 2026 The Marley Group. All rights reserved.
         </p>
       </motion.footer>
     </div>
