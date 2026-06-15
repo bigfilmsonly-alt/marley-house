@@ -26,7 +26,7 @@ const tabs: Tab[] = [
 
 export default function TabBar() {
   const pathname = usePathname();
-  const { openLink } = useInAppBrowser();
+  const { openLink, close, isOpen } = useInAppBrowser();
 
   return (
     <nav className="flex items-center justify-around border-t border-[var(--line)] bg-black/90 backdrop-blur-xl relative z-[90]">
@@ -42,7 +42,7 @@ export default function TabBar() {
                 transition={{ type: 'spring', stiffness: 500, damping: 18 }}
                 className="relative"
               >
-                {active && (
+                {active && !isOpen && (
                   <motion.div
                     layoutId="tab-glow"
                     className="absolute -inset-2 rounded-full bg-[var(--gold)]/10 blur-sm"
@@ -52,16 +52,16 @@ export default function TabBar() {
                 <tab.icon
                   size={20}
                   className={
-                    active
+                    active && !isOpen
                       ? 'text-[#F6C800] relative z-10'
                       : 'text-white/70 relative z-10'
                   }
-                  strokeWidth={active ? 2.5 : 2}
+                  strokeWidth={active && !isOpen ? 2.5 : 2}
                 />
               </motion.div>
               <span
                 className={`font-display text-[9px] tracking-[0.1em] uppercase ${
-                  active
+                  active && !isOpen
                     ? 'text-[#F6C800] font-bold'
                     : 'text-white/70 font-bold'
                 }`}
@@ -76,8 +76,12 @@ export default function TabBar() {
               <button
                 key={tab.href}
                 onClick={() => {
-                  openLink(tab.embed!.url, tab.embed!.title);
-                  tabView(tab.label);
+                  // Close any existing browser first, then open the new one
+                  close();
+                  setTimeout(() => {
+                    openLink(tab.embed!.url, tab.embed!.title);
+                    tabView(tab.label);
+                  }, isOpen ? 300 : 0);
                 }}
                 className="flex flex-col items-center gap-0.5 px-2 py-1 relative"
               >
@@ -90,7 +94,11 @@ export default function TabBar() {
             <Link
               key={tab.href}
               href={tab.href}
-              onClick={() => tabView(tab.label)}
+              onClick={() => {
+                // Close the in-app browser when navigating to a native page
+                close();
+                tabView(tab.label);
+              }}
               className="flex flex-col items-center gap-0.5 px-2 py-1 relative"
             >
               {inner}

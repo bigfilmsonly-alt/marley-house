@@ -11,11 +11,13 @@ interface BrowserState {
 
 interface InAppBrowserContextValue {
   openLink: (url: string, title?: string) => void;
+  close: () => void;
   isOpen: boolean;
 }
 
 const InAppBrowserContext = createContext<InAppBrowserContextValue>({
   openLink: () => {},
+  close: () => {},
   isOpen: false,
 });
 
@@ -23,7 +25,6 @@ export function useInAppBrowser() {
   return useContext(InAppBrowserContext);
 }
 
-/** Wraps an <a> tag — opens in the in-app browser instead of navigating away */
 export function AppLink({
   href,
   title,
@@ -37,10 +38,7 @@ export function AppLink({
 }) {
   const { openLink } = useInAppBrowser();
   return (
-    <button
-      onClick={() => openLink(href, title)}
-      className={className}
-    >
+    <button onClick={() => openLink(href, title)} className={className}>
       {children}
     </button>
   );
@@ -59,7 +57,6 @@ function BrowserOverlay({ state, onClose }: { state: BrowserState | null; onClos
     <AnimatePresence>
       {state && (
         <>
-          {/* Backdrop — clicking closes */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -68,8 +65,6 @@ function BrowserOverlay({ state, onClose }: { state: BrowserState | null; onClos
             className="fixed inset-0 bg-black/60 z-[75]"
             onClick={onClose}
           />
-
-          {/* Browser panel — slides up from bottom, leaves room for tab bar */}
           <motion.div
             role="dialog"
             aria-modal="true"
@@ -80,9 +75,7 @@ function BrowserOverlay({ state, onClose }: { state: BrowserState | null; onClos
             transition={{ duration: 0.5, ease: [0.16, 0.6, 0.3, 1] }}
             className="fixed top-0 left-0 right-0 bottom-[calc(env(safe-area-inset-bottom,0px)+3.5rem)] z-[76] bg-white flex flex-col overflow-hidden md:left-1/2 md:-translate-x-1/2 md:max-w-[390px]"
           >
-            {/* Minimal browser chrome — compact to maximize site view */}
             <div className="shrink-0 flex items-center gap-2 px-2 py-1.5 bg-[var(--bg)] border-b border-[var(--line)]">
-              {/* Close / swipe down */}
               <button
                 onClick={onClose}
                 aria-label="Close"
@@ -91,15 +84,11 @@ function BrowserOverlay({ state, onClose }: { state: BrowserState | null; onClos
                 <ChevronDown size={14} className="text-white/70" />
                 <span className="text-[10px] text-white/50 tracking-wider uppercase">Close</span>
               </button>
-
-              {/* Domain pill */}
               <div className="flex-1 flex items-center justify-center min-w-0">
                 <span className="text-[11px] text-[var(--gold)] font-medium truncate">
                   {state.title || extractDomain(state.url)}
                 </span>
               </div>
-
-              {/* Open externally */}
               <a
                 href={state.url}
                 target="_blank"
@@ -110,8 +99,6 @@ function BrowserOverlay({ state, onClose }: { state: BrowserState | null; onClos
                 <ExternalLink size={12} className="text-white/70" />
               </a>
             </div>
-
-            {/* Full iframe — takes all remaining space */}
             <div className="flex-1 relative bg-white">
               <iframe
                 src={state.url}
@@ -137,7 +124,7 @@ export function InAppBrowserProvider({ children }: { children: React.ReactNode }
   const close = useCallback(() => setState(null), []);
 
   return (
-    <InAppBrowserContext.Provider value={{ openLink, isOpen: !!state }}>
+    <InAppBrowserContext.Provider value={{ openLink, close, isOpen: !!state }}>
       {children}
       <BrowserOverlay state={state} onClose={close} />
     </InAppBrowserContext.Provider>

@@ -352,7 +352,7 @@ export default function HomePage() {
             </a>
           ))}
         </div>
-        <div className="flex justify-center gap-8 mb-10">
+        <div className="flex justify-center gap-8 mb-6">
           {[
             { label: 'Instagram', url: 'https://www.instagram.com/romarley/' },
             { label: 'YouTube', url: 'https://youtube.com/@MrRohanmarley' },
@@ -370,13 +370,15 @@ export default function HomePage() {
           ))}
         </div>
 
-        <div className="gold-rule mx-4 mb-8" />
+        {/* ═══ SITEMAP — collapsible dropdown ═══ */}
+        <details className="mb-8 group">
+          <summary className="flex items-center justify-center gap-2 cursor-pointer list-none py-3">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-black font-bold">Sitemap</span>
+            <svg className="w-3 h-3 text-black/60 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
 
-        {/* ═══ SITEMAP ═══ */}
-        <div className="text-left mb-10">
-          <p className="text-[9px] tracking-[0.4em] uppercase text-[var(--gold)] mb-6 text-center font-medium">
-            Sitemap
-          </p>
+          <div className="pt-4 pb-2">
+            <div className="gold-rule mx-4 mb-6" />
           <div className="grid grid-cols-2 gap-x-5 gap-y-5 text-[11px]">
 
             {/* ── THE GROUP ── */}
@@ -571,7 +573,8 @@ export default function HomePage() {
             </div>
 
           </div>
-        </div>
+          </div>
+        </details>
 
         <div className="gold-rule mx-4 mb-6" />
 
