@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Coffee, Play, Crown, Flame, Palmtree } from 'lucide-react';
+import { Home, Coffee, Play, Crown, Flame, Palmtree, Map } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { LucideIcon } from 'lucide-react';
 import { tabView } from '@/lib/tracking';
@@ -22,6 +22,7 @@ const tabs: Tab[] = [
   { href: '/king-clem', icon: Crown, label: 'King Clem' },
   { href: '/lion-order', icon: Flame, label: 'Lion Order', embed: { url: 'https://lionorder.com', title: 'Lion Order' } },
   { href: '/beach-house', icon: Palmtree, label: 'Beach', embed: { url: 'https://www.romarleybeachhouse.com/en', title: 'RoMarley Beach House' } },
+  { href: '/sitemap-page', icon: Map, label: 'Sitemap' },
 ];
 
 export default function TabBar() {
@@ -30,7 +31,7 @@ export default function TabBar() {
 
   return (
     <nav className="flex items-center justify-around border-t border-[var(--line)] bg-black/90 backdrop-blur-xl relative z-[90]">
-      <div className="flex items-center justify-around w-full px-1 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
+      <div className="flex items-center justify-around w-full px-0.5 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
         {tabs.map((tab) => {
           const active =
             tab.href === '/' ? pathname === '/' : pathname.startsWith(tab.href);
@@ -50,7 +51,7 @@ export default function TabBar() {
                   />
                 )}
                 <tab.icon
-                  size={20}
+                  size={18}
                   className={
                     active
                       ? 'text-[#F6C800] relative z-10'
@@ -60,7 +61,7 @@ export default function TabBar() {
                 />
               </motion.div>
               <span
-                className={`font-display text-[9px] tracking-[0.1em] uppercase ${
+                className={`font-display text-[8px] tracking-[0.05em] uppercase ${
                   active
                     ? 'text-[#F6C800] font-bold'
                     : 'text-white/70 font-bold'
@@ -79,7 +80,7 @@ export default function TabBar() {
                   openLink(tab.embed!.url, tab.embed!.title);
                   tabView(tab.label);
                 }}
-                className="flex flex-col items-center gap-0.5 px-2 py-1 relative"
+                className="flex flex-col items-center gap-0.5 px-1 py-1 relative"
               >
                 {inner}
               </button>
@@ -91,7 +92,7 @@ export default function TabBar() {
               key={tab.href}
               href={tab.href}
               onClick={() => tabView(tab.label)}
-              className="flex flex-col items-center gap-0.5 px-2 py-1 relative"
+              className="flex flex-col items-center gap-0.5 px-1 py-1 relative"
             >
               {inner}
             </Link>

@@ -59,7 +59,7 @@ export default function RootLayout({
         <EntityGraph />
         <FAQSchema />
       </head>
-      <body className="h-full overflow-hidden">
+      <body className="h-full">
         <GTMNoScript />
         {children}
         <TrackingScripts />
