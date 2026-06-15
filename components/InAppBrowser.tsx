@@ -1,9 +1,8 @@
 'use client';
 
 import { createContext, useContext, useState, useCallback } from 'react';
-import { X, ExternalLink, Globe } from 'lucide-react';
+import { X, ExternalLink, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useFocusTrap } from '@/lib/useFocusTrap';
 
 interface BrowserState {
   url: string;
@@ -12,10 +11,12 @@ interface BrowserState {
 
 interface InAppBrowserContextValue {
   openLink: (url: string, title?: string) => void;
+  isOpen: boolean;
 }
 
 const InAppBrowserContext = createContext<InAppBrowserContextValue>({
   openLink: () => {},
+  isOpen: false,
 });
 
 export function useInAppBrowser() {
@@ -54,71 +55,69 @@ function extractDomain(url: string) {
 }
 
 function BrowserOverlay({ state, onClose }: { state: BrowserState | null; onClose: () => void }) {
-  const trapRef = useFocusTrap(!!state);
-
   return (
     <AnimatePresence>
       {state && (
         <>
+          {/* Backdrop — clicking closes */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="fixed inset-0 bg-black/80 z-[75] backdrop-blur-md"
+            transition={{ duration: 0.4 }}
+            className="fixed inset-0 bg-black/60 z-[75]"
             onClick={onClose}
           />
+
+          {/* Browser panel — slides up from bottom, leaves room for tab bar */}
           <motion.div
-            ref={trapRef}
             role="dialog"
             aria-modal="true"
-            aria-label={state.title || 'External link'}
-            initial={{ y: '100%', opacity: 0.5 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: '100%', opacity: 0 }}
-            drag="y"
-            dragConstraints={{ top: 0 }}
-            dragElastic={0.1}
-            onDragEnd={(_, info) => { if (info.offset.y > 120) onClose(); }}
-            transition={{ duration: 0.7, ease: [0.16, 0.6, 0.3, 1] }}
-            className="fixed inset-0 z-[76] bg-[var(--bg)] flex flex-col overflow-hidden md:left-1/2 md:-translate-x-1/2 md:max-w-[390px]"
+            aria-label={state.title || 'External site'}
+            initial={{ y: '100%' }}
+            animate={{ y: 0 }}
+            exit={{ y: '100%' }}
+            transition={{ duration: 0.5, ease: [0.16, 0.6, 0.3, 1] }}
+            className="fixed top-0 left-0 right-0 bottom-[calc(env(safe-area-inset-bottom,0px)+3.5rem)] z-[76] bg-white flex flex-col overflow-hidden md:left-1/2 md:-translate-x-1/2 md:max-w-[390px]"
           >
-            {/* Browser chrome */}
-            <div className="shrink-0 flex items-center gap-2 px-3 py-2.5 border-b border-[var(--line)] bg-[var(--panel)]">
-              <button onClick={onClose} aria-label="Close browser" className="p-1.5 rounded-lg hover:bg-white/5 transition-colors">
-                <X size={16} className="text-[var(--dim)]" />
+            {/* Minimal browser chrome — compact to maximize site view */}
+            <div className="shrink-0 flex items-center gap-2 px-2 py-1.5 bg-[var(--bg)] border-b border-[var(--line)]">
+              {/* Close / swipe down */}
+              <button
+                onClick={onClose}
+                aria-label="Close"
+                className="flex items-center gap-1 px-2 py-1 rounded-full bg-white/10 hover:bg-white/15 transition-colors"
+              >
+                <ChevronDown size={14} className="text-white/70" />
+                <span className="text-[10px] text-white/50 tracking-wider uppercase">Close</span>
               </button>
-              <div className="flex-1 flex items-center gap-1.5 rounded-lg bg-[var(--bg)] border border-[var(--line)] px-3 py-1.5 min-w-0">
-                <Globe size={11} className="text-[var(--dim)] shrink-0" />
-                <span className="text-[11px] text-[var(--dim)] truncate">
-                  {extractDomain(state.url)}
+
+              {/* Domain pill */}
+              <div className="flex-1 flex items-center justify-center min-w-0">
+                <span className="text-[11px] text-[var(--gold)] font-medium truncate">
+                  {state.title || extractDomain(state.url)}
                 </span>
               </div>
+
+              {/* Open externally */}
               <a
                 href={state.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-1.5 rounded-lg hover:bg-white/5 transition-colors"
-                title="Open in new tab"
+                className="p-1.5 rounded-full bg-white/10 hover:bg-white/15 transition-colors"
+                title="Open in browser"
               >
-                <ExternalLink size={14} className="text-[var(--dim)]" />
+                <ExternalLink size={12} className="text-white/70" />
               </a>
             </div>
 
-            {/* Title bar */}
-            {state.title && (
-              <div className="shrink-0 px-4 py-2 border-b border-[var(--line)]">
-                <p className="text-xs text-[var(--cream)] font-medium truncate">{state.title}</p>
-              </div>
-            )}
-
-            {/* iframe */}
+            {/* Full iframe — takes all remaining space */}
             <div className="flex-1 relative bg-white">
               <iframe
                 src={state.url}
                 title={state.title || extractDomain(state.url)}
                 className="absolute inset-0 w-full h-full border-0"
-                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-top-navigation-by-user-activation"
               />
             </div>
           </motion.div>
@@ -138,7 +137,7 @@ export function InAppBrowserProvider({ children }: { children: React.ReactNode }
   const close = useCallback(() => setState(null), []);
 
   return (
-    <InAppBrowserContext.Provider value={{ openLink }}>
+    <InAppBrowserContext.Provider value={{ openLink, isOpen: !!state }}>
       {children}
       <BrowserOverlay state={state} onClose={close} />
     </InAppBrowserContext.Provider>
