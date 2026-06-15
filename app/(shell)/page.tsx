@@ -48,6 +48,7 @@ export default function HomePage() {
       {/* ═══ HERO ═══ */}
       <section className="w-full pt-12 pb-8">
         <div className="flex flex-col items-center justify-center px-8">
+          <h1 className="sr-only">The Marley Group — Heritage, Craft & Legacy by Rohan Marley</h1>
           <div className="relative w-[220px] h-[220px] mb-4">
             <Image
               src="/brand/rhr-monogram-transparent.png"
@@ -69,11 +70,11 @@ export default function HomePage() {
 
           {/* Single CTA — opens form modal */}
           {submitted ? (
-            <p className="text-[#EEC11E] text-sm font-semibold">Welcome to the Inner Circle.</p>
+            <p className="text-[#F6C800] text-sm font-semibold">Welcome to the Inner Circle.</p>
           ) : (
             <button
               onClick={() => setShowForm(true)}
-              className="bg-black text-[#EEC11E] text-[11px] tracking-[0.3em] uppercase font-semibold px-12 py-3.5 hover:bg-black/80 transition-colors"
+              className="bg-black text-[#F6C800] text-[11px] tracking-[0.3em] uppercase font-semibold px-12 py-3.5 hover:bg-black/80 transition-colors"
             >
               Join the Inner Circle
             </button>
@@ -97,7 +98,7 @@ export default function HomePage() {
                       height={60}
                       className="mx-auto mb-4 opacity-60"
                     />
-                    <p className="text-[9px] tracking-[0.5em] uppercase text-[#EEC11E] mb-2 font-medium">
+                    <p className="text-[9px] tracking-[0.5em] uppercase text-[#F6C800] mb-2 font-medium">
                       The Inner Circle
                     </p>
                     <p className="text-white text-[17px] font-semibold mb-1">
@@ -109,11 +110,11 @@ export default function HomePage() {
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-3">
-                    <input name="name" placeholder="Your Name" autoFocus className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
-                    <input name="email" type="email" placeholder="Email" required className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
-                    <input name="phone" type="tel" placeholder="Phone Number" className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
-                    <input name="social" placeholder="Instagram @handle" className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#EEC11E]/50 transition-colors" />
-                    <button type="submit" disabled={formLoading} className="w-full bg-[#EEC11E] text-black text-[12px] tracking-[0.25em] uppercase font-semibold py-4 hover:bg-[#EEC11E]/90 transition-colors disabled:opacity-50">
+                    <input name="name" placeholder="Your Name" autoFocus className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#F6C800]/50 transition-colors" />
+                    <input name="email" type="email" placeholder="Email" required className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#F6C800]/50 transition-colors" />
+                    <input name="phone" type="tel" placeholder="Phone Number" className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#F6C800]/50 transition-colors" />
+                    <input name="social" placeholder="Instagram @handle" className="w-full bg-[#120d07] border border-white/15 px-4 py-3.5 text-white text-[14px] placeholder:text-white/30 focus:outline-none focus:border-[#F6C800]/50 transition-colors" />
+                    <button type="submit" disabled={formLoading} className="w-full bg-[#F6C800] text-black text-[12px] tracking-[0.25em] uppercase font-semibold py-4 hover:bg-[#F6C800]/90 transition-colors disabled:opacity-50">
                       {formLoading ? '...' : 'Subscribe — Free Access'}
                     </button>
                     <p className="text-white/25 text-[8px] text-center">Cancel anytime. We respect your privacy.</p>
@@ -137,7 +138,7 @@ export default function HomePage() {
                       height={70}
                       className="mx-auto mb-4 opacity-70"
                     />
-                    <p className="text-[9px] tracking-[0.5em] uppercase text-[#EEC11E] mb-3 font-medium">
+                    <p className="text-[9px] tracking-[0.5em] uppercase text-[#F6C800] mb-3 font-medium">
                       Welcome to the Inner Circle
                     </p>
                     <h2 className="text-white text-xl font-bold mb-2">
@@ -156,7 +157,7 @@ export default function HomePage() {
                       { title: 'Hospitality as Heritage', desc: 'Creating luxury experiences that feel like home — the Beach House blueprint.', image: '/lion-order/rainforest.jpg' },
                       { title: 'Storytelling as Business Strategy', desc: 'Craft a brand narrative that transcends products and creates cultural movement.', image: '/lion-order/heritage.jpg' },
                       { title: 'From Athlete to Entrepreneur', desc: 'Building a second act that\'s bigger and more meaningful than the first.', image: '/lion-order/rohan-portrait.jpg' },
-                      { title: 'Rastafari Business Principles', desc: 'Blending spirituality with commerce — One Love Economics.', image: '/lion-order/selassie.jpg' },
+                      { title: 'Rastafari Business Principles', desc: 'Blending spirituality with commerce — One Love Economics.', image: '/lion-order/rastafari-principles.jpg' },
                       { title: 'Building Revenue Streams', desc: 'The portfolio playbook — creating synergy across an empire.', image: '/lion-order/culture.jpg' },
                     ].map((ep) => (
                       <div key={ep.title} className="flex gap-3 border border-white/10 bg-white/5 overflow-hidden">
@@ -173,22 +174,22 @@ export default function HomePage() {
 
                   <div className="flex justify-center gap-6 mb-8">
                     <div className="text-center">
-                      <p className="text-[#EEC11E] text-lg font-bold">663K</p>
+                      <p className="text-[#F6C800] text-lg font-bold">663K</p>
                       <p className="text-white/40 text-[9px] uppercase font-semibold">Followers</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-[#EEC11E] text-lg font-bold">8</p>
+                      <p className="text-[#F6C800] text-lg font-bold">8</p>
                       <p className="text-white/40 text-[9px] uppercase font-semibold">Episodes</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-[#EEC11E] text-lg font-bold">5+</p>
+                      <p className="text-[#F6C800] text-lg font-bold">5+</p>
                       <p className="text-white/40 text-[9px] uppercase font-semibold">Brands Built</p>
                     </div>
                   </div>
 
                   <button
                     onClick={() => setShowForm(false)}
-                    className="w-full bg-[#EEC11E] text-black text-[12px] tracking-[0.25em] uppercase font-semibold py-4 hover:bg-[#EEC11E]/90 transition-colors"
+                    className="w-full bg-[#F6C800] text-black text-[12px] tracking-[0.25em] uppercase font-semibold py-4 hover:bg-[#F6C800]/90 transition-colors"
                   >
                     Start Watching
                   </button>
@@ -224,12 +225,12 @@ export default function HomePage() {
             />
           </div>
           <div className="px-6 py-6 text-center">
-            <p className="text-[9px] tracking-[0.4em] uppercase text-[#EEC11E] mb-2 font-medium">01</p>
+            <p className="text-[9px] tracking-[0.4em] uppercase text-[#F6C800] mb-2 font-medium">01</p>
             <h2 className="font-display text-2xl text-black font-bold mb-2">Marley Coffee</h2>
             <p className="text-black/70 text-[13px] font-medium mb-5 max-w-[300px] mx-auto">
               The original. Coffee from the Blue Mountains of Jamaica — legacy in every cup.
             </p>
-            <a href="https://marleycoffee.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#EEC11E]/40 text-[#EEC11E] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#EEC11E]/5 transition-colors mb-4">
+            <a href="https://marleycoffee.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#F6C800]/40 text-[#F6C800] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#F6C800]/5 transition-colors mb-4">
               Shop the Coffee
             </a>
             <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 mt-2">
@@ -251,12 +252,12 @@ export default function HomePage() {
             />
           </div>
           <div className="px-6 py-6 text-center">
-            <p className="text-[9px] tracking-[0.4em] uppercase text-[#EEC11E] mb-2 font-medium">02</p>
+            <p className="text-[9px] tracking-[0.4em] uppercase text-[#F6C800] mb-2 font-medium">02</p>
             <h2 className="font-display text-2xl text-black font-bold mb-2">Lion Order</h2>
             <p className="text-black/70 text-[13px] font-medium mb-5 max-w-[300px] mx-auto">
               Flower to the people. Roots-luxury cannabis that elevates consciousness.
             </p>
-            <a href="https://lionorder.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#EEC11E]/40 text-[#EEC11E] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#EEC11E]/5 transition-colors mb-4">
+            <a href="https://lionorder.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#F6C800]/40 text-[#F6C800] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#F6C800]/5 transition-colors mb-4">
               Explore Lion Order
             </a>
             <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 mt-2">
@@ -278,12 +279,12 @@ export default function HomePage() {
             />
           </div>
           <div className="px-6 py-6 text-center">
-            <p className="text-[9px] tracking-[0.4em] uppercase text-[#EEC11E] mb-2 font-medium">03</p>
+            <p className="text-[9px] tracking-[0.4em] uppercase text-[#F6C800] mb-2 font-medium">03</p>
             <h2 className="font-display text-2xl text-black font-bold mb-2">RoMarley Beach House</h2>
             <p className="text-black/70 text-[13px] font-medium mb-5 max-w-[300px] mx-auto">
               Where the Caribbean meets luxury — Puerto Morelos, Riviera Maya.
             </p>
-            <a href="https://www.romarleybeachhouse.com/en" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#EEC11E]/40 text-[#EEC11E] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#EEC11E]/5 transition-colors mb-4">
+            <a href="https://www.romarleybeachhouse.com/en" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#F6C800]/40 text-[#F6C800] text-[10px] tracking-[0.25em] uppercase px-8 py-2.5 hover:bg-[#F6C800]/5 transition-colors mb-4">
               Book Your Stay
             </a>
             <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 mt-2">
@@ -299,7 +300,7 @@ export default function HomePage() {
 
       {/* ═══ PHOTO GALLERY ═══ */}
       <motion.section {...fadeIn} className="py-10">
-        <p className="text-[9px] tracking-[0.5em] uppercase text-[#EEC11E] mb-6 text-center font-medium">
+        <p className="text-[9px] tracking-[0.5em] uppercase text-[#F6C800] mb-6 text-center font-medium">
           The Legacy
         </p>
         <div className="space-y-2 px-4">
@@ -353,7 +354,7 @@ export default function HomePage() {
         </div>
         <div className="flex justify-center gap-8 mb-8">
           {[
-            { label: 'Instagram', url: 'https://instagram.com/romarley' },
+            { label: 'Instagram', url: 'https://www.instagram.com/romarley/' },
             { label: 'YouTube', url: 'https://youtube.com/@MrRohanmarley' },
             { label: 'LinkedIn', url: 'https://linkedin.com/in/rohanmarley' },
           ].map((link) => (

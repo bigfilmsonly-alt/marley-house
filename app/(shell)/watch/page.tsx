@@ -265,7 +265,7 @@ function CuratedSection({
 }) {
   return (
     <section className="mb-8">
-      <p className="text-[11px] tracking-[0.3em] uppercase text-[#E8C23A] font-medium mb-4 px-4">
+      <p className="text-[11px] tracking-[0.3em] uppercase text-[#F6C800] font-medium mb-4 px-4">
         {title}
       </p>
       <div className="flex gap-3 overflow-x-auto px-4 pb-2 scrollbar-hide">

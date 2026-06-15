@@ -23,12 +23,12 @@ const codes = [
 ];
 
 const qualityFactors = [
-  { name: 'Strain Hunting', accent: '#B98524' },
-  { name: 'Aroma', accent: '#825B0D' },
-  { name: 'Aesthetic', accent: '#E8C23A' },
-  { name: 'Flavor', accent: '#B98524' },
+  { name: 'Strain Hunting', accent: '#B5851E' },
+  { name: 'Aroma', accent: '#946312' },
+  { name: 'Aesthetic', accent: '#F6C800' },
+  { name: 'Flavor', accent: '#B5851E' },
   { name: 'Resin-Release', accent: '#EFC11F' },
-  { name: 'Efficacy', accent: '#825B0D' },
+  { name: 'Efficacy', accent: '#946312' },
 ];
 
 const personality = ['Regal', 'Passionate', 'Wise', 'Aspirational', 'Courageous', 'Nurturing'];

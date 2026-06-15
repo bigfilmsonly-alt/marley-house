@@ -6,7 +6,7 @@ export default function KingClemPage() {
   return (
     <div className="relative min-h-full bg-[var(--bg)]">
       <section className="px-4 py-8">
-        <p className="text-[10px] tracking-[0.4em] uppercase text-[#E8C23A] mb-2 text-center font-medium">
+        <p className="text-[10px] tracking-[0.4em] uppercase text-[#F6C800] mb-2 text-center font-medium">
           Strain Reference Guide
         </p>
         <p className="text-white text-[20px] font-semibold text-center mb-1">

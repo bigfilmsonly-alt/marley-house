@@ -1,48 +1,57 @@
 @import "tailwindcss";
 
-/* ─── LION ORDER · R-M — Black & Gold Brand System ─── */
+/* ─── THE MARLEY GROUP · R-M — Obsidian & Gold Brand System ─── */
 :root {
-  --bg: #0b0805;
+  --bg: #0B0805;
   --panel: #120d07;
-  --line: rgba(238, 193, 30, 0.18);
+  --line: rgba(246, 200, 0, 0.18);
 
-  --gold: #EEC11E;
-  --gold-deep: #B98524;
-  --bright: #EEC11E;
-  --royal: #EFC11F;
+  --gold: #F6C800;
+  --gold-deep: #946312;
+  --bright: #F6C800;
+  --royal: #F6C800;
 
-  --cream: #F3E9D8;
-  --dim: #b8a87f;
-  --ink: #1c1810;
+  --cream: #F6F1E6;
+  --dim: #946312;
+  --ink: #231B10;
+
+  /* Extended palette */
+  --green: #1E5A38;
+  --tan: #ECE3D0;
+  --gold-soft: #B5851E;
 
   /* Rooms */
-  --room-legacy: #B98524;
-  --room-fire: #E8C23A;
-  --room-healing: #825B0D;
-  --room-music: #B98524;
-  --room-movement: #E8C23A;
-  --room-story: #b8a87f;
-  --room-future: #F3E9D8;
+  --room-legacy: #B5851E;
+  --room-fire: #F6C800;
+  --room-healing: #946312;
+  --room-music: #B5851E;
+  --room-movement: #F6C800;
+  --room-story: #946312;
+  --room-future: #F6F1E6;
+  --room-coffee: #946312;
 }
 
 @theme inline {
-  --color-bg: #0b0805;
+  --color-bg: #0B0805;
   --color-panel: #120d07;
-  --color-cream: #F3E9D8;
-  --color-dim: #b8a87f;
-  --color-gold: #EEC11E;
-  --color-gold-deep: #B98524;
-  --color-bright: #EEC11E;
-  --color-royal: #EFC11F;
-  --color-ink: #1c1810;
-  --color-line: rgba(238, 193, 30, 0.18);
+  --color-cream: #F6F1E6;
+  --color-dim: #946312;
+  --color-gold: #F6C800;
+  --color-gold-deep: #946312;
+  --color-bright: #F6C800;
+  --color-royal: #F6C800;
+  --color-ink: #231B10;
+  --color-line: rgba(246, 200, 0, 0.18);
+  --color-green: #1E5A38;
+  --color-tan: #ECE3D0;
+  --color-gold-soft: #B5851E;
   --font-display: var(--font-fraunces), 'Cormorant Garamond', Georgia, serif;
-  --font-body: var(--font-spline), 'EB Garamond', 'Times New Roman', serif;
+  --font-body: var(--font-spline), 'EB Garamond', 'Inter', 'Times New Roman', serif;
 }
 
 /* ─── Base ─── */
 body {
-  background: #f4d30b url('/brand/black-paper-bg.jpg') center / 200px auto repeat fixed;
+  background: #F6C800 url('/brand/black-paper-bg.jpg') center / 200px auto repeat fixed;
   color: var(--cream);
   font-family: var(--font-body), 'EB Garamond', Georgia, serif;
   -webkit-font-smoothing: antialiased;
@@ -123,14 +132,14 @@ body {
     border-radius: 55px;
     background: transparent;
     box-shadow:
-      inset 0 1px 0 rgba(185, 133, 36, 0.15),
-      0 0 0 1px rgba(185, 133, 36, 0.08),
+      inset 0 1px 0 rgba(246, 200, 0, 0.15),
+      0 0 0 1px rgba(246, 200, 0, 0.08),
       0 30px 80px rgba(0, 0, 0, 0.5);
     padding: 3px; flex-shrink: 0;
   }
   .device-btn {
     display: block; position: absolute;
-    background: linear-gradient(180deg, #1c1810, #120d07);
+    background: linear-gradient(180deg, #231B10, #120d07);
   }
   .device-btn--silent { left: -3px; top: 160px; width: 4px; height: 30px; border-radius: 2px 0 0 2px; }
   .device-btn--vol-up { left: -3px; top: 210px; width: 4px; height: 54px; border-radius: 2px 0 0 2px; }

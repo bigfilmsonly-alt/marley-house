@@ -7,7 +7,7 @@ const primaryGolds = [
   { name: 'Royalty Yellow', hex: '#EFC11F', css: '--royal', note: 'Splash screen only — the single bright moment.' },
   { name: 'Antique Gold', hex: '#B98524', css: '--gold', note: 'Primary brand gold. Crests, rules, accents.' },
   { name: 'Deep Gold', hex: '#825B0D', css: '--gold-deep', note: 'Secondary accent. Depth and warmth.' },
-  { name: '24K Bright', hex: '#E8C23A', css: '--bright', note: 'Highlights, active states, emphasis.' },
+  { name: '24K Bright', hex: '#F6C800', css: '--bright', note: 'Highlights, active states, emphasis.' },
 ];
 
 const neutrals = [

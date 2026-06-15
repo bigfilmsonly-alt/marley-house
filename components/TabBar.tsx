@@ -53,7 +53,7 @@ export default function TabBar() {
                   size={20}
                   className={
                     active
-                      ? 'text-[#EEC11E] relative z-10'
+                      ? 'text-[#F6C800] relative z-10'
                       : 'text-white/70 relative z-10'
                   }
                   strokeWidth={active ? 2.5 : 2}
@@ -62,7 +62,7 @@ export default function TabBar() {
               <span
                 className={`font-display text-[9px] tracking-[0.1em] uppercase ${
                   active
-                    ? 'text-[#EEC11E] font-bold'
+                    ? 'text-[#F6C800] font-bold'
                     : 'text-white/70 font-bold'
                 }`}
               >

@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, EB_Garamond } from 'next/font/google';
+import { Cormorant_Garamond, EB_Garamond, Inter } from 'next/font/google';
 
 // Lion Order Brand System — Typography
 // Production (licensed — self-host .woff2 in public/fonts/):
@@ -20,6 +20,13 @@ export const ebGaramond = EB_Garamond({
   subsets: ['latin'],
   variable: '--font-spline',
   weight: ['400', '500', '600'],
+  display: 'swap',
+});
+
+export const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
 });
 

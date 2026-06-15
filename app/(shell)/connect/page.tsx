@@ -7,7 +7,7 @@ import { brandLinks } from '@/content/links';
 import { joinHouse, trackEvent } from '@/lib/tracking';
 
 const statusColors: Record<string, string> = {
-  active: '#E8C23A',
+  active: '#F6C800',
   licensed: '#B98524',
   dormant: '#b8a87f',
   verify: '#825B0D',

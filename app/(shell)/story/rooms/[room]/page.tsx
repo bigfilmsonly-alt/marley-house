@@ -9,10 +9,10 @@ import { wisdomCards } from '@/content/wisdom';
 
 const roomMeta: Record<string, { name: string; color: string; desc: string; mappedRooms: string[] }> = {
   legacy: { name: 'Legacy', color: '#B98524', desc: 'Building what outlives us. The root system that holds everything up.', mappedRooms: ['legacy'] },
-  fire: { name: 'Fire', color: '#E8C23A', desc: 'The fire does not ask permission. Every failure was fuel.', mappedRooms: ['fire'] },
+  fire: { name: 'Fire', color: '#F6C800', desc: 'The fire does not ask permission. Every failure was fuel.', mappedRooms: ['fire'] },
   healing: { name: 'Healing', color: '#825B0D', desc: 'Reconnecting mind, body, and spirit. The ritual of presence.', mappedRooms: ['coffee', 'wisdom'] },
   music: { name: 'Music', color: '#B98524', desc: 'The frequency carries. The house holds the sound.', mappedRooms: ['music'] },
-  movement: { name: 'Movement', color: '#E8C23A', desc: 'Speed as prayer. The kinetic force of the maison.', mappedRooms: ['movement'] },
+  movement: { name: 'Movement', color: '#F6C800', desc: 'Speed as prayer. The kinetic force of the maison.', mappedRooms: ['movement'] },
   story: { name: 'Story', color: '#b8a87f', desc: 'The table is the truest meeting room. Family is the foundation.', mappedRooms: ['family'] },
   future: { name: 'Future', color: '#F3E9D8', desc: 'The next generation does not carry the legacy — they remix it.', mappedRooms: ['future'] },
 };
