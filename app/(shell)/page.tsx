@@ -53,23 +53,24 @@ export default function HomePage() {
     <div className="relative min-h-full">
 
       {/* HERO */}
-      <section className="w-full pt-6 pb-6">
-        <div className="flex flex-col items-center px-8">
+      <section className="w-full pt-2 pb-4">
+        <div className="flex flex-col items-center">
           <h1 className="sr-only">RM — Request Invitation</h1>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="relative w-[220px] h-[220px] mb-0"
+            className="relative w-full max-w-[500px] px-4"
+            style={{ aspectRatio: '2048 / 1365' }}
           >
             <Image
               src="/brand/rm-logo-gold-transparent.png"
               alt="RM Logo"
               fill
-              className="object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
+              className="object-contain drop-shadow-[0_6px_16px_rgba(0,0,0,0.3)]"
               priority
-              sizes="220px"
+              sizes="(max-width: 768px) 100vw, 500px"
             />
           </motion.div>
 
