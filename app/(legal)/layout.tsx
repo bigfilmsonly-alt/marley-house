@@ -12,7 +12,7 @@ export default function LegalLayout({
         <div className="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
           <Link href="/">
             <Image
-              src="/brand/rm-logo-gold.jpg"
+              src="/brand/rm-logo-gold-transparent.png"
               alt="RM Logo"
               width={28}
               height={28}

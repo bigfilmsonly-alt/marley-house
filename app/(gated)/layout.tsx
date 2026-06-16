@@ -26,7 +26,7 @@ export default function GatedLayout({
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/brand/rm-logo-gold.jpg"
+              src="/brand/rm-logo-gold-transparent.png"
               alt="RM Logo"
               width={32}
               height={32}

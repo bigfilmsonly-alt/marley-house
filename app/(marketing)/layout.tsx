@@ -13,7 +13,7 @@ export default function MarketingLayout({
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/brand/rm-logo-gold.jpg"
+              src="/brand/rm-logo-gold-transparent.png"
               alt="RM Logo"
               width={36}
               height={36}
@@ -40,7 +40,7 @@ export default function MarketingLayout({
         <div className="max-w-5xl mx-auto px-6 py-12">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-8">
             <Image
-              src="/brand/rm-logo-gold.jpg"
+              src="/brand/rm-logo-gold-transparent.png"
               alt="RM Logo"
               width={48}
               height={48}

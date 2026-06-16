@@ -19,7 +19,7 @@ export default function NotFound() {
     >
       {/* RM Logo */}
       <Image
-        src="/brand/rm-logo-gold.jpg"
+        src="/brand/rm-logo-gold-transparent.png"
         alt="RM Logo"
         width={160}
         height={160}

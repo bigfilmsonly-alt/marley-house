@@ -42,7 +42,7 @@ const houses = [
 
 /* ── Logo suite ── */
 const logos = [
-  { name: 'RM Logo', src: '/brand/rm-logo-gold.jpg', note: 'Primary mark' },
+  { name: 'RM Logo', src: '/brand/rm-logo-gold-transparent.png', note: 'Primary mark' },
   { name: 'Lion Crest', src: '/brand/lion-crest-clean.png', note: 'Brand crest' },
   { name: 'Lion Order Crest', src: '/brand/lion-order-crest.png', note: 'Enterprise mark' },
   { name: 'Crest Icon', src: '/brand/lion-crest-icon.png', note: 'App / favicon' },
@@ -135,7 +135,7 @@ export default function BrandPage() {
 
         {/* Primary — large display */}
         <div className="border border-[var(--line)] bg-[var(--panel)] p-10 flex flex-col items-center mb-4">
-          <Image src="/brand/rm-logo-gold.jpg" alt="RM Logo" width={120} height={120} className="mb-6 opacity-85" />
+          <Image src="/brand/rm-logo-gold-transparent.png" alt="RM Logo" width={120} height={120} className="mb-6 opacity-85" />
           <p className="font-display text-sm text-[var(--cream)] tracking-[0.1em] uppercase mb-1">RM Logo</p>
           <p className="text-[var(--dim)] text-[9px]">Primary mark — gold on dark grounds</p>
         </div>

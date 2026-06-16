@@ -61,15 +61,15 @@ export default function HomePage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="relative w-[280px] h-[280px] mb-2"
+            className="relative w-[320px] h-[320px] mb-2"
           >
             <Image
-              src="/brand/rm-logo-gold.jpg"
+              src="/brand/rm-logo-gold-transparent.png"
               alt="RM Logo"
               fill
-              className="object-contain drop-shadow-[0_0_20px_rgba(246,200,0,0.3)]"
+              className="object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
               priority
-              sizes="280px"
+              sizes="320px"
             />
           </motion.div>
 
@@ -120,7 +120,7 @@ export default function HomePage() {
                 >
                   <div className="text-center mb-10">
                     <Image
-                      src="/brand/rm-logo-gold.jpg"
+                      src="/brand/rm-logo-gold-transparent.png"
                       alt="RM"
                       width={100}
                       height={67}
@@ -206,7 +206,7 @@ export default function HomePage() {
                   className="text-center py-16"
                 >
                   <Image
-                    src="/brand/rm-logo-gold.jpg"
+                    src="/brand/rm-logo-gold-transparent.png"
                     alt="RM"
                     width={100}
                     height={67}
@@ -359,7 +359,7 @@ export default function HomePage() {
       {/* FOOTER */}
       <motion.footer {...elegant} className="px-8 py-20 text-center">
         <Image
-          src="/brand/rm-logo-gold.jpg"
+          src="/brand/rm-logo-gold-transparent.png"
           alt="RM Logo"
           width={200}
           height={141}

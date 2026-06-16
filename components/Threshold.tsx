@@ -14,7 +14,7 @@ const slides = [
   { src: '/brand/marley-enterprise.png', alt: 'Marley Enterprise', size: 'w-[80vw] max-w-[360px]', hold: 2500, signature: false },
   { src: '/brand/lion-head-gold.png', alt: 'Lion Order', size: 'w-[85vw] max-w-[380px]', hold: 2500, signature: false },
   { src: '/brand/lion-crest-clean.png', alt: 'Lion Order Crest', size: 'w-[80vw] max-w-[360px]', hold: 2500, signature: false },
-  { src: '/brand/rm-logo-gold.jpg', alt: 'RM Logo', size: 'w-[85vw] max-w-[380px]', hold: 3000, signature: false, goldFilter: true },
+  { src: '/brand/rm-logo-gold-transparent.png', alt: 'RM Logo', size: 'w-[85vw] max-w-[380px]', hold: 3000, signature: false, goldFilter: true },
 ];
 
 export default function Threshold() {
