@@ -87,18 +87,11 @@ export default function HomePage() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 1.4, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="mt-16 text-center"
+          className="mt-8 text-center"
         >
-          <h2 className="text-[clamp(18px,5vw,28px)] tracking-[0.35em] uppercase text-[#FAF3E0] font-light mb-6">
-            By Invitation Only
-          </h2>
-          <p className="text-white/35 text-[11px] tracking-[0.2em] leading-[2] max-w-[340px] mx-auto mb-14">
-            Limited releases. Select collaborations. Private opportunities.
-          </p>
-
           <button
             onClick={() => {
               setShowModal(true);
@@ -108,10 +101,6 @@ export default function HomePage() {
           >
             Request Invitation
           </button>
-
-          <p className="text-white/20 text-[9px] tracking-[0.15em] mt-5">
-            Requests are reviewed.
-          </p>
         </motion.div>
       </section>
 
