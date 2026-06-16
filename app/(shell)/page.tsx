@@ -53,57 +53,56 @@ export default function HomePage() {
     <div className="relative min-h-full">
 
       {/* HERO */}
-      <section className="w-full pt-10 pb-8">
-        <div className="flex flex-col items-center justify-center px-8">
+      <section className="w-full flex flex-col items-center justify-center px-6" style={{ minHeight: 'calc(100vh - 160px)' }}>
           <h1 className="sr-only">RM — Request Invitation</h1>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="relative w-[320px] h-[320px] mb-2"
+            transition={{ duration: 2, ease: [0.25, 0.1, 0.25, 1] }}
+            className="relative w-[85vw] max-w-[380px] aspect-square -mb-4"
           >
             <Image
               src="/brand/rm-logo-gold-transparent.png"
               alt="RM Logo"
               fill
-              className="object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
+              className="object-contain drop-shadow-[0_6px_20px_rgba(0,0,0,0.35)]"
               priority
-              sizes="320px"
-            />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.9 }}
-            transition={{ duration: 1.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-          >
-            <Image
-              src="/brand/rohan-signature.png"
-              alt="Rohan Marley"
-              width={300}
-              height={98}
-              className="brightness-[1.8] drop-shadow-[0_0_4px_rgba(0,0,0,0.6)]"
+              sizes="380px"
             />
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.4, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="mt-6 text-center"
+            transition={{ duration: 1.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+            className="-mt-2"
+          >
+            <Image
+              src="/brand/rohan-signature.png"
+              alt="Rohan Marley"
+              width={320}
+              height={105}
+              className="brightness-[1.8] drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]"
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.4, delay: 1, ease: [0.25, 0.1, 0.25, 1] }}
+            className="mt-6"
           >
             <button
               onClick={() => {
                 setShowModal(true);
                 trackEvent('enter');
               }}
-              className="bg-black text-[#F6C800] text-[10px] tracking-[0.35em] uppercase font-medium px-14 py-4 border border-[#F6C800]/20 hover:border-[#F6C800]/40 transition-all duration-700"
+              className="bg-black text-[#F6C800] text-[11px] tracking-[0.3em] uppercase font-semibold px-16 py-4 border border-[#F6C800]/25 hover:border-[#F6C800]/50 transition-all duration-700 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
             >
               Request Invitation
             </button>
           </motion.div>
-        </div>
       </section>
 
       {/* REQUEST INVITATION MODAL */}
