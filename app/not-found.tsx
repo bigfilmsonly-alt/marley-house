@@ -19,11 +19,11 @@ export default function NotFound() {
     >
       {/* RM Logo */}
       <Image
-        src="/brand/rm-logo-original.png"
+        src="/brand/rm-logo-gold.jpg"
         alt="RM Logo"
         width={160}
         height={160}
-        className="mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] rm-logo-gold"
+        className="mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
         priority
       />
 

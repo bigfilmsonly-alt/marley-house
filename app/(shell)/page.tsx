@@ -61,15 +61,15 @@ export default function HomePage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="relative w-[340px] h-[240px] mb-4"
+            className="relative w-[280px] h-[280px] mb-2"
           >
             <Image
-              src="/brand/rm-logo-original.png"
+              src="/brand/rm-logo-gold.jpg"
               alt="RM Logo"
               fill
-              className="object-contain rm-logo-gold"
+              className="object-contain drop-shadow-[0_0_20px_rgba(246,200,0,0.3)]"
               priority
-              sizes="340px"
+              sizes="280px"
             />
           </motion.div>
 
@@ -120,12 +120,12 @@ export default function HomePage() {
                 >
                   <div className="text-center mb-10">
                     <Image
-                      src="/brand/rm-logo-original.png"
+                      src="/brand/rm-logo-gold.jpg"
                       alt="RM"
-                      width={60}
-                      height={42}
-                      className="mx-auto mb-6 opacity-60"
-                      style={{ filter: 'brightness(0) saturate(100%) invert(78%) sepia(50%) saturate(1000%) hue-rotate(5deg) brightness(105%)' }}
+                      width={100}
+                      height={67}
+                      className="mx-auto mb-6"
+                      
                     />
                     <h3 className="text-[#FAF3E0] text-[15px] tracking-[0.3em] uppercase font-light mb-4">
                       Request Invitation
@@ -206,12 +206,12 @@ export default function HomePage() {
                   className="text-center py-16"
                 >
                   <Image
-                    src="/brand/rm-logo-original.png"
+                    src="/brand/rm-logo-gold.jpg"
                     alt="RM"
-                    width={60}
-                    height={42}
-                    className="mx-auto mb-8 opacity-60"
-                    style={{ filter: 'brightness(0) saturate(100%) invert(78%) sepia(50%) saturate(1000%) hue-rotate(5deg) brightness(105%)' }}
+                    width={100}
+                    height={67}
+                    className="mx-auto mb-8"
+                    
                   />
                   <p className="text-[#FAF3E0] text-[14px] tracking-[0.2em] font-light mb-3">
                     Thank you.
@@ -359,12 +359,12 @@ export default function HomePage() {
       {/* FOOTER */}
       <motion.footer {...elegant} className="px-8 py-20 text-center">
         <Image
-          src="/brand/rm-logo-original.png"
+          src="/brand/rm-logo-gold.jpg"
           alt="RM Logo"
           width={200}
           height={141}
           className="mx-auto mb-6"
-          style={{ filter: 'brightness(0) saturate(100%) invert(78%) sepia(50%) saturate(1000%) hue-rotate(5deg) brightness(105%)' }}
+          
         />
         <Image
           src="/brand/rohan-signature.png"

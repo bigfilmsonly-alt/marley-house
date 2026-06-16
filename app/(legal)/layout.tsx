@@ -12,11 +12,11 @@ export default function LegalLayout({
         <div className="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
           <Link href="/">
             <Image
-              src="/brand/rm-logo-original.png"
+              src="/brand/rm-logo-gold.jpg"
               alt="RM Logo"
               width={28}
               height={28}
-              className="opacity-60 rm-logo-gold"
+              className="opacity-60"
             />
           </Link>
           <Link href="/" className="text-[var(--dim)] text-xs tracking-wider uppercase hover:text-[var(--cream)] transition-colors">
