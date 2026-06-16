@@ -61,7 +61,7 @@ export default function HomePage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="relative w-[260px] h-[184px] mb-4"
+            className="relative w-[340px] h-[240px] mb-4"
           >
             <Image
               src="/brand/rm-logo-original.png"
@@ -69,7 +69,7 @@ export default function HomePage() {
               fill
               className="object-contain rm-logo-gold"
               priority
-              sizes="260px"
+              sizes="340px"
             />
           </motion.div>
 
@@ -361,8 +361,8 @@ export default function HomePage() {
         <Image
           src="/brand/rm-logo-original.png"
           alt="RM Logo"
-          width={160}
-          height={113}
+          width={200}
+          height={141}
           className="mx-auto mb-6"
           style={{ filter: 'brightness(0) saturate(100%) invert(78%) sepia(50%) saturate(1000%) hue-rotate(5deg) brightness(105%)' }}
         />
