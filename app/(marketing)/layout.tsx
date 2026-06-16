@@ -13,11 +13,11 @@ export default function MarketingLayout({
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/brand/rhr-monogram-transparent.png"
-              alt="The Marley Group"
+              src="/brand/rm-logo-original.png"
+              alt="RM Logo"
               width={36}
               height={36}
-              className="opacity-80"
+              className="opacity-80 rm-logo-gold"
             />
             <span className="text-[var(--cream)] text-sm font-display tracking-wide hidden sm:inline">
               The Marley Group
@@ -40,11 +40,11 @@ export default function MarketingLayout({
         <div className="max-w-5xl mx-auto px-6 py-12">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-8">
             <Image
-              src="/brand/rhr-monogram-transparent.png"
-              alt="The Marley Group"
+              src="/brand/rm-logo-original.png"
+              alt="RM Logo"
               width={48}
               height={48}
-              className="opacity-60"
+              className="opacity-60 rm-logo-gold"
             />
             <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
               <Link href="/marley-coffee" className="text-[var(--dim)] text-xs hover:text-[var(--gold)] transition-colors">Marley Coffee</Link>

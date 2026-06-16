@@ -17,13 +17,13 @@ export default function NotFound() {
         backgroundAttachment: 'fixed',
       }}
     >
-      {/* Monogram */}
+      {/* RM Logo */}
       <Image
-        src="/brand/rhr-monogram-transparent.png"
-        alt="R-M Monogram"
+        src="/brand/rm-logo-original.png"
+        alt="RM Logo"
         width={160}
         height={160}
-        className="mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
+        className="mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] rm-logo-gold"
         priority
       />
 

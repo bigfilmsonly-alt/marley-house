@@ -53,55 +53,57 @@ export default function HomePage() {
     <div className="relative min-h-full">
 
       {/* HERO */}
-      <section className="w-full min-h-screen flex flex-col items-center justify-center px-8 py-24">
-        <h1 className="sr-only">RM -- By Invitation Only</h1>
+      <section className="w-full pt-10 pb-8">
+        <div className="flex flex-col items-center justify-center px-8">
+          <h1 className="sr-only">RM — Request Invitation</h1>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
-          className="relative w-[220px] h-[220px] mb-8"
-        >
-          <Image
-            src="/brand/rhr-monogram-transparent.png"
-            alt="R-M Monogram"
-            fill
-            className="object-contain drop-shadow-[0_0_6px_rgba(0,0,0,0.9)]"
-            priority
-            sizes="220px"
-          />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.9 }}
-          transition={{ duration: 1.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-        >
-          <Image
-            src="/brand/rohan-signature.png"
-            alt="Rohan Marley"
-            width={260}
-            height={85}
-            className="brightness-[1.8] drop-shadow-[0_0_6px_rgba(0,0,0,0.9)]"
-          />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.4, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="mt-8 text-center"
-        >
-          <button
-            onClick={() => {
-              setShowModal(true);
-              trackEvent('enter');
-            }}
-            className="bg-black text-[#F6C800] text-[10px] tracking-[0.35em] uppercase font-medium px-14 py-4 border border-[#F6C800]/20 hover:border-[#F6C800]/40 transition-all duration-700"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
+            className="relative w-[260px] h-[184px] mb-4"
           >
-            Request Invitation
-          </button>
-        </motion.div>
+            <Image
+              src="/brand/rm-logo-original.png"
+              alt="RM Logo"
+              fill
+              className="object-contain rm-logo-gold"
+              priority
+              sizes="260px"
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.9 }}
+            transition={{ duration: 1.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            <Image
+              src="/brand/rohan-signature.png"
+              alt="Rohan Marley"
+              width={300}
+              height={98}
+              className="brightness-[1.8] drop-shadow-[0_0_4px_rgba(0,0,0,0.6)]"
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.4, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="mt-6 text-center"
+          >
+            <button
+              onClick={() => {
+                setShowModal(true);
+                trackEvent('enter');
+              }}
+              className="bg-black text-[#F6C800] text-[10px] tracking-[0.35em] uppercase font-medium px-14 py-4 border border-[#F6C800]/20 hover:border-[#F6C800]/40 transition-all duration-700"
+            >
+              Request Invitation
+            </button>
+          </motion.div>
+        </div>
       </section>
 
       {/* REQUEST INVITATION MODAL */}
@@ -118,11 +120,12 @@ export default function HomePage() {
                 >
                   <div className="text-center mb-10">
                     <Image
-                      src="/brand/rhr-monogram-transparent.png"
-                      alt="R-M"
-                      width={50}
-                      height={50}
-                      className="mx-auto mb-6 opacity-50"
+                      src="/brand/rm-logo-original.png"
+                      alt="RM"
+                      width={60}
+                      height={42}
+                      className="mx-auto mb-6 opacity-60"
+                      style={{ filter: 'brightness(0) saturate(100%) invert(78%) sepia(50%) saturate(1000%) hue-rotate(5deg) brightness(105%)' }}
                     />
                     <h3 className="text-[#FAF3E0] text-[15px] tracking-[0.3em] uppercase font-light mb-4">
                       Request Invitation
@@ -203,11 +206,12 @@ export default function HomePage() {
                   className="text-center py-16"
                 >
                   <Image
-                    src="/brand/rhr-monogram-transparent.png"
-                    alt="R-M"
-                    width={50}
-                    height={50}
-                    className="mx-auto mb-8 opacity-50"
+                    src="/brand/rm-logo-original.png"
+                    alt="RM"
+                    width={60}
+                    height={42}
+                    className="mx-auto mb-8 opacity-60"
+                    style={{ filter: 'brightness(0) saturate(100%) invert(78%) sepia(50%) saturate(1000%) hue-rotate(5deg) brightness(105%)' }}
                   />
                   <p className="text-[#FAF3E0] text-[14px] tracking-[0.2em] font-light mb-3">
                     Thank you.
@@ -355,11 +359,12 @@ export default function HomePage() {
       {/* FOOTER */}
       <motion.footer {...elegant} className="px-8 py-20 text-center">
         <Image
-          src="/brand/rhr-monogram-transparent.png"
-          alt="R-M Monogram"
-          width={140}
-          height={140}
-          className="mx-auto mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]"
+          src="/brand/rm-logo-original.png"
+          alt="RM Logo"
+          width={160}
+          height={113}
+          className="mx-auto mb-6"
+          style={{ filter: 'brightness(0) saturate(100%) invert(78%) sepia(50%) saturate(1000%) hue-rotate(5deg) brightness(105%)' }}
         />
         <Image
           src="/brand/rohan-signature.png"

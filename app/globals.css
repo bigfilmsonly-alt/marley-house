@@ -161,6 +161,11 @@ body {
 .stagger > *:nth-child(5) { animation-delay: 0.75s; }
 .stagger > *:nth-child(6) { animation-delay: 0.9s; }
 
+/* ─── RM Logo Gold Filter ─── */
+.rm-logo-gold {
+  filter: brightness(0) saturate(100%) invert(78%) sepia(50%) saturate(1000%) hue-rotate(5deg) brightness(105%);
+}
+
 /* ─── Gold Glow ─── */
 .gold-glow {
   box-shadow: 0 0 20px rgba(246, 200, 0, 0.2), 0 0 40px rgba(246, 200, 0, 0.1);

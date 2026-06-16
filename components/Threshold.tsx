@@ -14,7 +14,7 @@ const slides = [
   { src: '/brand/marley-enterprise.png', alt: 'Marley Enterprise', size: 'w-[80vw] max-w-[360px]', hold: 2500, signature: false },
   { src: '/brand/lion-head-gold.png', alt: 'Lion Order', size: 'w-[85vw] max-w-[380px]', hold: 2500, signature: false },
   { src: '/brand/lion-crest-clean.png', alt: 'Lion Order Crest', size: 'w-[80vw] max-w-[360px]', hold: 2500, signature: false },
-  { src: '/brand/rhr-monogram-transparent.png', alt: 'R-M', size: 'w-[85vw] max-w-[380px]', hold: 3000, signature: false },
+  { src: '/brand/rm-logo-original.png', alt: 'RM Logo', size: 'w-[85vw] max-w-[380px]', hold: 3000, signature: false, goldFilter: true },
 ];
 
 export default function Threshold() {
@@ -77,6 +77,7 @@ export default function Threshold() {
               height={500}
               className={`${slide.size} h-auto`}
               priority
+              {...('goldFilter' in slide && slide.goldFilter ? { style: { filter: 'brightness(0) saturate(100%) invert(78%) sepia(50%) saturate(1000%) hue-rotate(5deg) brightness(105%)' } } : {})}
             />
           </motion.div>
 
