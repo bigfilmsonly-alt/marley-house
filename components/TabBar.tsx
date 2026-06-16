@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Coffee, Play, Crown, Flame, Palmtree } from 'lucide-react';
+import { Home, Coffee, Play, Crown, Flame, Palmtree, LinkIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { LucideIcon } from 'lucide-react';
 import { tabView } from '@/lib/tracking';
@@ -22,6 +22,7 @@ const tabs: Tab[] = [
   { href: '/king-clem', icon: Crown, label: 'King Clem' },
   { href: '/lion-order', icon: Flame, label: 'Lion Order', embed: { url: 'https://lionorder.com', title: 'Lion Order' } },
   { href: '/beach-house', icon: Palmtree, label: 'Beach', embed: { url: 'https://www.romarleybeachhouse.com/en', title: 'RoMarley Beach House' } },
+  { href: '/linkme', icon: LinkIcon, label: 'Link Me', embed: { url: 'https://link.me/romarley', title: 'Link Me — Rohan Marley' } },
 ];
 
 export default function TabBar() {
@@ -50,7 +51,7 @@ export default function TabBar() {
                   />
                 )}
                 <tab.icon
-                  size={20}
+                  size={18}
                   className={
                     active && !isOpen
                       ? 'text-[#F6C800] relative z-10'
@@ -60,7 +61,7 @@ export default function TabBar() {
                 />
               </motion.div>
               <span
-                className={`font-display text-[9px] tracking-[0.1em] uppercase ${
+                className={`font-display text-[8px] tracking-[0.05em] uppercase ${
                   active && !isOpen
                     ? 'text-[#F6C800] font-bold'
                     : 'text-white/70 font-bold'
