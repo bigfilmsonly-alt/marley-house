@@ -236,9 +236,9 @@ export default function HomePage() {
       {/* THREE PILLARS */}
       <section className="w-full pt-8 pb-4">
 
-        {/* Marley Coffee */}
-        <motion.div {...elegant} className="mb-16">
-          <div className="relative w-full" style={{ paddingTop: '177.8%' }}>
+        {/* Marley Coffee — sized to fit between header and footer logos */}
+        <motion.div {...elegant} className="mb-10">
+          <div className="relative w-full" style={{ height: 'calc(100vh - 200px)', maxHeight: '700px' }}>
             <iframe
               src="https://player.vimeo.com/video/1198572971?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 w-full h-full"
@@ -248,11 +248,11 @@ export default function HomePage() {
               loading="lazy"
             />
           </div>
-          <div className="px-8 py-10 text-center">
-            <h2 className="font-display text-[22px] tracking-[0.15em] text-black font-semibold mb-3">
+          <div className="px-8 py-6 text-center">
+            <h2 className="font-display text-[22px] tracking-[0.15em] text-black font-semibold mb-2">
               Marley Coffee
             </h2>
-            <p className="text-black/50 text-[12px] tracking-[0.05em] leading-[1.8] max-w-[300px] mx-auto mb-6">
+            <p className="text-black/50 text-[12px] tracking-[0.05em] leading-[1.8] max-w-[300px] mx-auto mb-4">
               Single-origin from the Blue Mountains of Jamaica.
             </p>
             <a
@@ -267,9 +267,9 @@ export default function HomePage() {
           </div>
         </motion.div>
 
-        {/* Lion Order */}
-        <motion.div {...elegant} className="mb-16">
-          <div className="relative w-full" style={{ paddingTop: '168.7%' }}>
+        {/* Lion Order — sized to fit between header and footer logos */}
+        <motion.div {...elegant} className="mb-10">
+          <div className="relative w-full" style={{ height: 'calc(100vh - 200px)', maxHeight: '700px' }}>
             <iframe
               src="https://player.vimeo.com/video/1198233695?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 w-full h-full"
@@ -279,11 +279,11 @@ export default function HomePage() {
               loading="lazy"
             />
           </div>
-          <div className="px-8 py-10 text-center">
-            <h2 className="font-display text-[22px] tracking-[0.15em] text-black font-semibold mb-3">
+          <div className="px-8 py-6 text-center">
+            <h2 className="font-display text-[22px] tracking-[0.15em] text-black font-semibold mb-2">
               Lion Order
             </h2>
-            <p className="text-black/50 text-[12px] tracking-[0.05em] leading-[1.8] max-w-[300px] mx-auto mb-6">
+            <p className="text-black/50 text-[12px] tracking-[0.05em] leading-[1.8] max-w-[300px] mx-auto mb-4">
               Roots-luxury cannabis, cultivated with intention.
             </p>
             <a
@@ -298,9 +298,9 @@ export default function HomePage() {
           </div>
         </motion.div>
 
-        {/* RoMarley Beach House */}
+        {/* RoMarley Beach House — 16:9 fits naturally */}
         <motion.div {...elegant} className="mb-8">
-          <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
+          <div className="relative w-full" style={{ height: 'calc(100vh - 200px)', maxHeight: '700px' }}>
             <iframe
               src="https://player.vimeo.com/video/1198237050?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 w-full h-full"
@@ -310,11 +310,11 @@ export default function HomePage() {
               loading="lazy"
             />
           </div>
-          <div className="px-8 py-10 text-center">
-            <h2 className="font-display text-[22px] tracking-[0.15em] text-black font-semibold mb-3">
+          <div className="px-8 py-6 text-center">
+            <h2 className="font-display text-[22px] tracking-[0.15em] text-black font-semibold mb-2">
               RoMarley Beach House
             </h2>
-            <p className="text-black/50 text-[12px] tracking-[0.05em] leading-[1.8] max-w-[300px] mx-auto mb-6">
+            <p className="text-black/50 text-[12px] tracking-[0.05em] leading-[1.8] max-w-[300px] mx-auto mb-4">
               Private hospitality on the Caribbean coast.
             </p>
             <a
