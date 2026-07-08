@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { joinHouse, trackEvent } from '@/lib/tracking';
+import VimeoBackground from '@/components/VimeoBackground';
 
 const elegant = {
   initial: { opacity: 0, y: 20 },
@@ -53,7 +54,7 @@ export default function HomePage() {
     <div className="relative min-h-full">
 
       {/* HERO */}
-      <section className="w-full pt-1 pb-0">
+      <section className="w-full pt-1">
         <div className="flex flex-col items-center">
           <h1 className="sr-only">RM — Request Invitation</h1>
 
@@ -92,7 +93,7 @@ export default function HomePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.4, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="mt-2"
+            className="mt-2 mb-1"
           >
             <button
               onClick={() => {
@@ -126,7 +127,7 @@ export default function HomePage() {
                       width={100}
                       height={67}
                       className="mx-auto mb-6"
-                      
+
                     />
                     <h3 className="text-[#FAF3E0] text-[15px] tracking-[0.3em] uppercase font-light mb-4">
                       Request Invitation
@@ -212,7 +213,7 @@ export default function HomePage() {
                     width={100}
                     height={67}
                     className="mx-auto mb-8"
-                    
+
                   />
                   <p className="text-[#FAF3E0] text-[14px] tracking-[0.2em] font-light mb-3">
                     Thank you.
@@ -235,25 +236,16 @@ export default function HomePage() {
       )}
 
       {/* THREE PILLARS */}
-      <section className="w-full pt-1 pb-0">
+      <section className="w-full">
 
-        {/* Marley Coffee — sized to fit between header and footer logos */}
-        <motion.div {...elegant} className="mb-1">
-          <div className="relative w-full" style={{ aspectRatio: '16 / 9' }}>
-            <iframe
-              src="https://player.vimeo.com/video/1198572971?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 w-full h-full"
-              style={{ border: 'none' }}
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              loading="eager"
-            />
-          </div>
-          <div className="px-8 py-1.5 text-center">
-            <h2 className="font-display text-[22px] tracking-[0.15em] text-black font-semibold mb-0.5">
+        {/* Marley Coffee */}
+        <motion.div {...elegant}>
+          <VimeoBackground videoId="1198572971" priority />
+          <div className="px-6 py-1 text-center">
+            <h2 className="font-display text-[20px] tracking-[0.15em] text-black font-semibold">
               Marley Coffee
             </h2>
-            <p className="text-black/50 text-[12px] tracking-[0.05em] leading-[1.4] max-w-[300px] mx-auto mb-1">
+            <p className="text-black/50 text-[11px] tracking-[0.05em] leading-[1.4] max-w-[280px] mx-auto">
               Single-origin from the Blue Mountains of Jamaica.
             </p>
             <a
@@ -261,30 +253,21 @@ export default function HomePage() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent('shop_coffee')}
-              className="text-black/40 text-[10px] tracking-[0.3em] uppercase hover:text-black/70 transition-colors duration-500"
+              className="text-black/40 text-[9px] tracking-[0.3em] uppercase hover:text-black/70 transition-colors duration-500"
             >
               Explore
             </a>
           </div>
         </motion.div>
 
-        {/* Lion Order — sized to fit between header and footer logos */}
-        <motion.div {...elegant} className="mb-1">
-          <div className="relative w-full" style={{ aspectRatio: '16 / 9' }}>
-            <iframe
-              src="https://player.vimeo.com/video/1198233695?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 w-full h-full"
-              style={{ border: 'none' }}
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              loading="eager"
-            />
-          </div>
-          <div className="px-8 py-1.5 text-center">
-            <h2 className="font-display text-[22px] tracking-[0.15em] text-black font-semibold mb-0.5">
+        {/* Lion Order */}
+        <motion.div {...elegant}>
+          <VimeoBackground videoId="1198233695" />
+          <div className="px-6 py-1 text-center">
+            <h2 className="font-display text-[20px] tracking-[0.15em] text-black font-semibold">
               Lion Order
             </h2>
-            <p className="text-black/50 text-[12px] tracking-[0.05em] leading-[1.4] max-w-[300px] mx-auto mb-1">
+            <p className="text-black/50 text-[11px] tracking-[0.05em] leading-[1.4] max-w-[280px] mx-auto">
               Roots-luxury cannabis, cultivated with intention.
             </p>
             <a
@@ -292,30 +275,21 @@ export default function HomePage() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent('explore_lionorder')}
-              className="text-black/40 text-[10px] tracking-[0.3em] uppercase hover:text-black/70 transition-colors duration-500"
+              className="text-black/40 text-[9px] tracking-[0.3em] uppercase hover:text-black/70 transition-colors duration-500"
             >
               Explore
             </a>
           </div>
         </motion.div>
 
-        {/* RoMarley Beach House — 16:9 fits naturally */}
-        <motion.div {...elegant} className="mb-1">
-          <div className="relative w-full" style={{ aspectRatio: '16 / 9' }}>
-            <iframe
-              src="https://player.vimeo.com/video/1198237050?autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
-              className="absolute inset-0 w-full h-full"
-              style={{ border: 'none' }}
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              loading="eager"
-            />
-          </div>
-          <div className="px-8 py-1.5 text-center">
-            <h2 className="font-display text-[22px] tracking-[0.15em] text-black font-semibold mb-0.5">
+        {/* RoMarley Beach House */}
+        <motion.div {...elegant}>
+          <VimeoBackground videoId="1198237050" />
+          <div className="px-6 py-1 text-center">
+            <h2 className="font-display text-[20px] tracking-[0.15em] text-black font-semibold">
               RoMarley Beach House
             </h2>
-            <p className="text-black/50 text-[12px] tracking-[0.05em] leading-[1.4] max-w-[300px] mx-auto mb-1">
+            <p className="text-black/50 text-[11px] tracking-[0.05em] leading-[1.4] max-w-[280px] mx-auto">
               Private hospitality on the Caribbean coast.
             </p>
             <a
@@ -323,7 +297,7 @@ export default function HomePage() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent('book_stay')}
-              className="text-black/40 text-[10px] tracking-[0.3em] uppercase hover:text-black/70 transition-colors duration-500"
+              className="text-black/40 text-[9px] tracking-[0.3em] uppercase hover:text-black/70 transition-colors duration-500"
             >
               Explore
             </a>
@@ -333,8 +307,8 @@ export default function HomePage() {
       </section>
 
       {/* PHOTO GALLERY */}
-      <motion.section {...slowFade} className="py-1">
-        <div className="space-y-1 px-4">
+      <motion.section {...slowFade}>
+        <div className="px-4">
           {[1, 2, 3].map((n) => (
             <motion.div
               key={n}
@@ -350,7 +324,7 @@ export default function HomePage() {
                 width={800}
                 height={600}
                 className="w-full h-auto"
-                loading="eager"
+                loading="lazy"
               />
             </motion.div>
           ))}
@@ -358,14 +332,14 @@ export default function HomePage() {
       </motion.section>
 
       {/* FOOTER */}
-      <motion.footer {...elegant} className="px-8 pt-4 pb-6 text-center">
+      <motion.footer {...elegant} className="px-8 pt-3 pb-4 text-center">
         <Image
           src="/brand/rm-logo-gold-transparent.png"
           alt="RM Logo"
           width={200}
           height={141}
-          className="mx-auto mb-3"
-          
+          className="mx-auto mb-2"
+
         />
         <Image
           src="/brand/rohan-signature.png"
@@ -375,7 +349,7 @@ export default function HomePage() {
           className="mx-auto mb-3 brightness-150 drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]"
         />
 
-        <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 mb-3">
+        <div className="flex flex-wrap justify-center gap-x-8 gap-y-1 mb-2">
           {[
             { label: 'marleycoffee.com', url: 'https://marleycoffee.com' },
             { label: 'lionorder.com', url: 'https://lionorder.com' },
@@ -393,7 +367,7 @@ export default function HomePage() {
           ))}
         </div>
 
-        <div className="flex justify-center gap-10 mb-3">
+        <div className="flex justify-center gap-10 mb-2">
           {[
             { label: 'Instagram', url: 'https://www.instagram.com/romarley/' },
             { label: 'YouTube', url: 'https://youtube.com/@MrRohanmarley' },
@@ -412,8 +386,8 @@ export default function HomePage() {
         </div>
 
         {/* SITEMAP -- collapsible dropdown */}
-        <details className="mb-4 group">
-          <summary className="flex items-center justify-center gap-2 cursor-pointer list-none py-3">
+        <details className="mb-3 group">
+          <summary className="flex items-center justify-center gap-2 cursor-pointer list-none py-1">
             <span className="text-[10px] tracking-[0.3em] uppercase text-black font-bold">Sitemap</span>
             <svg className="w-3 h-3 text-black/60 transition-transform duration-300 ease-in-out group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
           </summary>
@@ -617,7 +591,7 @@ export default function HomePage() {
           </div>
         </details>
 
-        <div className="gold-rule mx-4 mb-3" />
+        <div className="gold-rule mx-4 mb-2" />
 
         <p className="text-black/30 text-[9px] tracking-[0.2em]">
           &copy; 2026 RM. All rights reserved.

@@ -59,7 +59,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://player.vimeo.com" />
         <link rel="preconnect" href="https://i.vimeocdn.com" />
         <link rel="preconnect" href="https://f.vimeocdn.com" />
+        <link rel="preconnect" href="https://vumbnail.com" />
         <link rel="dns-prefetch" href="https://player.vimeo.com" />
+        <link rel="dns-prefetch" href="https://vumbnail.com" />
         <EntityGraph />
         <FAQSchema />
       </head>
