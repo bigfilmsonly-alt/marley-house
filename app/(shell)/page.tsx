@@ -246,7 +246,7 @@ export default function HomePage() {
               style={{ border: 'none' }}
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
-              loading="lazy"
+              loading="eager"
             />
           </div>
           <div className="px-8 py-1.5 text-center">
@@ -277,7 +277,7 @@ export default function HomePage() {
               style={{ border: 'none' }}
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
-              loading="lazy"
+              loading="eager"
             />
           </div>
           <div className="px-8 py-1.5 text-center">
@@ -308,7 +308,7 @@ export default function HomePage() {
               style={{ border: 'none' }}
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
-              loading="lazy"
+              loading="eager"
             />
           </div>
           <div className="px-8 py-1.5 text-center">
@@ -350,7 +350,7 @@ export default function HomePage() {
                 width={800}
                 height={600}
                 className="w-full h-auto"
-                loading="lazy"
+                loading="eager"
               />
             </motion.div>
           ))}
